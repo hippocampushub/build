@@ -14,14 +14,14 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.0",
-    "babel-plugin-styled-components": "latest",
     "bootstrap": "^4.5.3",
     "next": "10.0.3",
     "prop-types": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "react-material-ui-carousel": "^2.1.1",
     "sass": "^1.30.0",
-    "styled-components": "latest"
+    "styled-components": "5.2.0"
   },
   "devDependencies": {
     "@material-ui/core": "^4.11.2",
@@ -30,6 +30,7 @@
     "@types/react": "^17.0.0",
     "@typescript-eslint/parser": "^4.9.1",
     "babel-eslint": "latest",
+    "babel-plugin-styled-components": "^1.12.0",
     "eslint": "latest",
     "eslint-config-airbnb": "latest",
     "eslint-config-mcansh": "latest",

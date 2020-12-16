@@ -1,16 +1,20 @@
 import * as React from 'react';
 import Menu from "../menu/menu";
+import ImagesCarousel, {CarouselImage} from "../carousel/carousel";
 
-function Header({menuItems}) {
-    return (
-        <div className='row'>
-            <div className='col-12'>
-                <div className='container'>
-                    <Menu menuItems={menuItems}/>
-                </div>
-            </div>
-        </div>
-    )
+interface IHeaderProps {
+    menuItems?: any[],
+    carouselImages?: CarouselImage[]
 }
 
-export default Header;
+export default function Header({menuItems, carouselImages}: IHeaderProps) {
+    const hasCarouselImages = !!carouselImages && carouselImages.length > 0;
+    return (
+        <div>
+            <Menu menuItems={menuItems}/>
+            {hasCarouselImages ?
+                <ImagesCarousel images={carouselImages}/> : null
+            }
+        </div>
+    );
+}

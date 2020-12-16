@@ -1,4 +1,5 @@
 export const MenuItemType = {
     section: 'section',
-    post: 'post'
+    post: 'post',
+    link: 'link'
 }
