@@ -1,3 +1,14 @@
 nav.menu-navbar {
   padding: 0 1rem;
+  @media all and (max-width: 768px) {
+    padding: .5rem 1rem;
+  }
+  .custom-navbar-toggler {
+    user-select: none;
+    outline: none;
+    &:focus {
+      user-select: none;
+      outline: none;
+    }
+  }
 }

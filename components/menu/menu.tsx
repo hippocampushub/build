@@ -3,6 +3,7 @@ import {getPostUrl} from "../../helpers/postHelper";
 import {useRouter} from "next/router";
 
 import menuStyle from './menu.module.scss';
+import {useState} from "react";
 
 const useToolbarStyles = makeStyles((theme) => ({
     root: {
@@ -32,6 +33,11 @@ const useListItemStyles = makeStyles((theme) => ({
         },
         '&.active': {
             borderBottom: '2px solid #fff'
+        },
+        [theme.breakpoints.down('sm')]: {
+            marginRight: 0,
+            paddingLeft: 0,
+            paddingRight: 0
         }
     }
 }))
@@ -51,6 +57,8 @@ const Menu = ({menuItems}) => {
 
     const router = useRouter();
 
+    const [menuExpanded, setMenuExpanded] = useState(false);
+
     const toolbarClasses = useToolbarStyles();
     const navClasses = useNavStyles();
     const listClasses = useListStyles();
@@ -67,15 +75,19 @@ const Menu = ({menuItems}) => {
         </ListItem>);
     };
 
+    const toggleMenu = () => {
+        setMenuExpanded(!menuExpanded);
+    }
+
     return (
         <AppBar position="relative">
             <Toolbar classes={toolbarClasses}>
-                <nav className={`navbar navbar-expand-lg ${menuStyle['menu-navbar']}`}>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                <nav className={`navbar navbar-dark navbar-expand-lg ${menuStyle['menu-navbar']}`}>
+                    <button className={`navbar-toggler ${menuStyle['custom-navbar-toggler']}`} type="button" data-toggle="collapse" data-target="#navbarNav"
                             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
+                        <span className="navbar-toggler-icon" onClick={() => toggleMenu()}></span>
                     </button>
-                    <div className="collapse navbar-collapse" id="navbarNav">
+                    <div className={`collapse navbar-collapse ${menuExpanded ? 'show' : ''}`} id="navbarNav">
                         <List className="navbar-nav" classes={listClasses}>
                             {menuItems.map((item) => buildMenuItem(item))}
                         </List>
