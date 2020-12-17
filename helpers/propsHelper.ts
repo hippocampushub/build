@@ -1,4 +1,13 @@
-import {getMenuItems} from "./apiHelper";
+import {getMenuItems, getConfig} from "./apiHelper";
+
+async function getConfigProps() {
+    try {
+        const config = await getConfig();
+        return config;
+    } catch (error) {
+        return {};
+    }
+}
 
 async function getMenuItemsProps() {
     try {
@@ -9,6 +18,21 @@ async function getMenuItemsProps() {
     }
 }
 
+async function getGlobalInitialProps() {
+    try {
+        const config = await getConfigProps();
+        const menuItems = await getMenuItems();
+        return {
+            config,
+            menuItems
+        }
+    } catch (error) {
+        return {};
+    }
+}
+
 export {
-    getMenuItemsProps
+    getConfigProps,
+    getMenuItemsProps,
+    getGlobalInitialProps
 }

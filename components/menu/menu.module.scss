@@ -1,7 +1,19 @@
+@import "variables";
+
 nav.menu-navbar {
   padding: 0 1rem;
+  width: 100%;
   @media all and (max-width: 768px) {
     padding: .5rem 1rem;
+  }
+  .custom-dropdown-menu {
+    padding: 10px 15px;
+    background: $color-background;
+  }
+  .custom-navbar-brand {
+    img {
+      height: 50px;
+    }
   }
   .custom-navbar-toggler {
     user-select: none;
