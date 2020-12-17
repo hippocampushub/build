@@ -4,7 +4,9 @@ export default {
         config: 'config',
         menuItems: 'menuItems',
         homePage: 'home-page',
-        posts: 'posts'
+        pages: 'pages',
+        posts: 'posts',
+        contacts: 'contacts'
     },
     REQUEST_METHODS: {
         get: 'get',

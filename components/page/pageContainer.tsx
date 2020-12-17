@@ -15,7 +15,7 @@ interface IPageProps extends DefaultComponentProps<any>{
     carouselImages?: CarouselImage[]
 }
 
-function Page({children, title = 'Next.js App', config, menuItems, carouselImages}: IPageProps) {
+function PageContainer({children, title = 'Next.js App', config, menuItems, carouselImages}: IPageProps) {
     return (<div className={pageStyle.page}>
         <Head>
             <title>{title}</title>
@@ -33,4 +33,4 @@ function Page({children, title = 'Next.js App', config, menuItems, carouselImage
     </div>);
 }
 
-export default Page;
+export default PageContainer;

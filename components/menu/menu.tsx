@@ -1,5 +1,5 @@
 import {AppBar, Toolbar, Link, List, ListItem, makeStyles} from "@material-ui/core";
-import {getPostUrl} from "../../helpers/postHelper";
+import {getPageUrl} from "../../helpers/postHelper";
 import {useRouter} from "next/router";
 
 import menuStyle from './menu.module.scss';
@@ -54,19 +54,32 @@ const useLinkStyles = makeStyles((theme) => ({
     }
 }));
 
+const useSubMenuLinkStyles = makeStyles((theme) => ({
+    root: {
+        display: 'block',
+        padding: '5px 10px',
+        color: '#fff',
+        '&:hover': {
+            color: '#fff',
+            textDecoration: 'none'
+        }
+    }
+}));
+
 const MenuItem = ({item}) => {
     const router = useRouter();
 
     const listItemClasses = useListItemStyles();
     const linkClasses = useLinkStyles();
+    const subMenuItemLinkClasses = useSubMenuLinkStyles();
 
     const [expanded, setExpanded] = useState(false);
 
     const buildSubMenuItem = (item) => {
-        const linkUrl = getPostUrl(item);
+        const linkUrl = getPageUrl(item);
         const isActiveLink = router.pathname === linkUrl;
         const isDropDown = item.type === MenuItemType.section && (item.menuitems?.length ?? 0) > 0;
-        return (<Link classes={linkClasses} href={linkUrl}>
+        return (<Link classes={subMenuItemLinkClasses} href={linkUrl} key={`sub-menu-item-${item.id}`}>
             {item.title}
             {isDropDown ?
                 buildSubMenu(item, false) : null
@@ -76,7 +89,8 @@ const MenuItem = ({item}) => {
 
 
     const buildSubMenu = (item, expanded) => (
-        <div className={`dropdown-menu ${menuStyle['custom-dropdown-menu']} ${expanded ? 'show' : ''}`} aria-labelledby="navbarDropdownMenuLink">
+        <div className={`dropdown-menu ${menuStyle['custom-dropdown-menu']} ${expanded ? 'show' : ''}`}
+             aria-labelledby="navbarDropdownMenuLink" key={`sub-menu-dropdown-${item.id}`}>
             {item.menuitems?.map((subItem) => buildSubMenuItem(subItem))}
         </div>);
 
@@ -92,11 +106,10 @@ const MenuItem = ({item}) => {
         setExpanded(!expanded);
     }
 
-    const linkUrl = getPostUrl(item);
+    const linkUrl = getPageUrl(item);
     const isActiveLink = router.pathname === linkUrl;
     const isDropDown = item.type === MenuItemType.section && (item.menuitems?.length ?? 0) > 0;
-    return (<ListItem key={`menu-item-${item.id}`}
-                      onMouseEnter={isDropDown ? () => showDropDown() : null}
+    return (<ListItem onMouseEnter={isDropDown ? () => showDropDown() : null}
                       onMouseLeave={isDropDown ? () => hideDropDown() : null}
                       onClick={isDropDown ? () => toggleDropDown() : null}
                       className={`${isActiveLink ? 'active': ''} ${isDropDown ? 'dropdown' : ''}`}
@@ -123,7 +136,7 @@ const Menu = ({logo, menuItems}) => {
     const linkClasses = useLinkStyles();
 
 
-    const buildMenuItem = (item) => (<MenuItem item={item}/>)
+    const buildMenuItem = (item) => (<MenuItem item={item} key={`menu-item-${item.id}`}/>)
 
     const toggleMenu = () => {
         setMenuExpanded(!menuExpanded);

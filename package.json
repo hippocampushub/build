@@ -1,5 +1,5 @@
 {
-  "name": "hyppocampus-facility-hub-frontend",
+  "name": "hbp-frontend",
   "version": "1.0.0",
   "description": "",
   "main": ".eslintrc.js",
@@ -13,8 +13,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@apollo/client": "^3.3.6",
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "axios": "^0.21.0",
     "bootstrap": "^4.5.3",
+    "graphql": "^15.4.0",
     "next": "10.0.3",
     "prop-types": "latest",
     "react": "latest",

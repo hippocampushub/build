@@ -1,27 +1,33 @@
 import * as React from 'react'
-import Page from '../components/page/page';
+import PageContainer from '../components/page/pageContainer';
 import {getConfig, getHomePage} from "../helpers/apiHelper";
-import {getGlobalInitialProps} from "../helpers/propsHelper";
+import {defaultProps, getGlobalInitialProps} from "../helpers/propsHelper";
 
 
 const Index = ({menuItems, config, homePage}) => {
-    return (<Page
+    return (<PageContainer
             config={config}
             carouselImages={homePage.header_images}
             menuItems={menuItems}>
             {homePage.content}
-    </Page>
-);
+    </PageContainer>
+    );
 }
 
 async function getServerSideProps() {
-    const globalConfig = await getGlobalInitialProps();
-    const homePage = await getHomePage();
-    return {
-        props: {
-            homePage,
-            config: globalConfig.config ?? {},
-            menuItems: globalConfig?.menuItems ?? [],
+    try {
+        const globalConfig = await getGlobalInitialProps();
+        const homePage = await getHomePage();
+        return {
+            props: {
+                homePage,
+                config: globalConfig.config ?? {},
+                menuItems: globalConfig?.menuItems ?? [],
+            }
+        }
+    } catch (error) {
+        return {
+            props: {...defaultProps}
         }
     }
 }

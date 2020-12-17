@@ -1,5 +1,10 @@
 import {getMenuItems, getConfig} from "./apiHelper";
 
+export const defaultProps = {
+    config: {},
+    menuItems: []
+}
+
 async function getConfigProps() {
     try {
         const config = await getConfig();

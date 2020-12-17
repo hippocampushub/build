@@ -1,17 +1,17 @@
-import {getConfig, getPost} from "../../helpers/apiHelper";
+import {getConfig, getPage} from "../../helpers/apiHelper";
 import {Typography} from "@material-ui/core";
-import Page from "../../components/page/page";
+import PageContainer from "../../components/page/pageContainer";
 import {getGlobalInitialProps} from "../../helpers/propsHelper";
 
 function Post({menuItems, config,  post}) {
     return (
-        <Page
+        <PageContainer
             config={config}
             menuItems={menuItems}>
             <div className="container">
                 <div className="row">
                     <div className="col-12">
-                        <Typography variant="h3">
+                        <Typography variant="h4">
                             {post.title}
                         </Typography>
                     </div>
@@ -22,13 +22,13 @@ function Post({menuItems, config,  post}) {
                     </div>
                 </div>
             </div>
-        </Page>);
+        </PageContainer>);
 }
 
 async function getServerSideProps({params}) {
     const {slug} = params;
     const globalConfig = await getGlobalInitialProps();
-    const post = await getPost(slug);
+    const post = await getPage(slug);
     return {
         props: {
             post,

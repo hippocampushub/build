@@ -11,7 +11,7 @@ export default function Footer({footer}) {
                         <img className={footerStyle['footer-image']} src={getImageUrl(footer.logo)}/> : null
                     }
                     <Typography variant='h5' className={footerStyle['footer-header']}>
-                        {footer.header}
+                        {footer?.header ?? ''}
                     </Typography>
                 </div>
             </div>
