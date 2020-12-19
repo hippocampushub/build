@@ -6,6 +6,7 @@ import menuStyle from './menu.module.scss';
 import {useState} from "react";
 import {MenuItemType} from "../../data";
 import {getImageUrl} from "../../helpers/imageHelper";
+import {sortedArray} from "../../helpers/arrayHelper";
 
 const useToolbarStyles = makeStyles((theme) => ({
     root: {
@@ -91,7 +92,7 @@ const MenuItem = ({item}) => {
     const buildSubMenu = (item, expanded) => (
         <div className={`dropdown-menu ${menuStyle['custom-dropdown-menu']} ${expanded ? 'show' : ''}`}
              aria-labelledby="navbarDropdownMenuLink" key={`sub-menu-dropdown-${item.id}`}>
-            {item.menuitems?.map((subItem) => buildSubMenuItem(subItem))}
+            {sortedArray(item.menuitems, 'order')?.map((subItem) => buildSubMenuItem(subItem))}
         </div>);
 
     const showDropDown = () => {
@@ -158,7 +159,7 @@ const Menu = ({logo, menuItems}) => {
                         </button>
                         <div className={`collapse navbar-collapse ${menuExpanded ? 'show' : ''}`} id="navbarNav">
                             <List className="navbar-nav" classes={listClasses}>
-                                {menuItems.map((item) => buildMenuItem(item))}
+                                {sortedArray(menuItems, 'order')?.map((item) => buildMenuItem(item))}
                             </List>
                         </div>
                     </div>

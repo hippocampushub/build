@@ -1,8 +1,8 @@
 export default {
-    BASE_URL: process.env.BASE_URL ?? 'http://localhost:1337',
+    BASE_DATA_URL: process.env.BASE_URL ?? '/data',
     ENDPOINTS: {
         config: 'config',
-        menuItems: 'menuItems',
+        menuItems: 'menu-items',
         homePage: 'home-page',
         pages: 'pages',
         posts: 'posts',

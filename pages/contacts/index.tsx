@@ -1,10 +1,10 @@
-import {getConfig, getPage, sendMessage} from "../../helpers/apiHelper";
+import {getConfig, getPage, sendMessage} from "../../helpers/dataHelper";
 import {Button, makeStyles, TextField, Typography} from "@material-ui/core";
 import {Alert} from "@material-ui/lab";
 import PageContainer from "../../components/page/pageContainer";
 import {getGlobalInitialProps} from "../../helpers/propsHelper";
 import {useEffect, useState} from "react";
-import {checkIfEmailValid, checkIfNotEmpty} from "../../helpers/dataHelper";
+import {checkIfEmailValid, checkIfNotEmpty} from "../../helpers/validatorHelper";
 import Spinner from "../../components/spinner/spinner";
 
 const useFormStyles = makeStyles((theme) => ({

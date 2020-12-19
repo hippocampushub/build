@@ -8,7 +8,7 @@ interface IHeaderProps {
     carouselImages?: CarouselImage[]
 }
 
-export default function Header({config, menuItems, carouselImages}: IHeaderProps) {
+export default function Header({config, menuItems=[], carouselImages}: IHeaderProps) {
     const hasCarouselImages = !!carouselImages && carouselImages.length > 0;
     return (
         <div>

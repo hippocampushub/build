@@ -1,32 +1,32 @@
-import {getMenuItems, getConfig} from "./apiHelper";
+import {getMenuItems, getConfig} from "./dataHelper";
 
 export const defaultProps = {
     config: {},
     menuItems: []
 }
 
-async function getConfigProps() {
+function getConfigProps() {
     try {
-        const config = await getConfig();
+        const config = getConfig();
         return config;
     } catch (error) {
         return {};
     }
 }
 
-async function getMenuItemsProps() {
+function getMenuItemsProps() {
     try {
-        const menuItems = await getMenuItems();
+        const menuItems = getMenuItems();
         return menuItems;
     } catch (error) {
         return [];
     }
 }
 
-async function getGlobalInitialProps() {
+function getGlobalInitialProps() {
     try {
-        const config = await getConfigProps();
-        const menuItems = await getMenuItems();
+        const config = getConfigProps();
+        const menuItems = getMenuItems();
         return {
             config,
             menuItems

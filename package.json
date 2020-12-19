@@ -23,6 +23,7 @@
     "react": "latest",
     "react-dom": "latest",
     "react-material-ui-carousel": "^2.1.1",
+    "request": "^2.79.0",
     "sass": "^1.30.0",
     "styled-components": "5.2.0"
   },

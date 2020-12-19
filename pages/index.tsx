@@ -1,10 +1,28 @@
 import * as React from 'react'
 import PageContainer from '../components/page/pageContainer';
-import {getConfig, getHomePage} from "../helpers/apiHelper";
-import {defaultProps, getGlobalInitialProps} from "../helpers/propsHelper";
+import {getConfig, getHomePage, getMenuItems} from "../helpers/dataHelper";
+import {useState} from "react";
 
 
-const Index = ({menuItems, config, homePage}) => {
+const Index = () => {
+    const [menuItems, setMenuItems] = React.useState<any[]>([]);
+    const [config, setConfig] = React.useState<any>({});
+    const [homePage, setHomePage] = React.useState<any>({});
+
+    const setup = async () => {
+        const _menuItems = await getMenuItems();
+        console.log('@@@@menuItems');
+        console.log(_menuItems);
+        const _config = await getConfig();
+        const _homePage = await getHomePage();
+        setMenuItems(_menuItems);
+        setConfig(_config);
+        setHomePage(_homePage);
+    }
+
+    useState(() => {
+        setup();
+    }, []);
     return (<PageContainer
             config={config}
             carouselImages={homePage.header_images}
@@ -13,27 +31,5 @@ const Index = ({menuItems, config, homePage}) => {
     </PageContainer>
     );
 }
-
-async function getServerSideProps() {
-    try {
-        const globalConfig = await getGlobalInitialProps();
-        const homePage = await getHomePage();
-        return {
-            props: {
-                homePage,
-                config: globalConfig.config ?? {},
-                menuItems: globalConfig?.menuItems ?? [],
-            }
-        }
-    } catch (error) {
-        return {
-            props: {...defaultProps}
-        }
-    }
-}
-
-export {
-    getServerSideProps
-};
 
 export default Index;

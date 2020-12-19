@@ -1,7 +1,7 @@
 import PageContainer from "../page/pageContainer";
 import {Typography} from "@material-ui/core";
 import {getGlobalInitialProps} from "../../helpers/propsHelper";
-import {getPage, getPost} from "../../helpers/apiHelper";
+import {getPage, getPost} from "../../helpers/dataHelper";
 
 function PostContent({config, menuItems, post}) {
     return (<PageContainer

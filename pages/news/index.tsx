@@ -2,7 +2,7 @@ import * as React from "react";
 import PageContainer from "../../components/page/pageContainer";
 import {Card, CardContent, makeStyles, Typography} from "@material-ui/core";
 import {defaultProps, getGlobalInitialProps} from "../../helpers/propsHelper";
-import {getNewsList} from "../../helpers/apiHelper";
+import {getNewsList} from "../../helpers/dataHelper";
 
 const useNewsStyles = makeStyles((theme) => ({
     cardStyle: {
