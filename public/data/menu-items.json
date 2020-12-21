@@ -17,7 +17,8 @@
         "id": 5,
         "title": "Data",
         "type": "url",
-        "url": "/data"
+        "url": "/data",
+        "order": 1
       },
       {
         "id": 13,

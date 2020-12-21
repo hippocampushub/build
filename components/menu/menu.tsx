@@ -67,7 +67,7 @@ const useSubMenuLinkStyles = makeStyles((theme) => ({
     }
 }));
 
-const MenuItem = ({item}) => {
+const MenuItem = ({item, isSubMenuItem=false}) => {
     const router = useRouter();
 
     const listItemClasses = useListItemStyles();
@@ -76,23 +76,13 @@ const MenuItem = ({item}) => {
 
     const [expanded, setExpanded] = useState(false);
 
-    const buildSubMenuItem = (item) => {
-        const linkUrl = getPageUrl(item);
-        const isActiveLink = router.pathname === linkUrl;
-        const isDropDown = item.type === MenuItemType.section && (item.menuitems?.length ?? 0) > 0;
-        return (<Link classes={subMenuItemLinkClasses} href={linkUrl} key={`sub-menu-item-${item.id}`}>
-            {item.title}
-            {isDropDown ?
-                buildSubMenu(item, false) : null
-            }
-        </Link>);
-    }
-
 
     const buildSubMenu = (item, expanded) => (
         <div className={`dropdown-menu ${menuStyle['custom-dropdown-menu']} ${expanded ? 'show' : ''}`}
              aria-labelledby="navbarDropdownMenuLink" key={`sub-menu-dropdown-${item.id}`}>
-            {sortedArray(item.menuitems, 'order')?.map((subItem) => buildSubMenuItem(subItem))}
+            <ul style={{padding: 0}}>
+                {sortedArray(item.menuitems, 'title')?.map((subItem) => <MenuItem key={`menu-item-${item.id}`} item={subItem}/>)}
+            </ul>
         </div>);
 
     const showDropDown = () => {
@@ -113,9 +103,9 @@ const MenuItem = ({item}) => {
     return (<ListItem onMouseEnter={isDropDown ? () => showDropDown() : null}
                       onMouseLeave={isDropDown ? () => hideDropDown() : null}
                       onClick={isDropDown ? () => toggleDropDown() : null}
-                      className={`${isActiveLink ? 'active': ''} ${isDropDown ? 'dropdown' : ''}`}
+                      className={`${isActiveLink ? 'active' : ''} ${isDropDown ? 'dropdown' : ''}`}
                       classes={listItemClasses}>
-        <Link classes={linkClasses} href={linkUrl}>
+        <Link classes={isSubMenuItem ? subMenuItemLinkClasses : linkClasses} href={linkUrl}>
             {item.title}
             {isDropDown ?
                 buildSubMenu(item, expanded) : null
@@ -125,7 +115,7 @@ const MenuItem = ({item}) => {
 }
 
 
-const Menu = ({logo, menuItems}) => {
+const Menu = ({logo, menuItems, isSubMenuItem = false}) => {
     const router = useRouter();
 
     const [menuExpanded, setMenuExpanded] = useState(false);
@@ -153,7 +143,8 @@ const Menu = ({logo, menuItems}) => {
                                 <img src={getImageUrl(logo)}/>
                             </a> : null
                         }
-                        <button className={`navbar-toggler ${menuStyle['custom-navbar-toggler']}`} type="button" data-toggle="collapse" data-target="#navbarNav"
+                        <button className={`navbar-toggler ${menuStyle['custom-navbar-toggler']}`} type="button"
+                                data-toggle="collapse" data-target="#navbarNav"
                                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon" onClick={() => toggleMenu()}></span>
                         </button>

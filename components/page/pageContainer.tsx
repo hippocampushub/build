@@ -7,6 +7,8 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import pageStyle from './page.module.scss'
 import {CarouselImage} from "../carousel/carousel";
 import Footer from "../footer/footer";
+import {getConfig, getHomePage, getMenuItems} from "../../helpers/dataHelper";
+import {useEffect} from "react";
 
 interface IPageProps extends DefaultComponentProps<any>{
     title?: string
@@ -15,7 +17,23 @@ interface IPageProps extends DefaultComponentProps<any>{
     carouselImages?: CarouselImage[]
 }
 
-function PageContainer({children, title = 'Next.js App', config, menuItems, carouselImages}: IPageProps) {
+function PageContainer({children, title = 'Next.js App', carouselImages}: IPageProps) {
+    const [menuItems, setMenuItems] = React.useState<any[]>([]);
+    const [config, setConfig] = React.useState<any>({});
+
+    const setup = async () => {
+        const _menuItems = await getMenuItems();
+        console.log('@@@@menuItems');
+        console.log(_menuItems);
+        const _config = await getConfig();
+        setMenuItems(_menuItems);
+        setConfig(_config);
+    }
+
+    useEffect(() => {
+        setup();
+    }, []);
+
     return (<div className={pageStyle.page}>
         <Head>
             <title>{title}</title>

@@ -2,12 +2,22 @@ import {getConfig, getPage} from "../../helpers/dataHelper";
 import {Typography} from "@material-ui/core";
 import PageContainer from "../../components/page/pageContainer";
 import {getGlobalInitialProps} from "../../helpers/propsHelper";
+import {useEffect, useState} from "react";
 
-function Post({menuItems, config,  post}) {
+function Post({props}) {
+
+    const [post, setPost] = useState<any>();
+
+    const setup = () => {
+
+    };
+
+    useEffect(() => {
+
+    }, []);
+
     return (
-        <PageContainer
-            config={config}
-            menuItems={menuItems}>
+        <PageContainer>
             <div className="container">
                 <div className="row">
                     <div className="col-12">
@@ -27,14 +37,8 @@ function Post({menuItems, config,  post}) {
 
 async function getServerSideProps({params}) {
     const {slug} = params;
-    const globalConfig = await getGlobalInitialProps();
-    const post = await getPage(slug);
     return {
-        props: {
-            post,
-            menuItems: globalConfig?.menuItems ?? [],
-            config: globalConfig?.config ?? {}
-        }
+        props: {params}
     }
 }
 
