@@ -2,8 +2,6 @@ import NextApp from 'next/app'
 import React, {useMemo} from 'react'
 import {ThemeProvider as StyledThemeProvider} from 'styled-components'
 import {ThemeProvider as MaterialThemeProvider, createMuiTheme} from '@material-ui/core/styles';
-import {initializeApollo} from "../helpers/graphqlHelper";
-import {ApolloProvider} from "@apollo/client";
 
 const theme = {
     primary: '#f2f2f2',

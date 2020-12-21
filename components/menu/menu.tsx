@@ -45,6 +45,20 @@ const useListItemStyles = makeStyles((theme) => ({
     }
 }))
 
+const useSubMenuListItemStyles = makeStyles((theme) => ({
+    root: {
+        width: 'auto',
+        paddingLeft: 0,
+        paddingRight: 0,
+        '&:hover': {
+            borderBottom: '2px solid #fff'
+        },
+        '&.active': {
+            borderBottom: '2px solid #fff'
+        },
+    }
+}))
+
 const useLinkStyles = makeStyles((theme) => ({
     root: {
         color: '#fff',
@@ -81,7 +95,9 @@ const MenuItem = ({item, isSubMenuItem=false}) => {
         <div className={`dropdown-menu ${menuStyle['custom-dropdown-menu']} ${expanded ? 'show' : ''}`}
              aria-labelledby="navbarDropdownMenuLink" key={`sub-menu-dropdown-${item.id}`}>
             <ul style={{padding: 0}}>
-                {sortedArray(item.menuitems, 'title')?.map((subItem) => <MenuItem key={`menu-item-${item.id}`} item={subItem}/>)}
+                {sortedArray(item.menuitems, 'title')?.map((subItem) => <MenuItem key={`sub-menu-item-${subItem.id}`}
+                                                                                  item={subItem}
+                                                                                  isSubMenuItem={true}/>)}
             </ul>
         </div>);
 
@@ -104,7 +120,7 @@ const MenuItem = ({item, isSubMenuItem=false}) => {
                       onMouseLeave={isDropDown ? () => hideDropDown() : null}
                       onClick={isDropDown ? () => toggleDropDown() : null}
                       className={`${isActiveLink ? 'active' : ''} ${isDropDown ? 'dropdown' : ''}`}
-                      classes={listItemClasses}>
+                      classes={isSubMenuItem ? subMenuItemLinkClasses : listItemClasses}>
         <Link classes={isSubMenuItem ? subMenuItemLinkClasses : linkClasses} href={linkUrl}>
             {item.title}
             {isDropDown ?

@@ -14,10 +14,10 @@ interface IPageProps extends DefaultComponentProps<any>{
     title?: string
     config?: any,
     menuItems?: any[],
-    carouselImages?: CarouselImage[]
+    headerCarousel?: CarouselImage[]
 }
 
-function PageContainer({children, title = 'Next.js App', carouselImages}: IPageProps) {
+function PageContainer({children, title = 'Next.js App', headerCarousel}: IPageProps) {
     const [menuItems, setMenuItems] = React.useState<any[]>([]);
     const [config, setConfig] = React.useState<any>({});
 
@@ -40,7 +40,7 @@ function PageContainer({children, title = 'Next.js App', carouselImages}: IPageP
             <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"/>
         </Head>
         <div className={`container-fluid ${pageStyle['main-page-container']}`}>
-            <Header config={config.header} carouselImages={carouselImages} menuItems={menuItems}/>
+            <Header config={config.header} carouselImages={headerCarousel} menuItems={menuItems}/>
             <div className='container'>
                 <main className={pageStyle['main-container']}>
                     {children}

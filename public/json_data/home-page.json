@@ -1,0 +1,24 @@
+{
+  "id": 1,
+  "title": "Home Page",
+  "header_carousel": [{
+    "url": "/assets/images/header_1.jpg"
+  }],
+  "sections": [{
+    "key": "resources",
+    "header": "",
+    "columns": []
+  }, {
+    "header": "Resources",
+    "carousel": null,
+    "columns": [{
+      "header": "Data"
+    }, {
+      "header": "Models"
+    }]
+  }, {
+    "key": "services",
+    "header": "Services",
+    "columns": []
+  }]
+}
