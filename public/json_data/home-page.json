@@ -7,9 +7,11 @@
   "sections": [{
     "header": "Resources",
     "carousel": null,
-    "columns": [{
+    "rows": [{
       "header": "Data",
-      "blocks": [{
+      "columns": [{
+      "blocks": [
+        {
         "type": "dataset",
         "title": "Mapping of potentiated synapses in mouse hippocampus and organotypic hippocampal slices using SynActive constructs",
         "description": "Synaptic engrams are defined as the neural population sustaining a given memory and they can be considered the cellular basis of learning processes characterized by newly formed spines. Nowadays there are no tools able to detect engrams at synaptic level.\nWe created a pair of Adeno Associate Viruses (AAV)-carried constructs to tag and visualize potentiated dendritic spines, in a spatially localized and activity-dependent manner. In a set of in vivo experiments, the pair was stereotaxically injected into the mouse hippocampus. Injected mice were exposed to contextual fear conditioning to trigger synaptic plasticity and potentiation. Confocal imaging of fixed brain sections allowed quantification of the distribution of potentiated spines along the dendritic tree of hippocampal pyramidal neurons. These data can be reused to implement computational models to infer synaptic plasticity rules leading to the formation of synaptic memory engrams.\nSecond, we infected organotypic hippocampal slices with the AAV pair and then stimulated with chemical long-term potentiation. Confocal imaging of fixed organotypic slices reveals a strong SynActive signal (potentiated synapses), partially merged with the not-potentiated spines only in infected-stimulated organotypic slices compared to their controls (not infected cultures or infected-not stimulated, thus showing the specificity of the SynActive signal in potentiated synapses.\nBroadly, confocal imaging of fixed organotypic hippocampal slices allowed quantification of the distribution of potentiated spines along the dendritic tree of hippocampal pyramidal neurons. These data can be reused to implement computational models to infer synaptic plasticity rules leading to the formation of synaptic memory engrams.",
@@ -159,9 +161,11 @@
           ]
         }
       ]
-    }, {
+    }, {}]}, {
       "header": "Models",
-      "blocks": []
+      "columns": [{
+
+      }]
     }]
   }, {
     "key": "services",

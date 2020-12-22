@@ -6,31 +6,35 @@ import {Block} from "../../data/data";
 
 import pageSectionStyle from './page-section.module.scss';
 
-function PageSection({sectionData, backgroundColor = '#fff'}){
+function PageSection({sectionData, backgroundColor = '#fff'}) {
 
     const _buildBlock = (block: Block) => (<BlockContainer block={block}/>);
 
     return (<section className={pageSectionStyle['page-section']} style={{backgroundColor: backgroundColor}}>
-        {checkIfNotEmpty(sectionData?.header) ?
-            <Typography variant='h5' align='center' gutterBottom className={pageSectionStyle['page-section-header']}>
-                {sectionData.header}
-            </Typography> : null
-        }
-        <div className='row'>
-            {(sectionData?.columns ?? []).map((item) => <div className='col'>
-                {checkIfNotEmpty(item) ?
-                    <Typography variant='h6' align='center' gutterBottom>
-                        {item.header}
-                    </Typography> : null
-                }
+            {checkIfNotEmpty(sectionData?.header) ?
+                <Typography variant='h5' align='center' gutterBottom
+                            className={pageSectionStyle['page-section-header']}>
+                    {sectionData.header}
+                </Typography> : null
+            }
+            {(sectionData?.rows ?? []).map((row) => (<div>
                 <div className='row'>
                     <div className='col-12'>
-                        {(item?.blocks ?? []).map((block) => _buildBlock(block))}
+                        {checkIfNotEmpty(row.header) ?
+                            <Typography variant='h6' align='center' gutterBottom>
+                                {row.header}
+                            </Typography> : null
+                        }
                     </div>
                 </div>
-            </div>)}
-        </div>
-    </section>);
+                <div className='row'>
+                    {(row.columns ?? []).map((col) => <div className='col'>
+                        {(col.blocks ?? []).map((block) => _buildBlock(block))}
+                    </div>)}
+                </div>
+            </div>))}
+        </section>
+    );
 }
 
 export default PageSection;
