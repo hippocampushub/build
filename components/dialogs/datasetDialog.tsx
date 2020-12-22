@@ -1,6 +1,6 @@
 import {Button} from '@material-ui/core';
 import {DialogContainer} from './dialogContainer';
-import {Save as IconDownload} from '@material-ui/icons';
+import {CloudDownload as IconDownload} from "@material-ui/icons";
 import {checkIfNotEmpty} from '../../helpers/validatorHelper';
 
 export function DataSetDialog({open, dataSet, onClose}) {
@@ -13,14 +13,7 @@ export function DataSetDialog({open, dataSet, onClose}) {
         onClose={onClose}>
         <div>
             <div className='row'>
-                <div className='col-9'>
-                    <div className='row'>
-                        <div className='col-12'>
-                            {dataSet?.description}
-                        </div>
-                    </div>
-                </div>
-                <div className='col-3'>
+                <div className='col-12'>
                     {checkIfNotEmpty(dataSet?.dataDescriptor) ?
                         <div className='row'>
                             <div className='col-12'>
@@ -31,6 +24,15 @@ export function DataSetDialog({open, dataSet, onClose}) {
                         </div> : null
                     }
 
+                </div>
+            </div>
+            <div className='row' style={{marginTop: 20}}>
+                <div className='col-12'>
+                    <div className='row'>
+                        <div className='col-12'>
+                            {dataSet?.description}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

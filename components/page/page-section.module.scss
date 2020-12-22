@@ -1,11 +1,23 @@
 .page-section {
   padding: 40px 20px;
 
-  &.gray {
+  &.light {
+    background: #fff;
+
+  }
+
+  &.dark {
     background: #ddd;
+    color: #333;
   }
 
   .page-section-header {
+    font-family: 'Nunito', 'sans-serif';
+    font-size: 24px;
+    font-weight: 400;
+  }
+
+  .page-section-sub-header {
     font-family: 'Nunito', 'sans-serif';
     font-size: 24px;
     font-weight: 500;

@@ -13,30 +13,32 @@ const useCardContainerStyles = makeStyles((theme) => ({
     }
 }));
 
+const useCardStyles = makeStyles((theme) => ({
+   root: {
+       boxShadow: '0 0 10px #33333333',
+       paddingTop: 10,
+       paddingBottom: 10,
+       borderRadius: 5
+   }
+}));
+
 const useCardContentStyles = makeStyles((theme) => ({
     root: {
-        maxHeight: 70,
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        '&:before': {
-            content: '...',
-            position: 'absolute',
-            bottom: 0,
-            right: 0,
-        }
+        paddingLeft: 16,
+        paddingRight: 16,
     }
 }));
 
 export function CardContainer({title, onClick, children}: ICardContainerProps) {
+    const cardStyles = useCardStyles();
     const cardContainerStyles = useCardContainerStyles();
-
     const cardContentStyles = useCardContentStyles();
 
     console.log('@@@@@title', title);
 
     return (<div className={cardContainerStyles.cardContainer}>
-        <Card onClick={onClick}>
-            <CardHeader title={title}/>
+        <Card classes={cardStyles} onClick={onClick}>
+            <CardHeader style={{paddingTop: 0}} title={title}/>
             <CardContent classes={cardContentStyles}>
                 {children}
             </CardContent>
