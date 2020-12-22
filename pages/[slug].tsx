@@ -1,9 +1,10 @@
-import {getConfig, getHomePage, getMenuItems, getPage} from "../helpers/dataHelper";
+import * as React from "react";
+import {getPage} from "../helpers/dataHelper";
 import {Typography} from "@material-ui/core";
 import PageContainer from "../components/page/pageContainer";
-import {getGlobalInitialProps} from "../helpers/propsHelper";
-import * as React from "react";
 import {useEffect, useState} from "react";
+
+import pageContentStyle from './page.module.scss';
 
 function Page({params}) {
     const [page, setPage] = React.useState<any>({});
@@ -19,7 +20,7 @@ function Page({params}) {
 
     return (
         <PageContainer>
-            <div className="container">
+            <div className={`container ${pageContentStyle['page-container']}`}>
                 <div className="row">
                     <div className="col-12">
                         <Typography variant="h4">

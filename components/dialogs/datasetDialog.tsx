@@ -1,15 +1,15 @@
 import {Button} from '@material-ui/core';
 import {DialogContainer} from './dialogContainer';
 import {Save as IconDownload} from '@material-ui/icons';
-import {checkIfArrayNotEmpty, checkIfNotEmpty} from '../../helpers/validatorHelper';
+import {checkIfNotEmpty} from '../../helpers/validatorHelper';
 
 export function DataSetDialog({open, dataSet, onClose}) {
     return (<DialogContainer
         open={open}
         fullWidth={true}
-        maxWidth={'lg'}
-        fullScreen={true}
+        maxWidth={'xl'}
         title={dataSet?.title}
+        subtitle={dataSet?.citation}
         onClose={onClose}>
         <div>
             <div className='row'>
@@ -23,9 +23,11 @@ export function DataSetDialog({open, dataSet, onClose}) {
                 <div className='col-3'>
                     {checkIfNotEmpty(dataSet?.dataDescriptor) ?
                         <div className='row'>
-                            <Button onClick={() => window.open(dataSet?.dataDescriptor)}>
-                                <IconDownload/> Data Descriptor
-                            </Button>
+                            <div className='col-12'>
+                                <Button onClick={() => window.open(dataSet?.dataDescriptor)}>
+                                    <IconDownload/> Data Descriptor
+                                </Button>
+                            </div>
                         </div> : null
                     }
 

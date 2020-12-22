@@ -7,6 +7,8 @@ import {getDataSets} from "../helpers/dataHelper";
 import {DataSetCard} from "../components/cards/dataSetCard";
 import {DataSetDialog} from "../components/dialogs/datasetDialog";
 
+import pageContentStyle from './page.module.scss';
+
 function DataPage() {
     const [page, setPage] = React.useState<any>({});
     const [dataSets, setDataSets] = React.useState<any>([]);
@@ -40,7 +42,7 @@ function DataPage() {
 
     return (
         <PageContainer>
-            <div className="container">
+            <div className={`container ${pageContentStyle['page-container']}`}>
                 <div className="row">
                     <div className="col-12">
                         <Typography variant="h4">
