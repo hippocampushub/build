@@ -16,10 +16,10 @@ interface IImagesCarouselProps {
 
 export default function ImagesCarousel({images}: IImagesCarouselProps) {
     return (<div>
-        <Carousel>
-            {images.map((carouselImage) => (
-                <div key={`carousel-image-${carouselImage.id}`}>
-                    <img className={carouselStyle['carousel-image']}  src={getImageUrl(carouselImage.image)}/>
+        <Carousel indicators={false}>
+            {images.map((carouselImage, index) => (
+                <div key={`carousel-image-${index}`}>
+                    <img className={carouselStyle['carousel-image']}  src={getImageUrl(carouselImage)}/>
                 </div>
             ))}
         </Carousel>

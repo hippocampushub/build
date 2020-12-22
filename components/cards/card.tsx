@@ -18,7 +18,7 @@ const useCardContentStyles = makeStyles((theme) => ({
         maxHeight: 70,
         overflow: 'hidden',
         textOverflow: 'ellipsis',
-        '&::before': {
+        '&:before': {
             content: '...',
             position: 'absolute',
             bottom: 0,
@@ -35,7 +35,7 @@ export function CardContainer({title, onClick, children}: ICardContainerProps) {
     console.log('@@@@@title', title);
 
     return (<div className={cardContainerStyles.cardContainer}>
-        <Card>
+        <Card onClick={onClick}>
             <CardHeader title={title}/>
             <CardContent classes={cardContentStyles}>
                 {children}

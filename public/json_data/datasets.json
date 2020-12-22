@@ -1,82 +1,844 @@
 [
   {
     "title": "Mapping of potentiated synapses in mouse hippocampus and organotypic hippocampal slices using SynActive constructs",
-    "description": "Synaptic engrams are defined as the neural population sustaining a given memory and they can be considered the cellular basis of learning processes characterized by newly formed spines. Nowadays there are no tools able to detect engrams at synaptic level.\nWe created a pair of Adeno Associate Viruses (AAV)-carried constructs to tag and visualize potentiated dendritic spines, in a spatially localized and activity-dependent manner. In a set of in vivo experiments, the pair was stereotaxically injected into the mouse hippocampus. Injected mice were exposed to contextual fear conditioning to trigger synaptic plasticity and potentiation. Confocal imaging of fixed brain sections allowed quantification of the distribution of potentiated spines along the dendritic tree of hippocampal pyramidal neurons. These data can be reused to implement computational models to infer synaptic plasticity rules leading to the formation of synaptic memory engrams.\nSecond, we infected organotypic hippocampal slices with the AAV pair and then stimulated with chemical long-term potentiation. Confocal imaging of fixed organotypic slices reveals a strong SynActive signal (potentiated synapses), partially merged with the not-potentiated spines only in infected-stimulated organotypic slices compared to their controls (not infected cultures or infected-not stimulated, thus showing the specificity of the SynActive signal in potentiated synapses.\nBroadly, confocal imaging of fixed organotypic hippocampal slices allowed quantification of the distribution of potentiated spines along the dendritic tree of hippocampal pyramidal neurons. These data can be reused to implement computational models to infer synaptic plasticity rules leading to the formation of synaptic memory engrams."
+    "description": "Synaptic engrams are defined as the neural population sustaining a given memory and they can be considered the cellular basis of learning processes characterized by newly formed spines. Nowadays there are no tools able to detect engrams at synaptic level.\nWe created a pair of Adeno Associate Viruses (AAV)-carried constructs to tag and visualize potentiated dendritic spines, in a spatially localized and activity-dependent manner. In a set of in vivo experiments, the pair was stereotaxically injected into the mouse hippocampus. Injected mice were exposed to contextual fear conditioning to trigger synaptic plasticity and potentiation. Confocal imaging of fixed brain sections allowed quantification of the distribution of potentiated spines along the dendritic tree of hippocampal pyramidal neurons. These data can be reused to implement computational models to infer synaptic plasticity rules leading to the formation of synaptic memory engrams.\nSecond, we infected organotypic hippocampal slices with the AAV pair and then stimulated with chemical long-term potentiation. Confocal imaging of fixed organotypic slices reveals a strong SynActive signal (potentiated synapses), partially merged with the not-potentiated spines only in infected-stimulated organotypic slices compared to their controls (not infected cultures or infected-not stimulated, thus showing the specificity of the SynActive signal in potentiated synapses.\nBroadly, confocal imaging of fixed organotypic hippocampal slices allowed quantification of the distribution of potentiated spines along the dendritic tree of hippocampal pyramidal neurons. These data can be reused to implement computational models to infer synaptic plasticity rules leading to the formation of synaptic memory engrams.",
+    "contributors": [
+      "Marinelli, S.",
+      "Cattaneo, A.",
+      "Marrone, M. C.",
+      "Giustizieri, M.",
+      "Mainardi, M.",
+      "Faraone, A.",
+      "Jacob, A.",
+      "Gobbo, F.",
+      "Zentilin, L."
+    ],
+    "owners": [
+      "Cattaneo, Antonino"
+    ],
+    "citation": "Marinelli, S., Cattaneo, A., Marrone, M. C., Giustizieri, M., Mainardi, M., Faraone, A., Jacob, A., Gobbo, F., &amp; Zentilin, L. (2020). <i>Mapping of potentiated synapses in mouse hippocampus and organotypic hippocampal slices using SynActive constructs</i> [Data set]. EBRAINS.  [DOI: 10.25493/TK68-40P]\n[DOI: 10.25493/TK68-40P]: https://doi.org/10.25493%2FTK68-40P",
+    "dataDescriptor": "https://object.cscs.ch/v1/AUTH_63ea6845b1d34ad7a43c8158d9572867/00000_Data-Descriptors_pub/ImagingRodent_data-descriptor.pdf",
+    "regions": [
+      {
+        "url": "https://interactive-viewer.apps.hbp.eu/?templateSelected=Allen+Mouse+Common+Coordinate+Framework+v3&parcellationSelected=Allen+Mouse+Common+Coordinate+Framework+v3+2017&cNavigation=0.0.0.-W000.._XxAw.-GC6L.2-2QPq.2_Ylx_..cwd..Uzz.O43%7E.HD0%7E..6JT&cRegionsSelected=%7B%22v3_2017%22%3A%22Gu.5t.5_.67.6F.6N.6V.6d.6l.6s.6_.76.7F.7N.7V.7c.7l.7u.BM.2dF.2dG.9u.2dE.BU.Bc.Bl.Bs.B_.C7.CE.CM.CV.Cd.Cl.Ct.FM.J%22%7D",
+        "value": "Hippocampal region"
+      }
+    ],
+    "preparations": [
+      "Ex vivo",
+      "In vivo"
+    ],
+    "methods": [
+      "Confocal Microscopy",
+      "Immunofluorescence",
+      "Immunohistochemistry",
+      "Organotypic slices",
+      "Behavioural training",
+      "Contextual fear conditioning",
+      "Synaptic potentiation"
+    ],
+    "modalities": [
+      "cell culture",
+      "microscopy",
+      "anatomical approach",
+      "histological approach",
+      "electrophysiology",
+      "multimodal approach"
+    ],
+    "keywords": [
+      "Dendritic spine counting",
+      "Learning and memory"
+    ]
   },
   {
     "title": "Database of paired recordings in hippocampal slices",
-    "description": "Simulating the function of brain networks requires a detailed characterization of neuronal interactions. Using paired recordings in hippocampal slices, the basic properties of synaptic transmission and short-term synaptic plasticity between identified cells were characterized, employing morphological and electrophysiological classification, as well as transgenic animals expressing cell-type-specific fluorescent markers to target specific connections."
+    "description": "Simulating the function of brain networks requires a detailed characterization of neuronal interactions. Using paired recordings in hippocampal slices, the basic properties of synaptic transmission and short-term synaptic plasticity between identified cells were characterized, employing morphological and electrophysiological classification, as well as transgenic animals expressing cell-type-specific fluorescent markers to target specific connections.",
+    "contributors": [
+      "Freund, T. F.",
+      "Káli, S.",
+      "Schlingloff, D.",
+      "Gulyás, A."
+    ],
+    "owners": [
+      "Gulyás, Attila"
+    ],
+    "citation": "Freund, T. F., Káli, S., Schlingloff, D., &amp; Gulyás, A. (2020). <i>Database of paired recordings in hippocampal slices</i> [Data set]. EBRAINS.  [DOI: 10.25493/R867-ND3]\n[DOI: 10.25493/R867-ND3]: https://doi.org/10.25493%2FR867-ND3",
+    "dataDescriptor": "https://object.cscs.ch/v1/AUTH_63ea6845b1d34ad7a43c8158d9572867/Freund_SGA1_T1.2.6/Hippocampus_slice_Synaptic_physiology/HBP-DataDescriptor_Freund_SGA1_T1.2.6.pdf",
+    "regions": [
+      {
+        "url": "https://interactive-viewer.apps.hbp.eu/?templateSelected=Allen+Mouse+Common+Coordinate+Framework+v3&parcellationSelected=Allen+Mouse+Common+Coordinate+Framework+v3+2017&cNavigation=0.0.0.-W000.._XxAw.-GC6L.2-2QPq.2_Ylx_..cwd..Uzz.O43%7E.HD0%7E..6JT&cRegionsSelected=%7B%22v3_2017%22%3A%225_.67.6F.6N.6V%22%7D",
+        "value": "Field CA1"
+      },
+      {
+        "url": "https://interactive-viewer.apps.hbp.eu/?templateSelected=Allen+Mouse+Common+Coordinate+Framework+v3&parcellationSelected=Allen+Mouse+Common+Coordinate+Framework+v3+2017&cNavigation=0.0.0.-W000.._XxAw.-GC6L.2-2QPq.2_Ylx_..cwd..Uzz.O43%7E.HD0%7E..6JT&cRegionsSelected=%7B%22v3_2017%22%3A%227F.7N.7V.7c.7l.7u%22%7D",
+        "value": "Field CA3"
+      },
+      {
+        "url": "https://interactive-viewer-next.apps-dev.hbp.eu/?templateSelected=Allen+Mouse+Common+Coordinate+Framework+v3&parcellationSelected=Allen+Mouse+Common+Coordinate+Framework+v3+2017&cRegionsSelected=%7B%22v3_2017%22%3A%22H1.Gu.5t.5_.67.6F.6N.6V.6d.6l.6s.6_.76.7F.7N.7V.7c.7l.7u.BM.2dF.2dG.9u.2dE.BU.Bc.Bl.Bs.B_.C7.CE.CM.CV.Cd.Cl.Ct.FM.J.Cs.ED.EM.HX.K.Fd.BB.By.q.1S.4u.2B.63.S.y.EU.8E.8V.7K.7y.AO.B8.BN.8c.Bd.Ec.43.54.5p.6Z.Hj.DB.2d5.2d6.2d7.GD.2d8.2d9.2dA.Gy.2dB.2dC.2dD.7s.7z.Cz.DD.D5.86.DL.Dc.DT.Suwhc.Suwhh.Suwhl.Suwhp.Suwht.Suwhy.Suwi0.Suwi4.Suwi8.Z8ozV.SuwiC%22%7D&cNavigation=0.0.0.-W000.._XxAw.-GC6L.2-2QPq.2_Ylx_..cwd..Uzz.O43%7E.HD0%7E..7lJ",
+        "value": "Hippocampal formation "
+      }
+    ],
+    "preparations": [
+      "In vitro"
+    ],
+    "methods": [
+      "Whole-cell patch",
+      "Paired recordings"
+    ],
+    "modalities": [
+      "electrophysiology"
+    ],
+    "keywords": [
+      "AAC",
+      "Acute slices",
+      "Basket cells",
+      "CCK+BC",
+      "CCK+DTI",
+      "Dual whole-cell recordings",
+      "Frequency response",
+      "Interictal events",
+      "Interneurons",
+      "PV+BC",
+      "Recovery from inhibition",
+      "Sharp-wave-ripples"
+    ]
   },
   {
     "title": "Physiological effects of cholinergic modulation on mouse hippocampal neurons",
-    "description": "As part of a detailed study of the effects of subcortical neuromodulation on hippocampal circuits, these experiments quantified the changes in neuronal properties due to the application of the cholinergic agonist carbachol in the acute hippocampal slice preparation. Whole-cell patch-clamp recordings were used to measure the response of hippocampal pyramidal cells and interneurons to step current injections of various amplitudes, both under control conditions and in the presence of carbachol in the bath. The data can be used to quantify the effects of cholinergic input on the physiological properties of hippocampal neurons, and are essential for building mechanistic models of the effects of subcortical neuromodulation on hippocampal circuit dynamics."
+    "description": "As part of a detailed study of the effects of subcortical neuromodulation on hippocampal circuits, these experiments quantified the changes in neuronal properties due to the application of the cholinergic agonist carbachol in the acute hippocampal slice preparation. Whole-cell patch-clamp recordings were used to measure the response of hippocampal pyramidal cells and interneurons to step current injections of various amplitudes, both under control conditions and in the presence of carbachol in the bath. The data can be used to quantify the effects of cholinergic input on the physiological properties of hippocampal neurons, and are essential for building mechanistic models of the effects of subcortical neuromodulation on hippocampal circuit dynamics.",
+    "contributors": [
+      "Schlingloff, D.",
+      "Berki, P.",
+      "Karlócai, R.",
+      "Káli, S.",
+      "Freund, T. F.",
+      "Gulyás, A. I."
+    ],
+    "owners": [
+      "Gulyás, Attila I."
+    ],
+    "citation": "Schlingloff, D., Berki, P., Karlócai, R., Káli, S., Freund, T. F., &amp; Gulyás, A. I. (2020). <i>Physiological effects of cholinergic modulation on mouse hippocampal neurons</i> [Data set]. EBRAINS.  [DOI: 10.25493/8B5F-GZ2]\n[DOI: 10.25493/8B5F-GZ2]: https://doi.org/10.25493%2F8B5F-GZ2",
+    "dataDescriptor": "https://object.cscs.ch/v1/AUTH_63ea6845b1d34ad7a43c8158d9572867/00000_Data-Descriptors_pub/EBRAINS-DataDescriptor-Cholinergic_modulation_of_hippocampal_neurons.pdf",
+    "regions": [
+      {
+        "url": "https://interactive-viewer.apps.hbp.eu/?templateSelected=Allen+Mouse+Common+Coordinate+Framework+v3&parcellationSelected=Allen+Mouse+Common+Coordinate+Framework+v3+2017&cNavigation=0.0.0.-W000.._XxAw.-GC6L.2-2QPq.2_Ylx_..cwd..Uzz.O43%7E.HD0%7E..6JT&cRegionsSelected=%7B%22v3_2017%22%3A%22Gu.5t.5_.67.6F.6N.6V.6d.6l.6s.6_.76.7F.7N.7V.7c.7l.7u.BM.2dF.2dG.9u.2dE.BU.Bc.Bl.Bs.B_.C7.CE.CM.CV.Cd.Cl.Ct.FM.J%22%7D",
+        "value": "Hippocampal region"
+      }
+    ],
+    "preparations": [
+      "In vitro",
+      "In vivo"
+    ],
+    "methods": [
+      "Retrograde tracing technique",
+      "In vitro patch-clamp recording",
+      "Cell soma identification"
+    ],
+    "modalities": [
+      "histological approach",
+      "microscopy",
+      "anatomical approach",
+      "electrophysiology"
+    ],
+    "keywords": [
+      "Fluorescent microspheres",
+      "Hippocampo-septal cells",
+      "Stereotaxic surgery",
+      "Visually targeted recording"
+    ]
   },
   {
     "title": "Morphological reconstructions and electrophysiological data from mouse hippocampal neurons",
-    "description": "Understanding cortical circuits requires the characterization of their constituent neurons. Using whole-cell recordings in acute hippocampal slices, followed by confocal imaging and 3D reconstruction, a database of the morphological and physiological properties of hippocampal neurons in the adult mouse has been constructed. The database currently contains approximately 200 morphological reconstructions and 500 recordings from partially overlapping cell populations."
+    "description": "Understanding cortical circuits requires the characterization of their constituent neurons. Using whole-cell recordings in acute hippocampal slices, followed by confocal imaging and 3D reconstruction, a database of the morphological and physiological properties of hippocampal neurons in the adult mouse has been constructed. The database currently contains approximately 200 morphological reconstructions and 500 recordings from partially overlapping cell populations.",
+    "contributors": [
+      "Schlingloff, D.",
+      "Berki, P.",
+      "Kohus, Z.",
+      "Budd, J. M. L.",
+      "Káli, S.",
+      "Freund, T. F.",
+      "Gulyás, A. I."
+    ],
+    "owners": [
+      "Gulyás, Attila I."
+    ],
+    "citation": "",
+    "dataDescriptor": null,
+    "regions": [],
+    "preparations": [],
+    "methods": [],
+    "modalities": [],
+    "keywords": []
   },
   {
     "title": "Dendritic morphologies of four groups of mouse hippocampal interneurons",
-    "description": "Computational modelling of hippocampal network mechanisms requires real-life morphological features of the dendritic arbors of interneurons (INs) in the CA1 area. There are several different groups of hippocampal interneurons. We investigated four groups. Hippocampo-septal (HS) INs project both locally and to the medial septum. Oriens-lacunosum-moleculare (OLM) INs are typical local feedback inhibitory neurons. Parvalbumin (PV)- and calretinin (CR)-containing INs represent two different groups of local INs. Here, using viral tracing and immunohistochemistry, we labeled these classes of INs and using scanning electron microscopy (SEM), we measured their dendritic cross-sectional areas and perimeters along the dendritic segments of these neurons. We estimated their volumes with and without mitochondria and estimated their dendritic surface areas as well. We measured and corrected all changes during tissue processing, therefore, all physical parameters represent the real life parameters of these dendrites."
+    "description": "Computational modelling of hippocampal network mechanisms requires real-life morphological features of the dendritic arbors of interneurons (INs) in the CA1 area. There are several different groups of hippocampal interneurons. We investigated four groups. Hippocampo-septal (HS) INs project both locally and to the medial septum. Oriens-lacunosum-moleculare (OLM) INs are typical local feedback inhibitory neurons. Parvalbumin (PV)- and calretinin (CR)-containing INs represent two different groups of local INs. Here, using viral tracing and immunohistochemistry, we labeled these classes of INs and using scanning electron microscopy (SEM), we measured their dendritic cross-sectional areas and perimeters along the dendritic segments of these neurons. We estimated their volumes with and without mitochondria and estimated their dendritic surface areas as well. We measured and corrected all changes during tissue processing, therefore, all physical parameters represent the real life parameters of these dendrites.",
+    "contributors": [
+      "Bardóczi, Zs.",
+      "Takács, V. T.",
+      "Major, A.",
+      "Orosz, Á.",
+      "Papp, P.",
+      "Sos, K. E.",
+      "Mayer, M.",
+      "Hajós, Zs.",
+      "Szépné Simon, E.",
+      "Freund, T. F.",
+      "Nyiri, G."
+    ],
+    "owners": [
+      "Nyiri, Gábor"
+    ],
+    "citation": "Bardóczi, Z., Takács, V. T., Major, A., Orosz, Á., Papp, P., Sos, K. E., Mayer, M., Hajós, Z., Szépné Simon, E., Freund, T. F., &amp; Nyiri, G. (2020). <i>Dendritic morphologies of four groups of mouse hippocampal interneurons</i> [Data set]. EBRAINS.  [DOI: 10.25493/R156-8CA]\n[DOI: 10.25493/R156-8CA]: https://doi.org/10.25493%2FR156-8CA",
+    "dataDescriptor": "https://object.cscs.ch/v1/AUTH_63ea6845b1d34ad7a43c8158d9572867/00000_Data-Descriptors_pub/EBRAINS_data-descriptor_C1799_BFSEM.pdf",
+    "regions": [
+      {
+        "url": "https://interactive-viewer.apps.hbp.eu/?templateSelected=Allen+Mouse+Common+Coordinate+Framework+v3&parcellationSelected=Allen+Mouse+Common+Coordinate+Framework+v3+2017&cNavigation=0.0.0.-W000.._XxAw.-GC6L.2-2QPq.2_Ylx_..cwd..Uzz.O43%7E.HD0%7E..6JT&cRegionsSelected=%7B%22v3_2017%22%3A%22Gu.5t.5_.67.6F.6N.6V.6d.6l.6s.6_.76.7F.7N.7V.7c.7l.7u.BM.2dF.2dG.9u.2dE.BU.Bc.Bl.Bs.B_.C7.CE.CM.CV.Cd.Cl.Ct.FM.J%22%7D",
+        "value": "Hippocampal region"
+      }
+    ],
+    "preparations": [
+      "Ex vivo",
+      "In vivo"
+    ],
+    "methods": [
+      "Cell labeling",
+      "Perfusion fixation",
+      "Immunohistochemistry",
+      "Scanning electron microscopy",
+      "Neuron morphology reconstruction"
+    ],
+    "modalities": [
+      "morphological approach",
+      "microscopy",
+      "anatomical approach"
+    ],
+    "keywords": [
+      "Interneurons",
+      "Morphological reconstruction"
+    ]
   },
   {
     "title": "Hippocampal place cell recordings in a Four-Room navigation task",
-    "description": "Hippocampal place cells show location-specific firing and are thought to be an essential component of the brain’s “cognitive map”, supporting flexible memorization of places and possibly of their connectivity. So far, only a few studies investigated whether these cells encode the connectivity between places, either by adding a barrier or removing a wall. We aimed to go one step further and investigated whether place cells can encode pure connectivity, i.e. changes in the “closed” or “open” aspect of an otherwise identical door. We performed extracellular tetrode recordings from the dorsal CA1 hippocampus of 5 male Lister-Hooded rats while they were foraging and navigating in a 4-compartment environment. Pushable doors were used by the rats to transition between compartments. At first, all 4 doors were pushable. In a test condition, either one of the doors was closed, or all of the doors were closed one-way. This data could be analysed further to investigate basic place cell firing properties as well as possible neural correlates of navigation in such an environment."
+    "description": "Hippocampal place cells show location-specific firing and are thought to be an essential component of the brain’s “cognitive map”, supporting flexible memorization of places and possibly of their connectivity. So far, only a few studies investigated whether these cells encode the connectivity between places, either by adding a barrier or removing a wall. We aimed to go one step further and investigated whether place cells can encode pure connectivity, i.e. changes in the “closed” or “open” aspect of an otherwise identical door. We performed extracellular tetrode recordings from the dorsal CA1 hippocampus of 5 male Lister-Hooded rats while they were foraging and navigating in a 4-compartment environment. Pushable doors were used by the rats to transition between compartments. At first, all 4 doors were pushable. In a test condition, either one of the doors was closed, or all of the doors were closed one-way. This data could be analysed further to investigate basic place cell firing properties as well as possible neural correlates of navigation in such an environment.",
+    "contributors": [
+      "Duvelle, E.",
+      "Grieves, R.",
+      "Liu, A.",
+      "Jedidi-Ayoub, S.",
+      "Holeniewska, J.",
+      "Nyberg, N.",
+      "Jeffery, K.",
+      "Summerfield, C.",
+      "Pezzulo, G.",
+      "Spiers, H."
+    ],
+    "owners": [
+      "Spiers, Hugo"
+    ],
+    "citation": "Duvelle, E., Grieves, R., Liu, A., Jedidi-Ayoub, S., Holeniewska, J., Nyberg, N., Jeffery, K., Summerfield, C., Pezzulo, G., &amp; Spiers, H. (2020). <i>Hippocampal place cell recordings in a Four-Room navigation task</i> [Data set]. EBRAINS.  [DOI: 10.25493/7NJQ-ANH]\n[DOI: 10.25493/7NJQ-ANH]: https://doi.org/10.25493%2F7NJQ-ANH",
+    "dataDescriptor": null,
+    "regions": [
+      {
+        "url": "https://interactive-viewer.apps.hbp.eu/?templateSelected=Waxholm+Space+rat+brain+MRI%2FDTI&parcellationSelected=Waxholm+Space+rat+brain+atlas+v3&cNavigation=0.0.0.-W000..2-8Bnd.2_tvb9._yymE._tYzz..1Sjt..Ecv%7E.Lqll%7E.33ix..7qO&cRegionsSelected=%7B%22v3%22%3A%221Y%22%7D",
+        "value": "CA1 (Hippocampus)"
+      }
+    ],
+    "preparations": [
+      "In vivo"
+    ],
+    "methods": [
+      "Tetrode recording"
+    ],
+    "modalities": [
+      "electrophysiology"
+    ],
+    "keywords": [
+      "Extracellular recording",
+      "Place cells"
+    ]
   },
   {
     "title": "Whole-cell recording and labelling of hippocampal neurons in vivo",
-    "description": "This study has provided both intracellular recordings from single neurons and LFP recordings from the hippocampal CA1 region in head-restrained, behaving mice, along with morphological reconstructions of some of the recorded cells. This dataset complements our larger database of hippocampal neurons recorded and filled in hippocampal slices, mainly by characterizing the spontaneous and evoked physiological behavior of the cells under in vivo conditions."
+    "description": "This study has provided both intracellular recordings from single neurons and LFP recordings from the hippocampal CA1 region in head-restrained, behaving mice, along with morphological reconstructions of some of the recorded cells. This dataset complements our larger database of hippocampal neurons recorded and filled in hippocampal slices, mainly by characterizing the spontaneous and evoked physiological behavior of the cells under in vivo conditions.",
+    "contributors": [
+      "Jelitai, M.",
+      "Komlosi, F.",
+      "Káli, S.",
+      "Schlingloff, D.",
+      "Varga, V. L."
+    ],
+    "owners": [
+      "Jelitai, Marta"
+    ],
+    "citation": "Jelitai, M., Komlosi, F., Káli, S., Freund, T., &amp; Varga, V. L. (2019). <i>Whole-cell recording and labelling of hippocampal neurons in vivo</i> [Data set]. Human Brain Project Neuroinformatics Platform.  [DOI: 10.25493/WJJG-ZMM]\n[DOI: 10.25493/WJJG-ZMM]: https://doi.org/10.25493%2FWJJG-ZMM",
+    "dataDescriptor": "https://object.cscs.ch/v1/AUTH_63ea6845b1d34ad7a43c8158d9572867/Freund_SGA1_T1.2.5/HC-awake-ephys/DataDescriptor_Hippocampus_awake_Morphology-EPhys.pdf",
+    "regions": [],
+    "preparations": [
+      "In vivo"
+    ],
+    "methods": [
+      "Whole-cell patch",
+      "Current clamp recording",
+      "Current injection"
+    ],
+    "modalities": [
+      "electrophysiology"
+    ],
+    "keywords": [
+      "Awake",
+      "Biocytin filling",
+      "Head-restraint",
+      "LFP",
+      "Morphological reconstruction",
+      "Running speed",
+      "Somatic current injection",
+      "Whole-cell recordings"
+    ]
   },
   {
     "title": "3D reconstructions of pyramidal cells in human hippocampal CA1 region",
-    "description": "3D reconstructions of pyramidal cells in the human hippocampal CA1 region using Neurolucida software from 3D confocal stack of images."
+    "description": "3D reconstructions of pyramidal cells in the human hippocampal CA1 region using Neurolucida software from 3D confocal stack of images.",
+    "contributors": [
+      "Benavides-Piccione, R.",
+      "DeFelipe, J."
+    ],
+    "owners": [
+      "DeFelipe, Javier"
+    ],
+    "citation": "Benavides-Piccione, R., &amp; DeFelipe, J. (2019). <i>3D reconstructions of pyramidal cells in human hippocampal CA1 region</i> [Data set]. Human Brain Project Neuroinformatics Platform.  [DOI: 10.25493/4XWX-28U]\n[DOI: 10.25493/4XWX-28U]: https://doi.org/10.25493%2F4XWX-28U",
+    "dataDescriptor": "https://object.cscs.ch/v1/AUTH_227176556f3c4bb38df9feea4b91200c/hbp-d000958_3DReconstructionOfCellsInHumanCA1_pub/DataDescriptor_3DReconstructionOfCellsInHumanCA1.pdf",
+    "regions": [
+      {
+        "value": "CA1 (Hippocampus)"
+      }
+    ],
+    "preparations": [
+      "Ex vivo"
+    ],
+    "methods": [
+      "Intracellular injections with markers",
+      "Confocal Microscopy",
+      "3D Cell Reconstructions",
+      "Semantic atlas registration"
+    ],
+    "modalities": [
+      "cellular approach",
+      "cell morphology",
+      "histological approach",
+      "microscopy"
+    ],
+    "keywords": []
   },
   {
     "title": "3D reconstructions of pyramidal cells in rat hippocampal CA1 region",
-    "description": "We have produced 3D reconstructions of pyramidal cells in rat hippocampal CA1 region using Neurolucida software from 3D confocal stack of images. Data from 3D reconstructions will be useful to modeling and integration of anatomical data with functional studies in rat hippocampus. \n\n"
+    "description": "We have produced 3D reconstructions of pyramidal cells in rat hippocampal CA1 region using Neurolucida software from 3D confocal stack of images. Data from 3D reconstructions will be useful to modeling and integration of anatomical data with functional studies in rat hippocampus. \n\n",
+    "contributors": [
+      "Kastanauskaite, A.",
+      "Miguens, M."
+    ],
+    "owners": [
+      "Javier DeFelipe"
+    ],
+    "citation": "Kastanauskaite, A., &amp; Miguens, M. (2019). <i>3D reconstructions of pyramidal cells in rat hippocampal CA1 region</i> [Data set]. Human Brain Project Neuroinformatics Platform.  [DOI: 10.25493/Y7JS-8X9]\n[DOI: 10.25493/Y7JS-8X9]: https://doi.org/10.25493%2FY7JS-8X9",
+    "dataDescriptor": "https://object.cscs.ch/v1/AUTH_63ea6845b1d34ad7a43c8158d9572867/hbp-00957/hbp-00957_DataDescriptor_v1p1.txt",
+    "regions": [
+      {
+        "url": "https://interactive-viewer.apps.hbp.eu/?templateSelected=Waxholm%20Space%20rat%20brain%20MRI%2FDTI&parcellationSelected=Waxholm%20Space%20rat%20brain%20atlas%20v2&navigation=0_0_0_1__-0.6278747916221619_-0.43671634793281555_0.4761661887168884_0.4339560568332672__379767.21993194974__-59832.5546875_-5721071_801595.3125__39538.189764174276&cRegionsSelected=%7B%22v2%22%3A%221V%22%7D",
+        "value": "Cornu ammonis 1"
+      }
+    ],
+    "preparations": [
+      "Ex vivo"
+    ],
+    "methods": [
+      "Light Microscopy",
+      "3D reconstruction",
+      "Confocal Microscopy"
+    ],
+    "modalities": [
+      "microscopy",
+      "anatomical approach"
+    ],
+    "keywords": [
+      "3D Reconstruction in Neurolucida"
+    ]
   },
   {
     "title": "3D reconstructions of pyramidal cells in mouse hippocampal CA1 region",
-    "description": "We have produced 3D reconstructions of pyramidal cells in the mouse hippocampal CA1 region using Neurolucida software from 3D confocal stack of images. Data from 3D reconstructions will be useful to modeling and integration of anatomical data with functional studies in mouse hippocampus. \n\n"
+    "description": "We have produced 3D reconstructions of pyramidal cells in the mouse hippocampal CA1 region using Neurolucida software from 3D confocal stack of images. Data from 3D reconstructions will be useful to modeling and integration of anatomical data with functional studies in mouse hippocampus. \n\n",
+    "contributors": [
+      "DeFelipe, J.",
+      "Benavides-Piccione, R.",
+      "Fernaud, I.",
+      "Kastanauskaite, A.",
+      "Regalado, M.",
+      "Gonzalez-Tapia, S.",
+      "Leon, G.",
+      "Cano, D.",
+      "Rojo, C."
+    ],
+    "owners": [
+      "Benavides-Piccione, Ruth"
+    ],
+    "citation": "DeFelipe, J., Benavides-Piccione, R., Fernaud, I., Kastanauskaite, A., Regalado, M., Gonzalez-Tapia, S., Leon, G., Cano, D., &amp; Rojo, C. (2019). <i>3D reconstructions of pyramidal cells in mouse hippocampal CA1 region</i> [Data set]. Human Brain Project Neuroinformatics Platform.  [DOI: 10.25493/KN7Q-0MG]\n[DOI: 10.25493/KN7Q-0MG]: https://doi.org/10.25493%2FKN7Q-0MG",
+    "dataDescriptor": "https://object.cscs.ch/v1/AUTH_63ea6845b1d34ad7a43c8158d9572867/hbp-00956/hbp-00956_Data descriptor_v1p1.txt",
+    "regions": [
+      {
+        "url": "https://interactive-viewer.apps.hbp.eu/?templateSelected=Allen%20Mouse%20Common%20Coordinate%20Framework%20v3&parcellationSelected=Allen%20Mouse%20Common%20Coordinate%20Framework%20v3%202015&navigation=0_0_0_1__0.2650354504585266_0.752953827381134_-0.537696123123169_-0.271476686000824__159399.12281678425__126845.171875_-98562.625_-70463.9453125__25821.578801517288&cRegionsSelected=%7B%22atlas%22%3A%225_.67.6F.6N.6V%22%7D",
+        "value": "Field CA1"
+      }
+    ],
+    "preparations": [
+      "Ex vivo"
+    ],
+    "methods": [
+      "3D reconstruction",
+      "Light Microscopy",
+      "Fluorescence microscopy",
+      "Confocal Microscopy"
+    ],
+    "modalities": [
+      "microscopy",
+      "anatomical approach"
+    ],
+    "keywords": []
   },
   {
     "title": "Hippocampal image volume derived from Thy1-GFP-M transgenic mouse",
-    "description": "Reconstruction of the hippocampus of a Thy1-GFP-M transgenic mouse, where a subset of pyramidal neurons and of interneurons are labeled. Data obtained with serial two-photon tomography."
+    "description": "Reconstruction of the hippocampus of a Thy1-GFP-M transgenic mouse, where a subset of pyramidal neurons and of interneurons are labeled. Data obtained with serial two-photon tomography.",
+    "contributors": [
+      "Pavone, F.",
+      "Silvestri, L."
+    ],
+    "owners": [
+      "Pavone, Francesco S."
+    ],
+    "citation": "Pavone, F., &amp; Silvestri, L. (2018). <i>Hippocampal image volume derived from Thy1-GFP-M transgenic mouse</i> [Data set]. Human Brain Project Neuroinformatics Platform.  [DOI: 10.25493/PMDH-FW1]\n[DOI: 10.25493/PMDH-FW1]: https://doi.org/10.25493%2FPMDH-FW1",
+    "dataDescriptor": null,
+    "regions": [
+      {
+        "url": "https://interactive-viewer.apps.hbp.eu/?templateSelected=Allen%20Mouse%20Common%20Coordinate%20Framework%20v3&parcellationSelected=Allen%20Mouse%20Common%20Coordinate%20Framework%20v3%202015&navigation=0_0_0_1__0.2650354504585266_0.752953827381134_-0.537696123123169_-0.271476686000824__159399.12281678425__126845.171875_-98562.625_-70463.9453125__25821.578801517288&cRegionsSelected=%7B%22atlas%22%3A%22Gu.5t.5_.67.6F.6N.6V.6d.6l.6s.6_.76.7F.7N.7V.7c.7l.7u.BM.2dF.2dG.9u.2dE.BU.Bc.Bl.Bs.B_.C7.CE.CM.CV.Cd.Cl.Ct.FM.J%22%7D",
+        "value": "Hippocampal region"
+      }
+    ],
+    "preparations": [
+      "Ex vivo"
+    ],
+    "methods": [
+      "Spatial atlas registration",
+      "Light Microscopy",
+      "Two-photon microscopy",
+      "Reporter proteins",
+      "Knockin"
+    ],
+    "modalities": [
+      "morphological approach"
+    ],
+    "keywords": [
+      "CLARITY",
+      "Transgenic animal",
+      "Two-photon tomography"
+    ]
   },
   {
     "title": "Modulation of hippocampal GABAergic currents by anti-gephyrin intrabodies (delta2-188)",
-    "description": "The efficiency of synaptic transmission relies on the temporally and spatially regulated expression of postsynaptic receptors localized in precise apposition to presynaptic release sites. At synapses, receptors are organized in clusters which are formed by highly regulated events, dynamically controlled by a number of proteins including scaffolds, adhesion molecules and active transport processes along the cytoskeleton (Kneussel and Loebrich, 2007).\n\nAt inhibitory synapses, GABAergic signaling controls dendritic integration, neural excitability, circuit reorganization and fine tuning of network activity. Among different players, the tubulin-binding protein gephyrin, plays a key role in anchoring GABAA receptors to synaptic membranes, (Tyagarajan and Fritschy, 2014). Moreover, gephyrin is instrumental in establishing and maintaining a proper excitatory (E)/inhibitory (I) balance necessary for the correct functioning of neuronal networks (Pizzarelli and Cherubini, 2011). A disruption of the E/I balance is thought to be at the origin of several neuropsychiatric disorders including epilepsy, schizophrenia and autism (Penzes et al. 2013; Cellot and Cherubini, 2014; Nelson and Valakh, 2015).\n\nWe tested the effects of truncated form of gephyrin (delta 2-188), acting as a dominant negative protein, on spontaneous inhibitory postsynaptic currents, sIPSCs, from hippocampal neurons in culture.  In cells transfected with delta 2-188 fused to EGFP or with EGFP alone, the mean sIPSCs frequency was 0.91 ± 0.18 Hz in control (n=10) and 0.42 ± 0.09 Hz in the presence of delta 2-188 (n=9). The mean sIPSCs amplitude was 129.4 ± 18.8 pA in controls and 81.9 ±m13.2 pA in the presence of delta 2-188. Significant differences were found between controls and delta 2-188 regarding the frequency and amplitude of sIPSCs (p=0.03 and p=0.05, respectively). These data further support the hypothesis that gephyrin regulates the postsynaptic organization of synaptic GABAA receptors.\n \nAndjus, P R, Stevic‐Marinkovic, Z and Cherubini E (1997) Immunoglobulins from motoneurone disease patients enhance glutamate release from rat hippocampal neurones in culture. The Journal of Physiology, 504: 103-112\n\nCellot G, Cherubini E (2014) GABAergic signaling as therapeutic target for autism spectrum disorders. Front Pediatr 2:70. doi: 10.3389/fped.2014.00070\n\nKneussel M, Loebrich S (2007) Trafficking and synaptic anchoring of ionotropic inhibitory neurotransmitter receptors. Biol Cell 99: 297-309\n\nNelson SB, Valakh V (2015) Excitatory/Inhibitory Balance and Circuit Homeostasis in Autism Spectrum Disorders. Neuron 87: 684-698\n\nPenzes P, Buonanno A, Passafaro M, Sala C, Sweet RA (2013) Developmental vulnerability of synapses and circuits associated with neuropsychiatric disorders. J Neurochem 126:165-82\n\nPizzarelli R, Cherubini E (2011) Alterations of GABAergic signaling in autism spectrum disorders. Neural Plast 297153. doi: 10.1155/2011/297153\n\nTyagarajan SK, Fritschy JM (2014) Gephyrin: a master regulator of neuronal function? Nat Rev Neurosci 15: 141-156\n\n"
+    "description": "The efficiency of synaptic transmission relies on the temporally and spatially regulated expression of postsynaptic receptors localized in precise apposition to presynaptic release sites. At synapses, receptors are organized in clusters which are formed by highly regulated events, dynamically controlled by a number of proteins including scaffolds, adhesion molecules and active transport processes along the cytoskeleton (Kneussel and Loebrich, 2007).\n\nAt inhibitory synapses, GABAergic signaling controls dendritic integration, neural excitability, circuit reorganization and fine tuning of network activity. Among different players, the tubulin-binding protein gephyrin, plays a key role in anchoring GABAA receptors to synaptic membranes, (Tyagarajan and Fritschy, 2014). Moreover, gephyrin is instrumental in establishing and maintaining a proper excitatory (E)/inhibitory (I) balance necessary for the correct functioning of neuronal networks (Pizzarelli and Cherubini, 2011). A disruption of the E/I balance is thought to be at the origin of several neuropsychiatric disorders including epilepsy, schizophrenia and autism (Penzes et al. 2013; Cellot and Cherubini, 2014; Nelson and Valakh, 2015).\n\nWe tested the effects of truncated form of gephyrin (delta 2-188), acting as a dominant negative protein, on spontaneous inhibitory postsynaptic currents, sIPSCs, from hippocampal neurons in culture.  In cells transfected with delta 2-188 fused to EGFP or with EGFP alone, the mean sIPSCs frequency was 0.91 ± 0.18 Hz in control (n=10) and 0.42 ± 0.09 Hz in the presence of delta 2-188 (n=9). The mean sIPSCs amplitude was 129.4 ± 18.8 pA in controls and 81.9 ±m13.2 pA in the presence of delta 2-188. Significant differences were found between controls and delta 2-188 regarding the frequency and amplitude of sIPSCs (p=0.03 and p=0.05, respectively). These data further support the hypothesis that gephyrin regulates the postsynaptic organization of synaptic GABAA receptors.\n \nAndjus, P R, Stevic‐Marinkovic, Z and Cherubini E (1997) Immunoglobulins from motoneurone disease patients enhance glutamate release from rat hippocampal neurones in culture. The Journal of Physiology, 504: 103-112\n\nCellot G, Cherubini E (2014) GABAergic signaling as therapeutic target for autism spectrum disorders. Front Pediatr 2:70. doi: 10.3389/fped.2014.00070\n\nKneussel M, Loebrich S (2007) Trafficking and synaptic anchoring of ionotropic inhibitory neurotransmitter receptors. Biol Cell 99: 297-309\n\nNelson SB, Valakh V (2015) Excitatory/Inhibitory Balance and Circuit Homeostasis in Autism Spectrum Disorders. Neuron 87: 684-698\n\nPenzes P, Buonanno A, Passafaro M, Sala C, Sweet RA (2013) Developmental vulnerability of synapses and circuits associated with neuropsychiatric disorders. J Neurochem 126:165-82\n\nPizzarelli R, Cherubini E (2011) Alterations of GABAergic signaling in autism spectrum disorders. Neural Plast 297153. doi: 10.1155/2011/297153\n\nTyagarajan SK, Fritschy JM (2014) Gephyrin: a master regulator of neuronal function? Nat Rev Neurosci 15: 141-156\n\n",
+    "contributors": [
+      "Pizzarelli, R.",
+      "Pimpinella, D.",
+      "Marinelli, S.",
+      "Cherubini, E."
+    ],
+    "owners": [
+      "Cherubini, Enrico"
+    ],
+    "citation": "Pizzarelli, R., Pimpinella, D., Marinelli, S., &amp; Cherubini, E. (2019). <i>Modulation of hippocampal GABAergic currents by anti-gephyrin intrabodies (delta2-188)</i> [Data set]. Human Brain Project Neuroinformatics Platform.  [DOI: 10.25493/VHYH-AJ1]\n[DOI: 10.25493/VHYH-AJ1]: https://doi.org/10.25493%2FVHYH-AJ1",
+    "dataDescriptor": "https://object.cscs.ch/v1/AUTH_63ea6845b1d34ad7a43c8158d9572867/hbp-00713_sIPSCs-delta2-188/hbp-00713_delta2-188_DataDescriptor-v4p1.txt",
+    "regions": [
+      {
+        "url": "https://interactive-viewer.apps.hbp.eu/?templateSelected=Waxholm%20Space%20rat%20brain%20MRI%2FDTI&parcellationSelected=Waxholm%20Space%20rat%20brain%20atlas%20v2&navigation=0_0_0_1__-0.6278747916221619_-0.43671634793281555_0.4761661887168884_0.4339560568332672__379767.21993194974__-59832.5546875_-5721071_801595.3125__39538.189764174276&cRegionsSelected=%7B%22v2%22%3A%221V.1X.1Y.1W.1Z.6.c.q.x%22%7D",
+        "value": "Hippocampal Region"
+      }
+    ],
+    "preparations": [
+      "Ex vivo"
+    ],
+    "methods": [
+      "Patch clamp techniques",
+      "electrophysiology recording",
+      "Voltage clamp recording"
+    ],
+    "modalities": [
+      "electrophysiology"
+    ],
+    "keywords": [
+      "GABAergic currents",
+      "Intrabodies",
+      "Primary cell cultures",
+      "Pyramidal neurons"
+    ]
   },
   {
     "title": "Characterization of human hippocampal neurons and interneurons using single-cell RNA-seq",
-    "description": "The goal was to define the cellular heterogeneity in the human dentate gyrus (DG) and delineate this from the cellular architecture in the Cornu Ammonis (CA) region. Therefore, after isolation of NeunN-expressing nuclei from fresh-frozen hippocampal tissues (DG and CA), nuclei were used to generate single-cell transcriptomes using a commercial microwell-based assay. After library preparation and sequencing, the generated data were further processed and aligned against the reference genome. Gene expression matrixes are provided which can be further analyzed and overlaid with synaptic maps and organization, microanatomical and physiological data, and integrated for the generation of a human brain atlas."
+    "description": "The goal was to define the cellular heterogeneity in the human dentate gyrus (DG) and delineate this from the cellular architecture in the Cornu Ammonis (CA) region. Therefore, after isolation of NeunN-expressing nuclei from fresh-frozen hippocampal tissues (DG and CA), nuclei were used to generate single-cell transcriptomes using a commercial microwell-based assay. After library preparation and sequencing, the generated data were further processed and aligned against the reference genome. Gene expression matrixes are provided which can be further analyzed and overlaid with synaptic maps and organization, microanatomical and physiological data, and integrated for the generation of a human brain atlas.",
+    "contributors": [
+      "Warnat-Herresthal, S.",
+      "Varga, T.",
+      "Bourry, S.",
+      "Händler, K.",
+      "Weber, S.",
+      "Mühleisen, T. W.",
+      "Cichon, S.",
+      "Schultze, J. L.",
+      "Dietrich, D.",
+      "Remy, S.",
+      "Beyer, M."
+    ],
+    "owners": [
+      "Beyer, Marc"
+    ],
+    "citation": "Warnat-Herresthal, S., Varga, T., Bourry, S., Händler, K., Weber, S., Mühleisen, T. W., Cichon, S., Schultze, J. L., Dietrich, D., Remy, S., &amp; Beyer, M. (2020). <i>Characterization of human hippocampal neurons and interneurons using single-cell RNA-seq</i> [Data set]. EBRAINS.  [DOI: 10.25493/FN3Q-BC3]\n[DOI: 10.25493/FN3Q-BC3]: https://doi.org/10.25493%2FFN3Q-BC3",
+    "dataDescriptor": "https://object.cscs.ch/v1/AUTH_63ea6845b1d34ad7a43c8158d9572867/00000_Data-Descriptors_pub/hbp-d00044_scRNAseq-Hippo-2949_data-descriptor.pdf",
+    "regions": [
+      {
+        "value": "CA (Hippocampus)"
+      },
+      {
+        "value": "DG (Hippocampus)"
+      }
+    ],
+    "preparations": [
+      "Ex vivo"
+    ],
+    "methods": [
+      "Single cell RNA sequencing"
+    ],
+    "modalities": [
+      "transcriptomics"
+    ],
+    "keywords": [
+      "BD Rhapsody Single-Cell Analysis System",
+      "NeuN"
+    ]
   },
   {
     "title": "Subcortical modulation of hippocampal activity, multichannel recordings in head-restrained, behaving mice",
-    "description": "Cortical circuits display different functional states under the influence of subcortical modulatory input. In our study we aimed to uncover fundamental aspects of this subcortical modulation by focusing on the effect of the median raphe nucleus on the hippocampal network. High channel count electrophysiological recordings were executed from dorsal hippocampus, along with the measurement of neuronal activity in the median raphe, in head-restrained, awake mice. The different cell types of the MR (vGAT, vGlut2, vGlut3) were optogenetically identified and multimodal sensory stimuli were applied to the mouse while monitoring both subcortical activity in the MR and activity in the dorsal CA1 region.\n\nThese data allow us to characterize the properties of hippocampal neurons in the intact animal and how these properties are changed by subcortical inputs thus providing important constraints for network models of the hippocampus."
+    "description": "Cortical circuits display different functional states under the influence of subcortical modulatory input. In our study we aimed to uncover fundamental aspects of this subcortical modulation by focusing on the effect of the median raphe nucleus on the hippocampal network. High channel count electrophysiological recordings were executed from dorsal hippocampus, along with the measurement of neuronal activity in the median raphe, in head-restrained, awake mice. The different cell types of the MR (vGAT, vGlut2, vGlut3) were optogenetically identified and multimodal sensory stimuli were applied to the mouse while monitoring both subcortical activity in the MR and activity in the dorsal CA1 region.\n\nThese data allow us to characterize the properties of hippocampal neurons in the intact animal and how these properties are changed by subcortical inputs thus providing important constraints for network models of the hippocampus.",
+    "contributors": [
+      "Barth, A. M.",
+      "Jelitai, M.",
+      "Freund, T. F.",
+      "Varga, V. L."
+    ],
+    "owners": [
+      "Jelitai, Marta"
+    ],
+    "citation": "Barth, A. M., Jelitai, M., Freund, T. F., &amp; Varga, V. L. (2020). <i>Subcortical modulation of hippocampal activity, multichannel recordings in head-restrained, behaving mice</i> [Data set]. EBRAINS.  [DOI: 10.25493/REPP-N9F]\n[DOI: 10.25493/REPP-N9F]: https://doi.org/10.25493%2FREPP-N9F",
+    "dataDescriptor": "https://object.cscs.ch/v1/AUTH_63ea6845b1d34ad7a43c8158d9572867/00000_Data-Descriptors_pub/EBRAINS_DataDescriptor_HC_as_multich.pdf",
+    "regions": [
+      {
+        "url": "https://interactive-viewer.apps.hbp.eu/?templateSelected=Allen+Mouse+Common+Coordinate+Framework+v3&parcellationSelected=Allen+Mouse+Common+Coordinate+Framework+v3+2017&cNavigation=0.0.0.-W000.._XxAw.-GC6L.2-2QPq.2_Ylx_..cwd..Uzz.O43%7E.HD0%7E..6JT&cRegionsSelected=%7B%22v3_2017%22%3A%225_.67.6F.6N.6V%22%7D",
+        "value": "Field CA1"
+      }
+    ],
+    "preparations": [
+      "In vivo"
+    ],
+    "methods": [
+      "Multichannel recording",
+      "Optogenetics",
+      "Virus injection",
+      "Stereotactic surgery"
+    ],
+    "modalities": [
+      "physiological approach",
+      "histological approach",
+      "optical",
+      "anatomical approach",
+      "electrophysiology"
+    ],
+    "keywords": [
+      "Awake",
+      "CA1 neuronal activity",
+      "Head-restraint",
+      "Median raphe"
+    ]
   },
   {
     "title": "Modulation of hippocampal GABAergic currents by anti-gephyrin intrabodies (scFv-geph NLS)",
-    "description": "The efficiency of synaptic transmission relies on the temporally and spatially regulated expression of postsynaptic receptors localized in precise apposition to presynaptic release sites. At synapses, receptors are organized in clusters which are formed by highly regulated events, dynamically controlled by a number of proteins including scaffolds, adhesion molecules and active transport processes along the cytoskeleton (Kneussel and Loebrich, 2007).\n\nAt inhibitory synapses, GABAergic signaling controls dendritic integration, neural excitability, circuit reorganization and fine tuning of network activity. Among different players, the tubulin-binding protein gephyrin, plays a key role in anchoring GABAA receptors to synaptic membranes (Tyagarajan and Fritschy, 2014). Moreover, gephyrin is instrumental in establishing and maintaining a proper excitatory (E)/inhibitory (I) balance necessary for the correct functioning of neuronal networks (Pizzarelli and Cherubini, 2011). A disruption of the E/I balance is thought to be at the origin of several neuropsychiatric disorders including epilepsy, schizophrenia and autism (Penzes et al. 2013; Cellot and Cherubini, 2014; Nelson and Valakh, 2015).\n\nIn cultured hippocampal neurons, spontaneous inhibitory postsynaptic currents, IPSCs, were recorded from EGFP and EGFP plus scFv-geph NLS transfected pyramidal neurons. Gephyrin-specific single chain antibody fragments (scFv-gephyrin) were expressed as a fusion protein containing a nuclear localization signal (scFv-geph NLS), to efficiently and selectively remove endogenous gephyrin from synapses and retarget it away into the nucleus. Spontaneus events were reversibly blocked by bicuculline (10 μM), indicating that they were GABAA receptor-mediated currents (n=6). The mean sIPSCs frequency was 1.4 ± 0.1 Hz in controls (n=10) and 0.6 ± 0.2 Hz in the presence of scFV-gephyrin NLS (n=7). The mean sIPSCs amplitude was 156.4 ± 30 pA in control and 75.8 ± 19.2 pA in the presence of scFV-gephyrin NLS. Both sIPSC frequency and amplitude were significantly different between control and scFV-gephyrin NLS conditions (p=0.005 and p=0.036, respectively). These data suggest that hampering gephyrin function by the relocalization of the protein into the nucleus alters GABAergic neurotransmission.\n\n\nAndjus, P R, Stevic‐Marinkovic, Z and Cherubini E (1997) Immunoglobulins from motoneurone disease patients enhance glutamate release from rat hippocampal neurones in culture. The Journal of Physiology, 504: 103-112\n\nCellot G, Cherubini E (2014) GABAergic signaling as therapeutic target for autism spectrum disorders. Front Pediatr 2:70. doi: 10.3389/fped.2014.00070\n\nKneussel M, Loebrich S (2007) Trafficking and synaptic anchoring of ionotropic inhibitory neurotransmitter receptors. Biol Cell 99: 297-309\n\nNelson SB, Valakh V (2015) Excitatory/Inhibitory Balance and Circuit Homeostasis in Autism Spectrum Disorders. Neuron 87: 684-698\n\nPenzes P, Buonanno A, Passafaro M, Sala C, Sweet RA (2013) Developmental vulnerability of synapses and circuits associated with neuropsychiatric disorders. J Neurochem 126:165-82\n\nPizzarelli R, Cherubini E (2011) Alterations of GABAergic signaling in autism spectrum disorders. Neural Plast 297153. doi: 10.1155/2011/297153\n\nTyagarajan SK, Fritschy JM (2014) Gephyrin: a master regulator of neuronal function? Nat Rev Neurosci 15: 141-156"
+    "description": "The efficiency of synaptic transmission relies on the temporally and spatially regulated expression of postsynaptic receptors localized in precise apposition to presynaptic release sites. At synapses, receptors are organized in clusters which are formed by highly regulated events, dynamically controlled by a number of proteins including scaffolds, adhesion molecules and active transport processes along the cytoskeleton (Kneussel and Loebrich, 2007).\n\nAt inhibitory synapses, GABAergic signaling controls dendritic integration, neural excitability, circuit reorganization and fine tuning of network activity. Among different players, the tubulin-binding protein gephyrin, plays a key role in anchoring GABAA receptors to synaptic membranes (Tyagarajan and Fritschy, 2014). Moreover, gephyrin is instrumental in establishing and maintaining a proper excitatory (E)/inhibitory (I) balance necessary for the correct functioning of neuronal networks (Pizzarelli and Cherubini, 2011). A disruption of the E/I balance is thought to be at the origin of several neuropsychiatric disorders including epilepsy, schizophrenia and autism (Penzes et al. 2013; Cellot and Cherubini, 2014; Nelson and Valakh, 2015).\n\nIn cultured hippocampal neurons, spontaneous inhibitory postsynaptic currents, IPSCs, were recorded from EGFP and EGFP plus scFv-geph NLS transfected pyramidal neurons. Gephyrin-specific single chain antibody fragments (scFv-gephyrin) were expressed as a fusion protein containing a nuclear localization signal (scFv-geph NLS), to efficiently and selectively remove endogenous gephyrin from synapses and retarget it away into the nucleus. Spontaneus events were reversibly blocked by bicuculline (10 μM), indicating that they were GABAA receptor-mediated currents (n=6). The mean sIPSCs frequency was 1.4 ± 0.1 Hz in controls (n=10) and 0.6 ± 0.2 Hz in the presence of scFV-gephyrin NLS (n=7). The mean sIPSCs amplitude was 156.4 ± 30 pA in control and 75.8 ± 19.2 pA in the presence of scFV-gephyrin NLS. Both sIPSC frequency and amplitude were significantly different between control and scFV-gephyrin NLS conditions (p=0.005 and p=0.036, respectively). These data suggest that hampering gephyrin function by the relocalization of the protein into the nucleus alters GABAergic neurotransmission.\n\n\nAndjus, P R, Stevic‐Marinkovic, Z and Cherubini E (1997) Immunoglobulins from motoneurone disease patients enhance glutamate release from rat hippocampal neurones in culture. The Journal of Physiology, 504: 103-112\n\nCellot G, Cherubini E (2014) GABAergic signaling as therapeutic target for autism spectrum disorders. Front Pediatr 2:70. doi: 10.3389/fped.2014.00070\n\nKneussel M, Loebrich S (2007) Trafficking and synaptic anchoring of ionotropic inhibitory neurotransmitter receptors. Biol Cell 99: 297-309\n\nNelson SB, Valakh V (2015) Excitatory/Inhibitory Balance and Circuit Homeostasis in Autism Spectrum Disorders. Neuron 87: 684-698\n\nPenzes P, Buonanno A, Passafaro M, Sala C, Sweet RA (2013) Developmental vulnerability of synapses and circuits associated with neuropsychiatric disorders. J Neurochem 126:165-82\n\nPizzarelli R, Cherubini E (2011) Alterations of GABAergic signaling in autism spectrum disorders. Neural Plast 297153. doi: 10.1155/2011/297153\n\nTyagarajan SK, Fritschy JM (2014) Gephyrin: a master regulator of neuronal function? Nat Rev Neurosci 15: 141-156",
+    "contributors": [
+      "Pizzarelli, R.",
+      "Pimpinella, D.",
+      "Marinelli, S.",
+      "Cherubini, E."
+    ],
+    "owners": [
+      "Cherubini, Enrico"
+    ],
+    "citation": "Pizzarelli, R., Pimpinella, D., Marinelli, S., &amp; Cherubini, E. (2019). <i>Modulation of hippocampal GABAergic currents by anti-gephyrin intrabodies (scFv-geph NLS)</i> [Data set]. Human Brain Project Neuroinformatics Platform.  [DOI: 10.25493/7CHV-1JR]\n[DOI: 10.25493/7CHV-1JR]: https://doi.org/10.25493%2F7CHV-1JR",
+    "dataDescriptor": "https://object.cscs.ch/v1/AUTH_63ea6845b1d34ad7a43c8158d9572867/hbp-00713_sIPSCs-scFv-geph-NLS/hbp-00713_scFv-geph-NLS_DataDescriptor-v4p1.txt",
+    "regions": [
+      {
+        "url": "https://interactive-viewer.apps.hbp.eu/?templateSelected=Waxholm%20Space%20rat%20brain%20MRI%2FDTI&parcellationSelected=Waxholm%20Space%20rat%20brain%20atlas%20v2&navigation=0_0_0_1__-0.6278747916221619_-0.43671634793281555_0.4761661887168884_0.4339560568332672__379767.21993194974__-59832.5546875_-5721071_801595.3125__39538.189764174276&cRegionsSelected=%7B%22v2%22%3A%221V.1X.1Y.1W.1Z.6.c.q.x%22%7D",
+        "value": "Hippocampal Region"
+      }
+    ],
+    "preparations": [
+      "Ex vivo"
+    ],
+    "methods": [
+      "Patch clamp techniques",
+      "electrophysiology recording",
+      "Voltage clamp recording"
+    ],
+    "modalities": [
+      "electrophysiology"
+    ],
+    "keywords": [
+      "GABAergic currents",
+      "Intrabodies",
+      "Primary cell cultures",
+      "Pyramidal neurons",
+      "Whole-cell recordings"
+    ]
   },
   {
     "title": "Subcortical modulation of hippocampal activity, single cell recordings in head-restrained, behaving mice",
-    "description": "Cortical circuits display different functional states under the influence of subcortical modulatory inputs. In our study we aimed to uncover fundamental aspects of this subcortical modulation by focusing on the effect of vGlut3 positive median raphe neurons on the hippocampal circuitry. Single neuron activity as well as population patterns were recorded the dorsal CA1 region in head-restrained, behaving mice, while vGlut3 positive raphe-hippocampal terminals or their source neurons in the median raphe were stimulated. This dataset complements our larger database of hippocampal neurons recorded and filled in hippocampal slices, mainly by characterizing the spontaneous and evoked physiological behavior of the cells under in vivo conditions."
+    "description": "Cortical circuits display different functional states under the influence of subcortical modulatory inputs. In our study we aimed to uncover fundamental aspects of this subcortical modulation by focusing on the effect of vGlut3 positive median raphe neurons on the hippocampal circuitry. Single neuron activity as well as population patterns were recorded the dorsal CA1 region in head-restrained, behaving mice, while vGlut3 positive raphe-hippocampal terminals or their source neurons in the median raphe were stimulated. This dataset complements our larger database of hippocampal neurons recorded and filled in hippocampal slices, mainly by characterizing the spontaneous and evoked physiological behavior of the cells under in vivo conditions.",
+    "contributors": [
+      "Jelitai, M.",
+      "Freund, T. F.",
+      "Varga, V. L."
+    ],
+    "owners": [
+      "Jelitai, Marta"
+    ],
+    "citation": "Jelitai, M., Freund, T. F., &amp; Varga, V. L. (2020). <i>Subcortical modulation of hippocampal activity, single cell recordings in head-restrained, behaving mice</i> [Data set]. EBRAINS.  [DOI: 10.25493/AFT9-1ZV]\n[DOI: 10.25493/AFT9-1ZV]: https://doi.org/10.25493%2FAFT9-1ZV",
+    "dataDescriptor": "https://object.cscs.ch/v1/AUTH_63ea6845b1d34ad7a43c8158d9572867/hbp-d00038_HC-awake-subcort-patch_pub/EBRAINS_DataDescriptor_HC_as_patch.pdf",
+    "regions": [
+      {
+        "url": "https://interactive-viewer.apps.hbp.eu/?templateSelected=Allen+Mouse+Common+Coordinate+Framework+v3&parcellationSelected=Allen+Mouse+Common+Coordinate+Framework+v3+2017&cNavigation=0.0.0.-W000.._XxAw.-GC6L.2-2QPq.2_Ylx_..cwd..Uzz.O43%7E.HD0%7E..6JT&cRegionsSelected=%7B%22v3_2017%22%3A%225_.67.6F.6N.6V%22%7D",
+        "value": "Field CA1"
+      }
+    ],
+    "preparations": [
+      "In vivo"
+    ],
+    "methods": [
+      "Whole-cell patch clamp",
+      "Optogenetics",
+      "Virus injection",
+      "Stereotactic surgery",
+      "Local field potential (LFP) recordings"
+    ],
+    "modalities": [
+      "molecular expression characterization",
+      "histological approach",
+      "cell population characterization",
+      "physiological approach",
+      "optical",
+      "electrophysiology",
+      "anatomical approach"
+    ],
+    "keywords": [
+      "Awake",
+      "CA1 neuronal activity",
+      "Head-restraint",
+      "Whole-cell recordings"
+    ]
   },
   {
     "title": "Multi-area recordings from visual and somatosensory cortices, perirhinal cortex and hippocampal CA1",
-    "description": "The dataset includes spiking data from four areas (V2m, S1bf, perirhinal cortex, and hippocampal CA1) recorded simultaneously in freely moving rats during a spatial navigation task with visual discrimination and memory components. Position data of the animals during the task obtained from video tracking is also provided. A more detailed overview of the experimental design and data collection process can be found in [1].\n\n"
+    "description": "The dataset includes spiking data from four areas (V2m, S1bf, perirhinal cortex, and hippocampal CA1) recorded simultaneously in freely moving rats during a spatial navigation task with visual discrimination and memory components. Position data of the animals during the task obtained from video tracking is also provided. A more detailed overview of the experimental design and data collection process can be found in [1].\n\n",
+    "contributors": [
+      "Bos, J.",
+      "Vinck, M.",
+      "van Mourik-Donga, L.",
+      "Jackson, J.",
+      "Witter, M.P.",
+      "Pennartz, C."
+    ],
+    "owners": [
+      "Bos, Jeroen"
+    ],
+    "citation": "Bos, J., Vinck, M., Van Mourik-Donga, L., Jackson, J., Witter, M. P., &amp; Pennartz, C. (2019). <i>Multi-area recordings from visual and somatosensory cortices, perirhinal cortex and hippocampal CA1</i> [Data set]. Human Brain Project Neuroinformatics Platform.  [DOI: 10.25493/1PEP-K9F]\n[DOI: 10.25493/1PEP-K9F]: https://doi.org/10.25493%2F1PEP-K9F",
+    "dataDescriptor": null,
+    "regions": [
+      {
+        "url": "https://interactive-viewer.apps.hbp.eu/?templateSelected=Waxholm%20Space%20rat%20brain%20MRI%2FDTI&parcellationSelected=Waxholm%20Space%20rat%20brain%20atlas%20v2&navigation=0_0_0_1__-0.6278747916221619_-0.43671634793281555_0.4761661887168884_0.4339560568332672__379767.21993194974__-59832.5546875_-5721071_801595.3125__39538.189764174276&cRegionsSelected=%7B%22v2%22%3A%221V%22%7D",
+        "value": "Cornu ammonis 1"
+      },
+      {
+        "url": "https://interactive-viewer.apps.hbp.eu/?templateSelected=Waxholm%20Space%20rat%20brain%20MRI%2FDTI&parcellationSelected=Waxholm%20Space%20rat%20brain%20atlas%20v2&navigation=0_0_0_1__-0.6278747916221619_-0.43671634793281555_0.4761661887168884_0.4339560568332672__379767.21993194974__-59832.5546875_-5721071_801595.3125__39538.189764174276&cRegionsSelected=%7B%22v2%22%3A%221S%22%7D",
+        "value": "Neocortex"
+      },
+      {
+        "url": "https://interactive-viewer.apps.hbp.eu/?templateSelected=Waxholm%20Space%20rat%20brain%20MRI%2FDTI&parcellationSelected=Waxholm%20Space%20rat%20brain%20atlas%20v2&navigation=0_0_0_1__-0.6278747916221619_-0.43671634793281555_0.4761661887168884_0.4339560568332672__379767.21993194974__-59832.5546875_-5721071_801595.3125__39538.189764174276&cRegionsSelected=%7B%22v2%22%3A%221m%22%7D",
+        "value": "Perirhinal area 35"
+      },
+      {
+        "url": "https://interactive-viewer.apps.hbp.eu/?templateSelected=Waxholm%20Space%20rat%20brain%20MRI%2FDTI&parcellationSelected=Waxholm%20Space%20rat%20brain%20atlas%20v2&navigation=0_0_0_1__-0.6278747916221619_-0.43671634793281555_0.4761661887168884_0.4339560568332672__379767.21993194974__-59832.5546875_-5721071_801595.3125__39538.189764174276&cRegionsSelected=%7B%22v2%22%3A%221n%22%7D",
+        "value": "Perirhinal area 36"
+      }
+    ],
+    "preparations": [
+      "In vivo"
+    ],
+    "methods": [
+      "Single unit activity (SUA)"
+    ],
+    "modalities": [],
+    "keywords": [
+      "Freely moving",
+      "Spatial navigation",
+      "Stratum pyramidale",
+      "Tetrode recording",
+      "Visual discrimination task"
+    ]
   },
   {
     "title": "Coronal section images series showing neuronal nuclei, calbindin and parvalbumin in the rat hippocampal region",
-    "description": "Bright-field microscopy images of serial coronal brain sections showing neuronal nuclei (NeuN), calbindin and parvalbumin  in an adult male Long Evans rat (case 1366), starting from the anterior hippocampus to the posterior end of the entorhinal cortex.  The images show the detailed architecture of this complex brain region and enable identification of regional and subregional boundaries. "
+    "description": "Bright-field microscopy images of serial coronal brain sections showing neuronal nuclei (NeuN), calbindin and parvalbumin  in an adult male Long Evans rat (case 1366), starting from the anterior hippocampus to the posterior end of the entorhinal cortex.  The images show the detailed architecture of this complex brain region and enable identification of regional and subregional boundaries. ",
+    "contributors": [
+      "Boccara, C.",
+      "Kjonigsen, L.",
+      "Hammer, I.",
+      "Bjaalie, J.G.",
+      "Leergaard, T.B.",
+      "Witter, M.P."
+    ],
+    "owners": [
+      "Witter, Menno P."
+    ],
+    "citation": "Boccara, C., Kjonigsen, L., Hammer, I., Bjaalie, J. G., Leergaard, T. B., &amp; Witter, M. P. (2019). <i>Coronal section images series showing neuronal nuclei, calbindin and parvalbumin in the rat hippocampal region</i> [Data set]. Human Brain Project Neuroinformatics Platform.  [DOI: 10.25493/AMW1-Z16]\n[DOI: 10.25493/AMW1-Z16]: https://doi.org/10.25493%2FAMW1-Z16",
+    "dataDescriptor": "https://object.cscs.ch/v1/AUTH_6ebec77683fb472f94d352be92b5a577/hbp-00173/262/1366/hbp-00173_case1366_DataDescriptor_v1p1.txt",
+    "regions": [
+      {
+        "url": "https://interactive-viewer.apps.hbp.eu/?templateSelected=Waxholm+Space+rat+brain+MRI%2FDTI&parcellationSelected=Waxholm+Space+rat+brain+atlas+v2&cNavigation=0.0.0.-W000..2-8Bnd.2_tvb9._yymE._tYzz..1Sjt..Ecv%7E.Lqll%7E.33ix..9fo&cRegionsSelected=%7B%22v2%22%3A%2213.a.b.19.6.c.q.x.1.1L.Y.1K.r.s.y.z._.1G.-.Z.18.v.f.g.1J.1C.k.14.15.7.1E.1F.10.11.12.1D.1S.A.1V.1W.1X.1Y.1Z.1a.1i.1j.1k.1m.1n.1o.1p.U.V.W.3.1I.e.d.1T.1H.m.h.n.1U.o.t.2.17.p.w.4.5.1A.1B.u.l.j.16%22%7D",
+        "value": "Whole brain"
+      }
+    ],
+    "preparations": [
+      "Ex vivo"
+    ],
+    "methods": [
+      "Immunohistochemistry",
+      "Brightfield microscopy",
+      "Spatial atlas registration"
+    ],
+    "modalities": [
+      "microscopy",
+      "molecular expression characterization",
+      "histological approach",
+      "cell population characterization",
+      "anatomical approach"
+    ],
+    "keywords": [
+      "Anatomical boundaries",
+      "Calbindin",
+      "Chemical markers",
+      "Chemoarchitecture",
+      "Coronal",
+      "Cytoarchitecture",
+      "Delineations",
+      "histology",
+      "NeuN",
+      "Neurons",
+      "Parvalbumin",
+      "Staining"
+    ]
   },
   {
     "title": "Sagittal and horizontal section images showing neuronal nuclei, calbindin and parvalbumin staining in the rat hippocampal region",
-    "description": "Bright-field microscopy images of serial sagittal and horizontal (half hemisphere) brain sections showing neuronal nuclei (NeuN), calbindin and parvalbumin in an adult male Long Evans rat (case 902). The images show the detailed architecture of this complex region and enable identification of regional and subregional boundaries. "
+    "description": "Bright-field microscopy images of serial sagittal and horizontal (half hemisphere) brain sections showing neuronal nuclei (NeuN), calbindin and parvalbumin in an adult male Long Evans rat (case 902). The images show the detailed architecture of this complex region and enable identification of regional and subregional boundaries. ",
+    "contributors": [
+      "Boccara, C.",
+      "Kjonigsen, L.",
+      "Hammer, I.",
+      "Bjaalie, J.G.",
+      "Leergaard, T.B.",
+      "Witter, M.P."
+    ],
+    "owners": [
+      "Witter, Menno P."
+    ],
+    "citation": "Boccara, C., Kjonigsen, L., Hammer, I., Bjaalie, J. G., Leergaard, T. B., &amp; Witter, M. P. (2019). <i>Sagittal and horizontal section images showing neuronal nuclei, calbindin and parvalbumin staining in the rat hippocampal region</i> [Data set]. Human Brain Project Neuroinformatics Platform.  [DOI: 10.25493/JQ8F-TNF]\n[DOI: 10.25493/JQ8F-TNF]: https://doi.org/10.25493%2FJQ8F-TNF",
+    "dataDescriptor": "https://object.cscs.ch/v1/AUTH_6ebec77683fb472f94d352be92b5a577/hbp-00173/262/902/hbp-00173_case902_DataDescriptor_v1p1.txt",
+    "regions": [
+      {
+        "url": "https://interactive-viewer.apps.hbp.eu/?templateSelected=Waxholm+Space+rat+brain+MRI%2FDTI&parcellationSelected=Waxholm+Space+rat+brain+atlas+v2&cNavigation=0.0.0.-W000..2-8Bnd.2_tvb9._yymE._tYzz..1Sjt..Ecv%7E.Lqll%7E.33ix..9fo&cRegionsSelected=%7B%22v2%22%3A%2213.a.b.19.6.c.q.x.1.1L.Y.1K.r.s.y.z._.1G.-.Z.18.v.f.g.1J.1C.k.14.15.7.1E.1F.10.11.12.1D.1S.A.1V.1W.1X.1Y.1Z.1a.1i.1j.1k.1m.1n.1o.1p.U.V.W.3.1I.e.d.1T.1H.m.h.n.1U.o.t.2.17.p.w.4.5.1A.1B.u.l.j.16%22%7D",
+        "value": "Whole brain"
+      }
+    ],
+    "preparations": [
+      "Ex vivo"
+    ],
+    "methods": [
+      "Immunohistochemistry",
+      "Brightfield microscopy",
+      "Spatial atlas registration"
+    ],
+    "modalities": [
+      "microscopy",
+      "molecular expression characterization",
+      "histological approach",
+      "cell population characterization",
+      "anatomical approach"
+    ],
+    "keywords": [
+      "Anatomical boundaries",
+      "Calbindin",
+      "Chemical markers",
+      "Chemoarchitecture",
+      "Cytoarchitecture",
+      "Delineations",
+      "histology",
+      "Horizontal",
+      "NeuN",
+      "Neurons",
+      "Parvalbumin",
+      "Sagittal",
+      "Staining"
+    ]
   },
   {
     "title": "sIPSCs from juvenile (P21-30) C57B16/J male mice from hippocampal CA1 pyramidal neurons receiving input from PV+ and CCK+ interneurons",
-    "description": "A general procedure to fit individual synaptic events recorded from voltage clamp experiments was tested with various sets of experimental data on GABAergic synapses; gephyrin and gephyrin-dependent pathways were chosen as a suitable example of a kinetic model of synaptic transmission. The data used here are obtained from coronal hippocampal slices (300 μm thick) from juvenile (P21-30) C57B16/J male mice and recorded from hippocampal CA1 pyramidal neurons receiving input from parvalbumin positive (PV+) and cholecystokinin positive (CCK+) interneurons. The dataset contains 2130 individual events recorded from 3 different neurons (expD1-D3). The first column of each txt file contains the time in ms and the other columns contain spontaneous inhibitory synaptic currents (sIPSCs) in pA.\nComputational modeling of brain circuits requires the definition of many parameters that are difficult to determine from experimental findings. One way to help interpret these data is to fit them using a particular kinetic model. In [1] we proposed a general procedure to fit individual synaptic events recorded from voltage clamp experiments. Starting from any given model description (mod file) in the NEURON simulation environment, the procedure exploits user-defined constraints, dependencies, and rules for the parameters of the model to fit the time course of individual spontaneous synaptic events that are recorded experimentally. A Python version is available for public use, as a Jupyter Notebook in the Collaboratory Portal of the Human Brain Project. To illustrate the potential application of the procedure, we tested its use with various sets of experimental data on GABAergic synapses; gephyrin and gephyrin-dependent pathways were chosen as a suitable example of a kinetic model of synaptic transmission. For individual spontaneous inhibitory events in hippocampal pyramidal CA1 neurons, we found that gephyrin-dependent subcellular pathways may shape synaptic events at different levels, and can be correlated with cell- or event-specific activity history and/or pathological conditions.\nFitting experimental data against a number of different models is a common way to do this (reviewed in [2]), and can help in the subsequent interpretation of the data. In general, experimental traces are fitted using specific approaches for specific purposes (e.g., [3], [4]). However, to the best of our knowledge, there is no easy, user-friendly, general procedure available for this purpose, especially in computational neuroscience. Our aim was thus to identify the appropriate conceptual structure of a procedure to obtain good, reliable fits of raw experimental traces of spontaneous synaptic events. This is an important step because spontaneous synaptic events have been so far exclusively analyzed using traces obtained by averaging many events. However, as can be easily imagined, each synapse in any given neuron has its own, independent, history of activation. The most likely physiological consequence is that the variables relative to the subcellular processes underlying synaptic transmission are different for each synapse. If a researcher is interested in testing a specific kinetic scheme implemented for specific biochemical pathways, the use of individual events is the most appropriate choice, since this approach would give information on the different combinations of model parameters that are consistent with the observed events. Averaging traces will lose a lot of relevant information.\nWe therefore present here the implementation of a procedure leading to the development of a unifying optimization method for individual synaptic events. Experimental data, kinetic models of synaptic transmission, and fitting parameters and their dependencies can be user defined/provided or gathered from databases. They can be used to generate optimized groups of parameters able to represent a population of synapses, either for simulation purposes or to study the functional consequences of a particular protein or subcellular synaptic transmission pathway. \n[1] Lupascu CA, Morabito A, Merenda E, et al. A General Procedure to Study Subcellular Models of Transsynaptic Signaling at Inhibitory Synapses. Frontiers in Neuroinformatics. 2016;10:23. doi:10.3389/fninf.2016.00023.  \n[2] Van Geit W., De Schutter E., Achard P. (2008). Automated neuron model optimization techniques: a review. Biol. Cybern. 99, 241–251. 10.1007/s00422-008-0257-6  \n[3] Bekkers J. M. (2003). Convolution of mini distributions for fitting evoked synaptic amplitude histograms. J. Neurosci. Methods. 130, 105–114. 10.1016/j.jneumeth.2003.09.018  \n[4] Meisl G., Kirkegaard J. B., Arosio P., Michaels T. C., Vendruscolo M., Dobson C. M., et al. . (2016). Molecular mechanisms of protein aggregation from global fitting of kinetic models. Nat. Protoc. 11, 252–272. 10.1038/nprot.2016.010"
+    "description": "A general procedure to fit individual synaptic events recorded from voltage clamp experiments was tested with various sets of experimental data on GABAergic synapses; gephyrin and gephyrin-dependent pathways were chosen as a suitable example of a kinetic model of synaptic transmission. The data used here are obtained from coronal hippocampal slices (300 μm thick) from juvenile (P21-30) C57B16/J male mice and recorded from hippocampal CA1 pyramidal neurons receiving input from parvalbumin positive (PV+) and cholecystokinin positive (CCK+) interneurons. The dataset contains 2130 individual events recorded from 3 different neurons (expD1-D3). The first column of each txt file contains the time in ms and the other columns contain spontaneous inhibitory synaptic currents (sIPSCs) in pA.\nComputational modeling of brain circuits requires the definition of many parameters that are difficult to determine from experimental findings. One way to help interpret these data is to fit them using a particular kinetic model. In [1] we proposed a general procedure to fit individual synaptic events recorded from voltage clamp experiments. Starting from any given model description (mod file) in the NEURON simulation environment, the procedure exploits user-defined constraints, dependencies, and rules for the parameters of the model to fit the time course of individual spontaneous synaptic events that are recorded experimentally. A Python version is available for public use, as a Jupyter Notebook in the Collaboratory Portal of the Human Brain Project. To illustrate the potential application of the procedure, we tested its use with various sets of experimental data on GABAergic synapses; gephyrin and gephyrin-dependent pathways were chosen as a suitable example of a kinetic model of synaptic transmission. For individual spontaneous inhibitory events in hippocampal pyramidal CA1 neurons, we found that gephyrin-dependent subcellular pathways may shape synaptic events at different levels, and can be correlated with cell- or event-specific activity history and/or pathological conditions.\nFitting experimental data against a number of different models is a common way to do this (reviewed in [2]), and can help in the subsequent interpretation of the data. In general, experimental traces are fitted using specific approaches for specific purposes (e.g., [3], [4]). However, to the best of our knowledge, there is no easy, user-friendly, general procedure available for this purpose, especially in computational neuroscience. Our aim was thus to identify the appropriate conceptual structure of a procedure to obtain good, reliable fits of raw experimental traces of spontaneous synaptic events. This is an important step because spontaneous synaptic events have been so far exclusively analyzed using traces obtained by averaging many events. However, as can be easily imagined, each synapse in any given neuron has its own, independent, history of activation. The most likely physiological consequence is that the variables relative to the subcellular processes underlying synaptic transmission are different for each synapse. If a researcher is interested in testing a specific kinetic scheme implemented for specific biochemical pathways, the use of individual events is the most appropriate choice, since this approach would give information on the different combinations of model parameters that are consistent with the observed events. Averaging traces will lose a lot of relevant information.\nWe therefore present here the implementation of a procedure leading to the development of a unifying optimization method for individual synaptic events. Experimental data, kinetic models of synaptic transmission, and fitting parameters and their dependencies can be user defined/provided or gathered from databases. They can be used to generate optimized groups of parameters able to represent a population of synapses, either for simulation purposes or to study the functional consequences of a particular protein or subcellular synaptic transmission pathway. \n[1] Lupascu CA, Morabito A, Merenda E, et al. A General Procedure to Study Subcellular Models of Transsynaptic Signaling at Inhibitory Synapses. Frontiers in Neuroinformatics. 2016;10:23. doi:10.3389/fninf.2016.00023.  \n[2] Van Geit W., De Schutter E., Achard P. (2008). Automated neuron model optimization techniques: a review. Biol. Cybern. 99, 241–251. 10.1007/s00422-008-0257-6  \n[3] Bekkers J. M. (2003). Convolution of mini distributions for fitting evoked synaptic amplitude histograms. J. Neurosci. Methods. 130, 105–114. 10.1016/j.jneumeth.2003.09.018  \n[4] Meisl G., Kirkegaard J. B., Arosio P., Michaels T. C., Vendruscolo M., Dobson C. M., et al. . (2016). Molecular mechanisms of protein aggregation from global fitting of kinetic models. Nat. Protoc. 11, 252–272. 10.1038/nprot.2016.010",
+    "contributors": [
+      "Cherubini, E.",
+      "Marchetti, C.",
+      "Marinelli, S."
+    ],
+    "owners": [
+      "Cherubini, Enrico"
+    ],
+    "citation": "Cherubini, E., Marchetti, C., &amp; Marinelli, S. (2018). <i>sIPSCs from juvenile (P21-30) C57B16/J male mice from hippocampal CA1 pyramidal neurons receiving input from PV+ and CCK+ interneurons</i> [Data set]. Human Brain Project Neuroinformatics Platform.  [DOI: 10.25493/PHA7-5KZ]\n[DOI: 10.25493/PHA7-5KZ]: https://doi.org/10.25493%2FPHA7-5KZ",
+    "dataDescriptor": "https://object.cscs.ch/v1/AUTH_63ea6845b1d34ad7a43c8158d9572867/Cherubini_RUP_T.1.1.6_nar033/hbp-00012/hbp-00012_DataDescriptor_v1p1.pdf",
+    "regions": [
+      {
+        "url": "https://interactive-viewer.apps.hbp.eu/?templateSelected=Allen%20Mouse%20Common%20Coordinate%20Framework%20v3&parcellationSelected=Allen%20Mouse%20Common%20Coordinate%20Framework%20v3%202015&navigation=0_0_0_1__0.2650354504585266_0.752953827381134_-0.537696123123169_-0.271476686000824__159399.12281678425__126845.171875_-98562.625_-70463.9453125__25821.578801517288&cRegionsSelected=%7B%22atlas%22%3A%225_.67.6F.6N.6V%22%7D",
+        "value": "Field CA1"
+      }
+    ],
+    "preparations": [
+      "Ex vivo"
+    ],
+    "methods": [
+      "electrophysiology recording",
+      "Single electrode recording",
+      "Voltage clamp recording"
+    ],
+    "modalities": [
+      "electrophysiology"
+    ],
+    "keywords": [
+      "CA1",
+      "CCK+ neuron",
+      "hippocampus",
+      "PV+ neuron",
+      "Pyramidal cell"
+    ]
   }
 ]

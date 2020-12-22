@@ -1,5 +1,9 @@
 .page-section {
-  padding: 40px 80px;
+  padding: 40px 20px;
+
+  &.gray {
+    background: #ddd;
+  }
 
   .page-section-header {
     font-family: 'Nunito', 'sans-serif';

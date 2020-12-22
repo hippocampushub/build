@@ -41,7 +41,7 @@ function PageContainer({children, title = 'Next.js App', headerCarousel}: IPageP
         </Head>
         <div className={`container-fluid ${pageStyle['main-page-container']}`}>
             <Header config={config.header} carouselImages={headerCarousel} menuItems={menuItems}/>
-            <div className='container'>
+            <div>
                 <main className={pageStyle['main-container']}>
                     {children}
                 </main>

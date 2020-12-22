@@ -5,16 +5,163 @@
     "url": "/assets/images/header_1.jpg"
   }],
   "sections": [{
-    "key": "resources",
-    "header": "",
-    "columns": []
-  }, {
     "header": "Resources",
     "carousel": null,
     "columns": [{
-      "header": "Data"
+      "header": "Data",
+      "blocks": [{
+        "type": "dataset",
+        "title": "Mapping of potentiated synapses in mouse hippocampus and organotypic hippocampal slices using SynActive constructs",
+        "description": "Synaptic engrams are defined as the neural population sustaining a given memory and they can be considered the cellular basis of learning processes characterized by newly formed spines. Nowadays there are no tools able to detect engrams at synaptic level.\nWe created a pair of Adeno Associate Viruses (AAV)-carried constructs to tag and visualize potentiated dendritic spines, in a spatially localized and activity-dependent manner. In a set of in vivo experiments, the pair was stereotaxically injected into the mouse hippocampus. Injected mice were exposed to contextual fear conditioning to trigger synaptic plasticity and potentiation. Confocal imaging of fixed brain sections allowed quantification of the distribution of potentiated spines along the dendritic tree of hippocampal pyramidal neurons. These data can be reused to implement computational models to infer synaptic plasticity rules leading to the formation of synaptic memory engrams.\nSecond, we infected organotypic hippocampal slices with the AAV pair and then stimulated with chemical long-term potentiation. Confocal imaging of fixed organotypic slices reveals a strong SynActive signal (potentiated synapses), partially merged with the not-potentiated spines only in infected-stimulated organotypic slices compared to their controls (not infected cultures or infected-not stimulated, thus showing the specificity of the SynActive signal in potentiated synapses.\nBroadly, confocal imaging of fixed organotypic hippocampal slices allowed quantification of the distribution of potentiated spines along the dendritic tree of hippocampal pyramidal neurons. These data can be reused to implement computational models to infer synaptic plasticity rules leading to the formation of synaptic memory engrams.",
+        "contributors": [
+          "Marinelli, S.",
+          "Cattaneo, A.",
+          "Marrone, M. C.",
+          "Giustizieri, M.",
+          "Mainardi, M.",
+          "Faraone, A.",
+          "Jacob, A.",
+          "Gobbo, F.",
+          "Zentilin, L."
+        ],
+        "owners": [
+          "Cattaneo, Antonino"
+        ],
+        "citation": "Marinelli, S., Cattaneo, A., Marrone, M. C., Giustizieri, M., Mainardi, M., Faraone, A., Jacob, A., Gobbo, F., &amp; Zentilin, L. (2020). <i>Mapping of potentiated synapses in mouse hippocampus and organotypic hippocampal slices using SynActive constructs</i> [Data set]. EBRAINS.  [DOI: 10.25493/TK68-40P]\n[DOI: 10.25493/TK68-40P]: https://doi.org/10.25493%2FTK68-40P",
+        "dataDescriptor": "https://object.cscs.ch/v1/AUTH_63ea6845b1d34ad7a43c8158d9572867/00000_Data-Descriptors_pub/ImagingRodent_data-descriptor.pdf",
+        "regions": [
+          {
+            "url": "https://interactive-viewer.apps.hbp.eu/?templateSelected=Allen+Mouse+Common+Coordinate+Framework+v3&parcellationSelected=Allen+Mouse+Common+Coordinate+Framework+v3+2017&cNavigation=0.0.0.-W000.._XxAw.-GC6L.2-2QPq.2_Ylx_..cwd..Uzz.O43%7E.HD0%7E..6JT&cRegionsSelected=%7B%22v3_2017%22%3A%22Gu.5t.5_.67.6F.6N.6V.6d.6l.6s.6_.76.7F.7N.7V.7c.7l.7u.BM.2dF.2dG.9u.2dE.BU.Bc.Bl.Bs.B_.C7.CE.CM.CV.Cd.Cl.Ct.FM.J%22%7D",
+            "value": "Hippocampal region"
+          }
+        ],
+        "preparations": [
+          "Ex vivo",
+          "In vivo"
+        ],
+        "methods": [
+          "Confocal Microscopy",
+          "Immunofluorescence",
+          "Immunohistochemistry",
+          "Organotypic slices",
+          "Behavioural training",
+          "Contextual fear conditioning",
+          "Synaptic potentiation"
+        ],
+        "modalities": [
+          "cell culture",
+          "microscopy",
+          "anatomical approach",
+          "histological approach",
+          "electrophysiology",
+          "multimodal approach"
+        ],
+        "keywords": [
+          "Dendritic spine counting",
+          "Learning and memory"
+        ]
+      },
+        { "type": "dataset",
+          "title": "Database of paired recordings in hippocampal slices",
+          "description": "Simulating the function of brain networks requires a detailed characterization of neuronal interactions. Using paired recordings in hippocampal slices, the basic properties of synaptic transmission and short-term synaptic plasticity between identified cells were characterized, employing morphological and electrophysiological classification, as well as transgenic animals expressing cell-type-specific fluorescent markers to target specific connections.",
+          "contributors": [
+            "Freund, T. F.",
+            "Káli, S.",
+            "Schlingloff, D.",
+            "Gulyás, A."
+          ],
+          "owners": [
+            "Gulyás, Attila"
+          ],
+          "citation": "Freund, T. F., Káli, S., Schlingloff, D., &amp; Gulyás, A. (2020). <i>Database of paired recordings in hippocampal slices</i> [Data set]. EBRAINS.  [DOI: 10.25493/R867-ND3]\n[DOI: 10.25493/R867-ND3]: https://doi.org/10.25493%2FR867-ND3",
+          "dataDescriptor": "https://object.cscs.ch/v1/AUTH_63ea6845b1d34ad7a43c8158d9572867/Freund_SGA1_T1.2.6/Hippocampus_slice_Synaptic_physiology/HBP-DataDescriptor_Freund_SGA1_T1.2.6.pdf",
+          "regions": [
+            {
+              "url": "https://interactive-viewer.apps.hbp.eu/?templateSelected=Allen+Mouse+Common+Coordinate+Framework+v3&parcellationSelected=Allen+Mouse+Common+Coordinate+Framework+v3+2017&cNavigation=0.0.0.-W000.._XxAw.-GC6L.2-2QPq.2_Ylx_..cwd..Uzz.O43%7E.HD0%7E..6JT&cRegionsSelected=%7B%22v3_2017%22%3A%225_.67.6F.6N.6V%22%7D",
+              "value": "Field CA1"
+            },
+            {
+              "url": "https://interactive-viewer.apps.hbp.eu/?templateSelected=Allen+Mouse+Common+Coordinate+Framework+v3&parcellationSelected=Allen+Mouse+Common+Coordinate+Framework+v3+2017&cNavigation=0.0.0.-W000.._XxAw.-GC6L.2-2QPq.2_Ylx_..cwd..Uzz.O43%7E.HD0%7E..6JT&cRegionsSelected=%7B%22v3_2017%22%3A%227F.7N.7V.7c.7l.7u%22%7D",
+              "value": "Field CA3"
+            },
+            {
+              "url": "https://interactive-viewer-next.apps-dev.hbp.eu/?templateSelected=Allen+Mouse+Common+Coordinate+Framework+v3&parcellationSelected=Allen+Mouse+Common+Coordinate+Framework+v3+2017&cRegionsSelected=%7B%22v3_2017%22%3A%22H1.Gu.5t.5_.67.6F.6N.6V.6d.6l.6s.6_.76.7F.7N.7V.7c.7l.7u.BM.2dF.2dG.9u.2dE.BU.Bc.Bl.Bs.B_.C7.CE.CM.CV.Cd.Cl.Ct.FM.J.Cs.ED.EM.HX.K.Fd.BB.By.q.1S.4u.2B.63.S.y.EU.8E.8V.7K.7y.AO.B8.BN.8c.Bd.Ec.43.54.5p.6Z.Hj.DB.2d5.2d6.2d7.GD.2d8.2d9.2dA.Gy.2dB.2dC.2dD.7s.7z.Cz.DD.D5.86.DL.Dc.DT.Suwhc.Suwhh.Suwhl.Suwhp.Suwht.Suwhy.Suwi0.Suwi4.Suwi8.Z8ozV.SuwiC%22%7D&cNavigation=0.0.0.-W000.._XxAw.-GC6L.2-2QPq.2_Ylx_..cwd..Uzz.O43%7E.HD0%7E..7lJ",
+              "value": "Hippocampal formation "
+            }
+          ],
+          "preparations": [
+            "In vitro"
+          ],
+          "methods": [
+            "Whole-cell patch",
+            "Paired recordings"
+          ],
+          "modalities": [
+            "electrophysiology"
+          ],
+          "keywords": [
+            "AAC",
+            "Acute slices",
+            "Basket cells",
+            "CCK+BC",
+            "CCK+DTI",
+            "Dual whole-cell recordings",
+            "Frequency response",
+            "Interictal events",
+            "Interneurons",
+            "PV+BC",
+            "Recovery from inhibition",
+            "Sharp-wave-ripples"
+          ]
+        },
+        { "type": "dataset",
+          "title": "Physiological effects of cholinergic modulation on mouse hippocampal neurons",
+          "description": "As part of a detailed study of the effects of subcortical neuromodulation on hippocampal circuits, these experiments quantified the changes in neuronal properties due to the application of the cholinergic agonist carbachol in the acute hippocampal slice preparation. Whole-cell patch-clamp recordings were used to measure the response of hippocampal pyramidal cells and interneurons to step current injections of various amplitudes, both under control conditions and in the presence of carbachol in the bath. The data can be used to quantify the effects of cholinergic input on the physiological properties of hippocampal neurons, and are essential for building mechanistic models of the effects of subcortical neuromodulation on hippocampal circuit dynamics.",
+          "contributors": [
+            "Schlingloff, D.",
+            "Berki, P.",
+            "Karlócai, R.",
+            "Káli, S.",
+            "Freund, T. F.",
+            "Gulyás, A. I."
+          ],
+          "owners": [
+            "Gulyás, Attila I."
+          ],
+          "citation": "Schlingloff, D., Berki, P., Karlócai, R., Káli, S., Freund, T. F., &amp; Gulyás, A. I. (2020). <i>Physiological effects of cholinergic modulation on mouse hippocampal neurons</i> [Data set]. EBRAINS.  [DOI: 10.25493/8B5F-GZ2]\n[DOI: 10.25493/8B5F-GZ2]: https://doi.org/10.25493%2F8B5F-GZ2",
+          "dataDescriptor": "https://object.cscs.ch/v1/AUTH_63ea6845b1d34ad7a43c8158d9572867/00000_Data-Descriptors_pub/EBRAINS-DataDescriptor-Cholinergic_modulation_of_hippocampal_neurons.pdf",
+          "regions": [
+            {
+              "url": "https://interactive-viewer.apps.hbp.eu/?templateSelected=Allen+Mouse+Common+Coordinate+Framework+v3&parcellationSelected=Allen+Mouse+Common+Coordinate+Framework+v3+2017&cNavigation=0.0.0.-W000.._XxAw.-GC6L.2-2QPq.2_Ylx_..cwd..Uzz.O43%7E.HD0%7E..6JT&cRegionsSelected=%7B%22v3_2017%22%3A%22Gu.5t.5_.67.6F.6N.6V.6d.6l.6s.6_.76.7F.7N.7V.7c.7l.7u.BM.2dF.2dG.9u.2dE.BU.Bc.Bl.Bs.B_.C7.CE.CM.CV.Cd.Cl.Ct.FM.J%22%7D",
+              "value": "Hippocampal region"
+            }
+          ],
+          "preparations": [
+            "In vitro",
+            "In vivo"
+          ],
+          "methods": [
+            "Retrograde tracing technique",
+            "In vitro patch-clamp recording",
+            "Cell soma identification"
+          ],
+          "modalities": [
+            "histological approach",
+            "microscopy",
+            "anatomical approach",
+            "electrophysiology"
+          ],
+          "keywords": [
+            "Fluorescent microspheres",
+            "Hippocampo-septal cells",
+            "Stereotaxic surgery",
+            "Visually targeted recording"
+          ]
+        }
+      ]
     }, {
-      "header": "Models"
+      "header": "Models",
+      "blocks": []
     }]
   }, {
     "key": "services",

@@ -8,7 +8,7 @@ const {useEffect, useState} = React;
 const Index = () => {
     const [homePage, setHomePage] = React.useState<any>({});
 
-    const buildPageSection = (section) => <PageSection sectionData={section}/>
+    const buildPageSection = (section, index) => <PageSection sectionData={section} backgroundColor={index % 2 === 0 ? '#fff' : '#ddd'}/>
 
     const setup = async () => {
         const _homePage = await getHomePage();
@@ -20,7 +20,7 @@ const Index = () => {
     }, []);
     return (<PageContainer
             headerCarousel={homePage.header_carousel}>
-            {(homePage?.sections ?? []).map((item) => buildPageSection(item))}
+            {(homePage?.sections ?? []).map((item, index) => buildPageSection(item , index))}
     </PageContainer>
     );
 }

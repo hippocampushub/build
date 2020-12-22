@@ -165,7 +165,7 @@ const Menu = ({logo, menuItems, isSubMenuItem = false}) => {
                             <span className="navbar-toggler-icon" onClick={() => toggleMenu()}></span>
                         </button>
                         <div className={`collapse navbar-collapse ${menuExpanded ? 'show' : ''}`} id="navbarNav">
-                            <List className="navbar-nav" classes={listClasses}>
+                            <List className="navbar-nav ml-auto" classes={listClasses}>
                                 {sortedArray(menuItems, 'order')?.map((item) => buildMenuItem(item))}
                             </List>
                         </div>

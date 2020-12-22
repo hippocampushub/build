@@ -5,10 +5,13 @@ import * as React from "react";
 import {useEffect, useState} from "react";
 import {getDataSets} from "../helpers/dataHelper";
 import {DataSetCard} from "../components/cards/dataSetCard";
+import {DataSetDialog} from "../components/dialogs/datasetDialog";
 
 function DataPage() {
     const [page, setPage] = React.useState<any>({});
     const [dataSets, setDataSets] = React.useState<any>([]);
+    const [dataSetDialogOpen, setDataSetDialogOpen] = React.useState(false);
+    const [selectedDataSet, setSelectedDataSet] = React.useState<any>(null);
 
     const setup = async () => {
         try {
@@ -20,9 +23,20 @@ function DataPage() {
         }
     }
 
+    const _openDataSetDetail = (dataSet) => {
+        setDataSetDialogOpen(true);
+        setSelectedDataSet(dataSet);
+    }
+
+    const _onCloseDataSetDetail = () => {
+        setDataSetDialogOpen(false);
+        setSelectedDataSet(null);
+    }
+
     useEffect(() => {
         setup();
     }, []);
+
 
     return (
         <PageContainer>
@@ -42,11 +56,14 @@ function DataPage() {
                 <section>
                 {(dataSets ?? []).map((item) => (<div className="row">
                     <div className='col-12'>
-                        <DataSetCard dataSet={item}/>
+                        <DataSetCard dataSet={item} onClick={() => _openDataSetDetail(item)}/>
                     </div>
                 </div>))}
                 </section>
             </div>
+            <DataSetDialog open={dataSetDialogOpen}
+                           dataSet={selectedDataSet}
+                           onClose={_onCloseDataSetDetail}/>
         </PageContainer>);
 }
 

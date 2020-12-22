@@ -1,0 +1,19 @@
+.block {
+  padding: 20px;
+  background: #eee;
+  box-shadow: 0 0 5px #ddd;
+  margin-bottom: 20px;
+  cursor: pointer;
+  .block-title {
+    font-size: 18px;
+    font-weight: 400;
+    font-family: 'Nunito', 'sans-serif';
+  }
+  .block-arrow-container {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+  }
+}
