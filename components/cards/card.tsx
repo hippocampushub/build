@@ -4,7 +4,7 @@ import {DefaultComponentProps} from "@material-ui/core/OverridableComponent";
 
 interface ICardContainerProps extends DefaultComponentProps<any> {
     title: string;
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 const useCardContainerStyles = makeStyles((theme) => ({

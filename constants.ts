@@ -12,6 +12,7 @@ export default {
         homePage: 'home-page',
         pages: 'pages',
         posts: 'posts',
+        news: 'news',
         contacts: 'contacts',
         datasets: 'datasets'
     },

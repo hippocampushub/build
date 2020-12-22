@@ -45,7 +45,7 @@ const getMenuItems = async () => {
 }
 
 const getNewsList = async () => {
-    const url = `${constants.BASE_DATA_URL}/${constants.ENDPOINTS.posts}?_sort=created_at:DESC`;
+    const url = `${constants.BASE_DATA_URL}/${constants.ENDPOINTS.news}.json`;
     return getJSONData(url);
 }
 

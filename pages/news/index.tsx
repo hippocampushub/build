@@ -1,47 +1,33 @@
 import * as React from "react";
 import PageContainer from "../../components/page/pageContainer";
-import {Card, CardContent, makeStyles, Typography} from "@material-ui/core";
 import {defaultProps, getGlobalInitialProps} from "../../helpers/propsHelper";
 import {getNewsList} from "../../helpers/dataHelper";
+import {NewsCard} from "../../components/cards/newsCard";
 
-const useNewsStyles = makeStyles((theme) => ({
-    cardStyle: {
-        marginBottom: 20,
-    },
-    title: {
-        fontSize: 24,
-        fontFamily: 'Nunito, sans-family',
-        fontWeight: 600
+const NewsList = () => {
+    const [newsList, setNewsList] = React.useState<any[]>([]);
+
+    const setup = async () => {
+        try {
+            const news = await getNewsList();
+            setNewsList(news);
+        } catch (error) {
+
+        }
     }
-}));
 
-const News = ({news}) => {
-    const newsClasses = useNewsStyles();
-    return (<div className='row' key={`news-${news.id}`}>
-        <div className='col-12'>
-            <Card className={newsClasses.cardStyle}>
-                <CardContent>
-                    <Typography className={newsClasses.title} gutterBottom>
-                        {news?.title ?? ''}
-                    </Typography>
-                    <div className='row'>
-                        <div className='col-12'>
-                            {news?.content ?? ''}
-                        </div>
-                    </div>
-                </CardContent>
-            </Card>
-        </div>
-    </div>);
-}
+    React.useEffect(() => {
+        setup();
+    }, []);
 
-
-const NewsList = ({menuItems, config,  newsList}) => {
-    return (<PageContainer
-            config={config}
-            menuItems={menuItems}>
+    return (<PageContainer>
             <div className='container'>
-                {(newsList ?? []).map((news) => <News news={news}/>)}
+                {(newsList ?? []).map((news) => (
+                    <div className='row' key={`news-${news.id}`}>
+                        <div className='col-12'>
+                            <NewsCard news={news}/>
+                        </div>
+                    </div>))}
             </div>
         </PageContainer>
     );
@@ -65,9 +51,4 @@ async function getServerSideProps() {
     }
 
 }
-
-export {
-    getServerSideProps
-}
-
 export default NewsList;

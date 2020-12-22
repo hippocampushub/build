@@ -3,23 +3,31 @@
 
   &.light {
     background: #fff;
-
+    .page-section-sub-header {
+      border-bottom: 2px solid #ddd;
+    }
   }
 
   &.dark {
     background: #ddd;
     color: #333;
+    .page-section-sub-header {
+      border-bottom: 2px solid #888;
+    }
   }
 
   .page-section-header {
     font-family: 'Nunito', 'sans-serif';
-    font-size: 24px;
+    font-size: 32px;
     font-weight: 400;
+    text-transform: uppercase;
   }
 
   .page-section-sub-header {
     font-family: 'Nunito', 'sans-serif';
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 500;
+    padding: 5px 0;
+    margin-bottom: 10px;
   }
 }
