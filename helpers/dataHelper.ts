@@ -69,6 +69,11 @@ const getDataSets = async () => {
     return getJSONArrayData(url);
 }
 
+const getModels = async () => {
+    const url = `${constants.BASE_DATA_URL}/${constants.ENDPOINTS.models}.json`;
+    return getJSONArrayData(url);
+}
+
 const sendMessage = async (name: string, email: string, message: string) => {
 
 }
@@ -80,5 +85,6 @@ export {
     getPage,
     getPost,
     getNewsList,
-    getDataSets
+    getDataSets,
+    getModels
 }

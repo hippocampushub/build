@@ -8,7 +8,7 @@ function getPageUrl(menuItem: any) {
         case MenuItemType.url:
             return menuItem.url ?? '/';
         case MenuItemType.section:
-            return '#';
+            return menuItem.url ?? '#';
     }
 }
 export {

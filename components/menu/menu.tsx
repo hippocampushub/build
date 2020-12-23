@@ -118,7 +118,6 @@ const MenuItem = ({item, isSubMenuItem=false}) => {
     const isDropDown = item.type === MenuItemType.section && (item.menuitems?.length ?? 0) > 0;
     return (<ListItem onMouseEnter={isDropDown ? () => showDropDown() : null}
                       onMouseLeave={isDropDown ? () => hideDropDown() : null}
-                      onClick={isDropDown ? () => toggleDropDown() : null}
                       className={`${isActiveLink ? 'active' : ''} ${isDropDown ? 'dropdown' : ''}`}
                       classes={isSubMenuItem ? subMenuItemLinkClasses : listItemClasses}>
         <Link classes={isSubMenuItem ? subMenuItemLinkClasses : linkClasses} href={linkUrl}>

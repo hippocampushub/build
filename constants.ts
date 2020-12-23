@@ -14,7 +14,8 @@ export default {
         posts: 'posts',
         news: 'news',
         contacts: 'contacts',
-        datasets: 'datasets'
+        datasets: 'datasets',
+        models: 'models'
     },
     REQUEST_METHODS: {
         get: 'get',
