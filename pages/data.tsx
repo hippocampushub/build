@@ -7,7 +7,7 @@ import {DataSetCard} from "../components/cards/dataSetCard";
 import {DataSetDialog} from "../components/dialogs/datasetDialog";
 
 import pageContentStyle from './page.module.scss';
-import {getDatasetsFilters, searchDatasets} from "../helpers/apiHelper";
+import {getFilters, searchDatasets} from "../helpers/apiHelper";
 import {FormFilter} from "../components/forms/filter";
 
 function DataPage() {
@@ -20,7 +20,7 @@ function DataPage() {
     const setup = async () => {
         try {
             const _page = await getPage('data');
-            const {regions} = await getDatasetsFilters();
+            const {regions} = await getFilters('datasets');
             const {total, items} = await searchDatasets({});
             setPage(_page);
             setRegionFilters(regions);
