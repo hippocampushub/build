@@ -1,9 +1,12 @@
-import {Button, Typography, Divider} from '@material-ui/core';
+import * as React from 'react';
+import {Button, Typography, Divider, Tabs, Tab} from '@material-ui/core';
 import {DialogContainer} from './dialogContainer';
 import {CloudDownload as IconDownload} from "@material-ui/icons";
 import {checkIfArrayNotEmpty, checkIfNotEmpty} from '../../helpers/validatorHelper';
+import {TabPanel} from "../tabs/tabPanel";
 
 export function DataSetDialog({open, dataSet, onClose}) {
+    const [selectedTab, setSelectedTab] = React.useState<number>(0);
     return (<DialogContainer
         open={open}
         fullWidth={true}
@@ -71,6 +74,19 @@ export function DataSetDialog({open, dataSet, onClose}) {
                                 </ul>
                             </div> : null
                         }
+                    </div>
+                    <Divider style={{marginTop: 20}}/>
+                    <div className='row' style={{marginTop: 20}}>
+                        <Tabs value={selectedTab} onChange={(event, value) => setSelectedTab(value)}>
+                            <Tab label='Files'/>
+                        </Tabs>
+                    </div>
+                    <div className='row' style={{marginTop: 20}}>
+                        <TabPanel value={selectedTab} index={0}>
+                            {checkIfArrayNotEmpty(dataSet?.files) ?
+                                <div></div> : <p>No file presents</p>
+                            }
+                        </TabPanel>
                     </div>
                 </div>
             </div>

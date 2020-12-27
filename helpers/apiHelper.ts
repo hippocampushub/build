@@ -4,6 +4,7 @@ const BACKEND_URL = process.env.BACKEND_URL ?? 'http://localhost:5000';
 
 const endpoints = {
     search: {
+        filtersDatasets: () => '/filters/datasets',
         datasets: () => '/search/datasets',
         models: () => '/search/models'
     }
@@ -60,7 +61,19 @@ const searchModels = async ({
     }
 }
 
+const getDatasetsFilters = async() => {
+    const url = `${BACKEND_URL}${endpoints.search.filtersDatasets()}`;
+    try {
+        const response = await axios.get(url);
+        return _parseSuccessfullResponse(response);
+    } catch (error) {
+        console.error('@@@@error retrieving datasets');
+        console.error(error);
+    }
+}
+
 export {
     searchDatasets,
     searchModels,
+    getDatasetsFilters
 }

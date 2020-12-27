@@ -7,23 +7,26 @@ import {DataSetCard} from "../components/cards/dataSetCard";
 import {DataSetDialog} from "../components/dialogs/datasetDialog";
 
 import pageContentStyle from './page.module.scss';
-import {searchDatasets} from "../helpers/apiHelper";
+import {getDatasetsFilters, searchDatasets} from "../helpers/apiHelper";
+import {FormFilter} from "../components/forms/filter";
 
 function DataPage() {
     const [page, setPage] = React.useState<any>({});
     const [dataSets, setDataSets] = React.useState<any>([]);
     const [dataSetDialogOpen, setDataSetDialogOpen] = React.useState(false);
+    const [regionFilters, setRegionFilters] = React.useState<any[]>([]);
     const [selectedDataSet, setSelectedDataSet] = React.useState<any>(null);
 
     const setup = async () => {
         try {
             const _page = await getPage('data');
-            const _dataSets = await searchDatasets({
-
-            });
+            const {regions} = await getDatasetsFilters();
+            const {total, items} = await searchDatasets({});
             setPage(_page);
-            setDataSets(_dataSets);
+            setRegionFilters(regions);
+            setDataSets(items);
         } catch (error) {
+
         }
     }
 
@@ -58,11 +61,17 @@ function DataPage() {
                     </div>
                 </div>
                 <section>
-                {(dataSets ?? []).map((item) => (<div className="row">
-                    <div className='col-12'>
-                        <DataSetCard dataSet={item} onClick={() => _openDataSetDetail(item)}/>
+                    <div className='row' style={{marginTop: 20, marginBottom: 20}}>
+                        <div className='col-12'>
+                            <FormFilter
+                                regions={regionFilters}/>
+                        </div>
                     </div>
-                </div>))}
+                    {(dataSets ?? []).map((item) => (<div className="row">
+                        <div className='col-12'>
+                            <DataSetCard dataSet={item} onClick={() => _openDataSetDetail(item)}/>
+                        </div>
+                    </div>))}
                 </section>
             </div>
             <DataSetDialog open={dataSetDialogOpen}
