@@ -1,37 +1,38 @@
-import {getModels, getPage} from "../helpers/dataHelper";
-import {Typography} from "@material-ui/core";
-import PageContainer from "../components/page/pageContainer";
 import * as React from "react";
 import {useEffect, useState} from "react";
-import {DataSetCard} from "../components/cards/dataSetCard";
-import {DataSetDialog} from "../components/dialogs/datasetDialog";
+import {getPage} from "../helpers/dataHelper";
+import {Typography} from "@material-ui/core";
+import PageContainer from "../components/page/pageContainer";
 
 import pageContentStyle from './page.module.scss';
+import {searchDatasets, searchModels} from "../helpers/apiHelper";
 
 function ModelsPage() {
     const [page, setPage] = React.useState<any>({});
-    const [dataSets, setDataSets] = React.useState<any>([]);
-    const [dataSetDialogOpen, setDataSetDialogOpen] = React.useState(false);
-    const [selectedDataSet, setSelectedDataSet] = React.useState<any>(null);
+    const [models, setModels] = React.useState<any>([]);
+    const [modelDialogOpen, setModelDialogOpen] = React.useState(false);
+    const [selectedModel, setSelectedModel] = React.useState<any>(null);
 
     const setup = async () => {
         try {
             const _page = await getPage('models');
-            const _dataSets = await getModels();
+            const _models = await searchModels({
+
+            });
             setPage(_page);
-            setDataSets(_dataSets);
+            setModels(_models);
         } catch (error) {
         }
     }
 
     const _openDataSetDetail = (dataSet) => {
-        setDataSetDialogOpen(true);
-        setSelectedDataSet(dataSet);
+        setModelDialogOpen(true);
+        setSelectedModel(dataSet);
     }
 
     const _onCloseDataSetDetail = () => {
-        setDataSetDialogOpen(false);
-        setSelectedDataSet(null);
+        setModelDialogOpen(false);
+        setSelectedModel(null);
     }
 
     useEffect(() => {
@@ -55,7 +56,7 @@ function ModelsPage() {
                     </div>
                 </div>
                 <section>
-                    {(dataSets ?? []).map((item) => (<div className="row">
+                    {(models ?? []).map((item) => (<div className="row">
                         <div className='col-12'>
 
                         </div>
