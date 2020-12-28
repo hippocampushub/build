@@ -10,11 +10,7 @@ export function TabPanel({children, value, index, ...other}) {
             aria-labelledby={`simple-tab-${index}`}
             {...other}
         >
-            {value === index && (
-                <Box p={3}>
-                    <Typography>{children}</Typography>
-                </Box>
-            )}
+           {children}
         </div>
     );
 }

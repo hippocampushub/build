@@ -4,9 +4,19 @@ import {DialogContainer} from './dialogContainer';
 import {CloudDownload as IconDownload} from "@material-ui/icons";
 import {checkIfArrayNotEmpty, checkIfNotEmpty} from '../../helpers/validatorHelper';
 import {TabPanel} from "../tabs/tabPanel";
+import {FileLink} from "../files/fileLink";
+import {CustomButton} from "../buttons/buttons";
+
 
 export function DataSetDialog({open, dataSet, onClose}) {
     const [selectedTab, setSelectedTab] = React.useState<number>(0);
+
+    const _downloadAll = (files) => {
+        for (const file of files) {
+            window.open(file.url);
+        }
+    }
+
     return (<DialogContainer
         open={open}
         fullWidth={true}
@@ -20,9 +30,9 @@ export function DataSetDialog({open, dataSet, onClose}) {
                     {checkIfNotEmpty(dataSet?.dataDescriptor) ?
                         <div className='row'>
                             <div className='col-12'>
-                                <Button onClick={() => window.open(dataSet?.dataDescriptor)}>
-                                    <IconDownload/> Data Descriptor
-                                </Button>
+                                <CustomButton onClick={() => window.open(dataSet?.dataDescriptor)}>
+                                    <span><IconDownload/> Data Descriptor</span>
+                                </CustomButton>
                             </div>
                         </div> : null
                     }
@@ -77,14 +87,26 @@ export function DataSetDialog({open, dataSet, onClose}) {
                     </div>
                     <Divider style={{marginTop: 20}}/>
                     <div className='row' style={{marginTop: 20}}>
-                        <Tabs value={selectedTab} onChange={(event, value) => setSelectedTab(value)}>
-                            <Tab label='Files'/>
-                        </Tabs>
+                        <div className='col-12'>
+                            <Tabs value={selectedTab} onChange={(event, value) => setSelectedTab(value)}>
+                                <Tab label='Files'/>
+                            </Tabs>
+                        </div>
                     </div>
                     <div className='row' style={{marginTop: 20}}>
                         <TabPanel value={selectedTab} index={0}>
                             {checkIfArrayNotEmpty(dataSet?.files) ?
-                                <div></div> : <p>No file presents</p>
+                                <div className='col-12'>
+                                    <CustomButton onClick={() => _downloadAll(dataSet?.files)}>
+                                        <span><IconDownload/> Download All</span>
+                                    </CustomButton>
+                                    {(dataSet?.files ?? []).map((item) =>
+                                        <div className='row' style={{marginTop: 10}}>
+                                            <div className='col-12'>
+                                                <FileLink file={item}/>
+                                            </div>
+                                        </div>)}
+                                </div> : <p>No file presents</p>
                             }
                         </TabPanel>
                     </div>
