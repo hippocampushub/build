@@ -5,8 +5,8 @@ const BACKEND_URL = process.env.BACKEND_URL ?? 'http://localhost:5000';
 const endpoints = {
     search: {
         filters: (indexName: string) => `/filters/${indexName}`,
-        datasets: () => '/search/datasets',
-        models: () => '/search/models'
+        datasets: () => '/search/dataset',
+        models: () => '/search/model'
     }
 }
 

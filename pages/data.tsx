@@ -20,10 +20,10 @@ function DataPage() {
     const setup = async () => {
         try {
             const _page = await getPage('data');
-            const {regions} = await getFilters('datasets');
+            const {secondary_region: regionFilters}  = await getFilters('dataset');
             const {total, items} = await searchDatasets({});
             setPage(_page);
-            setRegionFilters(regions);
+            setRegionFilters(regionFilters);
             setDataSets(items);
         } catch (error) {
 

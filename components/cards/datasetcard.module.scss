@@ -1,5 +1,9 @@
 .dataset-card-content {
 
+  .dataset-card-image {
+    max-width: 100%;
+  }
+
   .dataset-card-description {
     max-height: 50px;
     overflow: hidden;
