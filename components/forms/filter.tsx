@@ -74,7 +74,7 @@ export function FilterBox({
                     </IconButton>
                 </div>
             </div>
-            <div className='row' style={{marginTop: 10}}>
+            <div className='row'>
                 <div className='col-12'>
                     <FormControl fullWidth={true}>
                         <InputLabel>Region</InputLabel>
