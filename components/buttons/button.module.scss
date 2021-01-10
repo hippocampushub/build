@@ -4,11 +4,21 @@ button.custom-button {
   min-width: 200px;
   height: 50px;
   box-shadow: 1px 1px 5px #333;
+  border-radius: 5px;
+  outline: none;
+  &:hover, &:focus {
+    outline: none;
+  }
   &.primary {
-    background: $color-background-dark;
-    color: #fff;
+    background: $color-white;
+    border: 3px solid $color-grey;
+    color: $color-background-dark;
   }
   &.secondary {
 
   }
+}
+
+button.expand-button {
+  min-width: auto;
 }

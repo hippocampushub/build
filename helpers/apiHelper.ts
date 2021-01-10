@@ -12,7 +12,10 @@ const endpoints = {
 
 interface ISearchParams {
     query?: string,
-    region?: string
+    region?: string,
+    cell_type?: string,
+    species?: string,
+    page: number,
 }
 
 const _parseSuccessfullResponse = (response) => {
@@ -28,13 +31,18 @@ const _parseSuccessfullResponse = (response) => {
 
 const searchDatasets = async ({
     query,
-    region
+    region,
+    cell_type,
+    species,
+    page = 0
 }: ISearchParams) => {
-    const url = `${BACKEND_URL}${endpoints.search.datasets()}`;
+    const url = `${BACKEND_URL}${endpoints.search.datasets()}/${page}`;
     try {
         const response = await axios.post(url, {
             query,
-            region
+            region,
+            cell_type,
+            species
         });
         return _parseSuccessfullResponse(response);
     } catch (error) {

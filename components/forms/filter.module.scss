@@ -1,4 +1,11 @@
-.select-box {
-  height: 48px;
-  min-width: 200px;
+@import "variables";
+.filter-box {
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 24px;
+  .select-box {
+    height: 48px;
+    min-width: 200px;
+  }
 }
