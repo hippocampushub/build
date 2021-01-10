@@ -42,19 +42,19 @@ export function DataSetCard({dataSet, onClick}) {
                 </div>
                 <div className={contentClassName}>
                     <div className='row'>
-                        <div className='col-12'>
+                        <div className='col-12 text-left'>
                             <span className={dataSetCardStyle['dataset-card-name-label']}>Name: </span><span
                             className={dataSetCardStyle['dataset-card-name-value']}>{dataSet?.name ?? ''}</span>
                         </div>
-                        <div className='col-12'>
+                        <div className='col-12 text-left'>
                             <span className={dataSetCardStyle['dataset-card-species-label']}>Species: </span><span
                             className={dataSetCardStyle['dataset-card-species-value']}>{dataSet?.species ?? ''}</span>
                         </div>
-                        <div className='col-12'>
+                        <div className='col-12 text-left'>
                             <span className={dataSetCardStyle['dataset-card-region-label']}>Region: </span><span
                             className={dataSetCardStyle['dataset-card-region-value']}>{dataSet?.region ?? ''}</span>
                         </div>
-                        <div className='col-12'>
+                        <div className='col-12 text-left'>
                             <span className={dataSetCardStyle['dataset-card-cell-type-label']}>Cell Type: </span><span
                             className={dataSetCardStyle['dataset-card-cell-type-value']}>{dataSet?.cell_type ?? ''}</span>
                         </div>
@@ -71,11 +71,11 @@ export function DataSetCard({dataSet, onClick}) {
                                 }
                             </IconButton>
                         </div>
-                        <div className='col-9'>
+                        <div className='col-9 text-left'>
                             <div className='row'>
                                 {hasDownloadLink ?
                                     <div className='col-12'>
-                            <span className={dataSetCardStyle['dataset-card-action']}>
+                                        <span className={dataSetCardStyle['dataset-card-action']}>
                                 <Tooltip title='Download'>
                                     <ExpandButton
                                         label={'Download'}
@@ -99,7 +99,7 @@ export function DataSetCard({dataSet, onClick}) {
                         </div>*/}
                                 {hasPageLink ?
                                     <div className='col-12'>
-                            <span className={dataSetCardStyle['dataset-card-action']}>
+                                        <span className={dataSetCardStyle['dataset-card-action']}>
 
                                     <Tooltip title='View on Site'>
                                 <ExpandButton

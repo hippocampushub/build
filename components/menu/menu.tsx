@@ -48,20 +48,19 @@ const useListItemStyles = makeStyles((theme) => ({
 const useSubMenuListItemStyles = makeStyles((theme) => ({
     root: {
         width: 'auto',
-        paddingLeft: 0,
-        paddingRight: 0,
-        '&:hover': {
-            borderBottom: '2px solid #fff'
-        },
-        '&.active': {
-            borderBottom: '2px solid #fff'
-        },
+        padding: '10px 10px',
+        borderBottom: '1px solid #ddd',
+        '&:last-child': {
+            borderBottom: 'none'
+        }
     }
 }))
 
 const useLinkStyles = makeStyles((theme) => ({
     root: {
         color: '#fff',
+        fontFamily: 'Montserrat, san-serif',
+        fontWeight: 600,
         '&:hover': {
             color: '#fff',
             textDecoration: 'none'
@@ -72,11 +71,10 @@ const useLinkStyles = makeStyles((theme) => ({
 const useSubMenuLinkStyles = makeStyles((theme) => ({
     root: {
         display: 'block',
-        padding: '5px 10px',
         color: '#fff',
         '&:hover': {
             color: '#fff',
-            textDecoration: 'none'
+            textDecoration: 'underline'
         }
     }
 }));
@@ -86,7 +84,8 @@ const MenuItem = ({item, isSubMenuItem=false}) => {
 
     const listItemClasses = useListItemStyles();
     const linkClasses = useLinkStyles();
-    const subMenuItemLinkClasses = useSubMenuLinkStyles();
+    const subMenuListItemClasses = useSubMenuListItemStyles();
+    const subMenuLinkClasses = useSubMenuLinkStyles();
 
     const [expanded, setExpanded] = useState(false);
 
@@ -119,8 +118,8 @@ const MenuItem = ({item, isSubMenuItem=false}) => {
     return (<ListItem onMouseEnter={isDropDown ? () => showDropDown() : null}
                       onMouseLeave={isDropDown ? () => hideDropDown() : null}
                       className={`${isActiveLink ? 'active' : ''} ${isDropDown ? 'dropdown' : ''}`}
-                      classes={isSubMenuItem ? subMenuItemLinkClasses : listItemClasses}>
-        <Link classes={isSubMenuItem ? subMenuItemLinkClasses : linkClasses} href={linkUrl}>
+                      classes={isSubMenuItem ? subMenuListItemClasses : listItemClasses}>
+        <Link classes={isSubMenuItem ? subMenuLinkClasses : linkClasses} href={linkUrl}>
             {item.title}
             {isDropDown ?
                 buildSubMenu(item, expanded) : null

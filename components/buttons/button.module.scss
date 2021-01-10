@@ -3,9 +3,11 @@
 button.custom-button {
   min-width: 200px;
   height: 50px;
-  box-shadow: 1px 1px 5px #333;
-  border-radius: 5px;
+  box-shadow: 0 0 2px #333;
+  border-radius: 2.5px;
   outline: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
   &:hover, &:focus {
     outline: none;
   }
@@ -21,4 +23,8 @@ button.custom-button {
 
 button.expand-button {
   min-width: auto;
+  outline: none;
+  &:hover, &:focus {
+    outline: none;
+  }
 }

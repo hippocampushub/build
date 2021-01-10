@@ -7,7 +7,9 @@ nav.menu-navbar {
     padding: .5rem 1rem;
   }
   .custom-dropdown-menu {
-    padding: 10px 15px;
+    min-width: 250px;
+    border-radius: 2px;
+    padding: 0;
     background: $color-background-dark;
   }
   .custom-navbar-brand {

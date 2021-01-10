@@ -2,7 +2,7 @@ import * as React from "react";
 import {useEffect, useState} from "react";
 import {Typography} from "@material-ui/core";
 import {getPage} from "../helpers/dataHelper";
-import Spinner from  "../components/spinner/spinner";
+import Spinner from "../components/spinner/spinner";
 import PageContainer from "../components/page/pageContainer";
 import {DataSetCard} from "../components/cards/dataSetCard";
 import {DataSetDialog} from "../components/dialogs/datasetDialog";
@@ -114,6 +114,8 @@ function DataPage() {
 
     const hasMoreItems = numPage < totalPages - 1;
 
+    const hasData = !!dataSets && dataSets.length > 0;
+
     return (
         <PageContainer>
             <div className={`container ${pageContentStyle['page-container']}`}>
@@ -136,7 +138,7 @@ function DataPage() {
                                 query={query}
                                 regions={regionFilters}
                                 cellTypes={cellTypeFilters}
-                                speciesFilters={speciesFilters}
+                                species={speciesFilters}
                                 selectedRegion={selectedRegion}
                                 selectedCellType={selectedCellType}
                                 selectedSpecies={selectedSpecies}
@@ -149,11 +151,22 @@ function DataPage() {
                                 resetFilters={() => _resetFilters()}/>
                         </div>
                     </div>
-                    {(dataSets ?? []).map((item) => (<div className="row" key={`row-dataset-${item?.id}`}>
-                        <div className='col-12'>
-                            <DataSetCard dataSet={item} onClick={() => _openDataSetDetail(item)}/>
+                    <div className='row'>
+                        <div className='col-12 text-center'>
+                            {!hasData ?
+
+                                <p>{loading ? '': 'There are not data for search criteria'}</p> :
+                                <div>{(dataSets ?? []).map((item) => (
+                                    <div className="row" key={`row-dataset-${item?.id}`}>
+                                        <div className='col-12'>
+                                            <DataSetCard dataSet={item} onClick={() => _openDataSetDetail(item)}/>
+                                        </div>
+                                    </div>))}</div>
+
+                            }
                         </div>
-                    </div>))}
+                    </div>
+
                     {hasMoreItems ?
                         <div className='row' style={{marginTop: 20}}>
                             <div className='col-12 text-center'>
@@ -173,7 +186,8 @@ function DataPage() {
             <DataSetDialog open={dataSetDialogOpen}
                            dataSet={selectedDataSet}
                            onClose={_onCloseDataSetDetail}/>
-        </PageContainer>);
+        </PageContainer>
+    );
 }
 
 export default DataPage;
