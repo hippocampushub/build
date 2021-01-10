@@ -2,7 +2,8 @@
 .dataset-card-content {
 
   .dataset-card-image {
-    max-width: 100%;
+    width: 100%;
+    object-fit: cover;
   }
 
   .dataset-card-name-label, .dataset-card-species-label, .dataset-card-region-label, .dataset-card-cell-type-label {
