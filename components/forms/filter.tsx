@@ -2,20 +2,24 @@ import * as React from 'react';
 import {Card, makeStyles, Tooltip, Typography} from "@material-ui/core"
 import {MenuItem, Select} from "@material-ui/core";
 import {Icon, IconButton, FormControl, InputLabel} from '@material-ui/core'
-import {FilterList as IconFilter, Close as IconClose} from "@material-ui/icons";
+import {
+    FilterList as IconFilter,
+    Close as IconClose,
+    Check as IconCheck,
+    ClearAll as IconClear
+} from "@material-ui/icons";
 import SearchBar from 'material-ui-search-bar';
 import {DefaultComponentProps} from "@material-ui/core/OverridableComponent";
 
 import filterStyle from './filter.module.scss';
-import {CustomButton} from "../buttons/buttons";
 
 
 const useStyles = makeStyles((theme) => ({
-   root: {
-       position: 'absolute',
-       zIndex: 10,
-       minWidth: 300
-   }
+    root: {
+        position: 'absolute',
+        zIndex: 10,
+        minWidth: 300
+    }
 }));
 
 const useIconStyles = makeStyles((theme) => ({
@@ -48,6 +52,7 @@ export function FilterBox({
     onChangeRegion,
     onChangeCellType,
     onChangeSpecies,
+    closeFilters,
     applyFilters,
     resetFilters
 }) {
@@ -69,7 +74,7 @@ export function FilterBox({
                 <div className='col-3'>
                     <IconButton
                         className={iconButtonClasses.root}
-                        onClick={() => resetFilters()}>
+                        onClick={() => closeFilters()}>
                         <IconClose/>
                     </IconButton>
                 </div>
@@ -118,11 +123,16 @@ export function FilterBox({
             </div>
             <div className='row' style={{marginTop: 10}}>
                 <div className='col-12 text-center'>
-                    <CustomButton
-                        variant='primary'
-                        onClick={() => applyFilters()}>
-                        Apply Filters
-                    </CustomButton>
+                    <Tooltip title='Reset Filters'>
+                        <IconButton onClick={() => resetFilters(false)}>
+                            <IconClear/>
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title='Apply Filters'>
+                        <IconButton onClick={() => applyFilters(false)}>
+                            <IconCheck/>
+                        </IconButton>
+                    </Tooltip>
                 </div>
             </div>
         </div>
@@ -153,14 +163,20 @@ export function FormFilter({
         setOpenFilter(!openFilter);
     }
 
-    const _applyFilters = () => {
+    const _closeFilters = () => {
+        setOpenFilter(false);
+    }
+
+    const _applyFilters = (close) => {
         applyFilters();
         setOpenFilter(false);
     }
 
-    const _resetFilters = () => {
+    const _resetFilters = (close) => {
         resetFilters();
-        setOpenFilter(false);
+        if (close) {
+            setOpenFilter(false);
+        }
     }
 
     return (<div>
@@ -195,6 +211,7 @@ export function FormFilter({
                         onChangeRegion={onChangeRegion}
                         onChangeCellType={onChangeCellType}
                         onChangeSpecies={onChangeSpecies}
+                        closeFilters={_closeFilters}
                         applyFilters={_applyFilters}
                         resetFilters={_resetFilters}/> : null
                 }

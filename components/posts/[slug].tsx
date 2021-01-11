@@ -24,7 +24,7 @@ function PostContent({config, menuItems, post}) {
     </PageContainer>);
 }
 
-async function getServerSideProps({params}) {
+async function getStaticProps({params}) {
     const {slug} = params;
     const globalConfig = await getGlobalInitialProps();
     const post = await getPost(slug);

@@ -24,6 +24,16 @@
     white-space: nowrap;
   }
 
+  .dataset-card-source-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    background: $color-blue;
+    padding: 2px 5px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 11px;
+  }
+
   .dataset-card-actions-container {
     background: $color-background-light;
     padding-top: 10px;

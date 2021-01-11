@@ -4,9 +4,9 @@ import PageContainer from "../../components/page/pageContainer";
 import {getGlobalInitialProps} from "../../helpers/propsHelper";
 import {useEffect, useState} from "react";
 
-function Post({props}) {
+function Post({params}) {
 
-    const [post, setPost] = useState<any>();
+    const [post, setPost] = useState<any>({});
 
     const setup = () => {
 
@@ -35,7 +35,7 @@ function Post({props}) {
         </PageContainer>);
 }
 
-async function getServerSideProps({params}) {
+async function getStaticProps({params}) {
     const {slug} = params;
     return {
         props: {params}
@@ -43,8 +43,17 @@ async function getServerSideProps({params}) {
 }
 
 
+const getStaticPaths = () => {
+    return {
+        paths: [],
+        fallback: false
+    }
+}
+
+
 export {
-    getServerSideProps
+    getStaticPaths,
+    getStaticProps
 }
 
 export default Post;

@@ -33,7 +33,7 @@ const NewsList = () => {
     );
 }
 
-async function getServerSideProps() {
+async function getStaticProps() {
     try {
         const globalConfig = await getGlobalInitialProps();
         const newsList = await getNewsList();

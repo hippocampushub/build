@@ -15,7 +15,7 @@ interface ISearchParams {
     region?: string,
     cell_type?: string,
     species?: string,
-    page: number,
+    page?: number,
 }
 
 const _parseSuccessfullResponse = (response) => {

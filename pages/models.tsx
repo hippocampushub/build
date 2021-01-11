@@ -16,9 +16,7 @@ function ModelsPage() {
     const setup = async () => {
         try {
             const _page = await getPage('models');
-            const _models = await searchModels({
-
-            });
+            const _models = await searchModels({});
             setPage(_page);
             setModels(_models);
         } catch (error) {

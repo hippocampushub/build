@@ -37,12 +37,20 @@ function Page({params}) {
         </PageContainer>);
 }
 
-const getServerSideProps = ({params}) => ({
+const getStaticProps = ({params}) => ({
     props: { params }
 });
 
+const getStaticPaths = () => {
+    return {
+        paths: [],
+        fallback: false
+    }
+}
+
 export {
-    getServerSideProps
+    getStaticProps,
+    getStaticPaths
 };
 
 export default Page;

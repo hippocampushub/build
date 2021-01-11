@@ -1,5 +1,4 @@
 import {useEffect, useState} from "react";
-import {sendMessage} from "../../helpers/dataHelper";
 import {checkIfEmailValid, checkIfNotEmpty} from "../../helpers/validatorHelper";
 import {Button, makeStyles, TextField, Typography} from "@material-ui/core";
 import {Alert} from "@material-ui/lab";
@@ -49,7 +48,6 @@ function ContactForm() {
     const _sendMessage = async () => {
         setLoading(true);
         try {
-            await sendMessage(name, email, message);
             setSuccess(true);
         } catch (error) {
 

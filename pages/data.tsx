@@ -12,6 +12,13 @@ import pageContentStyle from './page.module.scss';
 import {getFilters, searchDatasets} from "../helpers/apiHelper";
 import {FormFilter} from "../components/forms/filter";
 
+export interface ISearchParams {
+    query?: string,
+    region?: string,
+    cellType?: string,
+    species?: string
+}
+
 function DataPage() {
     const [loading, setLoading] = React.useState(true);
     const [page, setPage] = React.useState<any>({});
@@ -22,7 +29,7 @@ function DataPage() {
     const [speciesFilters, setSpeciesFilters] = React.useState<any[]>([]);
     const [selectedDataSet, setSelectedDataSet] = React.useState<any>(null);
 
-    const [query, setQuery] = React.useState('');
+    const [selectedQuery, setSelectedQuery] = React.useState('');
     const [selectedRegion, setSelectedRegion] = React.useState(null);
     const [selectedCellType, setSelectedCellType] = React.useState(null);
     const [selectedSpecies, setSelectedSpecies] = React.useState(null);
@@ -35,7 +42,7 @@ function DataPage() {
             const _page = await getPage('data');
             const {secondary_region: regionFilters, cell_type: cellTypes, species} = await getFilters('dataset');
             const {total_page: totalPages, items} = await searchDatasets({
-                query,
+                query: selectedQuery,
                 region: selectedRegion,
                 cell_type: selectedCellType,
                 species: selectedSpecies,
@@ -63,16 +70,21 @@ function DataPage() {
         setSelectedDataSet(null);
     }
 
-    const _search = async () => {
+    const _search = async ({
+        query,
+        region,
+        cellType,
+        species
+    }: ISearchParams = {}) => {
         console.log('@@@@requestSearch');
         const page = 0
         setNumPage(0);
         setLoading(true);
         const {total_page: totalPages, items} = await searchDatasets({
-            query,
-            region: selectedRegion,
-            cell_type: selectedCellType,
-            species: selectedSpecies,
+            query: query ?? selectedQuery,
+            region: region ?? selectedRegion,
+            cell_type: cellType ?? selectedCellType,
+            species: species ?? selectedSpecies,
             page
         });
         setDataSets(items)
@@ -85,7 +97,7 @@ function DataPage() {
         setNumPage(page);
         setLoading(true);
         const {total_page: totalPages, items} = await searchDatasets({
-            query,
+            query: selectedQuery,
             region: selectedRegion,
             cell_type: selectedCellType,
             species: selectedSpecies,
@@ -105,7 +117,12 @@ function DataPage() {
         setSelectedRegion(null);
         setSelectedCellType(null);
         setSelectedSpecies(null);
-        await _search();
+        await _search({
+            query: '',
+            region: '',
+            cellType: '',
+            species: ''
+        });
     }
 
     useEffect(() => {
@@ -135,14 +152,14 @@ function DataPage() {
                     <div className='row' style={{marginTop: 20, marginBottom: 20}}>
                         <div className='col-12'>
                             <FormFilter
-                                query={query}
+                                query={selectedQuery}
                                 regions={regionFilters}
                                 cellTypes={cellTypeFilters}
                                 species={speciesFilters}
                                 selectedRegion={selectedRegion}
                                 selectedCellType={selectedCellType}
                                 selectedSpecies={selectedSpecies}
-                                onQueryChange={(value) => setQuery(value)}
+                                onQueryChange={(value) => setSelectedQuery(value)}
                                 onRequestSearch={() => _search()}
                                 onChangeRegion={(value) => setSelectedRegion(value)}
                                 onChangeCellType={(value) => setSelectedCellType(value)}
