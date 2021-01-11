@@ -17,7 +17,7 @@ interface IPageProps extends DefaultComponentProps<any>{
     headerCarousel?: CarouselImage[]
 }
 
-function PageContainer({children, title = 'Next.js App', headerCarousel}: IPageProps) {
+function PageContainer({children, title = 'HBP Project', headerCarousel}: IPageProps) {
     const [menuItems, setMenuItems] = React.useState<any[]>([]);
     const [config, setConfig] = React.useState<any>({});
 
