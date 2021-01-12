@@ -1,0 +1,14 @@
+{
+  "footer": {
+    "copyright": "Tutti i diritti riservati - 2020",
+    "header": "Human Brain Project",
+    "logo": {
+      "url": "/assets/images/logo.png"
+    }
+  },
+  "header": {
+    "logo": {
+      "url": "/assets/images/logo.png"
+    }
+  }
+}

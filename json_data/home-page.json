@@ -1,0 +1,57 @@
+{
+  "id": 1,
+  "title": "Home Page",
+  "header_carousel": [
+    {
+      "url": "/assets/images/header.jpg"
+    }
+  ],
+  "sections": [
+    {
+      "id": "resources",
+      "header": "Resources",
+      "variant": "light",
+      "carousel": null,
+      "rows": [
+        {
+          "header": "Data",
+          "columns": [
+            {
+              "content": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            },
+            {
+              "image": "/assets/images/dataset.svg"
+            }
+          ],
+          "cta": {
+            "label": "Go To Section",
+            "url": "/data"
+          }
+        },
+        {
+          "header": "Models",
+          "columns": [
+            {
+              "image": "/assets/images/neuron.jpg"
+            },
+            {
+              "content": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "services",
+      "header": "Services",
+      "rows": [
+        {
+          "cta": {
+            "label": "Go To Section",
+            "url": "/services"
+          }
+        }
+      ]
+    }
+  ]
+}
