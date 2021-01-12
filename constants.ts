@@ -1,5 +1,6 @@
 export default {
-    BASE_DATA_URL: process.env.BASE_URL ?? '/json_data',
+    BASE_URL: `${process.env.BASE_URL ?? ''}`,
+    BASE_DATA_URL: `${process.env.BASE_URL ?? ''}/json_data`,
     EXTERNAL_API_URLS: {
         EBRAINS_KNOWLEDGE_GRAPH: "https://search.kg.ebrains.eu/api/groups/public/search",
         NEUROMORPHO: "http://neuromorpho.org/",

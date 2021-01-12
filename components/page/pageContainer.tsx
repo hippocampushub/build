@@ -23,8 +23,6 @@ function PageContainer({children, title = 'HBP Project', headerCarousel}: IPageP
 
     const setup = async () => {
         const _menuItems = await getMenuItems();
-        console.log('@@@@menuItems');
-        console.log(_menuItems);
         const _config = await getConfig();
         setMenuItems(_menuItems);
         setConfig(_config);

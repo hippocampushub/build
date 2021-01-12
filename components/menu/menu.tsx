@@ -153,9 +153,9 @@ const Menu = ({logo, menuItems, isSubMenuItem = false}) => {
                 <nav className={`navbar navbar-dark navbar-expand-lg ${menuStyle['menu-navbar']}`}>
                     <div className='container'>
                         {logo ?
-                            <a className={`navbar-brand ${menuStyle['custom-navbar-brand']}`} href='/'>
+                            <Link className={`navbar-brand ${menuStyle['custom-navbar-brand']}`} href='/'>
                                 <img src={getImageUrl(logo)}/>
-                            </a> : null
+                            </Link> : null
                         }
                         <button className={`navbar-toggler ${menuStyle['custom-navbar-toggler']}`} type="button"
                                 data-toggle="collapse" data-target="#navbarNav"
