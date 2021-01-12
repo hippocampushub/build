@@ -121,10 +121,10 @@ const MenuItem = ({item, isSubMenuItem=false}) => {
                       classes={isSubMenuItem ? subMenuListItemClasses : listItemClasses}>
         <Link classes={isSubMenuItem ? subMenuLinkClasses : linkClasses} href={linkUrl}>
             {item.title}
-            {isDropDown ?
-                buildSubMenu(item, expanded) : null
-            }
         </Link>
+        {isDropDown ?
+            buildSubMenu(item, expanded) : null
+        }
     </ListItem>);
 }
 
