@@ -7,7 +7,7 @@ const writeFile = promisify(fs.writeFile);
 
 const publish = async () => {
   try {
-    console.log('@@@@@@Try publish'),
+    console.log('@@@@@@Try publish');
     await writeFile('build/.nojekyll', '',);
     await writeFile('build/_next/.nojekyll', '',)
     ghpages.publish('build', {

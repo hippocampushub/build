@@ -9,6 +9,7 @@ import {
 import {useIconButtonStyles} from "../../style/style";
 import {ExpandButton} from "../buttons/expandButton";
 import {CardContainer} from "./card";
+import {getImageUrlByPath} from "../../helpers/imageHelper";
 
 import dataSetCardStyle from './datasetcard.module.scss';
 
@@ -39,7 +40,7 @@ export function DataSetCard({dataSet, onClick}) {
         <div className={dataSetCardStyle['dataset-card-content']}>
             <div className='row'>
                 <div className='col-md-2 col-sm-12'>
-                    <img src={dataSet?.icon ?? '/assets/images/placeholder.png'}
+                    <img src={dataSet?.icon ?? getImageUrlByPath('/assets/images/placeholder.png')}
                          className={dataSetCardStyle['dataset-card-image']}/>
                 </div>
                 <div className={contentClassName}>
