@@ -1,4 +1,5 @@
 export default {
+    BACKEND_URL: process.env.BACKEND_URL ?? 'http://localhost:5000',
     BASE_URL: `${process.env.BASE_URL ?? ''}`,
     BASE_DATA_URL: `${process.env.BASE_URL ?? ''}/json_data`,
     EXTERNAL_API_URLS: {

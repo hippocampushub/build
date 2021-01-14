@@ -2,7 +2,8 @@ import constants from "../constants";
 
 function getImageUrlByPath(path: any) {
     if (!path) return null;
-    if (path.startsWith('http')) return path;
+    if (path.startsWith('https')) return path;
+    if (path.startsWith('http')) return `${constants.BACKEND_URL}/proxy?url=${path}`
     const imagePath = `${constants.BASE_URL}${path}`;
     return imagePath;
 }
