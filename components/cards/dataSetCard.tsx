@@ -48,7 +48,7 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
         <div className={dataSetCardStyle['dataset-card-content']}>
             <div className='row'>
                 <div className='col-md-2 col-sm-12'>
-                    <img src={dataSet?.icon ?? getImageUrlByPath('/assets/images/placeholder.png')}
+                    <img src={getImageUrlByPath(dataSet?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png')}
                          className={dataSetCardStyle['dataset-card-image']}/>
                 </div>
                 <div className='col-md-7 col-sm-12'>
