@@ -26,7 +26,7 @@ export function DataSetCard({dataSet, selectedForDownload, toggleSelectedForDown
     const iconButtonClasses = useIconButtonStyles();
 
 
-    const downloadLink = dataSet?.download_original_format ?? null;
+    const downloadLink = dataSet?.download_link ?? null;
     const hasDownloadLink = !!downloadLink;
 
     const pageLink = dataSet?.page_link ?? null;
