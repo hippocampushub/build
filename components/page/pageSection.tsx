@@ -15,22 +15,25 @@ function PageSection({sectionData, variant = 'light'}: { sectionData: any, varia
 
     return (<section id={sectionData.id} className={`${pageSectionStyle['page-section']} ${pageSectionStyle[variant]}`}>
         {checkIfNotEmpty(sectionData?.header) ?
-            <Typography variant='h5' align='center' gutterBottom
-                        className={pageSectionStyle['page-section-header']}>
-                {sectionData.header}
-            </Typography> : null
+            <div className={pageSectionStyle['page-section-header']}>
+                <Typography variant='h5' align='center' gutterBottom
+                            className={pageSectionStyle['page-section-header-label']}>
+                    {sectionData.header}
+                </Typography>
+                <div className={pageSectionStyle['page-section-header-divider']}/>
+            </div>: null
         }
         {(sectionData?.rows ?? []).map((row) => {
             const hasColumns = (row.columns ?? []).length > 0;
             const colClassName = hasColumns ? `col-${Math.ceil(12 / (row.columns ?? []).length)}` : 'col-12';
             return (<div>
-                <div className='row'>
+                <div className='row' style={{marginTop: 10}}>
                     <div className='col-12'>
                         {checkIfNotEmpty(row.header) ?
-                            <Typography variant='h6' gutterBottom
-                                        className={pageSectionStyle['page-section-sub-header']}>
-                                {row.header}
-                            </Typography> : null
+                                <Typography variant='h6' gutterBottom
+                                            className={pageSectionStyle['page-section-sub-header']}>
+                                    {row.header}
+                                </Typography> : null
                         }
                     </div>
                 </div>
@@ -52,7 +55,7 @@ function PageSection({sectionData, variant = 'light'}: { sectionData: any, varia
                         }
                     </div>)}
                     {!!row.cta ?
-                        <div className='col-12 text-center'>
+                        <div className='col-12 text-center' style={{marginTop: 20}}>
                             <CustomButton onClick={() => router.push(row.cta.url)} variant='primary'>
                                 {row.cta.label}
                             </CustomButton>

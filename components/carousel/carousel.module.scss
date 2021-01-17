@@ -3,3 +3,31 @@
   max-height: 500px;
   object-fit: cover;
 }
+
+.custom-carousel-caption {
+  left: 0 !important;
+  right: auto !important;
+  min-width: 75%;
+  top: 60%;
+  transform: translate(0, -50%);
+  bottom: auto !important;
+  background: #333333dd;
+  padding: 10px !important;
+  text-align: left !important;
+
+  @media screen and (max-width: 768px) {
+    left: 5% !important;
+    right: 5% !important;
+    top: 50%;
+    transform: translate(0, -50%);
+    min-width: auto;
+    padding: 5px !important;
+    text-align: center !important;
+  }
+
+  .carousel-caption-header {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    color: #fff;
+  }
+}

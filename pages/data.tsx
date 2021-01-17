@@ -7,9 +7,10 @@ import PageContainer from "../components/page/pageContainer";
 import {DataSetCard} from "../components/cards/dataSetCard";
 import {DataSetDialog} from "../components/dialogs/datasetDialog";
 import {CustomButton} from "../components/buttons/buttons";
+import {CloudDownload as IconDownload} from "@material-ui/icons";
 
 import pageContentStyle from './page.module.scss';
-import {getFilters, searchDatasets} from "../helpers/apiHelper";
+import {getFilters, searchDatasets, downloadAllDatasets, downloadDatasets} from "../helpers/apiHelper";
 import {FormFilter} from "../components/forms/filter";
 
 export interface ISearchParams {
@@ -34,8 +35,14 @@ function DataPage() {
     const [selectedCellType, setSelectedCellType] = React.useState(null);
     const [selectedSpecies, setSelectedSpecies] = React.useState(null);
 
+    const [selectedForDownloads, setSelectedForDownloads] = React.useState<string[]>([]);
+
     const [numPage, setNumPage] = React.useState<number>(0);
     const [totalPages, setTotalPages] = React.useState<number>(1);
+
+    useEffect(() => {
+        setup();
+    }, []);
 
     const setup = async () => {
         try {
@@ -125,9 +132,29 @@ function DataPage() {
         });
     }
 
-    useEffect(() => {
-        setup();
-    }, []);
+    const _downloadAll = () => {
+        window.open(downloadAllDatasets());
+    }
+
+    const _downloadSelectedDatasets = () => {
+        window.open(downloadDatasets(selectedForDownloads));
+    }
+
+    const _toggleSelectForDownload = async(id, selected) => {
+        console.log('@@@@@@@toggleSelectForDownload', id, selected)
+        if (selected) {
+            const newValues = [...selectedForDownloads];
+            newValues.push(id);
+            setSelectedForDownloads(newValues)
+        } else {
+            const newValues = [...selectedForDownloads];
+            const elIndex = newValues.indexOf(id);
+            if (elIndex > -1) {
+                newValues.splice(elIndex, 1);
+                setSelectedForDownloads(newValues);
+            }
+        }
+    }
 
     const hasMoreItems = numPage < totalPages - 1;
 
@@ -149,7 +176,7 @@ function DataPage() {
                     </div>
                 </div>
                 <section>
-                    <div className='row' style={{marginTop: 20, marginBottom: 20}}>
+                    <div className='row' style={{marginTop: 20}}>
                         <div className='col-12'>
                             <FormFilter
                                 query={selectedQuery}
@@ -168,6 +195,18 @@ function DataPage() {
                                 resetFilters={() => _resetFilters()}/>
                         </div>
                     </div>
+                    <div className='row' style={{marginTop: 20}}>
+                        <div className='col-md-12 text-right'>
+                            <CustomButton onClick={() => _downloadAll()}>
+                                <IconDownload/> <span style={{marginLeft: 5}}>Download All</span>
+                            </CustomButton>
+                            {!!selectedForDownloads && selectedForDownloads.length > 0 ?
+                                <CustomButton onClick={() => _downloadSelectedDatasets()} style={{marginLeft: 10}}>
+                                    <IconDownload/> <span style={{marginLeft: 5}}>Download Selected</span>
+                                </CustomButton> : null
+                            }
+                        </div>
+                    </div>
                     <div className='row'>
                         <div className='col-12 text-center'>
                             {!hasData ?
@@ -176,7 +215,11 @@ function DataPage() {
                                 <div>{(dataSets ?? []).map((item) => (
                                     <div className="row" key={`row-dataset-${item?.id}`}>
                                         <div className='col-12'>
-                                            <DataSetCard dataSet={item} onClick={() => _openDataSetDetail(item)}/>
+                                            <DataSetCard
+                                                dataSet={item}
+                                                selectedForDownload={selectedForDownloads.includes(item['source_id'])}
+                                                toggleSelectedForDownload={_toggleSelectForDownload}
+                                                onClick={() => _openDataSetDetail(item)}/>
                                         </div>
                                     </div>))}</div>
 

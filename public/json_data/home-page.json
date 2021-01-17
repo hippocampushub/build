@@ -3,7 +3,10 @@
   "title": "Home Page",
   "header_carousel": [
     {
-      "url": "/assets/images/header.jpg"
+      "url": "/assets/images/header.jpg",
+      "caption": {
+        "header": "HBP Project"
+      }
     }
   ],
   "sections": [

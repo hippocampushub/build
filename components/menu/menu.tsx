@@ -40,7 +40,9 @@ const useListItemStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('sm')]: {
             marginRight: 0,
             paddingLeft: 0,
-            paddingRight: 0
+            paddingRight: 0,
+            height: 'auto',
+            display: 'block'
         }
     }
 }))
@@ -52,6 +54,9 @@ const useSubMenuListItemStyles = makeStyles((theme) => ({
         borderBottom: '1px solid #ddd',
         '&:last-child': {
             borderBottom: 'none'
+        },
+        [theme.breakpoints.down('sm')]: {
+            padding: '10px 0'
         }
     }
 }))

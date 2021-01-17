@@ -11,6 +11,11 @@ nav.menu-navbar {
     border-radius: 2px;
     padding: 0;
     background: $color-background-dark;
+    @media screen and (max-width: 768px){
+      min-width: auto;
+      margin-top: 10px;
+      border: none;
+    }
   }
   .custom-navbar-brand {
     img {

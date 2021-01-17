@@ -7,6 +7,9 @@ const endpoints = {
         filters: (indexName: string) => `/filters/${indexName}`,
         datasets: () => '/search/dataset',
         models: () => '/search/model'
+    },
+    download: {
+        datasets: () => '/download/dataset'
     }
 }
 
@@ -80,8 +83,20 @@ const getFilters = async(indexName: string) => {
     }
 }
 
+const downloadAllDatasets = () => {
+    const url = `${BACKEND_URL}${endpoints.download.datasets()}/all`;
+    return url;
+}
+
+const downloadDatasets = (ids=[]) => {
+    const url = `${BACKEND_URL}${endpoints.download.datasets()}?ids=${ids.join(',')}`;
+    return url;
+}
+
 export {
     searchDatasets,
     searchModels,
-    getFilters
+    getFilters,
+    downloadAllDatasets,
+    downloadDatasets
 }
