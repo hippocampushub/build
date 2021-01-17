@@ -3,27 +3,25 @@ import {FormControl, FormControlLabel, IconButton, InputLabel, Switch, Tooltip} 
 import {
     CloudDownload as IconDownload,
     Link as IconLink,
-    ChevronLeft as ArrowLeft,
-    ChevronRight as ArrowRight
 } from "@material-ui/icons";
 import {useIconButtonStyles} from "../../style/style";
 import {ExpandButton} from "../buttons/expandButton";
 import {CardContainer} from "./card";
 import {getImageUrlByPath} from "../../helpers/imageHelper";
 
-import dataSetCardStyle from './dataSetCard.module.scss';
+import modelCardStyle from './modelCard.module.scss';
 import {forwardRef, PropsWithChildren} from "react";
 
-export interface IDataSetCardProps extends PropsWithChildren<any> {
-    dataSet: any;
+export interface IModelCardProps extends PropsWithChildren<any> {
+    model: any;
     selectedForDownload: boolean;
     toggleSelectedForDownload: (id:string, value: boolean) => void;
     onClick: () => void;
 }
 
-function _DataSetCard(props: IDataSetCardProps, ref) {
+function _ModelCard(props: IModelCardProps, ref) {
 
-    const {dataSet, selectedForDownload, toggleSelectedForDownload, onClick} = props;
+    const {model, selectedForDownload, toggleSelectedForDownload, onClick} = props;
 
     const [actionsExpanded, setActionsExpanded] = React.useState(false);
 
@@ -36,52 +34,47 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
     const iconButtonClasses = useIconButtonStyles();
 
 
-    const downloadLink = dataSet?.download_link ?? null;
+    const downloadLink = model?.download_link ?? null;
     const hasDownloadLink = !!downloadLink;
 
-    const pageLink = dataSet?.page_link ?? null;
+    const pageLink = model?.page_link ?? null;
     const hasPageLink = !!pageLink;
 
-    const hasSource = !!dataSet?.source && dataSet?.source?.trim().length > 0;
+    const hasSource = !!model?.source && model?.source?.trim().length > 0;
 
-    return (<CardContainer key={`dataset-${dataSet?.id}`}>
-        <div className={dataSetCardStyle['dataset-card-content']}>
+    return (<CardContainer key={`model-${model?.id}`}>
+        <div className={modelCardStyle['model-card-content']}>
             <div className='row'>
                 <div className='col-md-2 col-sm-12'>
-                    <img src={getImageUrlByPath(dataSet?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png')}
-                         className={dataSetCardStyle['dataset-card-image']}/>
+                    <img src={getImageUrlByPath(model?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png')}
+                         className={modelCardStyle['model-card-image']}/>
                 </div>
-                <div className='col-md-7 col-sm-12'>
+                <div className='col-md-10 col-sm-12'>
                     <div className='row'>
-                        <div className='col-6'>
+                        <div className='col-md-8 col-sm-12'>
                             <div className='col-12 text-left'>
-                                <span className={dataSetCardStyle['dataset-card-name-label']}>Name: </span><span
-                                className={dataSetCardStyle['dataset-card-name-value']}>{dataSet?.name ?? ''}</span>
+                                <span className={modelCardStyle['model-card-name-label']}>Name: </span><span
+                                className={modelCardStyle['model-card-name-value']}>{model?.name ?? ''}</span>
                             </div>
                             <div className='col-12 text-left'>
-                                <span className={dataSetCardStyle['dataset-card-species-label']}>Species: </span><span
-                                className={dataSetCardStyle['dataset-card-species-value']}>{dataSet?.species ?? ''}</span>
+                                <span className={modelCardStyle['model-card-types-label']}>Types: </span><span
+                                className={modelCardStyle['model-card-types-value']}>{(model?.model_type ?? []).join(',') ?? ''}</span>
                             </div>
                             <div className='col-12 text-left'>
-                                <span className={dataSetCardStyle['dataset-card-region-label']}>Region: </span><span
-                                className={dataSetCardStyle['dataset-card-region-value']}>{dataSet?.region ?? ''}</span>
-                            </div>
-                            <div className='col-12 text-left'>
-                                <span
-                                    className={dataSetCardStyle['dataset-card-cell-type-label']}>Cell Type: </span><span
-                                className={dataSetCardStyle['dataset-card-cell-type-value']}>{dataSet?.cell_type ?? ''}</span>
+                                <span className={modelCardStyle['model-card-papers-label']}>Papers: </span><span
+                                className={modelCardStyle['model-card-papers-value']}>{(model?.papers ?? []).join(',') ?? ''}</span>
                             </div>
                         </div>
-                        <div className='col-6 text-right'>
+                        <div className='col-md-4 col-sm-12 text-right'>
                             {hasSource ?
-                                <span className={dataSetCardStyle['dataset-card-source-label']}>
-                                    SOURCE: {dataSet?.source}
+                                <span className={modelCardStyle['model-card-source-label']}>
+                                    SOURCE: {model?.source}
                                 </span> : null
                             }
                         </div>
                     </div>
                 </div>
-                <div className={`${dataSetCardStyle['dataset-card-actions-container']} col-md-3 col-sm-12`}>
+                {/*<div className={`${modelCardStyle['model-card-actions-container']} col-md-3 col-sm-12`}>
                     <div className='row'>
                         <div className='col-12 text-left'>
                             <div className='row'>
@@ -92,13 +85,13 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                                 defaultChecked={selectedForDownload}
                                                 checked={selectedForDownload}
                                                 onChange={(event, value) =>
-                                                    toggleSelectedForDownload(dataSet['source_id'], value)}/>}
+                                                    toggleSelectedForDownload(model['source_id'], value)}/>}
                                             label={'Select for download'}/>
                                     </FormControl>
                                 </div>
                                 {hasDownloadLink ?
                                     <div className='col-12 text-center'>
-                                        <span className={dataSetCardStyle['dataset-card-action']}>
+                                        <span className={modelCardStyle['model-card-action']}>
                                             <Tooltip title='Download'>
                                                 <ExpandButton
                                                     label={'Download'}
@@ -112,7 +105,7 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                 }
                                 {hasPageLink ?
                                     <div className='col-12 text-center'>
-                                        <span className={dataSetCardStyle['dataset-card-action']}>
+                                        <span className={modelCardStyle['model-card-action']}>
                                             <Tooltip title='View on Site'>
                                 <ExpandButton
                                     label={'View on Site'}
@@ -127,14 +120,14 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>*/}
             </div>
         </div>
     </CardContainer>);
 }
 
-const DataSetCard = forwardRef((props: IDataSetCardProps, ref) => _DataSetCard(props, ref));
+const ModelCard = forwardRef((props: IModelCardProps, ref) => _ModelCard(props, ref));
 
 export {
-    DataSetCard
+    ModelCard
 }

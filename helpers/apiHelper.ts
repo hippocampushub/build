@@ -59,9 +59,13 @@ const searchDatasets = async ({
 
 const searchModels = async ({
     query,
-    region
+    region,
+    cell_type,
+    species,
+    page = 0,
+    hitsPerPage = 20
 }: ISearchParams) => {
-    const url = `${BACKEND_URL}${endpoints.search.models()}`;
+    const url = `${BACKEND_URL}${endpoints.search.models()}/${page}/${hitsPerPage}`;
     try {
         const response = await axios.post(url, {
             query,

@@ -1,0 +1,48 @@
+@import "variables";
+.model-card-content {
+
+  .model-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .model-card-name-label, .model-card-types-label, .model-card-papers-label {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .model-card-name-value, .model-card-types-value, .model-card-papers-value {
+    font-size: 14px;
+    font-weight: 500;
+    margin-right: 10px;
+  }
+
+  .model-card-description {
+    max-height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .model-card-source-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    background: $color-blue;
+    padding: 2px 5px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 11px;
+  }
+
+  .model-card-actions-container {
+    background: $color-background-light;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    .model-card-action {
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
+}

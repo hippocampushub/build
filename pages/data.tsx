@@ -4,10 +4,8 @@ import {makeStyles, Typography} from "@material-ui/core";
 import {CloudDownload as IconDownload} from "@material-ui/icons";
 import {getPage} from "../helpers/dataHelper";
 import Spinner from "../components/spinner/spinner";
-import Baloon from "../components/baloons/baloon";
 import PageContainer from "../components/page/pageContainer";
 import {DataSetCard} from "../components/cards/dataSetCard";
-import {DataSetDialog} from "../components/dialogs/datasetDialog";
 import {CustomButton} from "../components/buttons/buttons";
 
 import {getFilters, searchDatasets, downloadAllDatasets, downloadDatasets} from "../helpers/apiHelper";
@@ -271,9 +269,9 @@ function DataPage() {
                     <Spinner/> : null
                 }
             </div>
-            <DataSetDialog open={dataSetDialogOpen}
+            {/*<DataSetDialog open={dataSetDialogOpen}
                            dataSet={selectedDataSet}
-                           onClose={_onCloseDataSetDetail}/>
+                           onClose={_onCloseDataSetDetail}/>*/}
         </PageContainer>
     );
 }
