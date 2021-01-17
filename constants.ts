@@ -23,4 +23,5 @@ export default {
         get: 'get',
         post: 'post'
     },
+    DEFAULT_HITS_PER_PAGE: 20
 }

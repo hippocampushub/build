@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {Card, CardHeader, CardContent, Typography, makeStyles} from '@material-ui/core';
-import {DefaultComponentProps} from "@material-ui/core/OverridableComponent";
+import {forwardRef, PropsWithChildren, Ref} from "react";
 
-interface ICardContainerProps extends DefaultComponentProps<any> {
+interface ICardContainerProps extends PropsWithChildren<any> {
     title?: string;
     onClick?: () => void;
 }
@@ -14,12 +14,12 @@ const useCardContainerStyles = makeStyles((theme) => ({
 }));
 
 const useCardStyles = makeStyles((theme) => ({
-   root: {
-       boxShadow: '0 0 10px #33333333',
-       paddingTop: 0,
-       paddingBottom: 0,
-       borderRadius: 5
-   }
+    root: {
+        boxShadow: '0 0 10px #33333333',
+        paddingTop: 0,
+        paddingBottom: 0,
+        borderRadius: 5
+    }
 }));
 
 const useCardContentStyles = makeStyles((theme) => ({
@@ -31,21 +31,30 @@ const useCardContentStyles = makeStyles((theme) => ({
     }
 }));
 
-export function CardContainer({title, onClick, children}: ICardContainerProps) {
+function _CardContainer(props: ICardContainerProps, ref?: Ref<any>) {
     const cardStyles = useCardStyles();
     const cardContainerStyles = useCardContainerStyles();
     const cardContentStyles = useCardContentStyles();
 
+    const {title, onClick, children} = props;
+
     const hasTitle = title && title.trim().length > 0;
 
     return (<div className={cardContainerStyles.cardContainer}>
-        <Card classes={cardStyles} onClick={onClick}>
-            {hasTitle ?
-                <CardHeader style={{paddingTop: 0}} title={title}/> : null
-            }
-            <CardContent classes={cardContentStyles}>
-                {children}
-            </CardContent>
-        </Card>
-    </div>);
+            <Card classes={cardStyles} onClick={onClick}>
+                {hasTitle ?
+                    <CardHeader style={{paddingTop: 0}} title={title}/> : null
+                }
+                <CardContent classes={cardContentStyles}>
+                    {children}
+                </CardContent>
+            </Card>
+        </div>
+    );
+}
+
+const CardContainer = forwardRef((props:ICardContainerProps, ref) => _CardContainer(props, ref));
+
+export {
+    CardContainer
 }

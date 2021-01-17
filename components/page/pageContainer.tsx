@@ -8,16 +8,17 @@ import pageStyle from './page.module.scss'
 import {CarouselImage} from "../carousel/carousel";
 import Footer from "../footer/footer";
 import {getConfig, getHomePage, getMenuItems} from "../../helpers/dataHelper";
-import {useEffect} from "react";
+import {forwardRef, PropsWithChildren, useEffect} from "react";
 
-interface IPageProps extends DefaultComponentProps<any>{
+interface IPageProps extends PropsWithChildren<any>{
     title?: string
     config?: any,
     menuItems?: any[],
     headerCarousel?: CarouselImage[]
 }
 
-function PageContainer({children, title = 'HBP Project', headerCarousel}: IPageProps) {
+function _PageContainer(props: IPageProps, ref) {
+    const {children, title = 'HBP Project', headerCarousel} = props;
     const [menuItems, setMenuItems] = React.useState<any[]>([]);
     const [config, setConfig] = React.useState<any>({});
 
@@ -49,5 +50,7 @@ function PageContainer({children, title = 'HBP Project', headerCarousel}: IPageP
         <Footer footer={config.footer}/>
     </div>);
 }
+
+const PageContainer = forwardRef((props: IPageProps, ref) => _PageContainer(props, ref));
 
 export default PageContainer;

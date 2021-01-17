@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Card, makeStyles, Tooltip, Typography} from "@material-ui/core"
+import {Card, ListItem, makeStyles, Tooltip, Typography} from "@material-ui/core"
 import {MenuItem, Select} from "@material-ui/core";
 import {Icon, IconButton, FormControl, InputLabel} from '@material-ui/core'
 import {
@@ -32,14 +32,15 @@ const useIconStyles = makeStyles((theme) => ({
 }));
 
 export interface IFormFilterProps extends DefaultComponentProps<any> {
-    query?: string,
-    regions?: any[],
-    cellTypes?: any[],
-    species?: any[],
-    onQueryChange?: (value: string) => void,
-    onRequestSearch?: () => void,
-    applyFilters?: () => void,
-    resetFilters?: () => void
+    query?: string;
+    regions?: any[];
+    cellTypes?: any[];
+    species?: any[];
+    onQueryChange?: (value: string) => void;
+    onRequestSearch?: () => void;
+    onChangeHitsPerPage?: (value: number) => void;
+    applyFilters?: () => void;
+    resetFilters?: () => void;
 }
 
 export function FilterBox({
@@ -147,8 +148,10 @@ export function FormFilter({
     selectedRegion,
     selectedCellType,
     selectedSpecies,
+    selectedHitsPerPage,
     onQueryChange,
     onRequestSearch,
+    onChangeHitsPerPage,
     onChangeRegion,
     onChangeCellType,
     onChangeSpecies,
@@ -179,23 +182,44 @@ export function FormFilter({
         }
     }
 
+    const hitsPerPageItems = [10, 20, 50, 100].map((item) =>
+        <ListItem key={`hits_per_page-${item}`}
+                  value={item} style={{textAlign: 'right', outline: 'none', cursor: 'pointer'}}>
+            {item}
+        </ListItem>
+    );
+
     return (<div>
         <div className='row'>
-            <div className='col-10'>
+            <div className='col-9'>
                 <SearchBar
                     value={query}
                     onChange={onQueryChange}
                     onRequestSearch={onRequestSearch}
                 />
             </div>
-            <div className='col-2'>
-                <Tooltip title={'Filter'}>
-                    <IconButton
-                        className={iconButtonClasses.root}
-                        onClick={toggleFilter}>
-                        <IconFilter/>
-                    </IconButton>
-                </Tooltip>
+            <div className='col-3'>
+                <div className='row'>
+                    <div className='col-8'>
+                        <FormControl style={{minWidth: '100%'}}>
+                            <InputLabel>Hits per page</InputLabel>
+                            <Select
+                                value={selectedHitsPerPage}
+                                onChange={(event) => onChangeHitsPerPage(event.target.value as number)}>
+                                {hitsPerPageItems}
+                            </Select>
+                        </FormControl>
+                    </div>
+                    <div className='col-4'>
+                        <Tooltip title={'Filter'}>
+                            <IconButton
+                                className={iconButtonClasses.root}
+                                onClick={toggleFilter}>
+                                <IconFilter/>
+                            </IconButton>
+                        </Tooltip>
+                    </div>
+                </div>
             </div>
         </div>
         <div className='row' style={{marginTop: 10}}>

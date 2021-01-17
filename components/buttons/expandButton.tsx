@@ -1,9 +1,10 @@
 import * as React from 'react';
-import {Button} from '@material-ui/core';
+import {Button, ButtonBaseProps} from '@material-ui/core';
 import buttonsStyle from "./button.module.scss";
 import {SvgIconComponent} from "@material-ui/icons";
+import {forwardRef} from "react";
 
-export interface IExpandButton {
+export interface IExpandButton extends ButtonBaseProps {
     label: string,
     icon: React.ReactNode,
     variant?: string,
@@ -12,14 +13,17 @@ export interface IExpandButton {
 }
 
 export function ExpandButton({label, icon, variant, expanded, onClick}: IExpandButton) {
-    return (<Button onClick={onClick} className={`${buttonsStyle['expand-button']}`}>
-        {expanded ?
-            <div>
-                {icon} {label}
-            </div> :
-            <div>
-                {icon}
-            </div>
-        }
-    </Button>);
+    return (
+        <Button
+            onClick={onClick}
+            className={`${buttonsStyle['expand-button']}`}>
+            {expanded ?
+                <div>
+                    {icon} {label}
+                </div> :
+                <div>
+                    {icon}
+                </div>
+            }
+        </Button>);
 }

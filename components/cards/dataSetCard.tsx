@@ -12,8 +12,18 @@ import {CardContainer} from "./card";
 import {getImageUrlByPath} from "../../helpers/imageHelper";
 
 import dataSetCardStyle from './datasetcard.module.scss';
+import {forwardRef, PropsWithChildren} from "react";
 
-export function DataSetCard({dataSet, selectedForDownload, toggleSelectedForDownload, onClick}) {
+export interface IDataSetCardProps extends PropsWithChildren<any> {
+    dataSet: any;
+    selectedForDownload: boolean;
+    toggleSelectedForDownload: (id:string, value: boolean) => void;
+    onClick: () => void;
+}
+
+function _DataSetCard(props: IDataSetCardProps, ref) {
+
+    const {dataSet, selectedForDownload, toggleSelectedForDownload, onClick} = props;
 
     const [actionsExpanded, setActionsExpanded] = React.useState(false);
 
@@ -82,7 +92,7 @@ export function DataSetCard({dataSet, selectedForDownload, toggleSelectedForDown
                                         onChange={(event, value) => toggleSelectedForDownload(dataSet['source_id'], value)}/>
                                 </div>
                                 {hasDownloadLink ?
-                                    <div className='col-12'>
+                                    <div className='col-12 text-center'>
                                         <span className={dataSetCardStyle['dataset-card-action']}>
                                             <Tooltip title='Download'>
                                                 <ExpandButton
@@ -96,7 +106,7 @@ export function DataSetCard({dataSet, selectedForDownload, toggleSelectedForDown
                                     </div> : null
                                 }
                                 {hasPageLink ?
-                                    <div className='col-12'>
+                                    <div className='col-12 text-center'>
                                         <span className={dataSetCardStyle['dataset-card-action']}>
                                             <Tooltip title='View on Site'>
                                 <ExpandButton
@@ -116,4 +126,10 @@ export function DataSetCard({dataSet, selectedForDownload, toggleSelectedForDown
             </div>
         </div>
     </CardContainer>);
+}
+
+const DataSetCard = forwardRef((props: IDataSetCardProps, ref) => _DataSetCard(props, ref));
+
+export {
+    DataSetCard
 }

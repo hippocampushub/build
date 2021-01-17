@@ -12,12 +12,14 @@ import {CloudDownload as IconDownload} from "@material-ui/icons";
 import pageContentStyle from './page.module.scss';
 import {getFilters, searchDatasets, downloadAllDatasets, downloadDatasets} from "../helpers/apiHelper";
 import {FormFilter} from "../components/forms/filter";
+import constants from "../constants";
 
 export interface ISearchParams {
-    query?: string,
-    region?: string,
-    cellType?: string,
-    species?: string
+    query?: string;
+    region?: string;
+    cellType?: string;
+    species?: string;
+    hitsPerPage?: number;
 }
 
 function DataPage() {
@@ -39,6 +41,8 @@ function DataPage() {
 
     const [numPage, setNumPage] = React.useState<number>(0);
     const [totalPages, setTotalPages] = React.useState<number>(1);
+
+    const [hitsPerPage, setHitsPerPage] = React.useState<number>(constants.DEFAULT_HITS_PER_PAGE)
 
     useEffect(() => {
         setup();
@@ -81,7 +85,8 @@ function DataPage() {
         query,
         region,
         cellType,
-        species
+        species,
+        hitsPerPage
     }: ISearchParams = {}) => {
         console.log('@@@@requestSearch');
         const page = 0
@@ -92,7 +97,8 @@ function DataPage() {
             region: region ?? selectedRegion,
             cell_type: cellType ?? selectedCellType,
             species: species ?? selectedSpecies,
-            page
+            page,
+            hitsPerPage
         });
         setDataSets(items)
         setTotalPages(totalPages)
@@ -114,6 +120,13 @@ function DataPage() {
         setDataSets(allDataSets)
         setTotalPages(totalPages)
         setLoading(false);
+    }
+
+    const _onHitsPerPageChange = async (value) => {
+        setHitsPerPage(value)
+        await _search({
+            hitsPerPage: value
+        });
     }
 
     const _applyFilters = async () => {
@@ -186,8 +199,10 @@ function DataPage() {
                                 selectedRegion={selectedRegion}
                                 selectedCellType={selectedCellType}
                                 selectedSpecies={selectedSpecies}
+                                selectedHitsPerPage={hitsPerPage}
                                 onQueryChange={(value) => setSelectedQuery(value)}
                                 onRequestSearch={() => _search()}
+                                onChangeHitsPerPage={(value) => _onHitsPerPageChange(value)}
                                 onChangeRegion={(value) => setSelectedRegion(value)}
                                 onChangeCellType={(value) => setSelectedCellType(value)}
                                 onChangeSpecies={(value) => setSelectedSpecies(value)}
