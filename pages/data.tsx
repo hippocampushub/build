@@ -1,18 +1,20 @@
 import * as React from "react";
 import {useEffect, useState} from "react";
-import {Typography} from "@material-ui/core";
+import {makeStyles, Typography} from "@material-ui/core";
+import {CloudDownload as IconDownload} from "@material-ui/icons";
 import {getPage} from "../helpers/dataHelper";
 import Spinner from "../components/spinner/spinner";
+import Baloon from "../components/baloons/baloon";
 import PageContainer from "../components/page/pageContainer";
 import {DataSetCard} from "../components/cards/dataSetCard";
 import {DataSetDialog} from "../components/dialogs/datasetDialog";
 import {CustomButton} from "../components/buttons/buttons";
-import {CloudDownload as IconDownload} from "@material-ui/icons";
 
-import pageContentStyle from './page.module.scss';
 import {getFilters, searchDatasets, downloadAllDatasets, downloadDatasets} from "../helpers/apiHelper";
 import {FormFilter} from "../components/forms/filter";
 import constants from "../constants";
+import pageContentStyle from './page.module.scss';
+import {ItemsCountBaloon} from "../components/baloons/itemsCountBaloon";
 
 export interface ISearchParams {
     query?: string;
@@ -41,8 +43,11 @@ function DataPage() {
 
     const [numPage, setNumPage] = React.useState<number>(0);
     const [totalPages, setTotalPages] = React.useState<number>(1);
+    const [totalItems, setTotalItems] = React.useState<number>(0);
 
     const [hitsPerPage, setHitsPerPage] = React.useState<number>(constants.DEFAULT_HITS_PER_PAGE)
+
+
 
     useEffect(() => {
         setup();
@@ -52,7 +57,7 @@ function DataPage() {
         try {
             const _page = await getPage('data');
             const {secondary_region: regionFilters, cell_type: cellTypes, species} = await getFilters('dataset');
-            const {total_page: totalPages, items} = await searchDatasets({
+            const {total_page: _totalPages, total: _totalItems, items} = await searchDatasets({
                 query: selectedQuery,
                 region: selectedRegion,
                 cell_type: selectedCellType,
@@ -63,7 +68,8 @@ function DataPage() {
             setRegionFilters(regionFilters);
             setCellTypeFilters(cellTypes);
             setSpeciesFilters(species);
-            setTotalPages(totalPages)
+            setTotalPages(_totalPages)
+            setTotalItems(_totalItems)
             setDataSets(items);
             setLoading(false);
         } catch (error) {
@@ -92,7 +98,7 @@ function DataPage() {
         const page = 0
         setNumPage(0);
         setLoading(true);
-        const {total_page: totalPages, items} = await searchDatasets({
+        const {total_page: _totalPages, total: _totalItems, items} = await searchDatasets({
             query: query ?? selectedQuery,
             region: region ?? selectedRegion,
             cell_type: cellType ?? selectedCellType,
@@ -101,7 +107,8 @@ function DataPage() {
             hitsPerPage
         });
         setDataSets(items)
-        setTotalPages(totalPages)
+        setTotalPages(_totalPages)
+        setTotalItems(_totalItems);
         setLoading(false);
     }
 
@@ -109,7 +116,7 @@ function DataPage() {
         const page = numPage + 1;
         setNumPage(page);
         setLoading(true);
-        const {total_page: totalPages, items} = await searchDatasets({
+        const {total_page: _totalPages, total: _totalItems, items} = await searchDatasets({
             query: selectedQuery,
             region: selectedRegion,
             cell_type: selectedCellType,
@@ -118,7 +125,8 @@ function DataPage() {
         });
         const allDataSets = [...dataSets, ...items]
         setDataSets(allDataSets)
-        setTotalPages(totalPages)
+        setTotalItems(_totalItems);
+        setTotalPages(_totalPages)
         setLoading(false);
     }
 
@@ -211,7 +219,12 @@ function DataPage() {
                         </div>
                     </div>
                     <div className='row' style={{marginTop: 20}}>
-                        <div className='col-md-12 text-right'>
+                        <div className='col-md-6'>
+                            <ItemsCountBaloon
+                                label='Total items'
+                                count={totalItems}/>
+                        </div>
+                        <div className='col-md-6 text-right'>
                             <CustomButton onClick={() => _downloadAll()}>
                                 <IconDownload/> <span style={{marginLeft: 5}}>Download All</span>
                             </CustomButton>

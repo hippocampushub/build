@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {IconButton, Switch, Tooltip} from '@material-ui/core';
+import {FormControl, FormControlLabel, IconButton, InputLabel, Switch, Tooltip} from '@material-ui/core';
 import {
     CloudDownload as IconDownload,
     Link as IconLink,
@@ -86,10 +86,15 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                         <div className='col-12 text-left'>
                             <div className='row'>
                                 <div className='col-12'>
-                                    <span>Select for download</span>
-                                    <Switch
-                                        defaultValue={selectedForDownload}
-                                        onChange={(event, value) => toggleSelectedForDownload(dataSet['source_id'], value)}/>
+                                    <FormControl>
+                                        <FormControlLabel
+                                            control={<Switch
+                                                defaultChecked={selectedForDownload}
+                                                checked={selectedForDownload}
+                                                onChange={(event, value) =>
+                                                    toggleSelectedForDownload(dataSet['source_id'], value)}/>}
+                                            label={'Select for download'}/>
+                                    </FormControl>
                                 </div>
                                 {hasDownloadLink ?
                                     <div className='col-12 text-center'>
