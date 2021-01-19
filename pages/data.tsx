@@ -104,6 +104,8 @@ function DataPage() {
             page,
             hitsPerPage
         });
+        console.log('@@@@@@@totalPages', _totalPages);
+        console.log('@@@@@@@totalItems', _totalItems);
         setDataSets(items)
         setTotalPages(_totalPages)
         setTotalItems(_totalItems);
@@ -119,6 +121,7 @@ function DataPage() {
             region: selectedRegion,
             cell_type: selectedCellType,
             species: selectedSpecies,
+            hitsPerPage,
             page,
         });
         const allDataSets = [...dataSets, ...items]
@@ -247,7 +250,8 @@ function DataPage() {
                                                 toggleSelectedForDownload={_toggleSelectForDownload}
                                                 onClick={() => _openDataSetDetail(item)}/>
                                         </div>
-                                    </div>))}</div>
+                                    </div>))}
+                                </div>
 
                             }
                         </div>
