@@ -7,13 +7,13 @@
     object-fit: cover;
   }
 
-  .dataset-card-name-label, .dataset-card-species-label, .dataset-card-region-label, .dataset-card-cell-type-label {
-    font-size: 16px;
+  .dataset-card-name-label, .dataset-card-species-label, .dataset-card-region-label, .dataset-card-cell-type-label, .dataset-card-secondary-region-label, .dataset-card-physical-integrity-label {
+    font-size: 14px;
     font-weight: 600;
   }
 
-  .dataset-card-name-value, .dataset-card-species-value, .dataset-card-region-value, .dataset-card-cell-type-value {
-    font-size: 14px;
+  .dataset-card-name-value, .dataset-card-species-value, .dataset-card-region-value, .dataset-card-cell-type-value, .dataset-card-secondary-region-value, .dataset-card-physical-integrity-value {
+    font-size: 12px;
     font-weight: 500;
     margin-right: 10px;
   }

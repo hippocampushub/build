@@ -53,31 +53,49 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                 </div>
                 <div className='col-md-7 col-sm-12'>
                     <div className='row'>
-                        <div className='col-6'>
-                            <div className='col-12 text-left'>
-                                <span className={dataSetCardStyle['dataset-card-name-label']}>Name: </span><span
-                                className={dataSetCardStyle['dataset-card-name-value']}>{dataSet?.name ?? ''}</span>
-                            </div>
-                            <div className='col-12 text-left'>
-                                <span className={dataSetCardStyle['dataset-card-species-label']}>Species: </span><span
-                                className={dataSetCardStyle['dataset-card-species-value']}>{dataSet?.species ?? ''}</span>
-                            </div>
-                            <div className='col-12 text-left'>
-                                <span className={dataSetCardStyle['dataset-card-region-label']}>Region: </span><span
-                                className={dataSetCardStyle['dataset-card-region-value']}>{dataSet?.region ?? ''}</span>
-                            </div>
-                            <div className='col-12 text-left'>
-                                <span
-                                    className={dataSetCardStyle['dataset-card-cell-type-label']}>Cell Type: </span><span
-                                className={dataSetCardStyle['dataset-card-cell-type-value']}>{dataSet?.cell_type ?? ''}</span>
+                        <div className='col-4'>
+                            <div className='row'>
+                                <div className='col-12 text-left'>
+                                    <span className={dataSetCardStyle['dataset-card-name-label']}>Name: </span><span
+                                    className={dataSetCardStyle['dataset-card-name-value']}>{dataSet?.name ?? ''}</span>
+                                </div>
+                                <div className='col-12 text-left'>
+                                    <span className={dataSetCardStyle['dataset-card-species-label']}>Species: </span><span
+                                    className={dataSetCardStyle['dataset-card-species-value']}>{dataSet?.species ?? ''}</span>
+                                </div>
+                                <div className='col-12 text-left'>
+                                    <span className={dataSetCardStyle['dataset-card-region-label']}>Region: </span><span
+                                    className={dataSetCardStyle['dataset-card-region-value']}>{dataSet?.region ?? ''}</span>
+                                </div>
+                                <div className='col-12 text-left'>
+                                    <span
+                                        className={dataSetCardStyle['dataset-card-cell-type-label']}>Cell Type: </span><span
+                                    className={dataSetCardStyle['dataset-card-cell-type-value']}>{dataSet?.cell_type ?? ''}</span>
+                                </div>
                             </div>
                         </div>
-                        <div className='col-6 text-right'>
-                            {hasSource ?
-                                <span className={dataSetCardStyle['dataset-card-source-label']}>
+                        <div className='col-8'>
+                            <div className='row'>
+                                <div className='col-6'>
+                                    <div className='row'>
+                                        <div className='col-12 text-left'>
+                                            <span className={dataSetCardStyle['dataset-card-secondary-region-label']}>Secondary Region: </span><span
+                                            className={dataSetCardStyle['dataset-card-secondary-region-value']}>{dataSet?.secondary_region ?? ''}</span>
+                                        </div>
+                                        <div className='col-12 text-left'>
+                                            <span className={dataSetCardStyle['dataset-card-physical-integrity-label']}>Physical Integrity: </span><span
+                                            className={dataSetCardStyle['dataset-card-physical-integrity-value']}>{dataSet?.physical_integrity ?? ''}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='col-6 text-right'>
+                                    {hasSource ?
+                                        <span className={dataSetCardStyle['dataset-card-source-label']}>
                                     SOURCE: {dataSet?.source}
                                 </span> : null
-                            }
+                                    }
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
