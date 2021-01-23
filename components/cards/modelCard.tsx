@@ -45,11 +45,11 @@ function _ModelCard(props: IModelCardProps, ref) {
     return (<CardContainer key={`model-${model?.id}`}>
         <div className={modelCardStyle['model-card-content']}>
             <div className='row'>
-                <div className='col-md-2 col-sm-12'>
+                {/*<div className='col-md-2 col-sm-12'>
                     <img src={getImageUrlByPath(model?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png')}
                          className={modelCardStyle['model-card-image']}/>
-                </div>
-                <div className='col-md-10 col-sm-12'>
+                </div>*/}
+                <div className='col-md-9 col-sm-12'>
                     <div className='row'>
                         <div className='col-md-8 col-sm-12'>
                             <div className='col-12 text-left'>
@@ -58,7 +58,7 @@ function _ModelCard(props: IModelCardProps, ref) {
                             </div>
                             <div className='col-12 text-left'>
                                 <span className={modelCardStyle['model-card-types-label']}>Types: </span><span
-                                className={modelCardStyle['model-card-types-value']}>{(model?.model_type ?? []).join(',') ?? ''}</span>
+                                className={modelCardStyle['model-card-types-value']}>{(model?.model_types ?? []).join(',') ?? ''}</span>
                             </div>
                             <div className='col-12 text-left'>
                                 <span className={modelCardStyle['model-card-papers-label']}>Papers: </span><span
@@ -74,7 +74,7 @@ function _ModelCard(props: IModelCardProps, ref) {
                         </div>
                     </div>
                 </div>
-                {/*<div className={`${modelCardStyle['model-card-actions-container']} col-md-3 col-sm-12`}>
+                <div className={`${modelCardStyle['model-card-actions-container']} col-md-3 col-sm-12`}>
                     <div className='row'>
                         <div className='col-12 text-left'>
                             <div className='row'>
@@ -120,7 +120,7 @@ function _ModelCard(props: IModelCardProps, ref) {
                             </div>
                         </div>
                     </div>
-                </div>*/}
+                </div>
             </div>
         </div>
     </CardContainer>);
