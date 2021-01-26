@@ -3,8 +3,6 @@ import {FormControl, FormControlLabel, IconButton, InputLabel, Switch, Tooltip} 
 import {
     CloudDownload as IconDownload,
     Link as IconLink,
-    ChevronLeft as ArrowLeft,
-    ChevronRight as ArrowRight
 } from "@material-ui/icons";
 import {useIconButtonStyles} from "../../style/style";
 import {ExpandButton} from "../buttons/expandButton";

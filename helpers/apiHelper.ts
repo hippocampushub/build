@@ -5,6 +5,7 @@ const BACKEND_URL = process.env.BACKEND_URL ?? 'http://localhost:5000';
 const endpoints = {
     search: {
         filters: (indexName: string) => `/filters/${indexName}`,
+        types: (indexName: string) => `/types/${indexName}`,
         datasets: () => '/search/dataset',
         models: () => '/search/model'
     },
@@ -14,6 +15,7 @@ const endpoints = {
 }
 
 interface ISearchParams {
+    data_type?: string;
     query?: string;
     region?: string;
     cell_type?: string;
@@ -34,6 +36,7 @@ const _parseSuccessfullResponse = (response) => {
 }
 
 const searchDatasets = async ({
+    data_type = null,
     query,
     region,
     cell_type,
@@ -44,6 +47,7 @@ const searchDatasets = async ({
     const url = `${BACKEND_URL}${endpoints.search.datasets()}/${page}/${hitsPerPage}`;
     try {
         const response = await axios.post(url, {
+            data_type,
             query,
             region,
             cell_type,
@@ -84,8 +88,19 @@ const getFilters = async(indexName: string) => {
         const response = await axios.get(url);
         return _parseSuccessfullResponse(response);
     } catch (error) {
-        console.error('@@@@error retrieving datasets');
+        console.error('@@@@error retrieving data filters');
         console.error(error);
+    }
+}
+
+const getTypes = async(indexName: string) => {
+    const url = `${BACKEND_URL}${endpoints.search.types(indexName)}`;
+    try {
+        const response = await axios.get(url);
+        return _parseSuccessfullResponse(response);
+    } catch (error) {
+        console.error('@@@@@error retrieving data types');
+        console.error(error)
     }
 }
 
@@ -103,6 +118,7 @@ export {
     searchDatasets,
     searchModels,
     getFilters,
+    getTypes,
     downloadAllDatasets,
     downloadDatasets
 }

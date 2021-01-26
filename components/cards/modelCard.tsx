@@ -41,6 +41,8 @@ function _ModelCard(props: IModelCardProps, ref) {
     const hasPageLink = !!pageLink;
 
     const hasSource = !!model?.source && model?.source?.trim().length > 0;
+    const hasReadme = !!model?.readme_link && model?.readme_link?.trim().length > 0;
+    const hasModelFiles = !!model?.model_files && model?.model_files?.length > 0;
 
     return (<CardContainer key={`model-${model?.id}`}>
         <div className={modelCardStyle['model-card-content']}>
@@ -64,6 +66,18 @@ function _ModelCard(props: IModelCardProps, ref) {
                                 <span className={modelCardStyle['model-card-papers-label']}>Papers: </span><span
                                 className={modelCardStyle['model-card-papers-value']}>{(model?.papers ?? []).join(',') ?? ''}</span>
                             </div>
+                            {hasReadme ?
+                                <div className='col-12 text-left'>
+                                    <span className={modelCardStyle['model-card-papers-label']}>Readme: </span>
+                                    <a href={model?.readme_link}><span className={modelCardStyle['model-card-papers-value']}>{(model?.papers ?? []).join(',') ?? ''}</span></a>
+                                </div> : null
+                            }
+                            {hasModelFiles ?
+                                <div className='col-12 text-left'>
+                                    <span className={modelCardStyle['model-card-papers-label']}>Mod Files: </span>
+                                    {model?.model_files?.map((item) => <a href={item.url}>{item.label}</a>)}
+                                </div> : null
+                            }
                         </div>
                         <div className='col-md-4 col-sm-12 text-right'>
                             {hasSource ?
@@ -78,7 +92,7 @@ function _ModelCard(props: IModelCardProps, ref) {
                     <div className='row'>
                         <div className='col-12 text-left'>
                             <div className='row'>
-                                <div className='col-12'>
+                                {/*<div className='col-12'>
                                     <FormControl>
                                         <FormControlLabel
                                             control={<Switch
@@ -88,7 +102,7 @@ function _ModelCard(props: IModelCardProps, ref) {
                                                     toggleSelectedForDownload(model['source_id'], value)}/>}
                                             label={'Select for download'}/>
                                     </FormControl>
-                                </div>
+                                </div>*/}
                                 {hasDownloadLink ?
                                     <div className='col-12 text-center'>
                                         <span className={modelCardStyle['model-card-action']}>

@@ -2,17 +2,16 @@ import * as React from "react";
 import {useEffect, useState} from "react";
 import {makeStyles, Typography} from "@material-ui/core";
 import {CloudDownload as IconDownload} from "@material-ui/icons";
-import {getPage} from "../helpers/dataHelper";
-import Spinner from "../components/spinner/spinner";
-import PageContainer from "../components/page/pageContainer";
-import {DataSetCard} from "../components/cards/dataSetCard";
-import {CustomButton} from "../components/buttons/buttons";
+import Spinner from "../../components/spinner/spinner";
+import PageContainer from "../../components/page/pageContainer";
+import {DataSetCard} from "../../components/cards/dataSetCard";
+import {CustomButton} from "../../components/buttons/buttons";
 
-import {getFilters, searchDatasets, downloadAllDatasets, downloadDatasets} from "../helpers/apiHelper";
-import {FormFilter} from "../components/forms/filter";
-import constants from "../constants";
-import pageContentStyle from './page.module.scss';
-import {ItemsCountBaloon} from "../components/baloons/itemsCountBaloon";
+import {getFilters, searchDatasets, downloadAllDatasets, downloadDatasets, getTypes} from "../../helpers/apiHelper";
+import {FormFilter} from "../../components/forms/filter";
+import constants from "../../constants";
+import pageContentStyle from '../page.module.scss';
+import {ItemsCountBaloon} from "../../components/baloons/itemsCountBaloon";
 
 export interface ISearchParams {
     query?: string;
@@ -22,7 +21,7 @@ export interface ISearchParams {
     hitsPerPage?: number;
 }
 
-function DataPage() {
+function DataPage({params}) {
     const [loading, setLoading] = React.useState(true);
     const [page, setPage] = React.useState<any>({});
     const [dataSets, setDataSets] = React.useState<any>([]);
@@ -53,16 +52,17 @@ function DataPage() {
 
     const setup = async () => {
         try {
-            const _page = await getPage('data');
+            //const _page = await getPage('data');
             const {secondary_region: regionFilters, cell_type: cellTypes, species} = await getFilters('dataset');
             const {total_page: _totalPages, total: _totalItems, items} = await searchDatasets({
+                data_type: params?.type ?? null,
                 query: selectedQuery,
                 region: selectedRegion,
                 cell_type: selectedCellType,
                 species: selectedSpecies,
                 page: numPage,
             });
-            setPage(_page);
+            //setPage(_page);
             setRegionFilters(regionFilters);
             setCellTypeFilters(cellTypes);
             setSpeciesFilters(species);
@@ -280,4 +280,24 @@ function DataPage() {
     );
 }
 
+const getStaticProps = ({params}) => ({
+    props: { params }
+});
+
+const getStaticPaths = async () => {
+    const {type: types} = await getTypes('dataset')
+    const paths = (types ?? []).map((item) => ({
+        params: {type: item}
+    }));
+    return {
+        paths,
+        fallback: false
+    }
+}
+
 export default DataPage;
+
+export {
+    getStaticProps,
+    getStaticPaths
+}
