@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {FormControl, FormControlLabel, IconButton, InputLabel, Switch, Tooltip} from '@material-ui/core';
+import {Tooltip} from '@material-ui/core';
 import {
     CloudDownload as IconDownload,
     Link as IconLink,
@@ -7,7 +7,6 @@ import {
 import {useIconButtonStyles} from "../../style/style";
 import {ExpandButton} from "../buttons/expandButton";
 import {CardContainer} from "./card";
-import {getImageUrlByPath} from "../../helpers/imageHelper";
 
 import modelCardStyle from './modelCard.module.scss';
 import {forwardRef, PropsWithChildren} from "react";
@@ -69,7 +68,7 @@ function _ModelCard(props: IModelCardProps, ref) {
                             {hasReadme ?
                                 <div className='col-12 text-left'>
                                     <span className={modelCardStyle['model-card-papers-label']}>Readme: </span>
-                                    <a href={model?.readme_link}><span className={modelCardStyle['model-card-papers-value']}>{(model?.papers ?? []).join(',') ?? ''}</span></a>
+                                    <a href={model?.readme_link} target='_blank'><span className={modelCardStyle['model-card-papers-value']}>{model?.readme_link ?? ''}</span></a>
                                 </div> : null
                             }
                             {hasModelFiles ?
