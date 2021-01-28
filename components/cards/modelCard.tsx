@@ -74,8 +74,8 @@ function _ModelCard(props: IModelCardProps, ref) {
                             {hasModelFiles ?
                                 <div className='col-12 text-left'>
                                     <span className={modelCardStyle['model-card-papers-label']}>Mod Files: </span>
-                                    {Object.keys(model?.model_files ?? []).map((label, index) =>
-                                        <a href={model?.model_files[label]}>{label}{index < model?.model_files?.length - 1 ? ',' : ''}</a>)
+                                    {(model?.model_files ?? []).map((item, index) =>
+                                        <a href={item.url}>{item.label}{index < model?.model_files?.length - 1 ? ',' : ''}</a>)
                                     }
                                 </div> : null
                             }
