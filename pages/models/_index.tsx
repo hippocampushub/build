@@ -10,7 +10,8 @@ import {getPage} from "../../helpers/dataHelper";
 import {ChevronRight as ArrowRight} from "@material-ui/icons";
 import DataTypeCtaButton from "../../components/cta/dataTypeCtaButton";
 
-function DataHomePage() {
+
+function ModelsHomePage() {
     const router = useRouter();
 
     const [loading, setLoading] = React.useState(true);
@@ -22,15 +23,15 @@ function DataHomePage() {
     }, []);
 
     const setup = async () => {
-        const _page = await getPage('data');
-        const {type: types} = await getTypes('dataset');
+        const _page = await getPage('models');
+        const {type: types} = await getTypes('model');
         setPage(_page);
         setDataTypes(types);
         setLoading(false);
     }
 
     const _ctaAction = async (type: string) => {
-        await router.push(`/data/${type}`);
+        await router.push(`/models/${type}`);
     }
 
     return (<PageContainer>
@@ -48,11 +49,7 @@ function DataHomePage() {
                 </div>
             </div>
             <section style={{marginTop: 20}}>
-                {(dataTypes ?? []).map((item) => <div className='row' style={{marginTop: 20}}>
-                    <div className='col-12'>
-                        <DataTypeCtaButton type={item} action={(type: string) => _ctaAction(type)}/>
-                    </div>
-                </div>)}
+                {(dataTypes ?? []).map((item) => <DataTypeCtaButton type={item} action={(type) => _ctaAction(type)}/>)}
             </section>
             {loading ?
                 <Spinner/> : null
@@ -64,4 +61,6 @@ function DataHomePage() {
     </PageContainer>);
 }
 
-export default DataHomePage;
+
+
+export default ModelsHomePage;

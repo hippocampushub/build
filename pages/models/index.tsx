@@ -1,19 +1,17 @@
 import * as React from "react";
 import {useEffect, useState} from "react";
 import {makeStyles, Typography} from "@material-ui/core";
-import {CloudDownload as IconDownload} from "@material-ui/icons";
+import {getPage} from "../../helpers/dataHelper";
 import Spinner from "../../components/spinner/spinner";
 import PageContainer from "../../components/page/pageContainer";
-import {MorphologyCard} from "../../components/cards/morphologyCard";
-import {ElectrophysiologyCard} from "../../components/cards/electrophysiologyCard";
-import {ConnectionCard} from "../../components/cards/connectionCard";
 import {CustomButton} from "../../components/buttons/buttons";
 
-import {getFilters, searchDatasets, downloadAllDatasets, downloadDatasets, getTypes} from "../../helpers/apiHelper";
-import {FormFilter} from "../../components/forms/filter";
+import {getTypes, searchModels} from "../../helpers/apiHelper";
 import constants from "../../constants";
 import pageContentStyle from '../page.module.scss';
 import {ItemsCountBaloon} from "../../components/baloons/itemsCountBaloon";
+import {ModelCard} from "../../components/cards/modelCard";
+import {FormFilter} from "../../components/forms/filter";
 
 export interface ISearchParams {
     query?: string;
@@ -23,17 +21,11 @@ export interface ISearchParams {
     hitsPerPage?: number;
 }
 
-const _typeCards = {
-    'morphology': MorphologyCard,
-    'electrophysiology': ElectrophysiologyCard,
-    'connection': ConnectionCard
-}
-
-function DataPage({params}) {
+function ModelsPage({params}) {
     const [loading, setLoading] = React.useState(true);
     const [page, setPage] = React.useState<any>({});
-    const [dataSets, setDataSets] = React.useState<any>([]);
-    const [dataSetDialogOpen, setDataSetDialogOpen] = React.useState(false);
+    const [models, setModels] = React.useState<any>([]);
+
     const [regionFilters, setRegionFilters] = React.useState<any[]>([]);
     const [cellTypeFilters, setCellTypeFilters] = React.useState<any[]>([]);
     const [speciesFilters, setSpeciesFilters] = React.useState<any[]>([]);
@@ -60,9 +52,8 @@ function DataPage({params}) {
 
     const setup = async () => {
         try {
-            //const _page = await getPage('data');
-            const {secondary_region: regionFilters, cell_type: cellTypes, species} = await getFilters('dataset');
-            const {total_page: _totalPages, total: _totalItems, items} = await searchDatasets({
+            const _page = await getPage('models');
+            const {total_page: _totalPages, total: _totalItems, items} = await searchModels({
                 data_type: params?.type ?? null,
                 query: selectedQuery,
                 region: selectedRegion,
@@ -70,28 +61,16 @@ function DataPage({params}) {
                 species: selectedSpecies,
                 page: numPage,
             });
-            //setPage(_page);
-            setRegionFilters(regionFilters);
-            setCellTypeFilters(cellTypes);
-            setSpeciesFilters(species);
+            setPage(_page);
             setTotalPages(_totalPages)
             setTotalItems(_totalItems)
-            setDataSets(items);
+            setModels(items);
             setLoading(false);
         } catch (error) {
 
         }
     }
 
-    const _openDataSetDetail = (dataSet) => {
-        setDataSetDialogOpen(true);
-        setSelectedDataSet(dataSet);
-    }
-
-    const _onCloseDataSetDetail = () => {
-        setDataSetDialogOpen(false);
-        setSelectedDataSet(null);
-    }
 
     const _search = async ({
         query,
@@ -99,12 +78,13 @@ function DataPage({params}) {
         cellType,
         species,
         hitsPerPage
-    }: ISearchParams = {}) => {
+}: ISearchParams = {}) => {
         console.log('@@@@requestSearch');
         const page = 0
         setNumPage(0);
         setLoading(true);
-        const {total_page: _totalPages, total: _totalItems, items} = await searchDatasets({
+        const {total_page: _totalPages, total: _totalItems, items} = await searchModels({
+            data_type: params?.type ?? null,
             query: query ?? selectedQuery,
             region: region ?? selectedRegion,
             cell_type: cellType ?? selectedCellType,
@@ -112,9 +92,7 @@ function DataPage({params}) {
             page,
             hitsPerPage
         });
-        console.log('@@@@@@@totalPages', _totalPages);
-        console.log('@@@@@@@totalItems', _totalItems);
-        setDataSets(items)
+        setModels(items)
         setTotalPages(_totalPages)
         setTotalItems(_totalItems);
         setLoading(false);
@@ -124,16 +102,16 @@ function DataPage({params}) {
         const page = numPage + 1;
         setNumPage(page);
         setLoading(true);
-        const {total_page: _totalPages, total: _totalItems, items} = await searchDatasets({
+        const {total_page: _totalPages, total: _totalItems, items} = await searchModels({
+            data_type: params?.type ?? null,
             query: selectedQuery,
             region: selectedRegion,
             cell_type: selectedCellType,
             species: selectedSpecies,
-            hitsPerPage,
             page,
         });
-        const allDataSets = [...dataSets, ...items]
-        setDataSets(allDataSets)
+        const allDataSets = [...models, ...items]
+        setModels(allDataSets)
         setTotalItems(_totalItems);
         setTotalPages(_totalPages)
         setLoading(false);
@@ -162,14 +140,6 @@ function DataPage({params}) {
         });
     }
 
-    const _downloadAll = () => {
-        window.open(downloadAllDatasets());
-    }
-
-    const _downloadSelectedDatasets = () => {
-        window.open(downloadDatasets(selectedForDownloads));
-    }
-
     const _toggleSelectForDownload = async(id, selected) => {
         console.log('@@@@@@@toggleSelectForDownload', id, selected)
         if (selected) {
@@ -188,9 +158,7 @@ function DataPage({params}) {
 
     const hasMoreItems = numPage < totalPages - 1;
 
-    const hasData = !!dataSets && dataSets.length > 0;
-
-    const CardType = _typeCards[params?.type]
+    const hasData = !!models && models.length > 0;
 
     return (
         <PageContainer>
@@ -236,14 +204,14 @@ function DataPage({params}) {
                                 count={totalItems}/>
                         </div>
                         <div className='col-md-6 text-right'>
-                            <CustomButton onClick={() => _downloadAll()}>
+                           {/* <CustomButton onClick={() => _downloadAll()}>
                                 <IconDownload/> <span style={{marginLeft: 5}}>Download All</span>
                             </CustomButton>
                             {!!selectedForDownloads && selectedForDownloads.length > 0 ?
                                 <CustomButton onClick={() => _downloadSelectedDatasets()} style={{marginLeft: 10}}>
                                     <IconDownload/> <span style={{marginLeft: 5}}>Download Selected</span>
                                 </CustomButton> : null
-                            }
+                            }*/}
                         </div>
                     </div>
                     <div className='row'>
@@ -251,14 +219,13 @@ function DataPage({params}) {
                             {!hasData ?
 
                                 <p>{loading ? '': 'There are not data for search criteria'}</p> :
-                                <div>{(dataSets ?? []).map((item) => (
+                                <div>{(models ?? []).map((item) => (
                                     <div className="row" key={`row-dataset-${item?.id}`}>
                                         <div className='col-12'>
-                                            <CardType
-                                                dataSet={item}
+                                            <ModelCard
+                                                model={item}
                                                 selectedForDownload={selectedForDownloads.includes(item['source_id'])}
-                                                toggleSelectedForDownload={_toggleSelectForDownload}
-                                                onClick={() => _openDataSetDetail(item)}/>
+                                                toggleSelectedForDownload={_toggleSelectForDownload}/>
                                         </div>
                                     </div>))}
                                 </div>
@@ -283,31 +250,8 @@ function DataPage({params}) {
                     <Spinner/> : null
                 }
             </div>
-            {/*<DataSetDialog open={dataSetDialogOpen}
-                           dataSet={selectedDataSet}
-                           onClose={_onCloseDataSetDetail}/>*/}
         </PageContainer>
     );
 }
 
-const getStaticProps = ({params}) => ({
-    props: { params }
-});
-
-const getStaticPaths = async () => {
-    const {type: types} = await getTypes('dataset')
-    const paths = (types ?? []).map((item) => ({
-        params: {type: item}
-    }));
-    return {
-        paths,
-        fallback: false
-    }
-}
-
-export default DataPage;
-
-export {
-    getStaticProps,
-    getStaticPaths
-}
+export default ModelsPage;

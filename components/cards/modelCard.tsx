@@ -62,8 +62,9 @@ function _ModelCard(props: IModelCardProps, ref) {
                                 className={modelCardStyle['model-card-types-value']}>{(model?.model_types ?? []).join(',') ?? ''}</span>
                             </div>
                             <div className='col-12 text-left'>
-                                <span className={modelCardStyle['model-card-papers-label']}>Papers: </span><span
-                                className={modelCardStyle['model-card-papers-value']}>{(model?.papers ?? []).join(',') ?? ''}</span>
+                                <span className={modelCardStyle['model-card-papers-label']}>Papers: </span>
+                                {(model?.papers ?? []).map((item) => !!item?.url ? <a className={modelCardStyle['model-card-papers-value']} href={item.url}>{item.label}</a> : <span className={modelCardStyle['model-card-papers-value']}>{item.label}</span>)}
+                                <span className={modelCardStyle['model-card-papers-value']}>{(model?.papers ?? []).join(',') ?? ''}</span>
                             </div>
                             {hasReadme ?
                                 <div className='col-12 text-left'>
@@ -75,7 +76,7 @@ function _ModelCard(props: IModelCardProps, ref) {
                                 <div className='col-12 text-left'>
                                     <span className={modelCardStyle['model-card-papers-label']}>Mod Files: </span>
                                     {(model?.model_files ?? []).map((item, index) =>
-                                        <a href={item.url}>{item.label}{index < model?.model_files?.length - 1 ? ',' : ''}</a>)
+                                        <a href={item.url}>{item.label}{index < model?.model_files?.length - 1 ? ', ' : ''}</a>)
                                     }
                                 </div> : null
                             }

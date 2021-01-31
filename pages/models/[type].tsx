@@ -1,16 +1,17 @@
 import * as React from "react";
 import {useEffect, useState} from "react";
 import {makeStyles, Typography} from "@material-ui/core";
-import {getPage} from "../helpers/dataHelper";
-import Spinner from "../components/spinner/spinner";
-import PageContainer from "../components/page/pageContainer";
-import {CustomButton} from "../components/buttons/buttons";
+import {getPage} from "../../helpers/dataHelper";
+import Spinner from "../../components/spinner/spinner";
+import PageContainer from "../../components/page/pageContainer";
+import {CustomButton} from "../../components/buttons/buttons";
 
-import {searchModels} from "../helpers/apiHelper";
-import constants from "../constants";
-import pageContentStyle from './page.module.scss';
-import {ItemsCountBaloon} from "../components/baloons/itemsCountBaloon";
-import {ModelCard} from "../components/cards/modelCard";
+import {getTypes, searchModels} from "../../helpers/apiHelper";
+import constants from "../../constants";
+import pageContentStyle from '../page.module.scss';
+import {ItemsCountBaloon} from "../../components/baloons/itemsCountBaloon";
+import {ModelCard} from "../../components/cards/modelCard";
+import {FormFilter} from "../../components/forms/filter";
 
 export interface ISearchParams {
     query?: string;
@@ -20,10 +21,11 @@ export interface ISearchParams {
     hitsPerPage?: number;
 }
 
-function ModelsPage() {
+function ModelsPage({params}) {
     const [loading, setLoading] = React.useState(true);
     const [page, setPage] = React.useState<any>({});
     const [models, setModels] = React.useState<any>([]);
+
     const [regionFilters, setRegionFilters] = React.useState<any[]>([]);
     const [cellTypeFilters, setCellTypeFilters] = React.useState<any[]>([]);
     const [speciesFilters, setSpeciesFilters] = React.useState<any[]>([]);
@@ -52,6 +54,7 @@ function ModelsPage() {
         try {
             const _page = await getPage('models');
             const {total_page: _totalPages, total: _totalItems, items} = await searchModels({
+                data_type: params?.type ?? null,
                 query: selectedQuery,
                 region: selectedRegion,
                 cell_type: selectedCellType,
@@ -81,6 +84,7 @@ function ModelsPage() {
         setNumPage(0);
         setLoading(true);
         const {total_page: _totalPages, total: _totalItems, items} = await searchModels({
+            data_type: params?.type ?? null,
             query: query ?? selectedQuery,
             region: region ?? selectedRegion,
             cell_type: cellType ?? selectedCellType,
@@ -99,6 +103,7 @@ function ModelsPage() {
         setNumPage(page);
         setLoading(true);
         const {total_page: _totalPages, total: _totalItems, items} = await searchModels({
+            data_type: params?.type ?? null,
             query: selectedQuery,
             region: selectedRegion,
             cell_type: selectedCellType,
@@ -171,7 +176,7 @@ function ModelsPage() {
                     </div>
                 </div>
                 <section>
-                    {/*<div className='row' style={{marginTop: 20}}>
+                    <div className='row' style={{marginTop: 20}}>
                         <div className='col-12'>
                             <FormFilter
                                 query={selectedQuery}
@@ -191,7 +196,7 @@ function ModelsPage() {
                                 applyFilters={() => _applyFilters()}
                                 resetFilters={() => _resetFilters()}/>
                         </div>
-                    </div>*/}
+                    </div>
                     <div className='row' style={{marginTop: 20}}>
                         <div className='col-md-6'>
                             <ItemsCountBaloon
@@ -249,4 +254,24 @@ function ModelsPage() {
     );
 }
 
+const getStaticProps = ({params}) => ({
+    props: { params }
+});
+
+const getStaticPaths = async () => {
+    const {type: types} = await getTypes('dataset')
+    const paths = (types ?? []).map((item) => ({
+        params: {type: item}
+    }));
+    return {
+        paths,
+        fallback: false
+    }
+}
+
 export default ModelsPage;
+
+export {
+    getStaticProps,
+    getStaticPaths
+}
