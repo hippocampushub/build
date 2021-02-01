@@ -14,6 +14,7 @@ import {FormFilter} from "../../components/forms/filter";
 import constants from "../../constants";
 import pageContentStyle from '../page.module.scss';
 import {ItemsCountBaloon} from "../../components/baloons/itemsCountBaloon";
+import {MorphologyViewerDialog} from "../../components/dialogs/morphologyViewerDialog";
 
 export interface ISearchParams {
     query?: string;
@@ -51,6 +52,9 @@ function DataPage({params}) {
     const [totalItems, setTotalItems] = React.useState<number>(0);
 
     const [hitsPerPage, setHitsPerPage] = React.useState<number>(constants.DEFAULT_HITS_PER_PAGE)
+
+    const [openMorphologyViewer, setOpenMorphologyViewer] = React.useState(false);
+    const [selectedMorphologyViewerModel, setSelectedMorphologyViewerModel] = React.useState(null);
 
 
 
@@ -170,6 +174,16 @@ function DataPage({params}) {
         window.open(downloadDatasets(selectedForDownloads));
     }
 
+    const _openMorphologyViewer = (modelUrl: string) => {
+        setOpenMorphologyViewer(true);
+        setSelectedMorphologyViewerModel(modelUrl);
+    }
+
+    const _closeMorphologyViewer = () => {
+        setOpenMorphologyViewer(false);
+        setSelectedMorphologyViewerModel(null);
+    }
+
     const _toggleSelectForDownload = async(id, selected) => {
         console.log('@@@@@@@toggleSelectForDownload', id, selected)
         if (selected) {
@@ -258,7 +272,8 @@ function DataPage({params}) {
                                                 dataSet={item}
                                                 selectedForDownload={selectedForDownloads.includes(item['source_id'])}
                                                 toggleSelectedForDownload={_toggleSelectForDownload}
-                                                onClick={() => _openDataSetDetail(item)}/>
+                                                onClick={() => _openDataSetDetail(item)}
+                                                openMorphologyViewer={_openMorphologyViewer}/>
                                         </div>
                                     </div>))}
                                 </div>
@@ -283,6 +298,10 @@ function DataPage({params}) {
                     <Spinner/> : null
                 }
             </div>
+            <MorphologyViewerDialog
+                open={openMorphologyViewer}
+                onClose={_closeMorphologyViewer}
+                modelUrl={selectedMorphologyViewerModel}/>
             {/*<DataSetDialog open={dataSetDialogOpen}
                            dataSet={selectedDataSet}
                            onClose={_onCloseDataSetDetail}/>*/}

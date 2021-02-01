@@ -17,6 +17,7 @@ export interface IDataSetCardProps extends PropsWithChildren<any> {
     selectedForDownload: boolean;
     toggleSelectedForDownload: (id:string, value: boolean) => void;
     onClick: () => void;
+    openMorphologyViewer: (modelUrl: string) => void;
 }
 
 function _DataSetCard(props: IDataSetCardProps, ref) {
@@ -28,6 +29,12 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
     const _onClick = () => {
         if (!!onClick) {
             onClick();
+        }
+    }
+
+    const _openMorphologyViewer = () => {
+        if (!!props?.openMorphologyViewer) {
+            props?.openMorphologyViewer(dataSet?.download_link)
         }
     }
 
@@ -137,6 +144,20 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                     onClick={() => window.open(pageLink)}
                                 />
                                 </Tooltip>
+                                        </span>
+                                    </div> : null
+                                }
+                                {hasDownloadLink ?
+                                    <div className='col-12 text-center'>
+                                        <span className={dataSetCardStyle['dataset-card-action']}>
+                                            <Tooltip title='Download'>
+                                                <ExpandButton
+                                                    label={'Download'}
+                                                    icon={<img src={getImageUrlByPath('/assets/icons/3d.svg')}/>}
+                                                    expanded={actionsExpanded}
+                                                    onClick={() => _openMorphologyViewer()}
+                                                />
+                                            </Tooltip>
                                         </span>
                                     </div> : null
                                 }

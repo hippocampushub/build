@@ -23,5 +23,6 @@ export default {
         get: 'get',
         post: 'post'
     },
-    DEFAULT_HITS_PER_PAGE: 20
+    DEFAULT_HITS_PER_PAGE: 20,
+    MORPHOLOGY_VIEWER_BASE_URL: 'https://morph-view.apps.hbp.eu/?model='
 }
