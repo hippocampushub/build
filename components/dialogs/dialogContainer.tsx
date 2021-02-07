@@ -6,6 +6,7 @@ import {checkIfNotEmpty} from "../../helpers/validatorHelper";
 import parse from 'html-react-parser';
 
 import dialogContainerStyle from './dialog.module.scss';
+import {useIconButtonStyles} from "../../style/style";
 
 interface IDialogContainerProps extends DialogProps {
     title?: string;
@@ -28,6 +29,8 @@ const useDialogStyles = makeStyles((theme) => ({
 
 export function DialogContainer({open, title, subtitle, children, actions, onClose, ...props}: IDialogContainerProps) {
     const classes = useDialogStyles();
+
+    const iconButtonStyles = useIconButtonStyles();
     return (<Dialog classes={classes} open={open} {...props}>
         <DialogTitle>
             <div className='row'>
@@ -40,7 +43,7 @@ export function DialogContainer({open, title, subtitle, children, actions, onClo
                     }
                 </div>
                 <div className='col-2 text-right'>
-                    <IconButton onClick={onClose}>
+                    <IconButton onClick={onClose} className={iconButtonStyles.root}>
                         <IconClose/>
                     </IconButton>
                 </div>

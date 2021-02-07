@@ -44,12 +44,10 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
             <div className='col-md-3 col-sm-12'>
                 <img
                     src={getImageUrlByPath(neuron?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png')}
-                    onError={this.src = getImageUrlByPath('/assets/images/placeholder.png')}
                     className={dataSetCardStyle['dataset-card-image']}/>
             </div>
             <div className='col-md-7 col-sm-12'>
                 <div className='row'>
-
                     <div className='col-12 text-left'>
                         <span className={dataSetCardStyle['dataset-card-name-label']}>{headerLabel}</span>
                     </div>

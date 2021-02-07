@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Tooltip} from '@material-ui/core';
+import {FormControl, FormControlLabel, Switch, Tooltip} from '@material-ui/core';
 import {
     CloudDownload as IconDownload,
     Link as IconLink,
@@ -93,17 +93,19 @@ function _ModelCard(props: IModelCardProps, ref) {
                     <div className='row'>
                         <div className='col-12 text-left'>
                             <div className='row'>
-                                {/*<div className='col-12'>
-                                    <FormControl>
-                                        <FormControlLabel
-                                            control={<Switch
-                                                defaultChecked={selectedForDownload}
-                                                checked={selectedForDownload}
-                                                onChange={(event, value) =>
-                                                    toggleSelectedForDownload(model['source_id'], value)}/>}
-                                            label={'Select for download'}/>
-                                    </FormControl>
-                                </div>*/}
+                                {hasDownloadLink ?
+                                    <div className='col-12'>
+                                        <FormControl>
+                                            <FormControlLabel
+                                                control={<Switch
+                                                    defaultChecked={selectedForDownload}
+                                                    checked={selectedForDownload}
+                                                    onChange={(event, value) =>
+                                                        toggleSelectedForDownload(model['source_id'], value)}/>}
+                                                label={'Select for download'}/>
+                                        </FormControl>
+                                    </div> : null
+                                }
                                 {hasDownloadLink ?
                                     <div className='col-12 text-center'>
                                         <span className={modelCardStyle['model-card-action']}>

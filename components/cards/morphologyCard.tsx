@@ -17,7 +17,10 @@ export interface IDataSetCardProps extends PropsWithChildren<any> {
     selectedForDownload: boolean;
     toggleSelectedForDownload: (id:string, value: boolean) => void;
     onClick: () => void;
-    openMorphologyViewer: (modelUrl: string) => void;
+    openMorphologyViewer: ({modelName, modelUrl}: {
+        modelName: string;
+        modelUrl: string;
+    }) => void;
 }
 
 function _DataSetCard(props: IDataSetCardProps, ref) {
@@ -34,7 +37,10 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
 
     const _openMorphologyViewer = () => {
         if (!!props?.openMorphologyViewer) {
-            props?.openMorphologyViewer(dataSet?.download_link)
+            props?.openMorphologyViewer({
+                modelName: dataSet?.name,
+                modelUrl: dataSet?.download_link
+            });
         }
     }
 

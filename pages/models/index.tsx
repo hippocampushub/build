@@ -6,13 +6,14 @@ import Spinner from "../../components/spinner/spinner";
 import PageContainer from "../../components/page/pageContainer";
 import {CustomButton} from "../../components/buttons/buttons";
 
-import {getFilters, getTypes, searchModels} from "../../helpers/apiHelper";
+import {downloadAllDatasets, downloadDatasets, getFilters, getTypes, searchModels} from "../../helpers/apiHelper";
 import constants from "../../constants";
 import pageContentStyle from '../page.module.scss';
 import {ItemsCountBaloon} from "../../components/baloons/itemsCountBaloon";
 import {ModelCard} from "../../components/cards/modelCard";
 import {FormFilter} from "../../components/forms/filter";
 import {ISearchParams} from "../../interfaces";
+import {CloudDownload as IconDownload} from "@material-ui/icons";
 
 function ModelsPage({params}) {
     const [loading, setLoading] = React.useState(true);
@@ -59,7 +60,6 @@ function ModelsPage({params}) {
 
         }
     }
-
 
     const _search = async ({
         query,
@@ -115,7 +115,16 @@ function ModelsPage({params}) {
         setSelectedFilters(null)
         await _search({
             query: '',
+            filters: null
         });
+    }
+
+    const _downloadAll = () => {
+        window.open(downloadAllDatasets());
+    }
+
+    const _downloadSelectedDatasets = () => {
+        window.open(downloadDatasets(selectedForDownloads));
     }
 
     const _toggleSelectForDownload = async(id, selected) => {
@@ -178,14 +187,14 @@ function ModelsPage({params}) {
                                 count={totalItems}/>
                         </div>
                         <div className='col-md-6 text-right'>
-                           {/* <CustomButton onClick={() => _downloadAll()}>
+                            <CustomButton onClick={() => _downloadAll()}>
                                 <IconDownload/> <span style={{marginLeft: 5}}>Download All</span>
                             </CustomButton>
                             {!!selectedForDownloads && selectedForDownloads.length > 0 ?
                                 <CustomButton onClick={() => _downloadSelectedDatasets()} style={{marginLeft: 10}}>
                                     <IconDownload/> <span style={{marginLeft: 5}}>Download Selected</span>
                                 </CustomButton> : null
-                            }*/}
+                            }
                         </div>
                     </div>
                     <div className='row'>

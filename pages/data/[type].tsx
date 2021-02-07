@@ -73,10 +73,10 @@ function DataPage({params}) {
 
 
     const _search = async ({
-                               query,
-                               filters,
-                               hitsPerPage
-                           }: ISearchParams = {}) => {
+        query,
+        filters,
+        hitsPerPage
+}: ISearchParams = {}) => {
         console.log('@@@@requestSearch');
         const page = 0
         setNumPage(0);
@@ -141,9 +141,15 @@ function DataPage({params}) {
         window.open(downloadDatasets(selectedForDownloads));
     }
 
-    const _openMorphologyViewer = (modelUrl: string) => {
+    const _openMorphologyViewer = ({modelName, modelUrl}: {
+        modelName: string;
+        modelUrl: string;
+    }) => {
         setOpenMorphologyViewer(true);
-        setSelectedMorphologyViewerModel(modelUrl);
+        setSelectedMorphologyViewerModel({
+            modelName,
+            modelUrl
+        });
     }
 
     const _closeMorphologyViewer = () => {
@@ -226,7 +232,6 @@ function DataPage({params}) {
                     <div className='row'>
                         <div className='col-12 text-center'>
                             {!hasData ?
-
                                 <p>{loading ? '' : 'There are not data for search criteria'}</p> :
                                 <div>{(dataSets ?? []).map((item) => (
                                     <div className="row" key={`row-dataset-${item?.id}`}>
@@ -264,7 +269,8 @@ function DataPage({params}) {
             <MorphologyViewerDialog
                 open={openMorphologyViewer}
                 onClose={_closeMorphologyViewer}
-                modelUrl={selectedMorphologyViewerModel}/>
+                modelName={selectedMorphologyViewerModel?.modelName}
+                modelUrl={selectedMorphologyViewerModel?.modelUrl}/>
             {/*<DataSetDialog open={dataSetDialogOpen}
                            dataSet={selectedDataSet}
                            onClose={_onCloseDataSetDetail}/>*/}

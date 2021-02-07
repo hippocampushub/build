@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export function MorphologyViewerDialog({open, onClose, modelUrl}) {
+export function MorphologyViewerDialog({open, onClose, modelName, modelUrl}) {
 
     const classes = useStyles();
 
@@ -26,18 +26,12 @@ export function MorphologyViewerDialog({open, onClose, modelUrl}) {
         open={open}
         fullWidth={true}
         maxWidth={'xl'}
+        title={modelName ?? ''}
         onClose={onClose}>
         <div>
-            <div className='row'>
-                <div className='col-12'>
-
-                </div>
-            </div>
             <div className='row' style={{marginTop: 20}}>
                 <div className='col-12'>
                     <iframe src={`${constants.MORPHOLOGY_VIEWER_BASE_URL}${modelUrl}`} className={classes.iframe}/>
-                    <div>
-                    </div>
                 </div>
             </div>
         </div>

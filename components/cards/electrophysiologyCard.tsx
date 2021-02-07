@@ -16,7 +16,7 @@ import modelCardStyle from "./modelCard.module.scss";
 export interface IDataSetCardProps extends PropsWithChildren<any> {
     dataSet: any;
     selectedForDownload: boolean;
-    toggleSelectedForDownload: (id:string, value: boolean) => void;
+    toggleSelectedForDownload: (id: string, value: boolean) => void;
     onClick: () => void;
 }
 
@@ -48,7 +48,7 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
             <div className='row'>
                 <div className='col-md-2 col-sm-12'>
                     <img src={getImageUrlByPath(dataSet?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png')}
-                         className={dataSetCardStyle['dataset-card-image']} onError={this.src = getImageUrlByPath('/assets/images/placeholder.png')}/>
+                         className={dataSetCardStyle['dataset-card-image']}/>
                 </div>
                 <div className='col-md-7 col-sm-12'>
                     <div className='row'>
@@ -60,7 +60,10 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                 </div>
                                 <div className='col-12 text-left'>
                                     <span className={dataSetCardStyle['dataset-card-papers-label']}>Paper(s): </span>
-                                    {(dataSet?.papers ?? []).map((item) => !!item?.url ? <a className={dataSetCardStyle['dataset-card-papers-value']} href={item.url}>{item.label}</a> : <span className={dataSetCardStyle['dataset-card-papers-value']}>{item.label}</span>)}
+                                    {(dataSet?.papers ?? []).map((item) => !!item?.url ?
+                                        <a className={dataSetCardStyle['dataset-card-papers-value']}
+                                           href={item.url}>{item.label}</a> : <span
+                                            className={dataSetCardStyle['dataset-card-papers-value']}>{item.label}</span>)}
                                 </div>
                                 {/*<div className='col-12 text-left'>
                                     <span className={dataSetCardStyle['dataset-card-species-label']}>Species: </span><span
@@ -106,17 +109,19 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                     <div className='row'>
                         <div className='col-12 text-left'>
                             <div className='row'>
-                                <div className='col-12'>
-                                    <FormControl>
-                                        <FormControlLabel
-                                            control={<Switch
-                                                defaultChecked={selectedForDownload}
-                                                checked={selectedForDownload}
-                                                onChange={(event, value) =>
-                                                    toggleSelectedForDownload(dataSet['source_id'], value)}/>}
-                                            label={'Select for download'}/>
-                                    </FormControl>
-                                </div>
+                                {hasDownloadLink ?
+                                    <div className='col-12'>
+                                        <FormControl>
+                                            <FormControlLabel
+                                                control={<Switch
+                                                    defaultChecked={selectedForDownload}
+                                                    checked={selectedForDownload}
+                                                    onChange={(event, value) =>
+                                                        toggleSelectedForDownload(dataSet['source_id'], value)}/>}
+                                                label={'Select for download'}/>
+                                        </FormControl>
+                                    </div> : null
+                                }
                                 {hasDownloadLink ?
                                     <div className='col-12 text-center'>
                                         <span className={dataSetCardStyle['dataset-card-action']}>
