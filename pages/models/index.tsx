@@ -6,35 +6,23 @@ import Spinner from "../../components/spinner/spinner";
 import PageContainer from "../../components/page/pageContainer";
 import {CustomButton} from "../../components/buttons/buttons";
 
-import {getTypes, searchModels} from "../../helpers/apiHelper";
+import {getFilters, getTypes, searchModels} from "../../helpers/apiHelper";
 import constants from "../../constants";
 import pageContentStyle from '../page.module.scss';
 import {ItemsCountBaloon} from "../../components/baloons/itemsCountBaloon";
 import {ModelCard} from "../../components/cards/modelCard";
 import {FormFilter} from "../../components/forms/filter";
-
-export interface ISearchParams {
-    query?: string;
-    region?: string;
-    cellType?: string;
-    species?: string;
-    hitsPerPage?: number;
-}
+import {ISearchParams} from "../../interfaces";
 
 function ModelsPage({params}) {
     const [loading, setLoading] = React.useState(true);
     const [page, setPage] = React.useState<any>({});
     const [models, setModels] = React.useState<any>([]);
 
-    const [regionFilters, setRegionFilters] = React.useState<any[]>([]);
-    const [cellTypeFilters, setCellTypeFilters] = React.useState<any[]>([]);
-    const [speciesFilters, setSpeciesFilters] = React.useState<any[]>([]);
-    const [selectedDataSet, setSelectedDataSet] = React.useState<any>(null);
+    const [filters, setFilters] = React.useState<any>(null);
+    const [selectedFilters, setSelectedFilters] = React.useState<any>(null);
 
     const [selectedQuery, setSelectedQuery] = React.useState('');
-    const [selectedRegion, setSelectedRegion] = React.useState(null);
-    const [selectedCellType, setSelectedCellType] = React.useState(null);
-    const [selectedSpecies, setSelectedSpecies] = React.useState(null);
 
     const [selectedForDownloads, setSelectedForDownloads] = React.useState<string[]>([]);
 
@@ -52,16 +40,17 @@ function ModelsPage({params}) {
 
     const setup = async () => {
         try {
+            const _filters = await getFilters({
+                indexName: 'model'
+            });
             const _page = await getPage('models');
             const {total_page: _totalPages, total: _totalItems, items} = await searchModels({
                 data_type: params?.type ?? null,
                 query: selectedQuery,
-                region: selectedRegion,
-                cell_type: selectedCellType,
-                species: selectedSpecies,
                 page: numPage,
             });
             setPage(_page);
+            setFilters(_filters)
             setTotalPages(_totalPages)
             setTotalItems(_totalItems)
             setModels(items);
@@ -74,9 +63,7 @@ function ModelsPage({params}) {
 
     const _search = async ({
         query,
-        region,
-        cellType,
-        species,
+        filters,
         hitsPerPage
 }: ISearchParams = {}) => {
         console.log('@@@@requestSearch');
@@ -86,9 +73,7 @@ function ModelsPage({params}) {
         const {total_page: _totalPages, total: _totalItems, items} = await searchModels({
             data_type: params?.type ?? null,
             query: query ?? selectedQuery,
-            region: region ?? selectedRegion,
-            cell_type: cellType ?? selectedCellType,
-            species: species ?? selectedSpecies,
+            filters: filters ?? selectedFilters,
             page,
             hitsPerPage
         });
@@ -105,9 +90,7 @@ function ModelsPage({params}) {
         const {total_page: _totalPages, total: _totalItems, items} = await searchModels({
             data_type: params?.type ?? null,
             query: selectedQuery,
-            region: selectedRegion,
-            cell_type: selectedCellType,
-            species: selectedSpecies,
+            filters: selectedFilters,
             page,
         });
         const allDataSets = [...models, ...items]
@@ -129,14 +112,9 @@ function ModelsPage({params}) {
     }
 
     const _resetFilters = async () => {
-        setSelectedRegion(null);
-        setSelectedCellType(null);
-        setSelectedSpecies(null);
+        setSelectedFilters(null)
         await _search({
             query: '',
-            region: '',
-            cellType: '',
-            species: ''
         });
     }
 
@@ -180,19 +158,15 @@ function ModelsPage({params}) {
                         <div className='col-12'>
                             <FormFilter
                                 query={selectedQuery}
-                                regions={regionFilters}
-                                cellTypes={cellTypeFilters}
-                                species={speciesFilters}
-                                selectedRegion={selectedRegion}
-                                selectedCellType={selectedCellType}
-                                selectedSpecies={selectedSpecies}
+                                filters={filters}
+                                selectedFilters={selectedFilters}
                                 selectedHitsPerPage={hitsPerPage}
                                 onQueryChange={(value) => setSelectedQuery(value)}
                                 onRequestSearch={() => _search()}
                                 onChangeHitsPerPage={(value) => _onHitsPerPageChange(value)}
-                                onChangeRegion={(value) => setSelectedRegion(value)}
-                                onChangeCellType={(value) => setSelectedCellType(value)}
-                                onChangeSpecies={(value) => setSelectedSpecies(value)}
+                                onChangeFilters={(key: string, value: any) => setSelectedFilters({
+                                    [key]: value
+                                })}
                                 applyFilters={() => _applyFilters()}
                                 resetFilters={() => _resetFilters()}/>
                         </div>

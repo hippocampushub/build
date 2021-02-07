@@ -11,6 +11,7 @@ import {getImageUrlByPath} from "../../helpers/imageHelper";
 
 import dataSetCardStyle from './datasetCard.module.scss';
 import {forwardRef, PropsWithChildren} from "react";
+import modelCardStyle from "./modelCard.module.scss";
 
 export interface IDataSetCardProps extends PropsWithChildren<any> {
     dataSet: any;
@@ -47,7 +48,7 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
             <div className='row'>
                 <div className='col-md-2 col-sm-12'>
                     <img src={getImageUrlByPath(dataSet?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png')}
-                         className={dataSetCardStyle['dataset-card-image']}/>
+                         className={dataSetCardStyle['dataset-card-image']} onError={this.src = getImageUrlByPath('/assets/images/placeholder.png')}/>
                 </div>
                 <div className='col-md-7 col-sm-12'>
                     <div className='row'>
@@ -56,6 +57,10 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                 <div className='col-12 text-left'>
                                     <span className={dataSetCardStyle['dataset-card-name-label']}>Name: </span><span
                                     className={dataSetCardStyle['dataset-card-name-value']}>{dataSet?.name ?? ''}</span>
+                                </div>
+                                <div className='col-12 text-left'>
+                                    <span className={dataSetCardStyle['dataset-card-papers-label']}>Paper(s): </span>
+                                    {(dataSet?.papers ?? []).map((item) => !!item?.url ? <a className={dataSetCardStyle['dataset-card-papers-value']} href={item.url}>{item.label}</a> : <span className={dataSetCardStyle['dataset-card-papers-value']}>{item.label}</span>)}
                                 </div>
                                 {/*<div className='col-12 text-left'>
                                     <span className={dataSetCardStyle['dataset-card-species-label']}>Species: </span><span

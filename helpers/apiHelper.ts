@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {IFilterSearchParams, ISearchParams} from "../interfaces";
 
 const BACKEND_URL = process.env.BACKEND_URL ?? 'http://localhost:5000';
 
@@ -12,16 +13,6 @@ const endpoints = {
     download: {
         datasets: () => '/download/dataset'
     }
-}
-
-interface ISearchParams {
-    data_type?: string;
-    query?: string;
-    region?: string;
-    cell_type?: string;
-    species?: string;
-    page?: number;
-    hitsPerPage?: number;
 }
 
 const _parseSuccessfullResponse = (response) => {
@@ -38,9 +29,7 @@ const _parseSuccessfullResponse = (response) => {
 const searchDatasets = async ({
     data_type = null,
     query,
-    region,
-    cell_type,
-    species,
+    filters,
     page = 0,
     hitsPerPage = 20
 }: ISearchParams) => {
@@ -49,9 +38,7 @@ const searchDatasets = async ({
         const response = await axios.post(url, {
             data_type,
             query,
-            region,
-            cell_type,
-            species
+            filters
         });
         return _parseSuccessfullResponse(response);
     } catch (error) {
@@ -63,9 +50,7 @@ const searchDatasets = async ({
 
 const searchModels = async ({
     query,
-    region,
-    cell_type,
-    species,
+    filters,
     page = 0,
     hitsPerPage = 20
 }: ISearchParams) => {
@@ -73,7 +58,7 @@ const searchModels = async ({
     try {
         const response = await axios.post(url, {
             query,
-            region
+            filters
         });
         return _parseSuccessfullResponse(response);
     } catch (error) {
@@ -82,8 +67,11 @@ const searchModels = async ({
     }
 }
 
-const getFilters = async(indexName: string) => {
-    const url = `${BACKEND_URL}${endpoints.search.filters(indexName)}`;
+const getFilters = async({indexName, type}: IFilterSearchParams) => {
+    let url = `${BACKEND_URL}${endpoints.search.filters(indexName)}`;
+    if (!!type) {
+        url = `${url}/${type}`;
+    }
     try {
         const response = await axios.get(url);
         return _parseSuccessfullResponse(response);

@@ -58,13 +58,12 @@ function _ModelCard(props: IModelCardProps, ref) {
                                 className={modelCardStyle['model-card-name-value']}>{model?.name ?? ''}</span>
                             </div>
                             <div className='col-12 text-left'>
-                                <span className={modelCardStyle['model-card-types-label']}>Types: </span><span
+                                <span className={modelCardStyle['model-card-types-label']}>Type(s): </span><span
                                 className={modelCardStyle['model-card-types-value']}>{(model?.model_types ?? []).join(',') ?? ''}</span>
                             </div>
                             <div className='col-12 text-left'>
-                                <span className={modelCardStyle['model-card-papers-label']}>Papers: </span>
+                                <span className={modelCardStyle['model-card-papers-label']}>Paper(s): </span>
                                 {(model?.papers ?? []).map((item) => !!item?.url ? <a className={modelCardStyle['model-card-papers-value']} href={item.url}>{item.label}</a> : <span className={modelCardStyle['model-card-papers-value']}>{item.label}</span>)}
-                                <span className={modelCardStyle['model-card-papers-value']}>{(model?.papers ?? []).join(',') ?? ''}</span>
                             </div>
                             {hasReadme ?
                                 <div className='col-12 text-left'>

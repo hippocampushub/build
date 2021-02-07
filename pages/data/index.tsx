@@ -23,7 +23,7 @@ function DataHomePage() {
 
     const setup = async () => {
         const _page = await getPage('data');
-        const {type: types} = await getTypes('dataset');
+        const {values: types} = await getTypes('dataset');
         setPage(_page);
         setDataTypes(types);
         setLoading(false);

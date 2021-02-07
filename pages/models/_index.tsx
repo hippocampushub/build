@@ -24,7 +24,7 @@ function ModelsHomePage() {
 
     const setup = async () => {
         const _page = await getPage('models');
-        const {type: types} = await getTypes('model');
+        const {values: types} = await getTypes('model');
         setPage(_page);
         setDataTypes(types);
         setLoading(false);

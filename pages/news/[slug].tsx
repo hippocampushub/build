@@ -1,9 +1,6 @@
-import {getConfig, getPage} from "../../helpers/dataHelper";
 import {Typography} from "@material-ui/core";
 import PageContainer from "../../components/page/pageContainer";
-import {getGlobalInitialProps} from "../../helpers/propsHelper";
 import {useEffect, useState} from "react";
-import {getTypes} from "../../helpers/apiHelper";
 
 function Post({params}) {
 

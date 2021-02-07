@@ -26,16 +26,8 @@ function ModelsPage({params}) {
     const [page, setPage] = React.useState<any>({});
     const [models, setModels] = React.useState<any>([]);
 
-    const [regionFilters, setRegionFilters] = React.useState<any[]>([]);
-    const [cellTypeFilters, setCellTypeFilters] = React.useState<any[]>([]);
-    const [speciesFilters, setSpeciesFilters] = React.useState<any[]>([]);
-    const [selectedDataSet, setSelectedDataSet] = React.useState<any>(null);
 
     const [selectedQuery, setSelectedQuery] = React.useState('');
-    const [selectedRegion, setSelectedRegion] = React.useState(null);
-    const [selectedCellType, setSelectedCellType] = React.useState(null);
-    const [selectedSpecies, setSelectedSpecies] = React.useState(null);
-
     const [selectedForDownloads, setSelectedForDownloads] = React.useState<string[]>([]);
 
     const [numPage, setNumPage] = React.useState<number>(0);
@@ -56,9 +48,6 @@ function ModelsPage({params}) {
             const {total_page: _totalPages, total: _totalItems, items} = await searchModels({
                 data_type: params?.type ?? null,
                 query: selectedQuery,
-                region: selectedRegion,
-                cell_type: selectedCellType,
-                species: selectedSpecies,
                 page: numPage,
             });
             setPage(_page);
@@ -86,9 +75,6 @@ function ModelsPage({params}) {
         const {total_page: _totalPages, total: _totalItems, items} = await searchModels({
             data_type: params?.type ?? null,
             query: query ?? selectedQuery,
-            region: region ?? selectedRegion,
-            cell_type: cellType ?? selectedCellType,
-            species: species ?? selectedSpecies,
             page,
             hitsPerPage
         });
@@ -105,9 +91,6 @@ function ModelsPage({params}) {
         const {total_page: _totalPages, total: _totalItems, items} = await searchModels({
             data_type: params?.type ?? null,
             query: selectedQuery,
-            region: selectedRegion,
-            cell_type: selectedCellType,
-            species: selectedSpecies,
             page,
         });
         const allDataSets = [...models, ...items]
@@ -129,9 +112,6 @@ function ModelsPage({params}) {
     }
 
     const _resetFilters = async () => {
-        setSelectedRegion(null);
-        setSelectedCellType(null);
-        setSelectedSpecies(null);
         await _search({
             query: '',
             region: '',
@@ -180,19 +160,10 @@ function ModelsPage({params}) {
                         <div className='col-12'>
                             <FormFilter
                                 query={selectedQuery}
-                                regions={regionFilters}
-                                cellTypes={cellTypeFilters}
-                                species={speciesFilters}
-                                selectedRegion={selectedRegion}
-                                selectedCellType={selectedCellType}
-                                selectedSpecies={selectedSpecies}
                                 selectedHitsPerPage={hitsPerPage}
                                 onQueryChange={(value) => setSelectedQuery(value)}
                                 onRequestSearch={() => _search()}
                                 onChangeHitsPerPage={(value) => _onHitsPerPageChange(value)}
-                                onChangeRegion={(value) => setSelectedRegion(value)}
-                                onChangeCellType={(value) => setSelectedCellType(value)}
-                                onChangeSpecies={(value) => setSelectedSpecies(value)}
                                 applyFilters={() => _applyFilters()}
                                 resetFilters={() => _resetFilters()}/>
                         </div>
@@ -259,7 +230,7 @@ const getStaticProps = ({params}) => ({
 });
 
 const getStaticPaths = async () => {
-    const {type: types} = await getTypes('dataset')
+    const {values: types} = await getTypes('dataset');
     const paths = (types ?? []).map((item) => ({
         params: {type: item}
     }));

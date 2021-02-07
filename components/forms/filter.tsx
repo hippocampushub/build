@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Card, ListItem, makeStyles, Tooltip, Typography} from "@material-ui/core"
+import {Card, ListItem, makeStyles, TextField, Tooltip, Typography} from "@material-ui/core"
 import {MenuItem, Select} from "@material-ui/core";
 import {Icon, IconButton, FormControl, InputLabel} from '@material-ui/core'
 import {
@@ -16,9 +16,7 @@ import filterStyle from './filter.module.scss';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        position: 'absolute',
         zIndex: 10,
-        minWidth: 300
     }
 }));
 
@@ -44,26 +42,91 @@ export interface IFormFilterProps extends DefaultComponentProps<any> {
 }
 
 export function FilterBox({
-    regions,
-    cellTypes,
-    species,
-    selectedRegion,
-    selectedCellType,
-    selectedSpecies,
-    onChangeRegion,
-    onChangeCellType,
-    onChangeSpecies,
-    closeFilters,
-    applyFilters,
-    resetFilters
-}) {
-    const regionItems = (regions ?? []).map((item) => <MenuItem key={item} value={item}>{item}</MenuItem>);
-    const cellTypeItems = (cellTypes ?? []).map((item) => <MenuItem key={item} value={item}>{item}</MenuItem>)
-    const speciesItems = (species ?? []).map((item) => <MenuItem key={item} value={item}>{item}</MenuItem>);
-
+                              filters,
+                              selectedFilters,
+                              onChangeFilters,
+                              closeFilters,
+                              applyFilters,
+                              resetFilters
+                          }) {
     const classes = useStyles();
 
     const iconButtonClasses = useIconStyles();
+    const suggestionFilters = Object.keys(filters).map((key) => filters[key]).filter((item) => item.type === 'suggestion');
+    const [suggestionValue, setSuggestionValue] = React.useState(suggestionFilters.reduce((acc, item) => acc = {
+        ...acc,
+        [item.key]: ''
+    }, {}));
+
+    const _onChangeSuggestionValue = (key: string, text: string) => {
+        setSuggestionValue({
+            ...suggestionValue,
+            [key]: text
+        });
+    }
+
+
+    const renderMultipleFilter = (key: string, item: any) => (
+        <div className='row'>
+            <div className='col-12'>
+                <FormControl fullWidth={true}>
+                    <InputLabel>{item?.label}</InputLabel>
+                    <Select
+                        fullWidth={true}
+                        className={filterStyle['select-box']}
+                        value={!!selectedFilters ? selectedFilters[key] ?? null : null}
+                        onChange={(event) => onChangeFilters(key, event.target.value as string ?? '')}>
+                        {(item.values ?? []).map((value) => (
+                            <MenuItem key={value} value={value}>{value}</MenuItem>
+                        ))}
+                    </Select>
+                </FormControl>
+            </div>
+        </div>
+    );
+
+    const renderSuggestionFilter = (key: string, item: any) => {
+        const hasSuggestionFilter = !!suggestionValue[key] && suggestionValue[key].trim().length >= 3;
+        const filteredItems = hasSuggestionFilter ? (item.values?.filter((item) => item.toLowerCase().includes(suggestionValue[key])) ?? []) : [];
+        const hasItems = !!filteredItems && filteredItems.length > 0;
+        return (
+            <div className='row'>
+                <div className='col-12'>
+                    <TextField
+                        fullWidth={true}
+                        key={`suggestion-${key}`}
+                        value={suggestionValue[key]}
+                        label={item?.label}
+                        onChange={(event) => _onChangeSuggestionValue(key, event.target.value)}
+                    /><br/>
+                    {hasItems ?
+                        <FormControl fullWidth={true}>
+                            <InputLabel>{item?.label}</InputLabel><br/>
+                            <Select
+                                fullWidth={true}
+                                className={filterStyle['select-box']}
+                                value={!!selectedFilters ? selectedFilters[key] ?? null : null}
+                                onChange={(event) => onChangeFilters(key, event.target.value as string ?? '')}>
+                                {(filteredItems ?? []).map((value) => (
+                                    <MenuItem key={value} value={value}>{value}</MenuItem>
+                                ))}
+                            </Select>
+                        </FormControl> : null
+                    }
+                </div>
+            </div>
+        )
+    };
+
+    const renderFilterMap = {
+        'multiple': renderMultipleFilter,
+        'suggestion': renderSuggestionFilter
+    };
+
+    const renderFilter = (key: string, filter: any) => {
+        const renderMethod = renderFilterMap[filter.type];
+        return renderMethod(key, filter);
+    };
 
 
     return (<Card classes={classes}>
@@ -72,7 +135,7 @@ export function FilterBox({
                 <div className='col-9'>
                     <Typography variant='subtitle2'>Filter</Typography>
                 </div>
-                <div className='col-3'>
+                <div className='col-3 text-right'>
                     <IconButton
                         className={iconButtonClasses.root}
                         onClick={() => closeFilters()}>
@@ -80,48 +143,11 @@ export function FilterBox({
                     </IconButton>
                 </div>
             </div>
-            <div className='row'>
-                <div className='col-12'>
-                    <FormControl fullWidth={true}>
-                        <InputLabel>Region</InputLabel>
-                        <Select
-                            fullWidth={true}
-                            className={filterStyle['select-box']}
-                            value={selectedRegion}
-                            onChange={(event) => onChangeRegion(event.target.value as string ?? '')}>
-                            {regionItems}
-                        </Select>
-                    </FormControl>
-                </div>
-            </div>
-            <div className='row' style={{marginTop: 10}}>
-                <div className='col-12'>
-                    <FormControl fullWidth={true}>
-                        <InputLabel>Cell Type</InputLabel>
-                        <Select
-                            fullWidth={true}
-                            className={filterStyle['select-box']}
-                            value={selectedCellType}
-                            onChange={(event) => onChangeCellType(event.target.value as string ?? '')}>
-                            {cellTypeItems}
-                        </Select>
-                    </FormControl>
-                </div>
-            </div>
-            <div className='row' style={{marginTop: 10}}>
-                <div className='col-12'>
-                    <FormControl fullWidth={true}>
-                        <InputLabel>Species</InputLabel>
-                        <Select
-                            fullWidth={true}
-                            className={filterStyle['select-box']}
-                            value={selectedSpecies}
-                            onChange={(event) => onChangeSpecies(event.target.value as string ?? '')}>
-                            {speciesItems}
-                        </Select>
-                    </FormControl>
-                </div>
-            </div>
+            {Object.keys(filters).map((key) => {
+                const item = filters[key];
+                return renderFilter(key, item);
+            })}
+
             <div className='row' style={{marginTop: 10}}>
                 <div className='col-12 text-center'>
                     <Tooltip title='Reset Filters'>
@@ -141,23 +167,17 @@ export function FilterBox({
 }
 
 export function FormFilter({
-    query,
-    regions,
-    cellTypes,
-    species,
-    selectedRegion,
-    selectedCellType,
-    selectedSpecies,
-    selectedHitsPerPage,
-    onQueryChange,
-    onRequestSearch,
-    onChangeHitsPerPage,
-    onChangeRegion,
-    onChangeCellType,
-    onChangeSpecies,
-    applyFilters,
-    resetFilters
-}: IFormFilterProps) {
+                               query,
+                               filters,
+                               selectedFilters,
+                               selectedHitsPerPage,
+                               onQueryChange,
+                               onRequestSearch,
+                               onChangeHitsPerPage,
+                               onChangeFilters,
+                               applyFilters,
+                               resetFilters
+                           }: IFormFilterProps) {
     const [openFilter, setOpenFilter] = React.useState(false);
 
     const iconButtonClasses = useIconStyles();
@@ -198,7 +218,7 @@ export function FormFilter({
                     onRequestSearch={onRequestSearch}
                 />
             </div>
-            <div className='col-3'>
+            <div className='col-3 text-right'>
                 <div className='row'>
                     <div className='col-8'>
                         <FormControl style={{minWidth: '100%'}}>
@@ -223,18 +243,12 @@ export function FormFilter({
             </div>
         </div>
         <div className='row' style={{marginTop: 10}}>
-            <div className='col-4 offset-8 right'>
+            <div className='col-12'>
                 {openFilter ?
                     <FilterBox
-                        regions={regions}
-                        cellTypes={cellTypes}
-                        species={species}
-                        selectedRegion={selectedRegion}
-                        selectedCellType={selectedCellType}
-                        selectedSpecies={selectedSpecies}
-                        onChangeRegion={onChangeRegion}
-                        onChangeCellType={onChangeCellType}
-                        onChangeSpecies={onChangeSpecies}
+                        filters={filters}
+                        selectedFilters={selectedFilters}
+                        onChangeFilters={onChangeFilters}
                         closeFilters={_closeFilters}
                         applyFilters={_applyFilters}
                         resetFilters={_resetFilters}/> : null

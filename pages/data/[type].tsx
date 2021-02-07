@@ -15,14 +15,7 @@ import constants from "../../constants";
 import pageContentStyle from '../page.module.scss';
 import {ItemsCountBaloon} from "../../components/baloons/itemsCountBaloon";
 import {MorphologyViewerDialog} from "../../components/dialogs/morphologyViewerDialog";
-
-export interface ISearchParams {
-    query?: string;
-    region?: string;
-    cellType?: string;
-    species?: string;
-    hitsPerPage?: number;
-}
+import {ISearchParams} from "../../interfaces";
 
 const _typeCards = {
     'morphology': MorphologyCard,
@@ -34,16 +27,10 @@ function DataPage({params}) {
     const [loading, setLoading] = React.useState(true);
     const [page, setPage] = React.useState<any>({});
     const [dataSets, setDataSets] = React.useState<any>([]);
-    const [dataSetDialogOpen, setDataSetDialogOpen] = React.useState(false);
-    const [regionFilters, setRegionFilters] = React.useState<any[]>([]);
-    const [cellTypeFilters, setCellTypeFilters] = React.useState<any[]>([]);
-    const [speciesFilters, setSpeciesFilters] = React.useState<any[]>([]);
-    const [selectedDataSet, setSelectedDataSet] = React.useState<any>(null);
+    const [filters, setFilters] = React.useState<any>(null);
+    const [selectedFilters, setSelectedFilters] = React.useState<any>(null);
 
     const [selectedQuery, setSelectedQuery] = React.useState('');
-    const [selectedRegion, setSelectedRegion] = React.useState(null);
-    const [selectedCellType, setSelectedCellType] = React.useState(null);
-    const [selectedSpecies, setSelectedSpecies] = React.useState(null);
 
     const [selectedForDownloads, setSelectedForDownloads] = React.useState<string[]>([]);
 
@@ -57,7 +44,6 @@ function DataPage({params}) {
     const [selectedMorphologyViewerModel, setSelectedMorphologyViewerModel] = React.useState(null);
 
 
-
     useEffect(() => {
         setup();
     }, []);
@@ -65,19 +51,17 @@ function DataPage({params}) {
     const setup = async () => {
         try {
             //const _page = await getPage('data');
-            const {secondary_region: regionFilters, cell_type: cellTypes, species} = await getFilters('dataset');
+            const _filters = await getFilters({
+                indexName: 'dataset',
+                type: params?.type
+            });
             const {total_page: _totalPages, total: _totalItems, items} = await searchDatasets({
                 data_type: params?.type ?? null,
                 query: selectedQuery,
-                region: selectedRegion,
-                cell_type: selectedCellType,
-                species: selectedSpecies,
+                filters: selectedFilters,
                 page: numPage,
             });
-            //setPage(_page);
-            setRegionFilters(regionFilters);
-            setCellTypeFilters(cellTypes);
-            setSpeciesFilters(species);
+            setFilters(_filters)
             setTotalPages(_totalPages)
             setTotalItems(_totalItems)
             setDataSets(items);
@@ -87,32 +71,20 @@ function DataPage({params}) {
         }
     }
 
-    const _openDataSetDetail = (dataSet) => {
-        setDataSetDialogOpen(true);
-        setSelectedDataSet(dataSet);
-    }
-
-    const _onCloseDataSetDetail = () => {
-        setDataSetDialogOpen(false);
-        setSelectedDataSet(null);
-    }
 
     const _search = async ({
-        query,
-        region,
-        cellType,
-        species,
-        hitsPerPage
-    }: ISearchParams = {}) => {
+                               query,
+                               filters,
+                               hitsPerPage
+                           }: ISearchParams = {}) => {
         console.log('@@@@requestSearch');
         const page = 0
         setNumPage(0);
         setLoading(true);
         const {total_page: _totalPages, total: _totalItems, items} = await searchDatasets({
+            data_type: params?.type ?? null,
             query: query ?? selectedQuery,
-            region: region ?? selectedRegion,
-            cell_type: cellType ?? selectedCellType,
-            species: species ?? selectedSpecies,
+            filters: filters ?? selectedFilters,
             page,
             hitsPerPage
         });
@@ -129,10 +101,9 @@ function DataPage({params}) {
         setNumPage(page);
         setLoading(true);
         const {total_page: _totalPages, total: _totalItems, items} = await searchDatasets({
+            data_type: params?.type ?? null,
             query: selectedQuery,
-            region: selectedRegion,
-            cell_type: selectedCellType,
-            species: selectedSpecies,
+            filters: selectedFilters,
             hitsPerPage,
             page,
         });
@@ -155,14 +126,10 @@ function DataPage({params}) {
     }
 
     const _resetFilters = async () => {
-        setSelectedRegion(null);
-        setSelectedCellType(null);
-        setSelectedSpecies(null);
+        setSelectedFilters(null)
         await _search({
             query: '',
-            region: '',
-            cellType: '',
-            species: ''
+            filters: null
         });
     }
 
@@ -184,7 +151,7 @@ function DataPage({params}) {
         setSelectedMorphologyViewerModel(null);
     }
 
-    const _toggleSelectForDownload = async(id, selected) => {
+    const _toggleSelectForDownload = async (id, selected) => {
         console.log('@@@@@@@toggleSelectForDownload', id, selected)
         if (selected) {
             const newValues = [...selectedForDownloads];
@@ -226,19 +193,15 @@ function DataPage({params}) {
                         <div className='col-12'>
                             <FormFilter
                                 query={selectedQuery}
-                                regions={regionFilters}
-                                cellTypes={cellTypeFilters}
-                                species={speciesFilters}
-                                selectedRegion={selectedRegion}
-                                selectedCellType={selectedCellType}
-                                selectedSpecies={selectedSpecies}
+                                filters={filters}
+                                selectedFilters={selectedFilters}
                                 selectedHitsPerPage={hitsPerPage}
                                 onQueryChange={(value) => setSelectedQuery(value)}
                                 onRequestSearch={() => _search()}
                                 onChangeHitsPerPage={(value) => _onHitsPerPageChange(value)}
-                                onChangeRegion={(value) => setSelectedRegion(value)}
-                                onChangeCellType={(value) => setSelectedCellType(value)}
-                                onChangeSpecies={(value) => setSelectedSpecies(value)}
+                                onChangeFilters={(key: string, value: any) => setSelectedFilters({
+                                    [key]: value
+                                })}
                                 applyFilters={() => _applyFilters()}
                                 resetFilters={() => _resetFilters()}/>
                         </div>
@@ -264,7 +227,7 @@ function DataPage({params}) {
                         <div className='col-12 text-center'>
                             {!hasData ?
 
-                                <p>{loading ? '': 'There are not data for search criteria'}</p> :
+                                <p>{loading ? '' : 'There are not data for search criteria'}</p> :
                                 <div>{(dataSets ?? []).map((item) => (
                                     <div className="row" key={`row-dataset-${item?.id}`}>
                                         <div className='col-12'>
@@ -272,7 +235,7 @@ function DataPage({params}) {
                                                 dataSet={item}
                                                 selectedForDownload={selectedForDownloads.includes(item['source_id'])}
                                                 toggleSelectedForDownload={_toggleSelectForDownload}
-                                                onClick={() => _openDataSetDetail(item)}
+                                                onClick={() => null}
                                                 openMorphologyViewer={_openMorphologyViewer}/>
                                         </div>
                                     </div>))}
@@ -310,11 +273,11 @@ function DataPage({params}) {
 }
 
 const getStaticProps = ({params}) => ({
-    props: { params }
+    props: {params}
 });
 
 const getStaticPaths = async () => {
-    const {type: types} = await getTypes('dataset')
+    const {values: types} = await getTypes('dataset');
     const paths = (types ?? []).map((item) => ({
         params: {type: item}
     }));
