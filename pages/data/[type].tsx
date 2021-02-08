@@ -1,6 +1,6 @@
 import * as React from "react";
-import {useEffect, useState} from "react";
-import {makeStyles, Typography} from "@material-ui/core";
+import {useEffect} from "react";
+import {Typography} from "@material-ui/core";
 import {CloudDownload as IconDownload} from "@material-ui/icons";
 import Spinner from "../../components/spinner/spinner";
 import PageContainer from "../../components/page/pageContainer";
@@ -206,6 +206,7 @@ function DataPage({params}) {
                                 onRequestSearch={() => _search()}
                                 onChangeHitsPerPage={(value) => _onHitsPerPageChange(value)}
                                 onChangeFilters={(key: string, value: any) => setSelectedFilters({
+                                    ...selectedFilters,
                                     [key]: value
                                 })}
                                 applyFilters={() => _applyFilters()}
