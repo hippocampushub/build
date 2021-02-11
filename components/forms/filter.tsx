@@ -70,13 +70,13 @@ export interface IFormFilterProps extends DefaultComponentProps<any> {
 }
 
 export function FilterBox({
-    filters,
-    selectedFilters,
-    onChangeFilters,
-    closeFilters,
-    applyFilters,
-    resetFilters
-}) {
+                              filters,
+                              selectedFilters,
+                              onChangeFilters,
+                              closeFilters,
+                              applyFilters,
+                              resetFilters
+                          }) {
     const classes = useStyles();
 
     const iconButtonClasses = useIconStyles();
@@ -108,20 +108,31 @@ export function FilterBox({
     }
 
 
-    const renderMultipleFilter = (key: string, item: any) => (
-        <div className='row'>
-            <div className='col-12'>
-                <span className={labelStyles?.filterLabel}>{item?.label}</span><br />
-                {(item.values ?? []).map((value) => (
-                    <FormControlLabel
-                        control={<Checkbox key={value}
-                                           checked={!!selectedFilters && !!selectedFilters[key] ? selectedFilters[key].includes(value) ?? false : false}
-                                           onChange={(event, checked) => _onChangeMultipleFilter(key, value, checked)}/>}
-                        label={value}/>
-                ))}
+    const renderMultipleFilter = (key: string, item: any) => {
+        let itemValue = null;
+        if (!!key) {
+            if (key.split('.').length === 1) {
+                itemValue = !!selectedFilters ? selectedFilters[key] ?? null : null;
+            } else {
+                const prefixKey = key.split('.')[0];
+                const itemKey = key.split('.')[1];
+                itemValue = !!selectedFilters && selectedFilters[prefixKey] ? selectedFilters[prefixKey][itemKey] ?? null : null;
+            }
+        }
+        return (<div className='row'>
+                <div className='col-12'>
+                    <span className={labelStyles?.filterLabel}>{item?.label}</span><br/>
+                    {(item.values ?? []).map((value) => (
+                        <FormControlLabel
+                            control={<Checkbox key={value}
+                                               checked={!!itemValue ? itemValue.includes(value) ?? false : false}
+                                               onChange={(event, checked) => _onChangeMultipleFilter(key, value, checked)}/>}
+                            label={value}/>
+                    ))}
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 
     const renderSuggestionFilter = (key: string, item: any) => {
         const hasSuggestionFilter = !!suggestionValue[key] && suggestionValue[key].trim().length >= 3;
@@ -161,9 +172,16 @@ export function FilterBox({
         'suggestion': renderSuggestionFilter
     };
 
-    const renderFilter = (key: string, filter: any) => {
+    const renderFilter = (key: string, filter: any, prefix_key?: string) => {
+        if (!filter.type && !!filter.items) {
+            return <div>
+                {filter.label}
+                {Object.keys(filter.items).map((itemKey) => renderFilter(itemKey, filter.items[itemKey], key))}
+            </div>
+        }
+        const computedKey = !!prefix_key && prefix_key.trim().length > 0 ? `${prefix_key}.${key}` : key;
         const renderMethod = renderFilterMap[filter.type];
-        return renderMethod(key, filter);
+        return renderMethod(computedKey, filter);
     };
 
 
@@ -190,7 +208,7 @@ export function FilterBox({
                 <div className='col-12 text-center'>
                     <Tooltip title='Reset Filters'>
                         <IconButton className={iconButtonClasses.root}
-                            onClick={() => resetFilters(false)}>
+                                    onClick={() => resetFilters(false)}>
                             <IconClear/>
                         </IconButton>
                     </Tooltip>
@@ -207,17 +225,17 @@ export function FilterBox({
 }
 
 export function FormFilter({
-    query,
-    filters,
-    selectedFilters,
-    selectedHitsPerPage,
-    onQueryChange,
-    onRequestSearch,
-    onChangeHitsPerPage,
-    onChangeFilters,
-    applyFilters,
-    resetFilters
-}: IFormFilterProps) {
+                               query,
+                               filters,
+                               selectedFilters,
+                               selectedHitsPerPage,
+                               onQueryChange,
+                               onRequestSearch,
+                               onChangeHitsPerPage,
+                               onChangeFilters,
+                               applyFilters,
+                               resetFilters
+                           }: IFormFilterProps) {
     const [openFilter, setOpenFilter] = React.useState(false);
 
     const iconButtonClasses = useIconStyles();

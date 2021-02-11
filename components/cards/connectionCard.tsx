@@ -34,10 +34,8 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
 
     const iconButtonClasses = useIconButtonStyles();
 
-    const hasSource = !!dataSet?.source && dataSet?.source?.trim().length > 0;
-
-    const presynaptic = !!dataSet?.presynaptic ? dataSet?.presynaptic?.source : null;
-    const postsynaptyc = !!dataSet?.postsynaptic ? dataSet?.postsynaptic?.source : null;
+    const presynaptic = !!dataSet?.presynaptic ? dataSet?.presynaptic : null;
+    const postsynaptyc = !!dataSet?.postsynaptic ? dataSet?.postsynaptic : null;
 
     const renderNeuron = (neuron: any, headerLabel: string) => (<div className='col-md-6 col-sm-12'>
         <div className='row' style={{height: '100%'}}>
@@ -59,8 +57,13 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                         <span className={dataSetCardStyle['dataset-card-papers-label']}>Paper(s): </span>
                         {(neuron?.papers ?? []).map((item) => !!item?.url ?
                             <a className={dataSetCardStyle['dataset-card-papers-value']}
+                               target='_blank'
                                href={item.url}>{item.label}</a> :
                             <span className={dataSetCardStyle['dataset-card-papers-value']}>{item.label}</span>)}
+                    </div>
+                    <div className='col-12 text-left'>
+                        <span className={dataSetCardStyle['dataset-card-secondary-region-label']}>Secondary Region: </span><span
+                        className={dataSetCardStyle['dataset-card-secondary-region-value']}>{(neuron?.secondary_region ?? []).join(',')}</span>
                     </div>
                     <div className='col-12 text-right'>
                         {neuron?.source ?

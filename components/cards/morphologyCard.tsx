@@ -15,7 +15,7 @@ import {forwardRef, PropsWithChildren} from "react";
 export interface IDataSetCardProps extends PropsWithChildren<any> {
     dataSet: any;
     selectedForDownload: boolean;
-    toggleSelectedForDownload: (id:string, value: boolean) => void;
+    toggleSelectedForDownload: (id: string, value: boolean) => void;
     onClick: () => void;
     openMorphologyViewer: ({modelName, modelUrl}: {
         modelName: string;
@@ -71,7 +71,8 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                     className={dataSetCardStyle['dataset-card-name-value']}>{dataSet?.name ?? ''}</span>
                                 </div>
                                 <div className='col-12 text-left'>
-                                    <span className={dataSetCardStyle['dataset-card-species-label']}>Species: </span><span
+                                    <span
+                                        className={dataSetCardStyle['dataset-card-species-label']}>Species: </span><span
                                     className={dataSetCardStyle['dataset-card-species-value']}>{dataSet?.species ?? ''}</span>
                                 </div>
                                 <div className='col-12 text-left'>
@@ -125,8 +126,8 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                             label={'Select for download'}/>
                                     </FormControl>
                                 </div>
-                                {hasDownloadLink ?
-                                    <div className='col-12 text-center'>
+                                <div className='col-12 text-center'>
+                                    {hasDownloadLink ?
                                         <span className={dataSetCardStyle['dataset-card-action']}>
                                             <Tooltip title='Download'>
                                                 <ExpandButton
@@ -136,25 +137,21 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                                     onClick={() => window.open(downloadLink)}
                                                 />
                                             </Tooltip>
-                                        </span>
-                                    </div> : null
-                                }
-                                {hasPageLink ?
-                                    <div className='col-12 text-center'>
+                                        </span> : null
+                                    }
+                                    {hasPageLink ?
                                         <span className={dataSetCardStyle['dataset-card-action']}>
                                             <Tooltip title='View on Site'>
-                                <ExpandButton
-                                    label={'View on Site'}
-                                    icon={<IconLink/>}
-                                    expanded={actionsExpanded}
-                                    onClick={() => window.open(pageLink)}
-                                />
-                                </Tooltip>
-                                        </span>
-                                    </div> : null
-                                }
-                                {hasDownloadLink ?
-                                    <div className='col-12 text-center'>
+                                                <ExpandButton
+                                                    label={'View on Site'}
+                                                    icon={<IconLink/>}
+                                                    expanded={actionsExpanded}
+                                                    onClick={() => window.open(pageLink)}
+                                                />
+                                            </Tooltip>
+                                        </span> : null
+                                    }
+                                    {hasDownloadLink ?
                                         <span className={dataSetCardStyle['dataset-card-action']}>
                                             <Tooltip title='Download'>
                                                 <ExpandButton
@@ -164,9 +161,9 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                                     onClick={() => _openMorphologyViewer()}
                                                 />
                                             </Tooltip>
-                                        </span>
-                                    </div> : null
-                                }
+                                        </span> : null
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>

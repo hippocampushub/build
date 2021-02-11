@@ -14,7 +14,7 @@ import {forwardRef, PropsWithChildren} from "react";
 export interface IModelCardProps extends PropsWithChildren<any> {
     model: any;
     selectedForDownload: boolean;
-    toggleSelectedForDownload: (id:string, value: boolean) => void;
+    toggleSelectedForDownload: (id: string, value: boolean) => void;
     onClick: () => void;
 }
 
@@ -63,12 +63,16 @@ function _ModelCard(props: IModelCardProps, ref) {
                             </div>
                             <div className='col-12 text-left'>
                                 <span className={modelCardStyle['model-card-papers-label']}>Paper(s): </span>
-                                {(model?.papers ?? []).map((item) => !!item?.url ? <a className={modelCardStyle['model-card-papers-value']} href={item.url}>{item.label}</a> : <span className={modelCardStyle['model-card-papers-value']}>{item.label}</span>)}
+                                {(model?.papers ?? []).map((item) => !!item?.url ?
+                                    <a className={modelCardStyle['model-card-papers-value']}
+                                       href={item.url}>{item.label}</a> :
+                                    <span className={modelCardStyle['model-card-papers-value']}>{item.label}</span>)}
                             </div>
                             {hasReadme ?
                                 <div className='col-12 text-left'>
                                     <span className={modelCardStyle['model-card-papers-label']}>Readme: </span>
-                                    <a href={model?.readme_link} target='_blank'><span className={modelCardStyle['model-card-papers-value']}>{model?.readme_link ?? ''}</span></a>
+                                    <a href={model?.readme_link} target='_blank'><span
+                                        className={modelCardStyle['model-card-papers-value']}>{model?.readme_link ?? ''}</span></a>
                                 </div> : null
                             }
                             {hasModelFiles ?
@@ -106,8 +110,8 @@ function _ModelCard(props: IModelCardProps, ref) {
                                         </FormControl>
                                     </div> : null
                                 }
-                                {hasDownloadLink ?
-                                    <div className='col-12 text-center'>
+                                <div className='col-12 text-center'>
+                                    {hasDownloadLink ?
                                         <span className={modelCardStyle['model-card-action']}>
                                             <Tooltip title='Download'>
                                                 <ExpandButton
@@ -117,11 +121,9 @@ function _ModelCard(props: IModelCardProps, ref) {
                                                     onClick={() => window.open(downloadLink)}
                                                 />
                                             </Tooltip>
-                                        </span>
-                                    </div> : null
-                                }
-                                {hasPageLink ?
-                                    <div className='col-12 text-center'>
+                                        </span> : null
+                                    }
+                                    {hasPageLink ?
                                         <span className={modelCardStyle['model-card-action']}>
                                             <Tooltip title='View on Site'>
                                 <ExpandButton
@@ -131,9 +133,9 @@ function _ModelCard(props: IModelCardProps, ref) {
                                     onClick={() => window.open(pageLink)}
                                 />
                                 </Tooltip>
-                                        </span>
-                                    </div> : null
-                                }
+                                        </span> : null
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>

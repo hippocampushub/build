@@ -71,6 +71,26 @@ function DataPage({params}) {
         }
     }
 
+    const _onChangeFilters = (key, value) => {
+        if (!!key) {
+            if (key.split('.').length === 1) {
+                setSelectedFilters({
+                    ...selectedFilters,
+                    [key]: value
+                });
+            }
+            const prefixKey = key.split('.')[0];
+            const itemKey = key.split('.')[1];
+            const prefixKeyValue = !!selectedFilters ? selectedFilters[prefixKey] ?? {} : {};
+            setSelectedFilters({
+                ...selectedFilters,
+                [prefixKey]: {
+                    ...prefixKeyValue,
+                    [itemKey]: value
+                }
+            });
+        }
+    }
 
     const _search = async ({
         query,
@@ -177,6 +197,8 @@ function DataPage({params}) {
 
     const hasData = !!dataSets && dataSets.length > 0;
 
+    const hasDownloadableFiles = !!dataSets && dataSets.length > 0 && dataSets.filter((item) => !!item.download_link).length > 0;
+
     const CardType = _typeCards[params?.type]
 
     return (
@@ -205,10 +227,7 @@ function DataPage({params}) {
                                 onQueryChange={(value) => setSelectedQuery(value)}
                                 onRequestSearch={() => _search()}
                                 onChangeHitsPerPage={(value) => _onHitsPerPageChange(value)}
-                                onChangeFilters={(key: string, value: any) => setSelectedFilters({
-                                    ...selectedFilters,
-                                    [key]: value
-                                })}
+                                onChangeFilters={(key: string, value: any) => _onChangeFilters(key, value)}
                                 applyFilters={() => _applyFilters()}
                                 resetFilters={() => _resetFilters()}/>
                         </div>
@@ -220,9 +239,11 @@ function DataPage({params}) {
                                 count={totalItems}/>
                         </div>
                         <div className='col-md-6 text-right'>
-                            <CustomButton onClick={() => _downloadAll()}>
-                                <IconDownload/> <span style={{marginLeft: 5}}>Download All</span>
-                            </CustomButton>
+                            {!!hasDownloadableFiles ?
+                                <CustomButton onClick={() => _downloadAll()}>
+                                    <IconDownload/> <span style={{marginLeft: 5}}>Download All</span>
+                                </CustomButton> : null
+                            }
                             {!!selectedForDownloads && selectedForDownloads.length > 0 ?
                                 <CustomButton onClick={() => _downloadSelectedDatasets()} style={{marginLeft: 10}}>
                                     <IconDownload/> <span style={{marginLeft: 5}}>Download Selected</span>

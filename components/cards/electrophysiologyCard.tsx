@@ -62,8 +62,9 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                     <span className={dataSetCardStyle['dataset-card-papers-label']}>Paper(s): </span>
                                     {(dataSet?.papers ?? []).map((item) => !!item?.url ?
                                         <a className={dataSetCardStyle['dataset-card-papers-value']}
-                                           href={item.url}>{item.label}</a> : <span
-                                            className={dataSetCardStyle['dataset-card-papers-value']}>{item.label}</span>)}
+                                           target='_blank'
+                                           href={item.url}>{item.label}
+                                        </a> : <span className={dataSetCardStyle['dataset-card-papers-value']}>{item.label}</span>)}
                                 </div>
                                 {/*<div className='col-12 text-left'>
                                     <span className={dataSetCardStyle['dataset-card-species-label']}>Species: </span><span

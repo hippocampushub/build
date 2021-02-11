@@ -9,6 +9,9 @@ import * as React from "react";
 import constants from "../../constants";
 
 const useStyles = makeStyles((theme) => ({
+    dialog: {
+      height: '80vh',
+    },
     iframe: {
         width: '100%',
         height: '100%',
@@ -25,9 +28,10 @@ export function MorphologyViewerDialog({open, onClose, modelName, modelUrl}) {
     return (<DialogContainer
         open={open}
         fullWidth={true}
-        maxWidth={'xl'}
+        maxWidth={'lg'}
         title={modelName ?? ''}
-        onClose={onClose}>
+        onClose={onClose}
+        className={classes.dialog}>
         <div>
             <div className='row' style={{marginTop: 20}}>
                 <div className='col-12'>
