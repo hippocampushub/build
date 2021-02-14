@@ -179,6 +179,23 @@ export function FilterBox({
                 {Object.keys(filter.items).map((itemKey) => renderFilter(itemKey, filter.items[itemKey], key))}
             </div>
         }
+        if (!!filter.depends_on && filter.depends_on.length > 0) {
+            const items = []
+            for (let dependency of filter.depends_on) {
+                const dependencyPrefixKey = dependency.split(':')[0];
+                const dependencyKey = dependency.split(':').length > 1 ? dependency.split(':')[1] : dependency.split(':')[0];
+                if (dependencyPrefixKey !== dependencyKey) {
+                    const filterValues = selectedFilters[dependencyPrefixKey][dependencyKey];
+                    const _items = filter?.items?.filter((item) => filterValues.includes(item.split(':')[0]));
+                    items.push(..._items)
+                } else {
+                    const filterValues = selectedFilters[dependencyKey];
+                    const _items = filter?.items?.filter((item) => filterValues.includes(item.split(':')[0]));
+                    items.push(..._items)
+                }
+            }
+            filter.items = items;
+        }
         const computedKey = !!prefix_key && prefix_key.trim().length > 0 ? `${prefix_key}.${key}` : key;
         const renderMethod = renderFilterMap[filter.type];
         return renderMethod(computedKey, filter);
