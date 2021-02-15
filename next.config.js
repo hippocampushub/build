@@ -6,5 +6,6 @@ module.exports = {
   env: {
     BASE_URL: isProd ? '/hbp-frontend' : '',
     BACKEND_URL: isProd ? 'https://facility-hub.cineca.it' : 'http://localhost:5000'
-  }
+  },
+  suggestionMinLength: 1
 }

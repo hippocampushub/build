@@ -1,6 +1,7 @@
 import * as React from "react";
 import {useEffect} from "react";
 import {Typography} from "@material-ui/core";
+import Lightbox from "react-image-lightbox";
 import {CloudDownload as IconDownload} from "@material-ui/icons";
 import Spinner from "../../components/spinner/spinner";
 import PageContainer from "../../components/page/pageContainer";
@@ -16,11 +17,20 @@ import pageContentStyle from '../page.module.scss';
 import {ItemsCountBaloon} from "../../components/baloons/itemsCountBaloon";
 import {MorphologyViewerDialog} from "../../components/dialogs/morphologyViewerDialog";
 import {ISearchParams} from "../../interfaces";
+import 'react-image-lightbox/style.css';
 
 const _typeCards = {
     'morphology': MorphologyCard,
     'electrophysiology': ElectrophysiologyCard,
     'connection': ConnectionCard
+}
+
+const lightboxStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+    }
 }
 
 function DataPage({params}) {
@@ -42,6 +52,8 @@ function DataPage({params}) {
 
     const [openMorphologyViewer, setOpenMorphologyViewer] = React.useState(false);
     const [selectedMorphologyViewerModel, setSelectedMorphologyViewerModel] = React.useState(null);
+
+    const [lightboxImg, setLightboxImg] = React.useState<string|null>(null);
 
 
     useEffect(() => {
@@ -78,6 +90,7 @@ function DataPage({params}) {
                     ...selectedFilters,
                     [key]: value
                 });
+                return;
             }
             const prefixKey = key.split('.')[0];
             const itemKey = key.split('.')[1];
@@ -193,6 +206,10 @@ function DataPage({params}) {
         }
     }
 
+    const _onCloseLightBox = () => {
+        setLightboxImg(null);
+    }
+
     const hasMoreItems = numPage < totalPages - 1;
 
     const hasData = !!dataSets && dataSets.length > 0;
@@ -263,7 +280,9 @@ function DataPage({params}) {
                                                 selectedForDownload={selectedForDownloads.includes(item['source_id'])}
                                                 toggleSelectedForDownload={_toggleSelectForDownload}
                                                 onClick={() => null}
-                                                openMorphologyViewer={_openMorphologyViewer}/>
+                                                openMorphologyViewer={_openMorphologyViewer}
+                                                openImageLightbox={(url) => setLightboxImg(url)}
+                                                closImageLightbox={() => setLightboxImg(null)}/>
                                         </div>
                                     </div>))}
                                 </div>
@@ -293,9 +312,12 @@ function DataPage({params}) {
                 onClose={_closeMorphologyViewer}
                 modelName={selectedMorphologyViewerModel?.modelName}
                 modelUrl={selectedMorphologyViewerModel?.modelUrl}/>
-            {/*<DataSetDialog open={dataSetDialogOpen}
-                           dataSet={selectedDataSet}
-                           onClose={_onCloseDataSetDetail}/>*/}
+            {!!lightboxImg ?
+                <Lightbox
+                    mainSrc={lightboxImg}
+                    reactModalStyle={lightboxStyles}
+                    onCloseRequest={_onCloseLightBox}/> : null
+            }
         </PageContainer>
     );
 }

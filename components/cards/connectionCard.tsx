@@ -12,13 +12,8 @@ import {getImageUrlByPath} from "../../helpers/imageHelper";
 import dataSetCardStyle from './datasetCard.module.scss';
 import {forwardRef, PropsWithChildren} from "react";
 import modelCardStyle from "./modelCard.module.scss";
+import {IDataSetCardProps} from "../../interfaces/IDatasetCardProps";
 
-export interface IDataSetCardProps extends PropsWithChildren<any> {
-    dataSet: any;
-    selectedForDownload: boolean;
-    toggleSelectedForDownload: (id: string, value: boolean) => void;
-    onClick: () => void;
-}
 
 function _DataSetCard(props: IDataSetCardProps, ref) {
 
@@ -32,53 +27,67 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
         }
     }
 
+    const _openImageLightbox = (url: string) => {
+        if (!!props?.openImageLightbox) {
+            props.openImageLightbox(url);
+        }
+    }
+
     const iconButtonClasses = useIconButtonStyles();
 
     const presynaptic = !!dataSet?.presynaptic ? dataSet?.presynaptic : null;
     const postsynaptyc = !!dataSet?.postsynaptic ? dataSet?.postsynaptic : null;
 
-    const renderNeuron = (neuron: any, headerLabel: string) => (<div className='col-md-6 col-sm-12'>
-        <div className='row' style={{height: '100%'}}>
-            <div className='col-md-3 col-sm-12'>
-                <img
-                    src={getImageUrlByPath(neuron?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png')}
-                    className={dataSetCardStyle['dataset-card-image']}/>
-            </div>
-            <div className='col-md-7 col-sm-12'>
-                <div className='row'>
-                    <div className='col-12 text-left'>
-                        <span className={dataSetCardStyle['dataset-card-name-label']}>{headerLabel}</span>
-                    </div>
-                    <div className='col-12 text-left'>
-                        <span className={dataSetCardStyle['dataset-card-name-label']}>Name: </span>
-                        <span className={dataSetCardStyle['dataset-card-name-value']}>{neuron?.name ?? ''}</span>
-                    </div>
-                    <div className='col-12 text-left'>
-                        <span className={dataSetCardStyle['dataset-card-papers-label']}>Paper(s): </span>
-                        {(neuron?.papers ?? []).map((item) => !!item?.url ?
-                            <a className={dataSetCardStyle['dataset-card-papers-value']}
-                               target='_blank'
-                               href={item.url}>{item.label}</a> :
-                            <span className={dataSetCardStyle['dataset-card-papers-value']}>{item.label}</span>)}
-                    </div>
-                    <div className='col-12 text-left'>
-                        <span className={dataSetCardStyle['dataset-card-secondary-region-label']}>Secondary Region: </span><span
-                        className={dataSetCardStyle['dataset-card-secondary-region-value']}>{(neuron?.secondary_region ?? []).join(',')}</span>
-                    </div>
-                    <div className='col-12 text-right'>
-                        {neuron?.source ?
-                            <span className={dataSetCardStyle['dataset-card-source-label']}>
+    const renderNeuron = (neuron: any, headerLabel: string) => {
+        const imageUrl = getImageUrlByPath(dataSet?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png');
+        return (<div className='col-md-6 col-sm-12'>
+            <div className='row' style={{height: '100%'}}>
+                <div className='col-md-3 col-sm-12'>
+                    <img
+                        src={imageUrl}
+                        onMouseEnter={() => _openImageLightbox(imageUrl)}
+                        className={dataSetCardStyle['dataset-card-image']}/>
+                </div>
+                <div className='col-md-7 col-sm-12'>
+                    <div className='row'>
+                        <div className='col-12 text-left'>
+                            <span className={dataSetCardStyle['dataset-card-name-label']}>{headerLabel}</span>
+                        </div>
+                        <div className='col-12 text-left'>
+                            <span className={dataSetCardStyle['dataset-card-name-label']}>Name: </span>
+                            <span className={dataSetCardStyle['dataset-card-name-value']}>{neuron?.name ?? ''}</span>
+                        </div>
+                        <div className='col-12 text-left'>
+                            <span className={dataSetCardStyle['dataset-card-papers-label']}>Paper(s): </span>
+                            {(neuron?.papers ?? []).map((item) => !!item?.url ?
+                                <a className={dataSetCardStyle['dataset-card-papers-value']}
+                                   target='_blank'
+                                   href={item.url}>{item.label}</a> :
+                                <span className={dataSetCardStyle['dataset-card-papers-value']}>{item.label}</span>)}
+                        </div>
+                        <div className='col-12 text-left'>
+                        <span
+                            className={dataSetCardStyle['dataset-card-secondary-region-label']}>Secondary Region: </span><span
+                            className={dataSetCardStyle['dataset-card-secondary-region-value']}>{(neuron?.secondary_region ?? []).join(',')}</span>
+                        </div>
+                        <div className='col-12 text-left'>
+                            <span className={dataSetCardStyle['dataset-card-secondary-region-label']}>Layers: </span><span
+                            className={dataSetCardStyle['dataset-card-secondary-region-value']}>{(dataSet?.layers ?? []).join(',')}</span>
+                        </div>
+                        <div className='col-12 text-right'>
+                            {neuron?.source ?
+                                <span className={dataSetCardStyle['dataset-card-source-label']}>
                                     SOURCE: {neuron?.source}
                                 </span> : null
-                        }
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className={`${dataSetCardStyle['dataset-card-actions-container']} col-md-2 col-sm-12`}>
-                <div className='row'>
-                    <div className='col-12 text-left'>
-                        <div className='row'>
-                            {/*<div className='col-12'>
+                <div className={`${dataSetCardStyle['dataset-card-actions-container']} col-md-2 col-sm-12`}>
+                    <div className='row'>
+                        <div className='col-12 text-left'>
+                            <div className='row'>
+                                {/*<div className='col-12'>
                                                 <FormControl>
                                                     <FormControlLabel
                                                         control={<Switch
@@ -89,8 +98,8 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                                         label={'Select for download'}/>
                                                 </FormControl>
                                             </div>*/}
-                            {!!presynaptic?.download_link ?
-                                <div className='col-12 text-center'>
+                                {!!presynaptic?.download_link ?
+                                    <div className='col-12 text-center'>
                                         <span className={dataSetCardStyle['dataset-card-action']}>
                                             <Tooltip title='Download'>
                                                 <ExpandButton
@@ -101,10 +110,10 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                                 />
                                             </Tooltip>
                                         </span>
-                                </div> : null
-                            }
-                            {!!neuron?.page_link ?
-                                <div className='col-12 text-center'>
+                                    </div> : null
+                                }
+                                {!!neuron?.page_link ?
+                                    <div className='col-12 text-center'>
                                         <span className={dataSetCardStyle['dataset-card-action']}>
                                             <Tooltip title='View on Site'>
                                 <ExpandButton
@@ -115,14 +124,15 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                 />
                                 </Tooltip>
                                         </span>
-                                </div> : null
-                            }
+                                    </div> : null
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>);
+        </div>)
+    };
 
     return (<CardContainer key={`dataset-${dataSet?.id}`}>
         <div className={dataSetCardStyle['dataset-card-content']}>

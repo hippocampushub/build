@@ -24,5 +24,6 @@ export default {
         post: 'post'
     },
     DEFAULT_HITS_PER_PAGE: 20,
-    MORPHOLOGY_VIEWER_BASE_URL: 'https://morph-view.apps.hbp.eu/?model='
+    MORPHOLOGY_VIEWER_BASE_URL: 'https://morph-view.apps.hbp.eu/?model=',
+    SUGGESTION_MIN_LENGTH: process.env.suggestionMinLength ?? 1
 }

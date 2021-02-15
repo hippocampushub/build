@@ -12,13 +12,7 @@ import {getImageUrlByPath} from "../../helpers/imageHelper";
 import dataSetCardStyle from './datasetCard.module.scss';
 import {forwardRef, PropsWithChildren} from "react";
 import modelCardStyle from "./modelCard.module.scss";
-
-export interface IDataSetCardProps extends PropsWithChildren<any> {
-    dataSet: any;
-    selectedForDownload: boolean;
-    toggleSelectedForDownload: (id: string, value: boolean) => void;
-    onClick: () => void;
-}
+import {IDataSetCardProps} from "../../interfaces/IDatasetCardProps";
 
 function _DataSetCard(props: IDataSetCardProps, ref) {
 
@@ -32,8 +26,11 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
         }
     }
 
-    const iconButtonClasses = useIconButtonStyles();
-
+    const _openImageLightbox = (url: string) => {
+        if (!!props?.openImageLightbox) {
+            props.openImageLightbox(url);
+        }
+    }
 
     const downloadLink = dataSet?.download_link ?? null;
     const hasDownloadLink = !!downloadLink;
@@ -43,11 +40,14 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
 
     const hasSource = !!dataSet?.source && dataSet?.source?.trim().length > 0;
 
+    const imageUrl = getImageUrlByPath(dataSet?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png');
+
     return (<CardContainer key={`dataset-${dataSet?.id}`}>
         <div className={dataSetCardStyle['dataset-card-content']}>
             <div className='row'>
                 <div className='col-md-2 col-sm-12'>
-                    <img src={getImageUrlByPath(dataSet?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png')}
+                    <img src={imageUrl}
+                         onMouseEnter={() => _openImageLightbox(imageUrl)}
                          className={dataSetCardStyle['dataset-card-image']}/>
                 </div>
                 <div className='col-md-7 col-sm-12'>
@@ -91,6 +91,18 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div className='row'>
+                                <div className='col-6'>
+                                    <div className='row'>
+                                        <div className='col-12 text-left'>
+                                            <span className={dataSetCardStyle['dataset-card-secondary-region-label']}>Layers: </span><span
+                                            className={dataSetCardStyle['dataset-card-secondary-region-value']}>{(dataSet?.layers ?? []).join(',')}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='row'>
                                 <div className='col-6 text-right'>
                                     {hasSource ?
                                         <span className={dataSetCardStyle['dataset-card-source-label']}>

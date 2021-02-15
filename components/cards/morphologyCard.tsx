@@ -11,17 +11,8 @@ import {getImageUrlByPath} from "../../helpers/imageHelper";
 
 import dataSetCardStyle from './datasetCard.module.scss';
 import {forwardRef, PropsWithChildren} from "react";
+import {IDataSetCardProps} from "../../interfaces/IDatasetCardProps";
 
-export interface IDataSetCardProps extends PropsWithChildren<any> {
-    dataSet: any;
-    selectedForDownload: boolean;
-    toggleSelectedForDownload: (id: string, value: boolean) => void;
-    onClick: () => void;
-    openMorphologyViewer: ({modelName, modelUrl}: {
-        modelName: string;
-        modelUrl: string;
-    }) => void;
-}
 
 function _DataSetCard(props: IDataSetCardProps, ref) {
 
@@ -44,8 +35,17 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
         }
     }
 
-    const iconButtonClasses = useIconButtonStyles();
+    const _openImageLightbox = (url: string) => {
+        if (!!props?.openImageLightbox) {
+            props.openImageLightbox(url);
+        }
+    }
 
+    const _closeImageLightbox = () => {
+        if (!!props?.closeImageLightbox) {
+            props.closeImageLightbox();
+        }
+    }
 
     const downloadLink = dataSet?.download_link ?? null;
     const hasDownloadLink = !!downloadLink;
@@ -55,11 +55,13 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
 
     const hasSource = !!dataSet?.source && dataSet?.source?.trim().length > 0;
 
+    const imageUrl = getImageUrlByPath(dataSet?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png');
+
     return (<CardContainer key={`dataset-${dataSet?.id}`}>
         <div className={dataSetCardStyle['dataset-card-content']}>
             <div className='row'>
                 <div className='col-md-2 col-sm-12'>
-                    <img src={getImageUrlByPath(dataSet?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png')}
+                    <img src={imageUrl} onMouseEnter={() => _openImageLightbox(imageUrl)}
                          className={dataSetCardStyle['dataset-card-image']}/>
                 </div>
                 <div className='col-md-7 col-sm-12'>

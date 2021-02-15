@@ -25,6 +25,7 @@ import SearchBar from 'material-ui-search-bar';
 import {DefaultComponentProps} from "@material-ui/core/OverridableComponent";
 
 import filterStyle from './filter.module.scss';
+import constants from "../../constants";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -70,18 +71,18 @@ export interface IFormFilterProps extends DefaultComponentProps<any> {
 }
 
 export function FilterBox({
-                              filters,
-                              selectedFilters,
-                              onChangeFilters,
-                              closeFilters,
-                              applyFilters,
-                              resetFilters
-                          }) {
+    filters,
+    selectedFilters,
+    onChangeFilters,
+    closeFilters,
+    applyFilters,
+    resetFilters
+}) {
     const classes = useStyles();
 
     const iconButtonClasses = useIconStyles();
     const labelStyles = useLabelStyles();
-    const suggestionFilters = Object.keys(filters).map((key) => filters[key]).filter((item) => item.type === 'suggestion');
+    const suggestionFilters = !!filters ? Object.keys(filters).map((key) => filters[key]) : [];
     const [suggestionValue, setSuggestionValue] = React.useState(suggestionFilters.reduce((acc, item) => acc = {
         ...acc,
         [item.key]: ''
@@ -108,7 +109,7 @@ export function FilterBox({
     }
 
 
-    const renderMultipleFilter = (key: string, item: any) => {
+    const renderMultipleFilter = (key: string, item: any, values: any[]) => {
         let itemValue = null;
         if (!!key) {
             if (key.split('.').length === 1) {
@@ -119,27 +120,12 @@ export function FilterBox({
                 itemValue = !!selectedFilters && selectedFilters[prefixKey] ? selectedFilters[prefixKey][itemKey] ?? null : null;
             }
         }
-        return (<div className='row'>
-                <div className='col-12'>
-                    <span className={labelStyles?.filterLabel}>{item?.label}</span><br/>
-                    {(item.values ?? []).map((value) => (
-                        <FormControlLabel
-                            control={<Checkbox key={value}
-                                               checked={!!itemValue ? itemValue.includes(value) ?? false : false}
-                                               onChange={(event, checked) => _onChangeMultipleFilter(key, value, checked)}/>}
-                            label={value}/>
-                    ))}
-                </div>
-            </div>
-        );
-    }
-
-    const renderSuggestionFilter = (key: string, item: any) => {
-        const hasSuggestionFilter = !!suggestionValue[key] && suggestionValue[key].trim().length >= 3;
-        const filteredItems = hasSuggestionFilter ? (item.values?.filter((item) => item.toLowerCase().includes(suggestionValue[key])) ?? []) : [];
+        const filterValues = !!values ? values : item.values ?? [];
+        const hasSuggestionFilter = !!suggestionValue[key] && suggestionValue[key].trim().length >= constants.SUGGESTION_MIN_LENGTH;
+        const suggestionsItems = hasSuggestionFilter ? suggestionValue[key].split(';') : [];
+        const filteredItems = hasSuggestionFilter ? (filterValues.filter((item) => suggestionsItems.map((suggest) => item.toLowerCase().includes(suggest)).reduce((a, b) => a || b, false)) ?? []) : filterValues;
         const hasItems = !!filteredItems && filteredItems.length > 0;
-        return (
-            <div className='row'>
+        return (<div className='row'>
                 <div className='col-12'>
                     <TextField
                         fullWidth={true}
@@ -147,24 +133,26 @@ export function FilterBox({
                         value={suggestionValue[key]}
                         label={item?.label}
                         onChange={(event) => _onChangeSuggestionValue(key, event.target.value)}
-                    /><br/>
-                    {hasItems ?
-                        <FormControl fullWidth={true}>
-                            <InputLabel>{item?.label}</InputLabel><br/>
-                            <Select
-                                fullWidth={true}
-                                className={filterStyle['select-box']}
-                                value={!!selectedFilters ? selectedFilters[key] ?? null : null}
-                                onChange={(event) => onChangeFilters(key, event.target.value as string ?? '')}>
-                                {(filteredItems ?? []).map((value) => (
-                                    <MenuItem key={value} value={value}>{value}</MenuItem>
-                                ))}
-                            </Select>
-                        </FormControl> : null
-                    }
+                    />
                 </div>
+                {hasItems ?
+                    <div className='col-12'>
+                        <span className={labelStyles?.filterLabel}>{item?.label}</span><br/>
+                        {(filteredItems ?? []).map((value) => (
+                            <FormControlLabel
+                                control={<Checkbox key={value}
+                                                   checked={!!itemValue ? itemValue.includes(value) ?? false : false}
+                                                   onChange={(event, checked) => _onChangeMultipleFilter(key, value, checked)}/>}
+                                label={value}/>
+                        ))}
+                    </div> : null
+                }
             </div>
-        )
+        );
+    }
+
+    const renderSuggestionFilter = (key: string, item: any) => {
+
     };
 
     const renderFilterMap = {
@@ -174,33 +162,52 @@ export function FilterBox({
 
     const renderFilter = (key: string, filter: any, prefix_key?: string) => {
         if (!filter.type && !!filter.items) {
+            const filterKeys = !!filters ? Object.keys(filter.items) : [];
+            const sortedFilterKeys = filterKeys?.map((key) => ({
+                ...filters[key],
+                'root_key': key
+            })).sort((item1, item2) => item1['order'] - (item2['order']))
+                .map((item) => item['root_key']);
             return <div>
                 {filter.label}
-                {Object.keys(filter.items).map((itemKey) => renderFilter(itemKey, filter.items[itemKey], key))}
+                {sortedFilterKeys.map((itemKey) => renderFilter(itemKey, filter.items[itemKey], key))}
             </div>
         }
+        let values = null;
         if (!!filter.depends_on && filter.depends_on.length > 0) {
             const items = []
             for (let dependency of filter.depends_on) {
-                const dependencyPrefixKey = dependency.split(':')[0];
-                const dependencyKey = dependency.split(':').length > 1 ? dependency.split(':')[1] : dependency.split(':')[0];
+                const dependencyPrefixKey = dependency.split('.')[0];
+                const dependencyKey = dependency.split('.').length > 1 ? dependency.split('.')[1] : dependency.split('.')[0];
                 if (dependencyPrefixKey !== dependencyKey) {
-                    const filterValues = selectedFilters[dependencyPrefixKey][dependencyKey];
-                    const _items = filter?.items?.filter((item) => filterValues.includes(item.split(':')[0]));
+                    const filterValues = !!selectedFilters && !!selectedFilters[dependencyPrefixKey] ? selectedFilters[dependencyPrefixKey][dependencyKey] ?? [] : [];
+                    const _items = filter?.values?.filter((item) => filterValues.includes(item.split(':')[0].trim()));
                     items.push(..._items)
                 } else {
-                    const filterValues = selectedFilters[dependencyKey];
-                    const _items = filter?.items?.filter((item) => filterValues.includes(item.split(':')[0]));
+                    const filterValues = !!selectedFilters ? selectedFilters[dependencyKey] ?? [] : [];
+                    const _items = filter?.values?.filter((item) => filterValues.includes(item.split(':')[0].trim()));
                     items.push(..._items)
                 }
             }
-            filter.items = items;
+            values = items;
+            if (items.length === 0) {
+                values = filter.values;
+            }
         }
-        const computedKey = !!prefix_key && prefix_key.trim().length > 0 ? `${prefix_key}.${key}` : key;
-        const renderMethod = renderFilterMap[filter.type];
-        return renderMethod(computedKey, filter);
+        if (!!filter.values && filter.values.length > 0) {
+            const computedKey = !!prefix_key && prefix_key.trim().length > 0 ? `${prefix_key}.${key}` : key;
+            const renderMethod = renderFilterMap[filter.type];
+            return renderMethod(computedKey, filter, values);
+        }
+        return <div></div>
     };
 
+    const filterKeys = !!filters ? Object.keys(filters) : [];
+    const sortedFilterKeys = filterKeys?.map((key) => ({
+            ...filters[key],
+            'root_key': key
+    })).sort((item1, item2) => item1['order'] - (item2['order']))
+        .map((item) => item['root_key']);
 
     return (<Card classes={classes}>
         <div className={filterStyle['filter-box']}>
@@ -216,7 +223,7 @@ export function FilterBox({
                     </IconButton>
                 </div>
             </div>
-            {Object.keys(filters).map((key) => {
+            {sortedFilterKeys.map((key) => {
                 const item = filters[key];
                 return renderFilter(key, item);
             })}
