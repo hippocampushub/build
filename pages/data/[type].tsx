@@ -316,6 +316,7 @@ function DataPage({params}) {
                 <Lightbox
                     mainSrc={lightboxImg}
                     reactModalStyle={lightboxStyles}
+
                     onCloseRequest={_onCloseLightBox}/> : null
             }
         </PageContainer>
