@@ -41,9 +41,15 @@ const useLabelStyles = makeStyles((theme) => ({
         fontWeight: 600,
         textTransform: 'capitalize'
     },
+    rootFilterLabel: {
+        fontFamily: 'Metropolis, sans-serif',
+        fontSize: 12,
+        fontWeight: 600,
+        textTransform: 'capitalize'
+    },
     filterLabel: {
         fontFamily: 'Metropolis, sans-serif',
-        fontSize: 10,
+        fontSize: 11,
         fontWeight: 600,
         textTransform: 'capitalize'
     }
@@ -179,7 +185,7 @@ export function FilterBox({
             })).sort((item1, item2) => item1['order'] - (item2['order']))
                 .map((item) => item['root_key']);
             return <div>
-                {filter.label}
+                <span className={labelStyles?.rootFilterLabel}>{filter?.label}</span><br/>
                 {sortedFilterKeys.map((itemKey) => renderFilter(itemKey, filter.items[itemKey], key))}
             </div>
         }
