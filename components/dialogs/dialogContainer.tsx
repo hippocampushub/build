@@ -7,11 +7,13 @@ import parse from 'html-react-parser';
 
 import dialogContainerStyle from './dialog.module.scss';
 import {useIconButtonStyles} from "../../style/style";
+import {height} from "@material-ui/system";
 
 interface IDialogContainerProps extends DialogProps {
     title?: string;
     subtitle?: string;
     actions?: any[];
+    height?: number|string;
     onClose?: () => void;
 }
 
@@ -20,15 +22,16 @@ interface IDialogActions {
     onClick: () => void;
 }
 
-const useDialogStyles = makeStyles((theme) => ({
+const useDialogStyles = (height) => makeStyles((theme) =>  ({
     paper: {
         borderTop: '10px solid #333',
-        borderRadius: 10
+        borderRadius: 10,
+        height: height ?? 'auto'
     }
 }));
 
-export function DialogContainer({open, title, subtitle, children, actions, onClose, ...props}: IDialogContainerProps) {
-    const classes = useDialogStyles();
+export function DialogContainer({open, title, subtitle, children, actions, height, onClose, ...props}: IDialogContainerProps) {
+    const classes = useDialogStyles(height)();
 
     const iconButtonStyles = useIconButtonStyles();
     return (<Dialog classes={classes} open={open} {...props}>

@@ -7,6 +7,9 @@
     height: 100%;
     object-fit: cover;
     max-height: 100px;
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .dataset-card-name-label, .dataset-card-species-label, .dataset-card-region-label, .dataset-card-cell-type-label, .dataset-card-secondary-region-label, .dataset-card-physical-integrity-label, .dataset-card-papers-label {

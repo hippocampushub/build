@@ -89,16 +89,26 @@ export function FilterBox({
     }, {}));
 
     const _onChangeMultipleFilter = (key: string, value: any, checked: boolean) => {
-        let newFilters = !!selectedFilters && !!selectedFilters[key] ? [...selectedFilters[key]] : [];
-        if (!!checked) {
-            newFilters.push(value);
-        } else {
-            const index = newFilters.findIndex(v => v === value);
-            if (index > -1) {
-                newFilters.splice(index, 1);
+        let newFilters = [];
+        if (!!key) {
+            if (key.split('.').length === 1) {
+                newFilters = !!selectedFilters && !!selectedFilters[key] ? [...selectedFilters[key]] : [];
+            } else {
+                const prefixKey = key.split('.')[0];
+                const itemKey = key.split('.')[1];
+                newFilters = !!selectedFilters && !!selectedFilters[prefixKey] &&
+                !!selectedFilters[prefixKey][itemKey] ? [...selectedFilters[prefixKey][itemKey]] : [];
             }
+            if (!!checked) {
+                newFilters.push(value);
+            } else {
+                const index = newFilters.findIndex(v => v === value);
+                if (index > -1) {
+                    newFilters.splice(index, 1);
+                }
+            }
+            onChangeFilters(key, newFilters);
         }
-        onChangeFilters(key, newFilters);
     }
 
     const _onChangeSuggestionValue = (key: string, text: string) => {
@@ -163,9 +173,9 @@ export function FilterBox({
     const renderFilter = (key: string, filter: any, prefix_key?: string) => {
         if (!filter.type && !!filter.items) {
             const filterKeys = !!filters ? Object.keys(filter.items) : [];
-            const sortedFilterKeys = filterKeys?.map((key) => ({
-                ...filters[key],
-                'root_key': key
+            const sortedFilterKeys = filterKeys?.map((itemKey) => ({
+                ...filter.items[itemKey],
+                'root_key': itemKey
             })).sort((item1, item2) => item1['order'] - (item2['order']))
                 .map((item) => item['root_key']);
             return <div>

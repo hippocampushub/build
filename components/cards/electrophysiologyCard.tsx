@@ -40,6 +40,8 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
 
     const hasSource = !!dataSet?.source && dataSet?.source?.trim().length > 0;
 
+    const hasImage = !!dataSet?.icon;
+
     const imageUrl = getImageUrlByPath(dataSet?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png');
 
     return (<CardContainer key={`dataset-${dataSet?.id}`}>
@@ -47,7 +49,7 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
             <div className='row'>
                 <div className='col-md-2 col-sm-12'>
                     <img src={imageUrl}
-                         onMouseEnter={() => _openImageLightbox(imageUrl)}
+                         onClick={() => hasImage ? _openImageLightbox(imageUrl) : null}
                          className={dataSetCardStyle['dataset-card-image']}/>
                 </div>
                 <div className='col-md-7 col-sm-12'>

@@ -1,11 +1,6 @@
-import {DialogContainer} from "./dialogContainer";
-import {checkIfArrayNotEmpty, checkIfNotEmpty} from "../../helpers/validatorHelper";
-import {CustomButton} from "../buttons/buttons";
-import {CloudDownload as IconDownload} from "@material-ui/icons";
-import {Divider, makeStyles, Tab, Tabs, Typography} from "@material-ui/core";
-import {TabPanel} from "../tabs/tabPanel";
-import {FileLink} from "../files/fileLink";
 import * as React from "react";
+import {DialogContainer} from "./dialogContainer";
+import {Divider, makeStyles, Tab, Tabs, Typography} from "@material-ui/core";
 import constants from "../../constants";
 
 const useStyles = makeStyles((theme) => ({
@@ -31,6 +26,7 @@ export function MorphologyViewerDialog({open, onClose, modelName, modelUrl}) {
         maxWidth={'lg'}
         title={modelName ?? ''}
         onClose={onClose}
+        height={'80vh'}
         className={classes.dialog}>
         <div>
             <div className='row' style={{marginTop: 20}}>
