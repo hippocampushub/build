@@ -7,7 +7,6 @@ import parse from 'html-react-parser';
 
 import dialogContainerStyle from './dialog.module.scss';
 import {useIconButtonStyles} from "../../style/style";
-import {height} from "@material-ui/system";
 
 interface IDialogContainerProps extends DialogProps {
     title?: string;

@@ -12,6 +12,7 @@ import pageContentStyle from '../page.module.scss';
 import {ItemsCountBaloon} from "../../components/baloons/itemsCountBaloon";
 import {ModelCard} from "../../components/cards/modelCard";
 import {FormFilter} from "../../components/forms/filter";
+import {hashCode} from "../../helpers/hashHelper";
 
 export interface ISearchParams {
     query?: string;
@@ -26,13 +27,15 @@ function ModelsPage({params}) {
     const [page, setPage] = React.useState<any>({});
     const [models, setModels] = React.useState<any>([]);
 
-
     const [selectedQuery, setSelectedQuery] = React.useState('');
     const [selectedForDownloads, setSelectedForDownloads] = React.useState<string[]>([]);
 
     const [numPage, setNumPage] = React.useState<number>(0);
     const [totalPages, setTotalPages] = React.useState<number>(1);
     const [totalItems, setTotalItems] = React.useState<number>(0);
+
+    const [selectedModFiles, setSelectedModFiles] = React.useState([]);
+
 
     const [hitsPerPage, setHitsPerPage] = React.useState<number>(constants.DEFAULT_HITS_PER_PAGE)
 
@@ -63,9 +66,6 @@ function ModelsPage({params}) {
 
     const _search = async ({
         query,
-        region,
-        cellType,
-        species,
         hitsPerPage
 }: ISearchParams = {}) => {
         console.log('@@@@requestSearch');
@@ -78,8 +78,8 @@ function ModelsPage({params}) {
             page,
             hitsPerPage
         });
-        setModels(items)
-        setTotalPages(_totalPages)
+        setModels(items);
+        setTotalPages(_totalPages);
         setTotalItems(_totalItems);
         setLoading(false);
     }
@@ -134,6 +134,25 @@ function ModelsPage({params}) {
                 setSelectedForDownloads(newValues);
             }
         }
+    }
+
+    const _toggleModFileForBuilding = (item: any, checked: boolean) => {
+        const _modFiles = [...selectedModFiles];
+        if (!!checked) {
+            _modFiles.push(item);
+        } else {
+            const index = _modFiles.findIndex((value) => hashCode(JSON.stringify(item)) == hashCode(JSON.stringify(value)));
+            if (index > - 1) {
+                _modFiles.splice(index, 1);
+            }
+        }
+        setSelectedModFiles(_modFiles);
+    }
+
+    const _isModFileSelected = (item: any) => {
+        const _modFiles = [...selectedModFiles];
+        const index = _modFiles.findIndex((value) => hashCode(JSON.stringify(item)) == hashCode(JSON.stringify(value)));
+        return index > -1;
     }
 
     const hasMoreItems = numPage < totalPages - 1;
@@ -196,7 +215,9 @@ function ModelsPage({params}) {
                                             <ModelCard
                                                 model={item}
                                                 selectedForDownload={selectedForDownloads.includes(item['source_id'])}
-                                                toggleSelectedForDownload={_toggleSelectForDownload}/>
+                                                toggleSelectedForDownload={_toggleSelectForDownload}
+                                                toggleModFileForBuilding={_toggleModFileForBuilding}
+                                                isModFileSelected={_isModFileSelected}/>
                                         </div>
                                     </div>))}
                                 </div>

@@ -20,12 +20,6 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
 
     const [actionsExpanded, setActionsExpanded] = React.useState(false);
 
-    const _onClick = () => {
-        if (!!onClick) {
-            onClick();
-        }
-    }
-
     const _openMorphologyViewer = () => {
         if (!!props?.openMorphologyViewer) {
             props?.openMorphologyViewer({

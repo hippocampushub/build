@@ -1,5 +1,7 @@
 @import "variables";
 .model-card-content {
+  padding-left: 15px;
+  padding-right: 15px;
 
   .model-card-image {
     width: 100%;
@@ -33,6 +35,13 @@
     border-radius: 2px;
     color: #fff;
     font-size: 11px;
+  }
+
+  .model-card-expand-all-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 5px;
   }
 
   .model-card-actions-container {
