@@ -5,7 +5,7 @@ module.exports = {
   assetPrefix: isProd ? '/community' : '/',
   env: {
     BASE_URL: isProd ? '/community' : '',
-    BACKEND_URL: isProd ? 'https://facility-hub.cineca.it' : 'https://facility-hub.cineca.it'
+    BACKEND_URL: isProd ? 'https://facility-hub.cineca.it' : 'http://localhost:5000'
   },
   suggestionMinLength: 1
 }

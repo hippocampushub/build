@@ -70,15 +70,16 @@ function ModelsPage({params}) {
         const page = 0
         setNumPage(0);
         setLoading(true);
+        const _filters = filters !== undefined ? filters : selectedFilters;
         const {total_page: _totalPages, total: _totalItems, items} = await searchModels({
             data_type: params?.type ?? null,
             query: query ?? selectedQuery,
-            filters: filters ?? selectedFilters,
+            filters: _filters,
             page,
             hitsPerPage
         });
-        setModels(items)
-        setTotalPages(_totalPages)
+        setModels(items);
+        setTotalPages(_totalPages);
         setTotalItems(_totalItems);
         setLoading(false);
     }
@@ -147,6 +148,8 @@ function ModelsPage({params}) {
 
     const hasData = !!models && models.length > 0;
 
+    const downloadBlockClassName = !!selectedForDownloads && selectedForDownloads.length > 0 ? 'col-md-6' : 'col-md-4';
+
     return (
         <PageContainer>
             <div className={`container ${pageContentStyle['page-container']}`}>
@@ -181,13 +184,13 @@ function ModelsPage({params}) {
                         </div>
                     </div>
                     <div className='row' style={{marginTop: 20}}>
-                        <div className='col-md-6'>
+                        <div className='col-md-8'>
                             <ItemsCountBaloon
                                 label='Total items'
                                 count={totalItems}/>
                         </div>
-                        <div className='col-md-6 text-right'>
-                            <CustomButton onClick={() => _downloadAll()}>
+                        <div className={`${downloadBlockClassName} text-right`}>
+                            <CustomButton onClick={() => _downloadAll()} style={{float: 'right'}}>
                                 <IconDownload/> <span style={{marginLeft: 5}}>Download All</span>
                             </CustomButton>
                             {!!selectedForDownloads && selectedForDownloads.length > 0 ?

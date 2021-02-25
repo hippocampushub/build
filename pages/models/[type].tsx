@@ -114,9 +114,6 @@ function ModelsPage({params}) {
     const _resetFilters = async () => {
         await _search({
             query: '',
-            region: '',
-            cellType: '',
-            species: ''
         });
     }
 

@@ -1,29 +1,43 @@
 @import "variables";
 
-button.custom-button {
-  min-width: 200px;
+.custom-button {
+  display: block;
+  max-width: 300px;
   height: 50px;
-  box-shadow: 0 0 2px #333;
-  border-radius: 2.5px;
   outline: none;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
+  line-height: 46px;
+  cursor: pointer;
+  overflow-y: hidden;
+  &.center {
+    margin: 0 auto;
+  }
+
+  .children-container {
+    float: left;
+    width: calc(100% - 50px);
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .arrow-container {
+    float: left;
+    width: 50px;
+    background: #ffc90c88;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
   &:hover, &:focus {
     outline: none;
-  }
-  &.primary {
-    background: $color-white;
-    border: 3px solid $color-grey;
-    color: $color-background-dark;
-  }
-  &.secondary {
-
   }
 }
 
 button.expand-button {
   min-width: auto;
   outline: none;
+
   &:hover, &:focus {
     outline: none;
   }

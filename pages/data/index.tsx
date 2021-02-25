@@ -7,7 +7,6 @@ import pageContentStyle from "../page.module.scss";
 import {Card, CardContent, makeStyles, Typography} from "@material-ui/core";
 import Spinner from "../../components/spinner/spinner";
 import {getPage} from "../../helpers/dataHelper";
-import {ChevronRight as ArrowRight} from "@material-ui/icons";
 import DataTypeCtaButton from "../../components/cta/dataTypeCtaButton";
 
 function DataHomePage() {

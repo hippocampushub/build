@@ -1,6 +1,12 @@
 @import "variables";
 .dataset-card-content {
   max-height: 100px;
+  &.connection {
+    max-height: 150px;
+    .dataset-card-image {
+      max-height: 150px;
+    }
+  }
 
   .dataset-card-image {
     width: 100%;

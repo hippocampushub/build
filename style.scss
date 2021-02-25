@@ -1,7 +1,22 @@
-.ril__inner {
-  img.ril__image {
-    max-width: 100% !important;
-    max-height: calc(100% - 50px) !important;
-    margin-top: 50px !important;
+body {
+  padding: 0 !important;
+  .button-primary {
+    padding: 0 15px;
+    border-radius: 5px;
+    border: 2px solid #ffc90c;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    &:active {
+      background: #ffc90c;
+    }
+  }
+  .ril__inner {
+    img.ril__image {
+      max-width: 100% !important;
+      max-height: calc(100% - 50px) !important;
+      margin-top: 50px !important;
+      transform: none !important;
+    }
   }
 }

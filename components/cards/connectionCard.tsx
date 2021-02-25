@@ -21,12 +21,6 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
 
     const [actionsExpanded, setActionsExpanded] = React.useState(false);
 
-    const _onClick = () => {
-        if (!!onClick) {
-            onClick();
-        }
-    }
-
     const _openImageLightbox = (url: string) => {
         if (!!props?.openImageLightbox) {
             props.openImageLightbox(url);
@@ -134,7 +128,7 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
     };
 
     return (<CardContainer key={`dataset-${dataSet?.id}`}>
-        <div className={dataSetCardStyle['dataset-card-content']}>
+        <div className={`${dataSetCardStyle['dataset-card-content']} ${dataSetCardStyle['connection']}`}>
             <div className='row'>
                 {!!presynaptic ?
                     renderNeuron(presynaptic, 'Presynaptic') : null
