@@ -11,16 +11,17 @@ export interface ICustomButtonProps extends ButtonBaseProps {
 
 }
 
-
 export function CustomButton({children, onClick, style}: ICustomButtonProps) {
-    return (<div className={`button-primary ${buttonStyle['custom-button']} ${buttonStyle['center']}`} onClick={onClick}>
+    return (<span className={`button-primary ${buttonStyle['custom-button']} text-center`}
+                style={style}
+                onClick={onClick}>
         <div className='row'>
-            <div className='col-9'>
+            <div className={buttonStyle['children-container']}>
                 {children}
             </div>
-            <div className={`col-3 ${buttonStyle['arrow-container']}`}>
+            <div className={`${buttonStyle['arrow-container']} text-center`}>
                 <ArrowRight htmlColor={'#fff'} fontSize='small'/>
             </div>
         </div>
-    </div>)
+    </span>)
 }

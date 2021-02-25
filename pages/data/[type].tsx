@@ -217,7 +217,9 @@ function DataPage({params}) {
 
     const hasDownloadableFiles = !!dataSets && dataSets.length > 0 && dataSets.filter((item) => !!item.download_link).length > 0;
 
-    const CardType = _typeCards[params?.type]
+    const CardType = _typeCards[params?.type];
+
+    const downloadBlockClassName = !!hasDownloadableFiles && !!selectedForDownloads && selectedForDownloads.length > 0 ? 'col-md-6' : 'col-md-4';
 
     return (
         <PageContainer>
@@ -251,14 +253,14 @@ function DataPage({params}) {
                         </div>
                     </div>
                     <div className='row' style={{marginTop: 20}}>
-                        <div className='col-md-6'>
+                        <div className='col-md-8'>
                             <ItemsCountBaloon
                                 label='Total items'
                                 count={totalItems}/>
                         </div>
-                        <div className='col-md-6 text-right'>
+                        <div className={`${downloadBlockClassName} text-right`}>
                             {!!hasDownloadableFiles ?
-                                <CustomButton onClick={() => _downloadAll()}>
+                                <CustomButton onClick={() => _downloadAll()} style={{float: 'right'}}>
                                     <IconDownload/> <span style={{marginLeft: 5}}>Download All</span>
                                 </CustomButton> : null
                             }

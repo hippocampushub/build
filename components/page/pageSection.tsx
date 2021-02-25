@@ -21,7 +21,7 @@ function PageSection({sectionData, variant = 'light'}: { sectionData: any, varia
                     {sectionData.header}
                 </Typography>
                 <div className={pageSectionStyle['page-section-header-divider']}/>
-            </div>: null
+            </div> : null
         }
         {(sectionData?.rows ?? []).map((row) => {
             const hasColumns = (row.columns ?? []).length > 0;
@@ -30,10 +30,10 @@ function PageSection({sectionData, variant = 'light'}: { sectionData: any, varia
                 <div className='row' style={{marginTop: 10}}>
                     <div className='col-12'>
                         {checkIfNotEmpty(row.header) ?
-                                <Typography variant='h6' gutterBottom
-                                            className={pageSectionStyle['page-section-sub-header']}>
-                                    {row.header}
-                                </Typography> : null
+                            <Typography variant='h6' gutterBottom
+                                        className={pageSectionStyle['page-section-sub-header']}>
+                                {row.header}
+                            </Typography> : null
                         }
                     </div>
                 </div>
@@ -56,7 +56,8 @@ function PageSection({sectionData, variant = 'light'}: { sectionData: any, varia
                     </div>)}
                     {!!row.cta ?
                         <div className='col-12 text-center' style={{marginTop: 20}}>
-                            <CustomButton onClick={() => router.push(row.cta.url)} variant='primary'>
+                            <CustomButton onClick={() => router.push(row.cta.url)} variant='primary'
+                                          style={{margin: '0 auto'}}>
                                 {row.cta.label}
                             </CustomButton>
                         </div> : null
