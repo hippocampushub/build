@@ -70,7 +70,7 @@ function ModelsPage({params}) {
         const page = 0
         setNumPage(0);
         setLoading(true);
-        const _filters = !!filters ? filters : (filters !== undefined ? filters : selectedFilters);
+        const _filters = filters !== undefined ? filters : selectedFilters;
         const {total_page: _totalPages, total: _totalItems, items} = await searchModels({
             data_type: params?.type ?? null,
             query: query ?? selectedQuery,
@@ -78,8 +78,8 @@ function ModelsPage({params}) {
             page,
             hitsPerPage
         });
-        setModels(items)
-        setTotalPages(_totalPages)
+        setModels(items);
+        setTotalPages(_totalPages);
         setTotalItems(_totalItems);
         setLoading(false);
     }

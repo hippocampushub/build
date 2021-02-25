@@ -114,7 +114,7 @@ function DataPage({params}) {
         const page = 0
         setNumPage(0);
         setLoading(true);
-        const _filters = !!filters ? filters : (filters !== undefined ? filters : selectedFilters);
+        const _filters = filters !== undefined ? filters : selectedFilters;
         const {total_page: _totalPages, total: _totalItems, items} = await searchDatasets({
             data_type: params?.type ?? null,
             query: query ?? selectedQuery,
@@ -124,7 +124,7 @@ function DataPage({params}) {
         });
         console.log('@@@@@@@totalPages', _totalPages);
         console.log('@@@@@@@totalItems', _totalItems);
-        setDataSets(items)
+        setDataSets(items);
         setTotalPages(_totalPages)
         setTotalItems(_totalItems);
         setLoading(false);
