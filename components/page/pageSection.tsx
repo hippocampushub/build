@@ -57,7 +57,8 @@ function PageSection({sectionData, variant = 'light'}: { sectionData: any, varia
                     {!!row.cta ?
                         <div className='col-12 text-center' style={{marginTop: 20}}>
                             <CustomButton onClick={() => router.push(row.cta.url)} variant='primary'
-                                          style={{margin: '0 auto'}}>
+                                          style={{margin: '0 auto'}}
+                                          isCta={true}>
                                 {row.cta.label}
                             </CustomButton>
                         </div> : null

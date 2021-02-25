@@ -8,20 +8,23 @@ export type ICustomButtonVariant = 'primary' | 'secondary';
 
 export interface ICustomButtonProps extends ButtonBaseProps {
     variant?: ICustomButtonVariant;
+    isCta?: boolean;
 
 }
 
-export function CustomButton({children, onClick, style}: ICustomButtonProps) {
+export function CustomButton({children, onClick, style, isCta}: ICustomButtonProps) {
     return (<span className={`button-primary ${buttonStyle['custom-button']} text-center`}
-                style={style}
-                onClick={onClick}>
+                  style={style}
+                  onClick={onClick}>
         <div className='row'>
             <div className={buttonStyle['children-container']}>
                 {children}
             </div>
-            <div className={`${buttonStyle['arrow-container']} text-center`}>
-                <ArrowRight htmlColor={'#fff'} fontSize='small'/>
-            </div>
+            {isCta ?
+                <div className={`${buttonStyle['arrow-container']} text-center`}>
+                    <ArrowRight htmlColor={'#fff'} fontSize='small'/>
+                </div> : null
+            }
         </div>
     </span>)
 }

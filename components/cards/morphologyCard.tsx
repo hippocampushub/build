@@ -12,6 +12,7 @@ import {getImageUrlByPath} from "../../helpers/imageHelper";
 import dataSetCardStyle from './datasetCard.module.scss';
 import {forwardRef, PropsWithChildren} from "react";
 import {IDataSetCardProps} from "../../interfaces/IDatasetCardProps";
+import {downloadFile} from "../../helpers/downloadHelper";
 
 
 function _DataSetCard(props: IDataSetCardProps, ref) {
@@ -131,7 +132,7 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                                     label={'Download'}
                                                     icon={<IconDownload/>}
                                                     expanded={actionsExpanded}
-                                                    onClick={() => window.open(downloadLink)}
+                                                    onClick={() => downloadFile(downloadLink)}
                                                 />
                                             </Tooltip>
                                         </span> : null

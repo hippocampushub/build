@@ -6,7 +6,14 @@ import Spinner from "../../components/spinner/spinner";
 import PageContainer from "../../components/page/pageContainer";
 import {CustomButton} from "../../components/buttons/buttons";
 
-import {downloadAllDatasets, downloadDatasets, getFilters, getTypes, searchModels} from "../../helpers/apiHelper";
+import {
+    downloadAllDatasets,
+    downloadAllModels,
+    downloadDatasets, downloadModels,
+    getFilters,
+    getTypes,
+    searchModels
+} from "../../helpers/apiHelper";
 import constants from "../../constants";
 import pageContentStyle from '../page.module.scss';
 import {ItemsCountBaloon} from "../../components/baloons/itemsCountBaloon";
@@ -121,11 +128,11 @@ function ModelsPage({params}) {
     }
 
     const _downloadAll = () => {
-        window.open(downloadAllDatasets());
+        window.open(downloadAllModels());
     }
 
     const _downloadSelectedDatasets = () => {
-        window.open(downloadDatasets(selectedForDownloads));
+        window.open(downloadModels(selectedForDownloads));
     }
 
     const _toggleSelectForDownload = async(id, selected) => {
@@ -225,6 +232,7 @@ function ModelsPage({params}) {
                             <div className='col-12 text-center'>
                                 <CustomButton
                                     variant='primary'
+                                    style={{margin: '0 auto'}}
                                     onClick={() => _loadMore()}>
                                     Load More
                                 </CustomButton>

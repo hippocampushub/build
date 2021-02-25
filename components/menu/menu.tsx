@@ -10,7 +10,7 @@ import {sortedArray} from "../../helpers/arrayHelper";
 
 const useToolbarStyles = makeStyles((theme) => ({
     root: {
-        background: '#333'
+        background: '#393745'
     }
 }));
 
@@ -32,10 +32,10 @@ const useListItemStyles = makeStyles((theme) => ({
         height: 64,
         marginRight: 5,
         '&:hover': {
-            borderBottom: '2px solid #fff'
+            borderBottom: '2px solid #ffc90c'
         },
         '&.active': {
-            borderBottom: '2px solid #fff'
+            borderBottom: '2px solid #ffc90c'
         },
         [theme.breakpoints.down('sm')]: {
             marginRight: 0,

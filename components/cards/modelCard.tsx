@@ -138,7 +138,7 @@ function _ModelCard(props: IModelCardProps, ref) {
                                                                 onChange={(event, checked) =>
                                                                     _onToggleModFile(item, checked)}/>}
                                                             label={''}/>
-                                                        <a href={item.url}>{item.label}</a>
+                                                        <a href={item.url} target='_blank'>{item.label}</a>
                                                     </div>
                                                 )}
                                             </div>

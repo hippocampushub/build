@@ -11,7 +11,8 @@ const endpoints = {
         models: () => '/search/model'
     },
     download: {
-        datasets: () => '/download/dataset'
+        datasets: () => '/download/dataset',
+        models: () => '/download/model'
     }
 }
 
@@ -102,11 +103,23 @@ const downloadDatasets = (ids=[]) => {
     return url;
 }
 
+const downloadAllModels = () => {
+    const url = `${BACKEND_URL}${endpoints.download.datasets()}/all`;
+    return url;
+}
+
+const downloadModels = (ids=[]) => {
+    const url = `${BACKEND_URL}${endpoints.download.datasets()}?ids=${ids.join(',')}`;
+    return url;
+}
+
 export {
     searchDatasets,
     searchModels,
     getFilters,
     getTypes,
     downloadAllDatasets,
-    downloadDatasets
+    downloadDatasets,
+    downloadAllModels,
+    downloadModels
 }

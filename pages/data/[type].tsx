@@ -299,6 +299,7 @@ function DataPage({params}) {
                             <div className='col-12 text-center'>
                                 <CustomButton
                                     variant='primary'
+                                    style={{margin: '0 auto'}}
                                     onClick={() => _loadMore()}>
                                     Load More
                                 </CustomButton>
