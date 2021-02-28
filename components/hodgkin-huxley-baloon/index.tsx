@@ -24,7 +24,9 @@ const HodgkinHuxleyBaloon = inject('dataStore')(
         const _sendToHodgkinHuxley = () => {
             const HFFComm = (dataStore ?? {}).hhfcomm ?? {};
             if (!!window) {
-                const url = `${constants.HODGKIN_HUXLEY_BASE_URL}?params=${JSON.stringify(HFFComm)}`;
+                const url = `${constants.HODGKIN_HUXLEY_BASE_URL}?params=${JSON.stringify({
+                    'HHF-Comm': HFFComm
+                })}`;
                 window.open(url);
             }
         }
