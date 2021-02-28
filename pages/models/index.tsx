@@ -21,8 +21,12 @@ import {ModelCard} from "../../components/cards/modelCard";
 import {FormFilter} from "../../components/forms/filter";
 import {ISearchParams} from "../../interfaces";
 import {CloudDownload as IconDownload} from "@material-ui/icons";
+import {hashCode} from "../../helpers/hashHelper";
+import {HodgkinHuxleyBaloon} from "../../components/hodgkin-huxley-baloon";
+import {inject, observer} from "mobx-react";
 
-function ModelsPage({params}) {
+const ModelsPage = inject('dataStore') (
+    observer((props) => {
     const [loading, setLoading] = React.useState(true);
     const [page, setPage] = React.useState<any>({});
     const [models, setModels] = React.useState<any>([]);
@@ -33,14 +37,16 @@ function ModelsPage({params}) {
     const [selectedQuery, setSelectedQuery] = React.useState('');
 
     const [selectedForDownloads, setSelectedForDownloads] = React.useState<string[]>([]);
+    const [selectedModFilesForBuilding, setSelectedModFilesForBuilding] = React.useState([]);
+
 
     const [numPage, setNumPage] = React.useState<number>(0);
     const [totalPages, setTotalPages] = React.useState<number>(1);
     const [totalItems, setTotalItems] = React.useState<number>(0);
 
-    const [hitsPerPage, setHitsPerPage] = React.useState<number>(constants.DEFAULT_HITS_PER_PAGE)
+    const [hitsPerPage, setHitsPerPage] = React.useState<number>(constants.DEFAULT_HITS_PER_PAGE);
 
-
+    const {params} = props;
 
     useEffect(() => {
         setup();
@@ -151,6 +157,35 @@ function ModelsPage({params}) {
         }
     }
 
+    const _toggleModFileForBuilding = (item: any, checked: boolean) => {
+        const _modFiles = [...selectedModFilesForBuilding];
+        if (!!checked) {
+            _modFiles.push(item);
+        } else {
+            const index = _modFiles.findIndex((value) => hashCode(JSON.stringify(item)) == hashCode(JSON.stringify(value)));
+            if (index > - 1) {
+                _modFiles.splice(index, 1);
+            }
+        }
+        setSelectedModFilesForBuilding(_modFiles);
+        const {dataStore} = props;
+
+        dataStore?.changeHHFComm({
+            ...dataStore?.hhfcomm ?? {},
+            mod_files: _modFiles?.map((item) => ({
+                name: item.label,
+                url: item.url
+            }))
+        });
+
+    }
+
+    const _isModFileSelected = (item: any) => {
+        const _modFiles = [...selectedModFilesForBuilding];
+        const index = _modFiles.findIndex((value) => hashCode(JSON.stringify(item)) == hashCode(JSON.stringify(value)));
+        return index > -1;
+    }
+
     const hasMoreItems = numPage < totalPages - 1;
 
     const hasData = !!models && models.length > 0;
@@ -208,6 +243,11 @@ function ModelsPage({params}) {
                         </div>
                     </div>
                     <div className='row'>
+                        <div className='col-12'>
+                            <HodgkinHuxleyBaloon/>
+                        </div>
+                    </div>
+                    <div className='row'>
                         <div className='col-12 text-center'>
                             {!hasData ?
 
@@ -218,7 +258,9 @@ function ModelsPage({params}) {
                                             <ModelCard
                                                 model={item}
                                                 selectedForDownload={selectedForDownloads.includes(item['source_id'])}
-                                                toggleSelectedForDownload={_toggleSelectForDownload}/>
+                                                toggleSelectedForDownload={_toggleSelectForDownload}
+                                                toggleModFileForBuilding={_toggleModFileForBuilding}
+                                                isModFileSelected={_isModFileSelected}/>
                                         </div>
                                     </div>))}
                                 </div>
@@ -246,6 +288,6 @@ function ModelsPage({params}) {
             </div>
         </PageContainer>
     );
-}
+}));
 
 export default ModelsPage;

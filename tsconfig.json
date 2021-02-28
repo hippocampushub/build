@@ -8,6 +8,8 @@
       "esnext"
     ],
     "allowJs": true,
+    "experimentalDecorators": true,
+    "useDefineForClassFields": true,
     "skipLibCheck": true,
     "strict": false,
     "forceConsistentCasingInFileNames": true,

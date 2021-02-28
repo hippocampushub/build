@@ -42,6 +42,12 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
         }
     }
 
+    const _selectForModelBuilder = () => {
+        if (!!props?.selectForModelBuilder) {
+            props?.selectForModelBuilder(dataSet);
+        }
+    }
+
     const downloadLink = dataSet?.download_link ?? null;
     const hasDownloadLink = !!downloadLink;
 
@@ -145,6 +151,18 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                                     icon={<IconLink/>}
                                                     expanded={actionsExpanded}
                                                     onClick={() => window.open(pageLink)}
+                                                />
+                                            </Tooltip>
+                                        </span> : null
+                                    }
+                                    {hasDownloadLink ?
+                                        <span className={dataSetCardStyle['dataset-card-action']}>
+                                            <Tooltip title='Send to model building'>
+                                                <ExpandButton
+                                                    label={'Send to model building'}
+                                                    icon={<img src={getImageUrlByPath('/assets/icons/3d.svg')}/>}
+                                                    expanded={actionsExpanded}
+                                                    onClick={() => _selectForModelBuilder()}
                                                 />
                                             </Tooltip>
                                         </span> : null

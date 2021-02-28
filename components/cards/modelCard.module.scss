@@ -1,7 +1,6 @@
 @import "variables";
 .model-card-content {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 10px 15px;
 
   .model-card-image {
     width: 100%;
@@ -37,11 +36,26 @@
     font-size: 11px;
   }
 
-  .model-card-expand-all-label {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    margin-right: 5px;
+  .model-card-expand-button {
+    display: inline;
+    cursor: pointer;
+    padding: 2.5px 15px;
+    .model-card-expand-all-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      margin-right: 5px;
+      color: #fff;
+      text-decoration: none;
+    }
+    &:hover {
+      text-decoration: none;
+      color: #fff;
+    }
+    &:active {
+      color: #fff;
+      text-decoration: none;
+    }
   }
 
   .model-card-actions-container {
