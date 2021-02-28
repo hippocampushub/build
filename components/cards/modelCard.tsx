@@ -111,17 +111,13 @@ function _ModelCard(props: IModelCardProps, ref) {
                     {hasModFiles ?
                         <div className='row'>
                             <div className='col-md-12 col-sm-12'>
-                                <div className='row'>
+                                <div className='row' style={{marginTop: 5}}>
                                     <div className='col-12 text-center'>
-                                        <div>
-                                            <span className={modelCardStyle['model-card-expand-all-label']}>Expand All</span>
-                                            <IconButton
-                                                className={iconButtonStyles.root}
-                                                onClick={() => setIsModFilesExpanded(!isModFilesExpanded)}>
-                                                {isModFilesExpanded ?
-                                                    <IconClose/> : <IconAdd/>
-                                                }
-                                            </IconButton>
+                                        <div className={`${modelCardStyle['model-card-expand-button']} button-primary`} onClick={() => setIsModFilesExpanded(!isModFilesExpanded)}>
+                                            <span className={modelCardStyle['model-card-expand-all-label']}>{isModFilesExpanded ? 'Show less' : 'Show all'}</span>
+                                            {isModFilesExpanded ?
+                                                <IconClose htmlColor={'#fff'}/> : <IconAdd htmlColor={'#fff'}/>
+                                            }
                                         </div>
                                     </div>
                                     {isModFilesExpanded ?
@@ -138,7 +134,7 @@ function _ModelCard(props: IModelCardProps, ref) {
                                                                 onChange={(event, checked) =>
                                                                     _onToggleModFile(item, checked)}/>}
                                                             label={''}/>
-                                                        <a href={item.url}>{item.label}</a>
+                                                        <a href={item.url} target='_blank'>{item.label}</a>
                                                     </div>
                                                 )}
                                             </div>

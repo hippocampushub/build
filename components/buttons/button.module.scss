@@ -16,9 +16,12 @@
 
   .children-container {
     float: left;
-    width: calc(100% - 50px);
+    width: 100%;
     padding-left: 15px;
     padding-right: 15px;
+    &.cta-container {
+      width: calc(100% - 50px) !important;
+    }
   }
 
   .arrow-container {

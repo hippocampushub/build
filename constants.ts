@@ -8,6 +8,7 @@ export default {
         HIPPOCAMPONE: "http://hippocampome.org/php/index.php",
         ALLEN_INSTITUTE: "https://celltypes.brain-map.org/experiment/electrophysiology/623308514 "
     },
+    HODGKIN_HUXLEY_BASE_URL: process.env.HODGKIN_HUXLEY_BASE_URL ?? "http://localhost/",
     ENDPOINTS: {
         config: 'config',
         menuItems: 'menu-items',
