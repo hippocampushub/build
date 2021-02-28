@@ -19,7 +19,7 @@
     width: 100%;
     padding-left: 15px;
     padding-right: 15px;
-    + .arrow-container {
+    &.cta-container {
       width: calc(100% - 50px) !important;
     }
   }

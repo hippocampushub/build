@@ -242,7 +242,7 @@ const ModelsPage = inject('dataStore') (
                             }
                         </div>
                     </div>
-                    <div className='row'>
+                    <div className='row' style={{marginTop: 20}}>
                         <div className='col-12'>
                             <HodgkinHuxleyBaloon/>
                         </div>

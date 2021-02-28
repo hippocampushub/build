@@ -3,6 +3,7 @@ import {FormControl, FormControlLabel, IconButton, InputLabel, Switch, Tooltip} 
 import {
     CloudDownload as IconDownload,
     Link as IconLink,
+    Send as IconSend,
 } from "@material-ui/icons";
 import {useIconButtonStyles} from "../../style/style";
 import {ExpandButton} from "../buttons/expandButton";
@@ -160,7 +161,7 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                             <Tooltip title='Send to model building'>
                                                 <ExpandButton
                                                     label={'Send to model building'}
-                                                    icon={<img src={getImageUrlByPath('/assets/icons/3d.svg')}/>}
+                                                    icon={<IconSend/>}
                                                     expanded={actionsExpanded}
                                                     onClick={() => _selectForModelBuilder()}
                                                 />

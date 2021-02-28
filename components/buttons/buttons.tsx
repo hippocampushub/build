@@ -17,7 +17,7 @@ export function CustomButton({children, onClick, style, isCta}: ICustomButtonPro
                   style={style}
                   onClick={onClick}>
         <div className='row'>
-            <div className={buttonStyle['children-container']}>
+            <div className={`${buttonStyle['children-container']} ${isCta ? buttonStyle['cta-container'] : ''}`}>
                 {children}
             </div>
             {isCta ?
