@@ -1,0 +1,15 @@
+@import "variables";
+
+.tag-view {
+  display: inline;
+  background: $color-background-dark;
+  height: 30px;
+  border-radius: 30px;
+  padding: 2.5px 5px;
+  margin-right: 2.5px;
+  .tag-view-label {
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+  }
+}

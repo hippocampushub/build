@@ -6,6 +6,7 @@ import {DataStore} from "../dataStore";
 import {Provider} from 'mobx-react'
 import {LocalStorageHelper} from "../helpers/storageHelper";
 import '../style.scss';
+import constants from "../constants";
 
 const theme = {
     primary: '#f2f2f2',
@@ -25,7 +26,7 @@ export default class App extends NextApp {
             jssStyles.parentNode.removeChild(jssStyles);
         }
         this.state.dataStore.hydrate({
-           hhfcomm: LocalStorageHelper.get('HHF-comm')
+           hhfcomm: LocalStorageHelper.get(constants.HHF_COMM)
         });
     }
 

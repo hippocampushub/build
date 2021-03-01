@@ -66,7 +66,8 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                         <a className={dataSetCardStyle['dataset-card-papers-value']}
                                            target='_blank'
                                            href={item.url}>{item.label}
-                                        </a> : <span className={dataSetCardStyle['dataset-card-papers-value']}>{item.label}</span>)}
+                                        </a> : <span
+                                            className={dataSetCardStyle['dataset-card-papers-value']}>{item.label}</span>)}
                                 </div>
                                 {/*<div className='col-12 text-left'>
                                     <span className={dataSetCardStyle['dataset-card-species-label']}>Species: </span><span
@@ -85,27 +86,21 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                         </div>
                         <div className='col-8'>
                             <div className='row'>
-                                <div className='col-6'>
-                                    <div className='row'>
-                                        <div className='col-12 text-left'>
-                                            <span className={dataSetCardStyle['dataset-card-secondary-region-label']}>Secondary Region: </span><span
-                                            className={dataSetCardStyle['dataset-card-secondary-region-value']}>{(dataSet?.secondary_region ?? []).join(',')}</span>
-                                        </div>
-                                    </div>
+                                <div className='col-12 text-left'>
+                                    <span className={dataSetCardStyle['dataset-card-secondary-region-label']}>Secondary Region: </span><span
+                                    className={dataSetCardStyle['dataset-card-secondary-region-value']}>{(dataSet?.secondary_region ?? []).join(',')}</span>
+                                </div>
+
+                            </div>
+                            <div className='row'>
+                                <div className='col-12 text-left'>
+                                    <span
+                                        className={dataSetCardStyle['dataset-card-secondary-region-label']}>Layers: </span><span
+                                    className={dataSetCardStyle['dataset-card-secondary-region-value']}>{(dataSet?.layers ?? []).join(',')}</span>
                                 </div>
                             </div>
                             <div className='row'>
-                                <div className='col-6'>
-                                    <div className='row'>
-                                        <div className='col-12 text-left'>
-                                            <span className={dataSetCardStyle['dataset-card-secondary-region-label']}>Layers: </span><span
-                                            className={dataSetCardStyle['dataset-card-secondary-region-value']}>{(dataSet?.layers ?? []).join(',')}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='row'>
-                                <div className='col-6 text-right'>
+                                <div className='col-12 text-right'>
                                     {hasSource ?
                                         <span className={dataSetCardStyle['dataset-card-source-label']}>
                                     SOURCE: {dataSet?.source}

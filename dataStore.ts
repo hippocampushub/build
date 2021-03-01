@@ -1,12 +1,13 @@
-import {makeObservable, observable} from "mobx";
+import {makeAutoObservable, makeObservable, observable} from "mobx";
 import {LocalStorageHelper} from "./helpers/storageHelper";
+import constants from "./constants";
 
 export class DataStore {
     // @ts-ignore
     @observable hhfcomm: any | undefined;
 
     constructor() {
-        makeObservable(this);
+        makeAutoObservable(this);
     }
 
     hydrate(data: any) {
@@ -15,6 +16,11 @@ export class DataStore {
 
     changeHHFComm(hhfcomm: any) {
         this.hhfcomm = !!hhfcomm ? hhfcomm : {};
-        LocalStorageHelper.save('HHF-comm', hhfcomm);
+        LocalStorageHelper.save(constants.HHF_COMM, hhfcomm);
+    }
+
+    clear() {
+        this.hhfcomm = null;
+        LocalStorageHelper.delete(constants.HHF_COMM);
     }
 }

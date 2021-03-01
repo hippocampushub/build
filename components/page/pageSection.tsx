@@ -6,7 +6,7 @@ import {checkIfNotEmpty} from "../../helpers/validatorHelper";
 import {ThemeVariant} from "../../interfaces/ThemeVariant";
 import {CustomButton} from '../buttons/buttons';
 import pageSectionStyle from './page-section.module.scss';
-import {getImageUrl} from "../../helpers/imageHelper";
+import {getImageUrl, getImageUrlByPath} from "../../helpers/imageHelper";
 
 
 function PageSection({sectionData, variant = 'light'}: { sectionData: any, variant: ThemeVariant }) {
@@ -49,7 +49,7 @@ function PageSection({sectionData, variant = 'light'}: { sectionData: any, varia
                         {checkIfNotEmpty(col.image) ?
                             <div className='row'>
                                 <div className='col-12 text-center'>
-                                    <img src={getImageUrl(col.image)} style={{maxWidth: '200px'}}/>
+                                    <img src={getImageUrlByPath(col.image)} style={{maxWidth: '200px'}}/>
                                 </div>
                             </div> : null
                         }

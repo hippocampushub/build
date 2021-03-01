@@ -1,18 +1,18 @@
 import * as React from "react";
 import {inject, observer} from "mobx-react";
 import {CustomButton} from "../buttons/buttons";
-import constants from "../../constants";
-import filterStyle from "../forms/filter.module.scss";
 import {Card, makeStyles, Typography} from "@material-ui/core";
+import constants from "../../constants";
 
 import * as hodgkinHuxleyBaloonStyle from './index.module.scss';
+import {TagView} from "../tags/tagView";
+import {hashCode} from "../../helpers/hashHelper";
 
 const useStyles = makeStyles((theme) => ({
     root: {
         zIndex: 10,
     }
 }));
-
 
 const HodgkinHuxleyBaloon = inject('dataStore')(
     observer((props) => {
@@ -22,13 +22,44 @@ const HodgkinHuxleyBaloon = inject('dataStore')(
         const classes = useStyles();
 
         const _sendToHodgkinHuxley = () => {
-            const HFFComm = (dataStore ?? {}).hhfcomm ?? {};
+            const HFFComm: any = {};
+            if (!!dataStore?.hhfcomm && !!dataStore?.hhfcomm?.morphology) {
+                HFFComm.morphology = {
+                    name: dataStore?.hhfcomm?.morphology?.name,
+                    url: dataStore?.hhfcomm?.morphology?.download_link
+                }
+            }
+            if (!!dataStore?.hhfcomm && !!dataStore?.hhfcomm?.mod_files) {
+                HFFComm.mod_files = dataStore?.hhfcomm?.mod_files?.map((item) => ({
+                    name: item?.label,
+                    url: item?.url
+                }));
+            }
             if (!!window) {
                 const url = `${constants.HODGKIN_HUXLEY_BASE_URL}?params=${JSON.stringify({
-                    'HHF-Comm': HFFComm
+                    [constants.HHF_COMM]: HFFComm
                 })}`;
                 window.open(url);
             }
+        }
+
+        const _onRemoveMorphology = (item: any) => {
+            dataStore?.changeHHFComm({
+                ...dataStore?.hhfcomm ?? {},
+                morphology: null
+            });
+        }
+
+        const _onRemoveModFile = (item: any) => {
+            const modFiles = [...dataStore?.hhfcomm?.mod_files] ?? [];
+            const index = modFiles?.findIndex((value) => hashCode(JSON.stringify(value)) == hashCode(JSON.stringify(item)));
+            if (index > -1) {
+                modFiles?.splice(index, 1);
+            }
+            dataStore?.changeHHFComm({
+                ...dataStore?.hhfcomm ?? {},
+                mod_files: modFiles ?? []
+            });
         }
 
         const HFFComm = (dataStore ?? {}).hhfcomm ?? {};
@@ -42,8 +73,8 @@ const HodgkinHuxleyBaloon = inject('dataStore')(
             <div className={hodgkinHuxleyBaloonStyle['hodgkin-huxley-baloon']}>
             <div className='row'>
                 <div className='col-12'>
-                    <Typography className={hodgkinHuxleyBaloonStyle['hodgkin-huxley-baloon-header-label']} variant='subtitle'>
-                        Hodgkin-Huxley
+                    <Typography className={hodgkinHuxleyBaloonStyle['hodgkin-huxley-baloon-header-label']} variant='subtitle1'>
+                        Hodgkin-Huxley Neuron Builder
                     </Typography>
                 </div>
                 <div className='col-8'>
@@ -51,23 +82,21 @@ const HodgkinHuxleyBaloon = inject('dataStore')(
                         <div className='row'>
                             <div className='col-12'>
                                 <span className={hodgkinHuxleyBaloonStyle['hodgkin-huxley-baloon-label']}>Morphology:</span>
-                                <a href={morphology?.url}>{morphology?.name}</a>
+                                <TagView label={morphology?.name} item={morphology} onRemoveClicked={_onRemoveMorphology}/>
                             </div>
                         </div> : null
                     }
-                    <div className='row'>
-                        <div className='col-12'>
-                            <span className={hodgkinHuxleyBaloonStyle['hodgkin-huxley-baloon-label']}>Mod File(s):</span>
-                            {hasModFiles ?
-                                <span>
+                    {hasModFiles ?
+                        <div className='row' style={{marginTop: 20}}>
+                            <div className='col-12'>
+                                <span
+                                    className={hodgkinHuxleyBaloonStyle['hodgkin-huxley-baloon-label']}>Mod File(s):</span>
                                     {modFiles?.map((item) =>
-                                        <a href={item?.url}>{item?.name}</a>
+                                        <TagView label={item?.label} item={item} onRemoveClicked={_onRemoveModFile}/>
                                     )}
-                                </span> : null
-
-                            }
-                        </div>
-                    </div>
+                            </div>
+                        </div> : null
+                    }
                 </div>
                 <div className='col-4 text-right'>
                     <CustomButton onClick={() => _sendToHodgkinHuxley()}

@@ -26,13 +26,6 @@
         "type": "url",
         "order": 2,
         "url": "/models"
-      },
-      {
-        "id": 11,
-        "title": "Single Cell Simulations",
-        "type": "url",
-        "order": 3,
-        "url": "/single-cell-simulations"
       }
     ]
   },

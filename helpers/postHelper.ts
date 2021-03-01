@@ -7,9 +7,9 @@ function getPageUrl(menuItem: any) {
     if (!menuItem.type) return '#';
     switch (menuItem.type) {
         case MenuItemType.url:
-            return `${constants.BASE_URL ?? ''}${menuItem.url}` ?? '/';
+            return !!menuItem?.url ? `${constants.BASE_URL ?? ''}${menuItem.url}` : '/';
         case MenuItemType.section:
-            return menuItem.url ?? '#';
+            return !!menuItem?.url ? `${constants.BASE_URL ?? ''}${menuItem.url}` : '#';
     }
 }
 export {

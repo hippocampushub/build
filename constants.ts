@@ -5,9 +5,10 @@ export default {
     EXTERNAL_API_URLS: {
         EBRAINS_KNOWLEDGE_GRAPH: "https://search.kg.ebrains.eu/api/groups/public/search",
         NEUROMORPHO: "http://neuromorpho.org/",
-        HIPPOCAMPONE: "http://hippocampome.org/php/index.php",
+        HIPPOCAMPOME: "http://hippocampome.org/php/index.php",
         ALLEN_INSTITUTE: "https://celltypes.brain-map.org/experiment/electrophysiology/623308514 "
     },
+    HHF_COMM: 'HHF-Comm',
     HODGKIN_HUXLEY_BASE_URL: process.env.HODGKIN_HUXLEY_BASE_URL ?? "http://localhost/",
     ENDPOINTS: {
         config: 'config',

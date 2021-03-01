@@ -93,7 +93,7 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                         </div>
                         <div className='col-8'>
                             <div className='row'>
-                                <div className='col-6'>
+                                <div className='col-12'>
                                     <div className='row'>
                                         <div className='col-12 text-left'>
                                             <span className={dataSetCardStyle['dataset-card-secondary-region-label']}>Secondary Region: </span><span
@@ -105,7 +105,7 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                         </div>
                                     </div>
                                 </div>
-                                <div className='col-6 text-right'>
+                                <div className='col-12 text-right'>
                                     {hasSource ?
                                         <span className={dataSetCardStyle['dataset-card-source-label']}>
                                     SOURCE: {dataSet?.source}
