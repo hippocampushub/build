@@ -36,7 +36,7 @@ const HodgkinHuxleyBaloon = inject('dataStore')(
                 }));
             }
             if (!!window) {
-                const url = `${constants.HODGKIN_HUXLEY_BASE_URL}?params=${JSON.stringify({
+                const url = `${constants.HODGKIN_HUXLEY_BASE_URL}/hhf_dict=${JSON.stringify({
                     [constants.HHF_COMM]: HFFComm
                 })}`;
                 window.open(url);
