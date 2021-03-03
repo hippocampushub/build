@@ -26,7 +26,7 @@ const HodgkinHuxleyBaloon = inject('dataStore')(
             if (!!dataStore?.hhfcomm && !!dataStore?.hhfcomm?.morphology) {
                 HFFComm.morphology = {
                     name: dataStore?.hhfcomm?.morphology?.name,
-                    url: dataStore?.hhfcomm?.morphology?.download_link
+                    url: dataStore?.hhfcomm?.morphology?.url
                 }
             }
             if (!!dataStore?.hhfcomm && !!dataStore?.hhfcomm?.mod_files) {
@@ -41,6 +41,7 @@ const HodgkinHuxleyBaloon = inject('dataStore')(
                 })}`;
                 window.open(url);
             }
+            dataStore?.changeHHFComm({});
         }
 
         const _onRemoveMorphology = (item: any) => {

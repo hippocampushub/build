@@ -5,7 +5,8 @@ module.exports = {
   assetPrefix: isProd ? '/community' : '/',
   env: {
     BASE_URL: isProd ? '/community' : '',
-    BACKEND_URL: isProd ? 'https://facility-hub.cineca.it' : 'https://facility-hub.cineca.it'
+    BACKEND_URL: isProd ? 'https://facility-hub.cineca.it' : 'https://facility-hub.cineca.it',
+    HODGKIN_HUXLEY_BASE_URL: 'https://hbp-bsp-hhnb.cineca.it:17895/hh-neuron-builder/hhf-comm'
   },
   suggestionMinLength: 1
 }

@@ -27,11 +27,11 @@ const _typeCards = {
     'connection': ConnectionCard
 }
 
-const lightboxStyles = {
+const lightboxStyles = () => ({
     content: {
-        top: '60px'
+        top: (window?.pageYOffset ?? 0) > 60 ? 0 : 60
     }
-}
+})
 
 const DataPage = inject('dataStore')(
     observer((props) => {
@@ -336,7 +336,7 @@ const DataPage = inject('dataStore')(
                 {!!lightboxImg ?
                     <Lightbox
                         mainSrc={lightboxImg}
-                        reactModalStyle={lightboxStyles}
+                        reactModalStyle={lightboxStyles()}
 
                         onCloseRequest={_onCloseLightBox}/> : null
                 }
