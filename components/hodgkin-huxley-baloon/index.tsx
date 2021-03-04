@@ -40,7 +40,7 @@ export function HodgkinHuxleyBaloon({dataStore}) {
             dataStore?.clear();
         }
 
-        const _onRemoveMorphology = (item: any) => {
+        const _onRemoveMorphology = () => {
             dataStore?.setMorphology(null);
         }
 

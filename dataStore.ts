@@ -1,15 +1,12 @@
-import {action, makeAutoObservable, makeObservable, observable} from "mobx";
+import {observable} from "mobx";
 import {LocalStorageHelper} from "./helpers/storageHelper";
 import constants from "./constants";
 import {hashCode} from "./helpers/hashHelper";
 
 export class DataStore {
-    morphology: any | undefined = null;
-    modFiles: any[] | undefined = [];
+    @observable morphology: any | undefined = null;
+    @observable modFiles: any[] | undefined = [];
 
-    constructor() {
-        makeAutoObservable(this);
-    }
 
     hydrate = (data: any) => {
         this.morphology = !!data.morphology ? data.morphology : null;
@@ -19,9 +16,11 @@ export class DataStore {
 
     addModFile = (modFile: any) => {
         if (!!modFile) {
-            const index = this.modFiles.findIndex((item) => hashCode(JSON.stringify(modFile)) === hashCode(JSON.stringify(item)));
+            const modFiles = [...this.modFiles];
+            const index = modFiles.findIndex((item) => hashCode(JSON.stringify(modFile)) === hashCode(JSON.stringify(item)));
             if (index == -1) {
-                this.modFiles.push(modFile);
+                modFiles.push(modFile);
+                this.modFiles = modFiles;
                 this.__store__();
             }
         }
@@ -29,9 +28,11 @@ export class DataStore {
 
     removeModFile = (modFile: any) => {
         if (!!modFile) {
-            const index = this.modFiles.findIndex((item) => hashCode(JSON.stringify(modFile)) === hashCode(JSON.stringify(item)));
+            const modFiles = [...this.modFiles];
+            const index = modFiles.findIndex((item) => hashCode(JSON.stringify(modFile)) === hashCode(JSON.stringify(item)));
             if (index > -1) {
-                this.modFiles.splice(index, 1);
+                modFiles.splice(index, 1);
+                this.modFiles = modFiles;
                 this.__store__();
             }
         }
@@ -57,7 +58,7 @@ export class DataStore {
             hhfComm.morphology = this.morphology;
         }
         if (!!this.modFiles) {
-            hhfComm.modFiles = this.modFiles;
+            hhfComm.mod_files = this.modFiles;
         }
         LocalStorageHelper.save(constants.HHF_COMM, hhfComm);
     }

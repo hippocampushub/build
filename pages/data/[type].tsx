@@ -54,7 +54,6 @@ const DataPage = inject('dataStore')(observer((props) => {
         const [selectedMorphologyViewerModel, setSelectedMorphologyViewerModel] = React.useState(null);
 
         const [lightboxImg, setLightboxImg] = React.useState<string | null>(null);
-        const [selectedMorphologyForBuilding, setSelectedMorphologyForBuilding] = React.useState<any>(null);
 
         const {params, dataStore} = props;
 
@@ -211,7 +210,6 @@ const DataPage = inject('dataStore')(observer((props) => {
         }
 
         const _selectMorphologyForBuilding = (item) => {
-            setSelectedMorphologyForBuilding(item);
             dataStore?.setMorphology(!!item ? {
                 name: item?.name,
                 url: item?.download_link

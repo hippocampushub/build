@@ -25,8 +25,6 @@ import {inject, observer} from "mobx-react";
 
 const ModelsPage = inject('dataStore')(observer((props) => {
 
-        const {dataStore} = props;
-
         const [loading, setLoading] = React.useState(true);
         const [page, setPage] = React.useState<any>({});
         const [models, setModels] = React.useState<any>([]);
@@ -43,6 +41,8 @@ const ModelsPage = inject('dataStore')(observer((props) => {
         const [totalItems, setTotalItems] = React.useState<number>(0);
 
         const [hitsPerPage, setHitsPerPage] = React.useState<number>(constants.DEFAULT_HITS_PER_PAGE);
+
+        const {dataStore} = props;
 
         useEffect(() => {
             setup();
