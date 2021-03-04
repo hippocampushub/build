@@ -15,9 +15,16 @@ const theme = {
 
 
 export default class App extends NextApp {
+    private readonly dataStore: DataStore;
 
-    state = {
-        dataStore: new DataStore()
+    constructor(props) {
+        super(props);
+        const HHFComm = LocalStorageHelper.get(constants.HHF_COMM) ?? {};
+        this.dataStore = new DataStore();
+        this.dataStore.hydrate({
+            morphology: HHFComm?.morphology ?? null,
+            modFiles: HHFComm?.mod_files ?? []
+        });
     }
 
     componentDidMount() {
@@ -25,9 +32,6 @@ export default class App extends NextApp {
         if (jssStyles && jssStyles.parentNode) {
             jssStyles.parentNode.removeChild(jssStyles);
         }
-        this.state.dataStore.hydrate({
-           hhfcomm: LocalStorageHelper.get(constants.HHF_COMM)
-        });
     }
 
     render() {
@@ -35,7 +39,7 @@ export default class App extends NextApp {
         return (
             <StyledThemeProvider theme={theme}>
                 <MaterialThemeProvider theme={theme}>
-                    <Provider dataStore={this.state.dataStore}>
+                    <Provider dataStore={this.dataStore}>
                         <Component {...pageProps} />
                     </Provider>
                 </MaterialThemeProvider>

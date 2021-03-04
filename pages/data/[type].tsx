@@ -33,8 +33,7 @@ const lightboxStyles = () => ({
     }
 })
 
-const DataPage = inject('dataStore')(
-    observer((props) => {
+const DataPage = inject('dataStore')(observer((props) => {
         const [loading, setLoading] = React.useState(true);
         const [page, setPage] = React.useState<any>({});
         const [dataSets, setDataSets] = React.useState<any>([]);
@@ -213,13 +212,10 @@ const DataPage = inject('dataStore')(
 
         const _selectMorphologyForBuilding = (item) => {
             setSelectedMorphologyForBuilding(item);
-            dataStore?.changeHHFComm({
-                ...dataStore?.hhfcomm ?? {},
-                morphology: !!item ? {
-                    name: item?.name,
-                    url: item?.download_link
-                } : null
-            });
+            dataStore?.setMorphology(!!item ? {
+                name: item?.name,
+                url: item?.download_link
+            } : null);
         }
 
         const hasMoreItems = numPage < totalPages - 1;
@@ -284,7 +280,7 @@ const DataPage = inject('dataStore')(
                         </div>
                         <div className='row' style={{marginTop: 20}}>
                             <div className='col-12'>
-                                <HodgkinHuxleyBaloon/>
+                                <HodgkinHuxleyBaloon dataStore={dataStore}/>
                             </div>
                         </div>
                         <div className='row'>
@@ -295,10 +291,10 @@ const DataPage = inject('dataStore')(
                                         <div className="row" key={`row-dataset-${item?.id}`}>
                                             <div className='col-12'>
                                                 <CardType
+                                                    onClick={() => null}
                                                     dataSet={item}
                                                     selectedForDownload={selectedForDownloads.includes(item['source_id'])}
                                                     toggleSelectedForDownload={_toggleSelectForDownload}
-                                                    onClick={() => null}
                                                     openMorphologyViewer={_openMorphologyViewer}
                                                     openImageLightbox={(url) => setLightboxImg(url)}
                                                     closImageLightbox={() => setLightboxImg(null)}

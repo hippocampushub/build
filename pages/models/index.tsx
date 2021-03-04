@@ -23,8 +23,9 @@ import {hashCode} from "../../helpers/hashHelper";
 import {HodgkinHuxleyBaloon} from "../../components/hodgkin-huxley-baloon";
 import {inject, observer} from "mobx-react";
 
-const ModelsPage = inject('dataStore') (
-    observer(({dataStore, params}) => {
+const ModelsPage = inject('dataStore')(observer((props) => {
+
+        const {dataStore} = props;
 
         const [loading, setLoading] = React.useState(true);
         const [page, setPage] = React.useState<any>({});
@@ -36,8 +37,6 @@ const ModelsPage = inject('dataStore') (
         const [selectedQuery, setSelectedQuery] = React.useState('');
 
         const [selectedForDownloads, setSelectedForDownloads] = React.useState<string[]>([]);
-        const [selectedModFilesForBuilding, setSelectedModFilesForBuilding] = React.useState(dataStore?.hhfcomm?.mod_files ?? []);
-
 
         const [numPage, setNumPage] = React.useState<number>(0);
         const [totalPages, setTotalPages] = React.useState<number>(1);
@@ -49,10 +48,6 @@ const ModelsPage = inject('dataStore') (
             setup();
         }, []);
 
-        useEffect(() => {
-            const _selectedModFilesForBuilding = [...dataStore?.hhfcomm?.mod_files] ?? [];
-            setSelectedModFilesForBuilding(_selectedModFilesForBuilding);
-        }, [dataStore]);
 
         const setup = async () => {
             try {
@@ -61,7 +56,6 @@ const ModelsPage = inject('dataStore') (
                 });
                 const _page = await getPage('models');
                 const {total_page: _totalPages, total: _totalItems, items} = await searchModels({
-                    data_type: params?.type ?? null,
                     query: selectedQuery,
                     page: numPage,
                 });
@@ -88,7 +82,6 @@ const ModelsPage = inject('dataStore') (
             setLoading(true);
             const _filters = filters !== undefined ? filters : selectedFilters;
             const {total_page: _totalPages, total: _totalItems, items} = await searchModels({
-                data_type: params?.type ?? null,
                 query: query ?? selectedQuery,
                 filters: _filters,
                 page,
@@ -105,7 +98,6 @@ const ModelsPage = inject('dataStore') (
             setNumPage(page);
             setLoading(true);
             const {total_page: _totalPages, total: _totalItems, items} = await searchModels({
-                data_type: params?.type ?? null,
                 query: selectedQuery,
                 filters: selectedFilters,
                 page,
@@ -161,26 +153,15 @@ const ModelsPage = inject('dataStore') (
         }
 
         const _toggleModFileForBuilding = (item: any, checked: boolean) => {
-            const _modFiles = [...selectedModFilesForBuilding];
             if (!!checked) {
-                _modFiles.push(item);
+                dataStore?.addModFile(item);
             } else {
-                const index = _modFiles.findIndex((value) => hashCode(JSON.stringify(item)) == hashCode(JSON.stringify(value)));
-                if (index > - 1) {
-                    _modFiles.splice(index, 1);
-                }
+                dataStore?.removeModFile(item);
             }
-            setSelectedModFilesForBuilding(_modFiles);
-
-            dataStore?.changeHHFComm({
-                ...dataStore?.hhfcomm ?? {},
-                mod_files: _modFiles
-            });
-
         }
 
         const _isModFileSelected = (item: any) => {
-            const _modFiles = [...selectedModFilesForBuilding];
+            const _modFiles = [...dataStore?.modFiles ?? []];
             const index = _modFiles.findIndex((value) => hashCode(JSON.stringify(item)) == hashCode(JSON.stringify(value)));
             return index > -1;
         }
@@ -243,7 +224,7 @@ const ModelsPage = inject('dataStore') (
                         </div>
                         <div className='row' style={{marginTop: 20}}>
                             <div className='col-12'>
-                                <HodgkinHuxleyBaloon/>
+                                <HodgkinHuxleyBaloon dataStore={dataStore}/>
                             </div>
                         </div>
                         <div className='row'>

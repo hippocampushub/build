@@ -14,23 +14,19 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const HodgkinHuxleyBaloon = inject('dataStore')(
-    observer((props) => {
-
-        const {dataStore} = props;
-
+export function HodgkinHuxleyBaloon({dataStore}) {
         const classes = useStyles();
 
         const _sendToHodgkinHuxley = () => {
             const HFFComm: any = {};
-            if (!!dataStore?.hhfcomm && !!dataStore?.hhfcomm?.morphology) {
+            if (!!dataStore?.morphology) {
                 HFFComm.morphology = {
-                    name: dataStore?.hhfcomm?.morphology?.name,
-                    url: dataStore?.hhfcomm?.morphology?.url
+                    name: dataStore?.morphology?.name,
+                    url: dataStore?.morphology?.url
                 }
             }
-            if (!!dataStore?.hhfcomm && !!dataStore?.hhfcomm?.mod_files) {
-                HFFComm.mod_files = dataStore?.hhfcomm?.mod_files?.map((item) => ({
+            if (!!dataStore?.modFiles) {
+                HFFComm.modFiles = dataStore?.modFiles?.map((item) => ({
                     name: item?.label,
                     url: item?.url
                 }));
@@ -41,34 +37,22 @@ const HodgkinHuxleyBaloon = inject('dataStore')(
                 })}`;
                 window.open(url);
             }
-            dataStore?.changeHHFComm({});
+            dataStore?.clear();
         }
 
         const _onRemoveMorphology = (item: any) => {
-            dataStore?.changeHHFComm({
-                ...dataStore?.hhfcomm ?? {},
-                morphology: null
-            });
+            dataStore?.setMorphology(null);
         }
 
         const _onRemoveModFile = (item: any) => {
-            const modFiles = [...dataStore?.hhfcomm?.mod_files] ?? [];
-            const index = modFiles?.findIndex((value) => hashCode(JSON.stringify(value)) == hashCode(JSON.stringify(item)));
-            if (index > -1) {
-                modFiles?.splice(index, 1);
-            }
-            dataStore?.changeHHFComm({
-                ...dataStore?.hhfcomm ?? {},
-                mod_files: modFiles ?? []
-            });
+            dataStore?.removeModFile(item);
         }
 
-        const HFFComm = (dataStore ?? {}).hhfcomm ?? {};
-        const hasMorphology = !!HFFComm?.morphology;
-        const hasModFiles = !!HFFComm?.mod_files && HFFComm?.mod_files?.length > 0;
+        const hasMorphology = !!dataStore?.morphology;
+        const hasModFiles = !!dataStore?.modFiles && dataStore?.modFiles?.length > 0;
 
-        const morphology = hasMorphology ? HFFComm?.morphology : null;
-        const modFiles = hasModFiles ? HFFComm?.mod_files : [];
+        const morphology = hasMorphology ? dataStore?.morphology : null;
+        const modFiles = hasModFiles ? dataStore?.modFiles : [];
 
         return (<Card classes={classes}>
             <div className={hodgkinHuxleyBaloonStyle['hodgkin-huxley-baloon']}>
@@ -109,8 +93,4 @@ const HodgkinHuxleyBaloon = inject('dataStore')(
             </div>
         </div>
         </Card>);
-    }));
-
-export {
-    HodgkinHuxleyBaloon
-}
+};

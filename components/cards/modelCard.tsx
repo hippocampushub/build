@@ -23,8 +23,6 @@ export interface IModelCardProps extends PropsWithChildren<any> {
 
 function _ModelCard(props: IModelCardProps, ref) {
 
-    const iconButtonStyles = useIconButtonStyles();
-
     const {model, selectedForDownload, toggleSelectedForDownload, onClick} = props;
 
     const [actionsExpanded, setActionsExpanded] = React.useState(false);
