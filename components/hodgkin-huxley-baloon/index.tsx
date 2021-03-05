@@ -1,12 +1,10 @@
 import * as React from "react";
-import {inject, observer} from "mobx-react";
 import {CustomButton} from "../buttons/buttons";
 import {Card, makeStyles, Typography} from "@material-ui/core";
 import constants from "../../constants";
 
 import * as hodgkinHuxleyBaloonStyle from './index.module.scss';
 import {TagView} from "../tags/tagView";
-import {hashCode} from "../../helpers/hashHelper";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -14,19 +12,19 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export function HodgkinHuxleyBaloon({dataStore}) {
+export function HodgkinHuxleyBaloon({morphology, modFiles, removeMorphology, removeModFile, clear}) {
         const classes = useStyles();
 
         const _sendToHodgkinHuxley = () => {
             const HFFComm: any = {};
-            if (!!dataStore?.morphology) {
+            if (!!morphology) {
                 HFFComm.morphology = {
-                    name: dataStore?.morphology?.name,
-                    url: dataStore?.morphology?.url
+                    name: morphology?.name,
+                    url: morphology?.url
                 }
             }
-            if (!!dataStore?.modFiles) {
-                HFFComm.modFiles = dataStore?.modFiles?.map((item) => ({
+            if (!!modFiles) {
+                HFFComm.modFiles = modFiles?.map((item) => ({
                     name: item?.label,
                     url: item?.url
                 }));
@@ -37,22 +35,31 @@ export function HodgkinHuxleyBaloon({dataStore}) {
                 })}`;
                 window.open(url);
             }
-            dataStore?.clear();
+
+            _clear();
+
         }
 
         const _onRemoveMorphology = () => {
-            dataStore?.setMorphology(null);
+            if (!!removeMorphology) {
+                removeMorphology();
+            }
         }
 
         const _onRemoveModFile = (item: any) => {
-            dataStore?.removeModFile(item);
+            if (!!removeModFile) {
+                removeModFile(item);
+            }
         }
 
-        const hasMorphology = !!dataStore?.morphology;
-        const hasModFiles = !!dataStore?.modFiles && dataStore?.modFiles?.length > 0;
+        const _clear = () => {
+            if (!!clear) {
+                clear();
+            }
+        }
 
-        const morphology = hasMorphology ? dataStore?.morphology : null;
-        const modFiles = hasModFiles ? dataStore?.modFiles : [];
+        const hasMorphology = !!morphology;
+        const hasModFiles = !!modFiles && modFiles?.length > 0;
 
         return (<Card classes={classes}>
             <div className={hodgkinHuxleyBaloonStyle['hodgkin-huxley-baloon']}>
@@ -93,4 +100,4 @@ export function HodgkinHuxleyBaloon({dataStore}) {
             </div>
         </div>
         </Card>);
-};
+}

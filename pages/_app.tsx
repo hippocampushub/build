@@ -2,11 +2,9 @@ import NextApp from 'next/app'
 import React, {useMemo} from 'react'
 import {ThemeProvider as StyledThemeProvider} from 'styled-components'
 import {ThemeProvider as MaterialThemeProvider, createMuiTheme} from '@material-ui/core/styles';
-import {DataStore} from "../dataStore";
-import {Provider} from 'mobx-react'
-import {LocalStorageHelper} from "../helpers/storageHelper";
+import {Provider} from "react-redux";
+import store from '../store';
 import '../style.scss';
-import constants from "../constants";
 
 const theme = {
     primary: '#f2f2f2',
@@ -15,16 +13,9 @@ const theme = {
 
 
 export default class App extends NextApp {
-    private readonly dataStore: DataStore;
 
     constructor(props) {
         super(props);
-        const HHFComm = LocalStorageHelper.get(constants.HHF_COMM) ?? {};
-        this.dataStore = new DataStore();
-        this.dataStore.hydrate({
-            morphology: HHFComm?.morphology ?? null,
-            modFiles: HHFComm?.mod_files ?? []
-        });
     }
 
     componentDidMount() {
@@ -39,7 +30,7 @@ export default class App extends NextApp {
         return (
             <StyledThemeProvider theme={theme}>
                 <MaterialThemeProvider theme={theme}>
-                    <Provider dataStore={this.dataStore}>
+                    <Provider store={store}>
                         <Component {...pageProps} />
                     </Provider>
                 </MaterialThemeProvider>

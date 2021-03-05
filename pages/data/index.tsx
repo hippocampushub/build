@@ -4,7 +4,7 @@ import {useRouter} from "next/router";
 import {getTypes} from "../../helpers/apiHelper";
 import PageContainer from "../../components/page/pageContainer";
 import pageContentStyle from "../page.module.scss";
-import {Card, CardContent, makeStyles, Typography} from "@material-ui/core";
+import {Typography} from "@material-ui/core";
 import Spinner from "../../components/spinner/spinner";
 import {getPage} from "../../helpers/dataHelper";
 import DataTypeCtaButton from "../../components/cta/dataTypeCtaButton";
