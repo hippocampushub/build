@@ -60,7 +60,7 @@ function _ModelCard(props: IModelCardProps, ref) {
                 </div>*/}
                 <div className='col-md-9 col-sm-12'>
                     <div className='row'>
-                        <div className='col-md-8 col-sm-12'>
+                        <div className='col-md-9 col-sm-12'>
                             <div className='row'>
                                 <div className='col-12 text-left'>
                                     <span className={modelCardStyle['model-card-name-label']}>Name: </span><span
@@ -78,6 +78,14 @@ function _ModelCard(props: IModelCardProps, ref) {
                                         <span
                                             className={modelCardStyle['model-card-papers-value']}>{item.label}</span>)}
                                 </div>
+                                <div className='col-12 text-left'>
+                                    <span className={modelCardStyle['model-card-papers-label']}>Model Concept(s): </span>
+                                    <span className={modelCardStyle['model-card-papers-value']}>{(model?.model_concepts ?? []).join(',')}</span>
+                                </div>
+                                <div className='col-12 text-left'>
+                                    <span className={modelCardStyle['model-card-papers-label']}>Implementer(s): </span>
+                                    <span className={modelCardStyle['model-card-papers-value']}>{(model?.implementers ?? []).join(',')}</span>
+                                </div>
                                 {hasReadme ?
                                     <div className='col-12 text-left'>
                                         <span className={modelCardStyle['model-card-papers-label']}>Readme: </span>
@@ -87,7 +95,7 @@ function _ModelCard(props: IModelCardProps, ref) {
                                 }
                             </div>
                         </div>
-                        <div className='col-md-4 col-sm-12 text-right'>
+                        <div className='col-md-3 col-sm-12 text-right'>
                             <div className='row'>
                                 <div className='col-12'>
                                     {hasSource ?
