@@ -207,6 +207,7 @@ const _ModelsPage = (props) => {
                                 onRequestSearch={() => _search()}
                                 onChangeHitsPerPage={(value) => _onHitsPerPageChange(value)}
                                 onChangeFilters={(key: string, value: any) => setSelectedFilters({
+                                    ...selectedFilters,
                                     [key]: value
                                 })}
                                 applyFilters={() => _applyFilters()}
