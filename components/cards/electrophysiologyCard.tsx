@@ -50,11 +50,11 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                 <div className='col-md-2 col-sm-12'>
                     <img src={imageUrl}
                          onClick={() => hasImage ? _openImageLightbox(imageUrl) : null}
-                         className={dataSetCardStyle['dataset-card-image']}/>
+                         className={`${dataSetCardStyle['dataset-card-image']} ${!hasImage ? dataSetCardStyle['not-available'] : ''}`}/>
                 </div>
-                <div className='col-md-7 col-sm-12'>
-                    <div className='row'>
-                        <div className='col-4'>
+                <div className={`${dataSetCardStyle['dataset-card-main-content']} col-md-7 col-sm-12`}>
+                    <div className={`row ${dataSetCardStyle['dataset-card-main-content-inner']}`}>
+                        <div className='col-6'>
                             <div className='row'>
                                 <div className='col-12 text-left'>
                                     <span className={dataSetCardStyle['dataset-card-name-label']}>Name: </span><span
@@ -84,7 +84,7 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                 </div>*/}
                             </div>
                         </div>
-                        <div className='col-8'>
+                        <div className='col-6'>
                             <div className='row'>
                                 <div className='col-12 text-left'>
                                     <span className={dataSetCardStyle['dataset-card-secondary-region-label']}>Secondary Region: </span><span

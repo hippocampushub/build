@@ -1,6 +1,7 @@
 @import "variables";
 .model-card-content {
   padding: 10px 15px;
+  font-family: 'Montserrat', sans-serif;
 
   .model-card-image {
     width: 100%;
@@ -9,14 +10,30 @@
   }
 
   .model-card-name-label, .model-card-types-label, .model-card-papers-label {
-    font-size: 16px;
+    display: block;
+    float: left;
+    font-size: 14px;
     font-weight: 600;
+    margin-right: 2.5px;
   }
 
   .model-card-name-value, .model-card-types-value, .model-card-papers-value {
-    font-size: 14px;
+    display: block;
+    font-size: 12px;
     font-weight: 500;
     margin-right: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 100%;
+    clear: both;
+  }
+
+  .model-card-mod_files-label {
+    @media screen and (max-width: 1024px) {
+      width: 100%;
+      clear: both;
+    }
   }
 
   .model-card-description {

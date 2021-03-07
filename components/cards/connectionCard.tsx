@@ -39,10 +39,10 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                     <img
                         src={imageUrl}
                         onClick={() => hasImage ? _openImageLightbox(imageUrl) : null}
-                        className={dataSetCardStyle['dataset-card-image']}/>
+                        className={`${dataSetCardStyle['dataset-card-image']} ${!hasImage ? dataSetCardStyle['not-available'] : ''}`}/>
                 </div>
-                <div className='col-md-7 col-sm-12'>
-                    <div className='row'>
+                <div className={`${dataSetCardStyle['dataset-card-main-content']} col-md-7 col-sm-12`}>
+                    <div className={`row ${dataSetCardStyle['dataset-card-main-content-inner']}`}>
                         <div className='col-12 text-left'>
                             <span className={dataSetCardStyle['dataset-card-name-label']}>{headerLabel}</span>
                         </div>

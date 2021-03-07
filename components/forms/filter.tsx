@@ -309,14 +309,14 @@ export function FormFilter({
 
     return (<div>
         <div className='row'>
-            <div className='col-9'>
+            <div className='col-md-9 col-sm-12'>
                 <SearchBar
                     value={query}
                     onChange={onQueryChange}
                     onRequestSearch={onRequestSearch}
                 />
             </div>
-            <div className='col-3 text-right'>
+            <div className='col-md-3 col-sm-12 text-right'>
                 <div className='row'>
                     <div className='col-8'>
                         <FormControl style={{minWidth: '100%'}}>

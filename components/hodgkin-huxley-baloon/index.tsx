@@ -92,7 +92,7 @@ export function HodgkinHuxleyBaloon({morphology, modFiles, removeMorphology, rem
                 </div>
                 <div className='col-4 text-right'>
                     <CustomButton onClick={() => _sendToHodgkinHuxley()}
-                                  style={{float: 'right'}}
+                                  style={{float: 'right', fontSize: 12}}
                                   isCta={true}>
                         Send to Hodgkin-Huxley
                     </CustomButton>

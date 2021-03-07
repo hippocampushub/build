@@ -129,10 +129,10 @@ function _ModelCard(props: IModelCardProps, ref) {
                                     {isModFilesExpanded ?
                                         <div className='col-12 text-left'>
                                             <span
-                                                className={modelCardStyle['model-card-papers-label']}>Mod File(s): </span>
+                                                className={modelCardStyle['model-card-mod_files-label']}>Mod File(s): </span>
                                             <div className='row'>
                                                 {(model?.model_files ?? []).map((item) =>
-                                                    <div className='col-4'>
+                                                    <div className='col-md-4 col-sm-12'>
                                                         <FormControlLabel
                                                             control={<Checkbox
                                                                 key={item.url}
@@ -156,7 +156,7 @@ function _ModelCard(props: IModelCardProps, ref) {
                         <div className='col-12 text-left'>
                             <div className='row'>
                                 {hasDownloadLink ?
-                                    <div className='col-12'>
+                                    <div className='col-12 text-center'>
                                         <FormControl>
                                             <FormControlLabel
                                                 control={<Switch

@@ -65,11 +65,11 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
             <div className='row'>
                 <div className='col-md-2 col-sm-12'>
                     <img src={imageUrl} onClick={() => hasImage ? _openImageLightbox(imageUrl) : null}
-                         className={dataSetCardStyle['dataset-card-image']}/>
+                         className={`${dataSetCardStyle['dataset-card-image']} ${!hasImage ? dataSetCardStyle['not-available'] : ''}`}/>
                 </div>
-                <div className='col-md-7 col-sm-12'>
-                    <div className='row'>
-                        <div className='col-4'>
+                <div className={`${dataSetCardStyle['dataset-card-main-content']} col-md-7 col-sm-12`}>
+                    <div className={`row ${dataSetCardStyle['dataset-card-main-content-inner']}`}>
+                        <div className='col-md-6 col-sm-12'>
                             <div className='row'>
                                 <div className='col-12 text-left'>
                                     <span className={dataSetCardStyle['dataset-card-name-label']}>Name: </span><span
@@ -84,17 +84,17 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                     <span className={dataSetCardStyle['dataset-card-region-label']}>Region: </span><span
                                     className={dataSetCardStyle['dataset-card-region-value']}>{dataSet?.region ?? ''}</span>
                                 </div>
-                                <div className='col-12 text-left'>
-                                    <span
-                                        className={dataSetCardStyle['dataset-card-cell-type-label']}>Cell Type: </span><span
-                                    className={dataSetCardStyle['dataset-card-cell-type-value']}>{dataSet?.cell_type ?? ''}</span>
-                                </div>
                             </div>
                         </div>
-                        <div className='col-8'>
+                        <div className='col-md-6 col-sm-12'>
                             <div className='row'>
                                 <div className='col-12'>
                                     <div className='row'>
+                                        <div className='col-12 text-left'>
+                                    <span
+                                        className={dataSetCardStyle['dataset-card-cell-type-label']}>Cell Type: </span><span
+                                            className={dataSetCardStyle['dataset-card-cell-type-value']}>{dataSet?.cell_type ?? ''}</span>
+                                        </div>
                                         <div className='col-12 text-left'>
                                             <span className={dataSetCardStyle['dataset-card-secondary-region-label']}>Secondary Region: </span><span
                                             className={dataSetCardStyle['dataset-card-secondary-region-value']}>{dataSet?.secondary_region ?? ''}</span>
@@ -120,7 +120,7 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                     <div className='row'>
                         <div className='col-12 text-left'>
                             <div className='row'>
-                                <div className='col-12'>
+                                <div className='col-12 text-center'>
                                     <FormControl>
                                         <FormControlLabel
                                             control={<Switch

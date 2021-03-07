@@ -93,8 +93,11 @@ const getTypes = async(indexName: string) => {
     }
 }
 
-const downloadAllDatasets = () => {
-    const url = `${BACKEND_URL}${endpoints.download.datasets()}/all`;
+const downloadAllDatasets = (type) => {
+    let url = `${BACKEND_URL}${endpoints.download.datasets()}/all`;
+    if (!!type && type.trim().length > 0) {
+        url += `?data_type=${type}`;
+    }
     return url;
 }
 

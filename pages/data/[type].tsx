@@ -174,7 +174,7 @@ const _DataPage = (props) => {
     }
 
     const _downloadAll = () => {
-        window.open(downloadAllDatasets());
+        window.open(downloadAllDatasets(params?.type));
     }
 
     const _downloadSelectedDatasets = () => {
@@ -232,6 +232,8 @@ const _DataPage = (props) => {
 
     const CardType = _typeCards[params?.type];
 
+    const countBaloonClassName = !!hasDownloadableFiles && !!selectedForDownloads && selectedForDownloads.length > 0 ? 'col-md-6' : 'col-md-8';
+
     const downloadBlockClassName = !!hasDownloadableFiles && !!selectedForDownloads && selectedForDownloads.length > 0 ? 'col-md-6' : 'col-md-4';
 
     return (
@@ -266,7 +268,7 @@ const _DataPage = (props) => {
                         </div>
                     </div>
                     <div className='row' style={{marginTop: 20}}>
-                        <div className='col-md-8'>
+                        <div className={countBaloonClassName}>
                             <ItemsCountBaloon
                                 label='Total items'
                                 count={totalItems}/>

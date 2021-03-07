@@ -1,11 +1,11 @@
+import * as React from "react";
 import {Card, CardContent, makeStyles, Typography} from "@material-ui/core";
 import {ChevronRight as ArrowRight} from "@material-ui/icons";
-import * as React from "react";
+import * as dataTypeCtaButtonStyle from './dataTypeCtaButton.module.scss';
 
 const useDataTypeButtonStyles = makeStyles((theme) => ({
     root: {
         borderRadius: 5,
-        background: '#333',
         boxShadow: '0px 0px 15px rgba(0, 0, 0, 0.15)',
         cursor: 'pointer'
     },
@@ -13,11 +13,9 @@ const useDataTypeButtonStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         padding: '0 !important',
-        minHeight: 100
+        justifyContent: 'center'
     },
     mainContent: {
-        paddingLeft: 16,
-        paddingRight: 16,
         flexGrow: 1
     },
     title: {
@@ -25,13 +23,6 @@ const useDataTypeButtonStyles = makeStyles((theme) => ({
         fontFamily: 'Metropolis, sans-serif',
         fontSize: '24px',
         textTransform: 'uppercase',
-    },
-    arrowBox: {
-        background: '#222',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center'
     }
 }));
 
@@ -45,15 +36,15 @@ const DataTypeCtaButton = ({type, action}: {type: string, action: (type: string)
         }
     }
 
-    return (<Card onClick={() => _goToDataTypePage()} className={classes.root}>
+    return (<Card onClick={() => _goToDataTypePage()} className={`${classes.root} button-primary ${dataTypeCtaButtonStyle['datatype-cta-button']} ${dataTypeCtaButtonStyle['button-primary']}`}>
         <CardContent className={classes.content}>
-            <div className={`row ${classes.mainContent}`}>
-                <div className='col-10'>
+            <div className={`${classes.mainContent}`}>
+                <div className={`${dataTypeCtaButtonStyle['children-container']} ${dataTypeCtaButtonStyle['cta-container']}`}>
                     <Typography variant='subtitle1' className={classes.title}>
                         {type}
                     </Typography>
                 </div>
-                <div className={`col-2 ${classes.arrowBox}`}>
+                <div className={`${dataTypeCtaButtonStyle['arrow-container']}`}>
                     <ArrowRight htmlColor={'#fff'} fontSize='large'/>
                 </div>
             </div>

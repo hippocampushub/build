@@ -27,9 +27,15 @@
   .arrow-container {
     float: left;
     width: 50px;
-    background: #ffc90c88;
+    background: $color-yellow-accent-with-alpha;
     padding-left: 15px;
     padding-right: 15px;
+  }
+
+  &.active {
+    .arrow-container {
+      background: $color-yellow-accent;
+    }
   }
 
   &:hover, &:focus {
