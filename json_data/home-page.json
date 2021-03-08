@@ -13,7 +13,7 @@
     {
       "id": "resources",
       "header": "Resources",
-      "variant": "light",
+      "variant": "dark",
       "carousel": null,
       "rows": [
         {
@@ -47,6 +47,7 @@
     {
       "key": "services",
       "header": "Services",
+      "variant": "dark",
       "rows": [
         {
           "cta": {
