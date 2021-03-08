@@ -11,14 +11,15 @@ import {getConfig, getHomePage, getMenuItems} from "../../helpers/dataHelper";
 import {forwardRef, PropsWithChildren, useEffect} from "react";
 
 interface IPageProps extends PropsWithChildren<any>{
-    title?: string
-    config?: any,
-    menuItems?: any[],
-    headerCarousel?: CarouselImage[]
+    title?: string;
+    config?: any;
+    menuItems?: any[];
+    headerCarousel?: CarouselImage[];
+    fixedHeader?: boolean;
 }
 
 function _PageContainer(props: IPageProps, ref) {
-    const {children, title = 'HBP Project', headerCarousel} = props;
+    const {children, title = 'Hippocampus Facility Hub', headerCarousel} = props;
     const [menuItems, setMenuItems] = React.useState<any[]>([]);
     const [config, setConfig] = React.useState<any>({});
 
@@ -43,7 +44,11 @@ function _PageContainer(props: IPageProps, ref) {
             <link href="https://www.hippocampushub.eu/shared_css/main.min.css" rel="stylesheet" />
         </Head>
         <div className={`container-fluid ${pageStyle['main-page-container']}`}>
-            <Header config={config.header} carouselImages={headerCarousel} menuItems={menuItems}/>
+            <Header
+                config={config.header}
+                carouselImages={headerCarousel}
+                menuItems={menuItems}
+                fixedHeader={props.fixedHeader ?? false}/>
             <div>
                 <main className={pageStyle['main-container']}>
                     {children}

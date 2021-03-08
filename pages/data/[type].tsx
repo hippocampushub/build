@@ -21,6 +21,7 @@ import {MorphologyViewerDialog} from "../../components/dialogs/morphologyViewerD
 import {ISearchParams} from "../../interfaces";
 import {HodgkinHuxleyBaloon} from "../../components/hodgkin-huxley-baloon";
 import 'react-image-lightbox/style.css';
+import PageSection from "../../components/page/pageSection";
 
 const _typeCards = {
     'morphology': MorphologyCard,
