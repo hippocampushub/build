@@ -3,12 +3,22 @@ import {getPageUrl} from "../../helpers/postHelper";
 import {useRouter} from "next/router";
 
 import menuStyle from './menu.module.scss';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {MenuItemType} from "../../data";
 import {getImageUrl} from "../../helpers/imageHelper";
 import {sortedArray} from "../../helpers/arrayHelper";
 
+const getBackgroundColor = () => {
+    return window?.pageYOffset > 60 ? '#393745' : 'transparent';
+}
+
 const useToolbarStyles = makeStyles((theme) => ({
+    root: {
+        background: 'transparent'
+    }
+}));
+
+const useFixedToolbarStyles = makeStyles((theme) => ({
     root: {
         background: '#393745'
     }
@@ -137,14 +147,14 @@ const MenuItem = ({item, isSubMenuItem=false}) => {
 const Menu = ({logo, menuItems, isSubMenuItem = false}) => {
     const router = useRouter();
 
+    const [scrolled, setScrolled] = useState(false);
     const [menuExpanded, setMenuExpanded] = useState(false);
 
-    const toolbarClasses = useToolbarStyles();
+    const toolbarClasses = scrolled ? useFixedToolbarStyles() : useToolbarStyles();
     const navClasses = useNavStyles();
     const listClasses = useListStyles();
     const listItemClasses = useListItemStyles();
     const linkClasses = useLinkStyles();
-
 
     const buildMenuItem = (item) => (<MenuItem item={item} key={`menu-item-${item.id}`}/>)
 
@@ -152,8 +162,25 @@ const Menu = ({logo, menuItems, isSubMenuItem = false}) => {
         setMenuExpanded(!menuExpanded);
     }
 
+    const _listenForScroll = () => {
+        if (!!window) {
+            window.addEventListener('scroll', _onScrollTrigger);
+        }
+    }
+
+    const _onScrollTrigger = () => {
+        setScrolled((window?.pageYOffset ?? 0) > 60);
+    }
+
+    useEffect(() => {
+        _listenForScroll();
+        return () => {
+            window.removeEventListener('scroll', _onScrollTrigger);
+        }
+    }, []);
+
     return (
-        <AppBar position="relative">
+        <AppBar position="relative" className={menuStyle['fixed-header']}>
             <Toolbar classes={toolbarClasses}>
                 <nav className={`navbar navbar-dark navbar-expand-lg ${menuStyle['menu-navbar']}`}>
                     <div className='container'>

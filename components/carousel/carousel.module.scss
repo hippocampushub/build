@@ -1,17 +1,18 @@
+@import "variables";
 .carousel-image {
   width: 100%;
-  height: calc(100vh - 200px);
+  height: calc(100vh - 100px);
   object-fit: cover;
 }
 
 .custom-carousel-caption {
+  top: 60%;
   left: 0 !important;
   right: auto !important;
   min-width: 75%;
-  top: 60%;
   transform: translate(0, -50%);
   bottom: auto !important;
-  background: #333333dd;
+  background: $color-background-dark;
   padding: 10px !important;
   text-align: left !important;
 

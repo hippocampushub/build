@@ -1,33 +1,44 @@
 @import "variables";
 
-nav.menu-navbar {
-  padding: 0 1rem;
-  width: 100%;
-  @media all and (max-width: 768px) {
-    padding: .5rem 1rem;
-  }
-  .custom-dropdown-menu {
-    min-width: 250px;
-    border-radius: 2px;
-    padding: 0;
-    background: $color-background-dark;
-    @media screen and (max-width: 768px){
-      min-width: auto;
-      margin-top: 10px;
-      border: none;
+header.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: transparent;
+  nav.menu-navbar {
+    padding: 0 1rem;
+    width: 100%;
+    @media all and (max-width: 768px) {
+      padding: .5rem 1rem;
     }
-  }
-  .custom-navbar-brand {
-    img {
-      height: 50px;
+
+    .custom-dropdown-menu {
+      min-width: 250px;
+      border-radius: 2px;
+      padding: 0;
+      background: $color-background-dark;
+      @media screen and (max-width: 768px) {
+        min-width: auto;
+        margin-top: 10px;
+        border: none;
+      }
     }
-  }
-  .custom-navbar-toggler {
-    user-select: none;
-    outline: none;
-    &:focus {
+
+    .custom-navbar-brand {
+      img {
+        height: 50px;
+      }
+    }
+
+    .custom-navbar-toggler {
       user-select: none;
       outline: none;
+
+      &:focus {
+        user-select: none;
+        outline: none;
+      }
     }
   }
 }

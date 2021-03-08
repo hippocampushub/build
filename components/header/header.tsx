@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Menu from "../menu/menu";
 import ImagesCarousel, {CarouselImage} from "../carousel/carousel";
+import * as headerStyle from './header.module.scss';
 
 interface IHeaderProps {
     config?: any,
@@ -12,8 +13,7 @@ export default function Header({config, menuItems=[], carouselImages}: IHeaderPr
     const hasCarouselImages = !!carouselImages && carouselImages.length > 0;
     return (
         <div>
-            <Menu logo={config?.logo ?? null}
-                menuItems={menuItems}/>
+            <Menu logo={config?.logo ?? null} menuItems={menuItems}/>
             {hasCarouselImages ?
                 <ImagesCarousel images={carouselImages}/> : null
             }
