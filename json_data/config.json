@@ -1,14 +1,14 @@
 {
   "footer": {
-    "copyright": "All rights reserved - 2021",
-    "header": "Human Brain Project",
+    "copyright": "© All rights reserved - 2021",
+    "header": "Hippocampus Facility Hub",
     "logo": {
-      "url": "/assets/images/HFH_community_logo_02_orange_w_bkg.svg"
+      "url": "/assets/images/HFH_community_logo_02_orange.svg"
     }
   },
   "header": {
     "logo": {
-      "url": "/assets/images/HFH_community_logo_02_orange_w_bkg.svg"
+      "url": "/assets/images/HFH_community_logo_02_orange.svg"
     }
   }
 }
