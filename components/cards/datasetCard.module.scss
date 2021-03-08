@@ -11,13 +11,13 @@
   }
 
   &.connection {
-    max-height: 150px;
+    max-height: 200px;
     @media screen and (max-width: 1024px) {
       max-height: none;
     }
 
     .dataset-card-image {
-      max-height: 150px;
+      max-height: 200px;
       @media screen and (max-width: 1024px) {
         max-height: none;
       }

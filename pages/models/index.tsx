@@ -178,7 +178,9 @@ const _ModelsPage = (props) => {
 
     const hasData = !!models && models.length > 0;
 
-    const downloadBlockClassName = !!selectedForDownloads && selectedForDownloads.length > 0 ? 'col-md-6' : 'col-md-4';
+    const countBaloonClassName = !!selectedForDownloads && !!selectedForDownloads && selectedForDownloads.length > 0 ? 'col-md-6' : 'col-md-8';
+
+    const downloadBlockClassName = !!selectedForDownloads && !!selectedForDownloads && selectedForDownloads.length > 0 ? 'col-md-6' : 'col-md-4';
 
     return (
         <PageContainer>
@@ -215,7 +217,7 @@ const _ModelsPage = (props) => {
                         </div>
                     </div>
                     <div className='row' style={{marginTop: 20}}>
-                        <div className='col-md-8'>
+                        <div className={`${countBaloonClassName}`}>
                             <ItemsCountBaloon
                                 label='Total items'
                                 count={totalItems}/>
@@ -245,7 +247,6 @@ const _ModelsPage = (props) => {
                     <div className='row'>
                         <div className='col-12 text-center'>
                             {!hasData ?
-
                                 <p>{loading ? '' : 'There are not data for search criteria'}</p> :
                                 <div>{(models ?? []).map((item) => (
                                     <div className="row" key={`row-dataset-${item?.id}`}>
@@ -263,7 +264,6 @@ const _ModelsPage = (props) => {
                             }
                         </div>
                     </div>
-
                     {hasMoreItems ?
                         <div className='row' style={{marginTop: 20}}>
                             <div className='col-12 text-center'>
