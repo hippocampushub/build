@@ -36,19 +36,19 @@ const useStyles = makeStyles((theme) => ({
 
 const useLabelStyles = makeStyles((theme) => ({
     headerLabel: {
-        fontFamily: 'Metropolis, sans-serif',
+        fontFamily: 'Titillium Web, sans-serif',
         fontSize: 12,
         fontWeight: 600,
         textTransform: 'capitalize'
     },
     rootFilterLabel: {
-        fontFamily: 'Metropolis, sans-serif',
+        fontFamily: 'Titillium Web, sans-serif',
         fontSize: 12,
         fontWeight: 600,
         textTransform: 'capitalize'
     },
     filterLabel: {
-        fontFamily: 'Metropolis, sans-serif',
+        fontFamily: 'Titillium Web, sans-serif',
         fontSize: 11,
         fontWeight: 600,
         textTransform: 'capitalize'

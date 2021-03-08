@@ -1,3 +1,5 @@
+@import "variables";
+
 .page-section {
   padding: 40px 20px;
   box-shadow: 1px 0 5px #ddd inset;
@@ -11,8 +13,9 @@
   }
 
   &.dark {
-    background: #fff;
-    color: #333;
+    color: #fff;
+    background: $color-background-dark;
+    box-shadow: none;
     .page-section-sub-header {
       text-transform: uppercase;
       border-bottom: 1px solid #888;

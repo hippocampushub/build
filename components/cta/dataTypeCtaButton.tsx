@@ -20,7 +20,7 @@ const useDataTypeButtonStyles = makeStyles((theme) => ({
     },
     title: {
         color: '#fff',
-        fontFamily: 'Metropolis, sans-serif',
+        fontFamily: 'Titillium Web, sans-serif',
         fontSize: '24px',
         textTransform: 'uppercase',
     }
