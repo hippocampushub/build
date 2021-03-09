@@ -20,7 +20,8 @@ const Index = () => {
     }, []);
     return (<PageContainer
             headerCarousel={homePage.header_carousel}
-            fixedHeader={true}>
+            fixedHeader={true}
+            transparentHeader={true}>
             {(homePage?.sections ?? []).map((item, index) => buildPageSection(item , index))}
         </PageContainer>
     );

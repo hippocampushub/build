@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {DefaultComponentProps} from "@material-ui/core/OverridableComponent";
 import Head from "next/head";
 import Header from "../header/header";
 
@@ -16,6 +15,8 @@ interface IPageProps extends PropsWithChildren<any>{
     menuItems?: any[];
     headerCarousel?: CarouselImage[];
     fixedHeader?: boolean;
+    transparentHeader?: boolean;
+    variant?: 'light'|'dark';
 }
 
 function _PageContainer(props: IPageProps, ref) {
@@ -34,7 +35,7 @@ function _PageContainer(props: IPageProps, ref) {
         setup();
     }, []);
 
-    return (<div className={pageStyle.page}>
+    return (<div className={`${pageStyle.page} ${pageStyle[props?.variant ?? 'light'] ?? ''}`}>
         <Head>
             <title>{title}</title>
             <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"/>
@@ -48,7 +49,8 @@ function _PageContainer(props: IPageProps, ref) {
                 config={config.header}
                 carouselImages={headerCarousel}
                 menuItems={menuItems}
-                fixedHeader={props.fixedHeader ?? false}/>
+                fixedHeader={props.fixedHeader ?? false}
+                transparentHeader={props.transparentHeader ?? false}/>
             <div>
                 <main className={pageStyle['main-container']}>
                     {children}

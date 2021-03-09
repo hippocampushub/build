@@ -9,7 +9,10 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    background-color: transparent;
+    background: $color-background-dark;
+    &.transparent {
+      background-color: transparent;
+    }
   }
   nav.menu-navbar {
     padding: 0 1rem;

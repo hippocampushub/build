@@ -7,13 +7,14 @@ interface IHeaderProps {
     menuItems?: any[];
     carouselImages?: CarouselImage[];
     fixedHeader?: boolean;
+    transparentHeader?: boolean;
 }
 
-export default function Header({config, menuItems=[], carouselImages, fixedHeader = false}: IHeaderProps) {
+export default function Header({config, menuItems=[], carouselImages, fixedHeader = false, transparentHeader = false}: IHeaderProps) {
     const hasCarouselImages = !!carouselImages && carouselImages.length > 0;
     return (
         <div>
-            <Menu logo={config?.logo ?? null} menuItems={menuItems} fixed={fixedHeader}/>
+            <Menu logo={config?.logo ?? null} menuItems={menuItems} fixed={fixedHeader} transparent={transparentHeader}/>
             {hasCarouselImages ?
                 <ImagesCarousel images={carouselImages}/> : null
             }
