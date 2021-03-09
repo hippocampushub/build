@@ -144,7 +144,7 @@ const MenuItem = ({item, isSubMenuItem=false}) => {
 }
 
 
-const Menu = ({logo, menuItems, isSubMenuItem = false, fixed = false}) => {
+const Menu = ({logo, menuItems, isSubMenuItem = false, fixed = false, transparent = false}) => {
     const router = useRouter();
 
     const [scrolled, setScrolled] = useState(false);
@@ -179,9 +179,11 @@ const Menu = ({logo, menuItems, isSubMenuItem = false, fixed = false}) => {
         }
     }, []);
 
+    const appBarClasses = `${fixed ? menuStyle['fixed-header'] : menuStyle['default-header']} ${fixed && transparent && !scrolled ? menuStyle['transparent'] : ''}`;
+
     return (
-        <AppBar position="relative" className={fixed ? menuStyle['fixed-header'] : menuStyle['default-header']}>
-            <Toolbar classes={toolbarClasses}>
+        <AppBar position="relative" className={appBarClasses}>
+            <Toolbar>
                 <nav className={`navbar navbar-dark navbar-expand-lg ${menuStyle['menu-navbar']}`}>
                     <div className='container'>
                         {logo ?

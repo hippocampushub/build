@@ -1,9 +1,9 @@
 @import "variables";
 .datatype-cta-button {
-  height: 50px;
+  height: 100px;
   padding: 0 !important;
   &.button-primary {
-    background-color: $color-background-dark;
+    background-color: $color-section-blue;
     &:active {
       outline: none;
       background-color: $color-yellow-accent;
@@ -15,7 +15,7 @@
   .children-container {
     float: left;
     width: 100%;
-    height: 46px;
+    height: 100px;
     padding-left: 15px;
     padding-right: 15px;
     &.cta-container {
@@ -25,7 +25,7 @@
   .arrow-container {
     float: left;
     width: 50px;
-    height: 46px;
+    height: 100px;
     background: $color-yellow-accent-with-alpha;
     text-align: center;
     display: flex;

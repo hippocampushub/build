@@ -15,6 +15,7 @@ interface IPageProps extends PropsWithChildren<any>{
     menuItems?: any[];
     headerCarousel?: CarouselImage[];
     fixedHeader?: boolean;
+    transparentHeader?: boolean;
     variant?: 'light'|'dark';
 }
 
@@ -48,7 +49,8 @@ function _PageContainer(props: IPageProps, ref) {
                 config={config.header}
                 carouselImages={headerCarousel}
                 menuItems={menuItems}
-                fixedHeader={props.fixedHeader ?? false}/>
+                fixedHeader={props.fixedHeader ?? false}
+                transparentHeader={props.transparentHeader ?? false}/>
             <div>
                 <main className={pageStyle['main-container']}>
                     {children}

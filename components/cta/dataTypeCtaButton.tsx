@@ -36,7 +36,7 @@ const DataTypeCtaButton = ({type, action}: {type: string, action: (type: string)
         }
     }
 
-    return (<Card onClick={() => _goToDataTypePage()} className={`${classes.root} button-primary ${dataTypeCtaButtonStyle['datatype-cta-button']} ${dataTypeCtaButtonStyle['button-primary']}`}>
+    return (<Card onClick={() => _goToDataTypePage()} className={`${classes.root} ${dataTypeCtaButtonStyle['datatype-cta-button']} ${dataTypeCtaButtonStyle['button-primary']}`}>
         <CardContent className={classes.content}>
             <div className={`${classes.mainContent}`}>
                 <div className={`${dataTypeCtaButtonStyle['children-container']} ${dataTypeCtaButtonStyle['cta-container']}`}>
