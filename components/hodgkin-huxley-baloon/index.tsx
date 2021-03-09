@@ -94,7 +94,7 @@ export function HodgkinHuxleyBaloon({morphology, modFiles, removeMorphology, rem
                     <CustomButton onClick={() => _sendToHodgkinHuxley()}
                                   style={{float: 'right', fontSize: 12}}
                                   isCta={true}>
-                        Send to Hodgkin-Huxley
+                        SEND TO HH NEURON BUILDER
                     </CustomButton>
                 </div>
             </div>
