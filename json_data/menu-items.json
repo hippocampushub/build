@@ -30,14 +30,14 @@
     ]
   },
   {
-    "id": 14,
-    "title": "News",
+    "id": 3,
+    "title": "About",
     "type": "url",
     "order": 3,
-    "url": "/news"
+    "url": "/about"
   },
   {
-    "id": 15,
+    "id": 4,
     "title": "Contacts",
     "type": "url",
     "order": 4,
