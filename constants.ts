@@ -9,6 +9,7 @@ export default {
         ALLEN_INSTITUTE: "https://celltypes.brain-map.org/experiment/electrophysiology/623308514 "
     },
     HHF_COMM: 'HHF-Comm',
+    HFH_TOS: 'HFH_TOS',
     HODGKIN_HUXLEY_BASE_URL: process.env.HODGKIN_HUXLEY_BASE_URL ?? "http://localhost/",
     ENDPOINTS: {
         config: 'config',

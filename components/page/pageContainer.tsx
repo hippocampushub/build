@@ -1,13 +1,16 @@
 import * as React from 'react';
+import {connect} from 'react-redux';
 import Head from "next/head";
-import Header from "../header/header";
 
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import Header from "../header/header";
 import pageStyle from './page.module.scss'
 import {CarouselImage} from "../carousel/carousel";
 import Footer from "../footer/footer";
 import {getConfig, getHomePage, getMenuItems} from "../../helpers/dataHelper";
 import {forwardRef, PropsWithChildren, useEffect} from "react";
+import {Tos} from "../tos/tos";
+import {tosAgree} from "../../actions/tos.actions";
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 interface IPageProps extends PropsWithChildren<any>{
     title?: string;
@@ -17,6 +20,8 @@ interface IPageProps extends PropsWithChildren<any>{
     fixedHeader?: boolean;
     transparentHeader?: boolean;
     variant?: 'light'|'dark';
+    agreeTos: () => void;
+    tosAgreed: boolean;
 }
 
 function _PageContainer(props: IPageProps, ref) {
@@ -34,6 +39,12 @@ function _PageContainer(props: IPageProps, ref) {
     useEffect(() => {
         setup();
     }, []);
+
+    const _agreeTos = () => {
+        if (!!props?.tosAgree) {
+            props?.tosAgree();
+        }
+    }
 
     return (<div className={`${pageStyle.page} ${pageStyle[props?.variant ?? 'light'] ?? ''}`}>
         <Head>
@@ -57,10 +68,21 @@ function _PageContainer(props: IPageProps, ref) {
                 </main>
             </div>
         </div>
+        {!props?.tosAgreed ?
+            <Tos tos={config?.tos ?? null} agreeTos={props.agreeTos}/> : null
+        }
         <Footer footer={config.footer}/>
     </div>);
 }
 
+const mapStateToProps = (state, props) => ({
+   tosAgreed: state?.tos?.agree ?? false
+});
+
+const mapDispatchToProps = (dispatch) => ({
+   agreeTos: () => dispatch(tosAgree())
+});
+
 const PageContainer = forwardRef((props: IPageProps, ref) => _PageContainer(props, ref));
 
-export default PageContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(PageContainer);

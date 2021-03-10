@@ -10,5 +10,8 @@
     "logo": {
       "url": "/assets/images/HFH_community_logo_02_orange.svg"
     }
+  },
+  "tos": {
+    "content": "By downloading or using the resources linked in this section, you accept the Terms of Use of Neuromorpho, Hippocampome, ModelDB and ERAINS Knowledge Graph.\nOur site saves small pieces of text information (cookies) on your device for technical reasons and should not be disables. By browsing our website without changing the browser settings you grant us permission to store that information on your device."
   }
 }
