@@ -8,7 +8,7 @@ import {CarouselImage} from "../carousel/carousel";
 import Footer from "../footer/footer";
 import {getConfig, getHomePage, getMenuItems} from "../../helpers/dataHelper";
 import {forwardRef, PropsWithChildren, useEffect} from "react";
-import {Tos} from "../tos/tos";
+import {TosOverlay} from "../tos-overlay/tosOverlay";
 import {tosAgree} from "../../actions/tos.actions";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
@@ -22,6 +22,7 @@ interface IPageProps extends PropsWithChildren<any>{
     variant?: 'light'|'dark';
     agreeTos: () => void;
     tosAgreed: boolean;
+    mainClassName: string|null;
 }
 
 function _PageContainer(props: IPageProps, ref) {
@@ -63,13 +64,13 @@ function _PageContainer(props: IPageProps, ref) {
                 fixedHeader={props.fixedHeader ?? false}
                 transparentHeader={props.transparentHeader ?? false}/>
             <div>
-                <main className={pageStyle['main-container']}>
+                <main className={`${pageStyle['main-container']} ${!!props?.mainClassName ? pageStyle[props?.mainClassName] : ''}`}>
                     {children}
                 </main>
             </div>
         </div>
         {!props?.tosAgreed ?
-            <Tos tos={config?.tos ?? null} agreeTos={props.agreeTos}/> : null
+            <TosOverlay tos={config?.tos ?? null} agreeTos={props.agreeTos}/> : null
         }
         <Footer footer={config.footer}/>
     </div>);
