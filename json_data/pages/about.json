@@ -5,6 +5,7 @@
     {
       "id": "navigation",
       "header": "A quick guide to navigating the portal",
+      "asContainer": true,
       "variant": "dark",
       "carousel": null,
       "rows": [
@@ -45,6 +46,7 @@
     {
       "id": "terms_and_conditions",
       "header": "Website Usage Terms and Conditions",
+      "asContainer": true,
       "variant": "light",
       "rows": [
         {
@@ -57,6 +59,7 @@
     {
       "id": "disclaimer",
       "header": "Website Disclaimer",
+      "asContainer": true,
       "variant": "dark",
       "rows": [
         {
@@ -69,6 +72,7 @@
     {
       "id": "privacy_and_cookie_policy",
       "header": "Privacy and Cookies Policy",
+      "asContainer": true,
       "variant": "dark",
       "rows": [{
         "header": "Privacy Policy",
@@ -77,6 +81,7 @@
         }]
       }, {
         "header": "Cookie Policy",
+        "asContainer": true,
         "columns": [{
           "content": "CNR-IBF’s use of Cookies\n•\tCNR-IBF portal and online services may use “cookies.” Cookies are small text files placed on the hard drive of your device.\n•\tThere are several types of cookies: Session cookies are temporary bits of information that are erased once you exit your web browser window or otherwise turn your computer off. Persistent cookies remain on your computer until you delete them or they expire.\n•\tWhen you access the HFH Portal Build Section, we can, according to your settings, install cookies on your devices, which will allow us to recognize your browser, during the validity time of the cookies. The cookies that CNR-IBF generates allow us: \no\tto prepare statistics including frequency of access, the use and performances of websites\no\tto adapt the presentation of the HFH Portal to the display preferences of your device (language, operating system etc.)\no\tto memorize preferences and parameters (authentification)\no\tto enable you to access reserved or personal spaces on CNR-IBF websites\no\tto improve our communication and services.\n•\tMost web browsers automatically accept cookies but provide controls that allow you to block or delete them. Please refer to your browser’s privacy or help documentation to find instructions for blocking or deleting cookies. For examples: Internet Explorer, Edge, Safari, Chrome, Firefox. If you choose to refuse cookies, you may not have access to certain functionality on the CNR-IBF websites, which CNR-IBF cannot be held responsible for.\n\n\n"
         }]
