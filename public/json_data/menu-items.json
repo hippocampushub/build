@@ -35,12 +35,5 @@
     "type": "url",
     "order": 3,
     "url": "/about"
-  },
-  {
-    "id": 4,
-    "title": "Contacts",
-    "type": "url",
-    "order": 4,
-    "url": "/contacts"
   }
 ]

@@ -183,7 +183,7 @@ const _ModelsPage = (props) => {
     const downloadBlockClassName = !!selectedForDownloads && !!selectedForDownloads && selectedForDownloads.length > 0 ? 'col-md-6' : 'col-md-4';
 
     return (
-        <PageContainer variant='dark' mainClassName={'with-fixed-header'}>
+        <PageContainer variant={page?.variant} mainClassName={'with-fixed-header'}>
             <div className={`container ${pageContentStyle['page-container']}`}>
                 <div className="row">
                     <div className="col-12">
@@ -236,7 +236,7 @@ const _ModelsPage = (props) => {
                     <div className='row' style={{marginTop: 20}}>
                         <div className='col-12'>
                             <HodgkinHuxleyBaloon
-                                variant={'dark'}
+                                variant={page?.variant ?? null}
                                 morphology={selectedMorphologyForBuilding}
                                 modFiles={selectedModFilesForBuilding}
                                 removeMorphology={() => setMorphologyForBuilding(null)}
@@ -254,7 +254,7 @@ const _ModelsPage = (props) => {
                                         <div className='col-12'>
                                             <ModelCard
                                                 model={item}
-                                                variant={'dark'}
+                                                variant={page?.variant ?? null}
                                                 selectedForDownload={selectedForDownloads.includes(item['source_id'])}
                                                 toggleSelectedForDownload={_toggleSelectForDownload}
                                                 toggleModFileForBuilding={_toggleModFileForBuilding}
