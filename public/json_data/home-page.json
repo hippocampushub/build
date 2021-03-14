@@ -40,19 +40,10 @@
             {
               "content": "The Models section of the Hippocampus Facility Hub Build portal provides direct access to the hippocampal cell models hosted on the ModelDB repository. Users can visualize model metadata, download the model related NEURON .mod files or open the model page on the source website."
             }
-          ]
-        }
-      ]
-    },
-    {
-      "key": "services",
-      "header": "Services",
-      "variant": "dark",
-      "rows": [
-        {
+          ],
           "cta": {
             "label": "Go To Section",
-            "url": "/services"
+            "url": "/models"
           }
         }
       ]
