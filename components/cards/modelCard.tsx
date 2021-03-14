@@ -18,6 +18,7 @@ export interface IModelCardProps extends PropsWithChildren<any> {
     selectedForDownload: boolean;
     toggleModFileForBuilding: (item: any, checked: boolean) => void;
     isModFileSelected: (item: any) => boolean;
+    variant: string;
     onClick: () => void;
 }
 
@@ -52,13 +53,13 @@ function _ModelCard(props: IModelCardProps, ref) {
 
     // @ts-ignore
     return (<CardContainer key={`model-${model?.id}`}>
-        <div className={modelCardStyle['model-card-content']}>
+        <div className={`${modelCardStyle['model-card-content']} ${!!props?.variant ? modelCardStyle[props?.variant] : null}`}>
             <div className='row'>
                 {/*<div className='col-md-2 col-sm-12'>
                     <img src={getImageUrlByPath(model?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png')}
                          className={modelCardStyle['model-card-image']}/>
                 </div>*/}
-                <div className='col-md-9 col-sm-12'>
+                <div className={`col-md-10 col-sm-12 ${modelCardStyle['model-card-left-content']}`}>
                     <div className='row'>
                         <div className='col-md-9 col-sm-12'>
                             <div className='row'>
@@ -151,8 +152,9 @@ function _ModelCard(props: IModelCardProps, ref) {
                         </div> : null
                     }
                 </div>
-                <div className={`${modelCardStyle['model-card-actions-container']} col-md-3 col-sm-12`}>
-                    <div className='row'>
+                <div className={`${modelCardStyle['model-card-actions-container']}
+                    ${!!props?.variant ? modelCardStyle[props?.variant] : null} col-md-2 col-sm-12`}>
+                    <div className='row' >
                         <div className='col-12 text-left'>
                             <div className='row'>
                                 {hasDownloadLink ?
