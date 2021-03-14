@@ -73,7 +73,7 @@
       "id": "privacy_and_cookie_policy",
       "header": "Privacy and Cookies Policy",
       "asContainer": true,
-      "variant": "dark",
+      "variant": "light",
       "rows": [{
         "header": "Privacy Policy",
         "columns": [{
