@@ -12,7 +12,21 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export function HodgkinHuxleyBaloon({morphology, modFiles, removeMorphology, removeModFile, clear}) {
+export function HodgkinHuxleyBaloon({
+    morphology,
+    modFiles,
+    removeMorphology,
+    removeModFile,
+    clear,
+    variant
+}: {
+    morphology: any,
+    modFiles: any[],
+    removeMorphology: () => void,
+    removeModFile: (item: any) => void,
+    clear: () => void,
+    variant?: string
+}) {
         const classes = useStyles();
 
         const _sendToHodgkinHuxley = () => {
@@ -62,7 +76,7 @@ export function HodgkinHuxleyBaloon({morphology, modFiles, removeMorphology, rem
         const hasModFiles = !!modFiles && modFiles?.length > 0;
 
         return (<Card classes={classes}>
-            <div className={hodgkinHuxleyBaloonStyle['hodgkin-huxley-baloon']}>
+            <div className={`${hodgkinHuxleyBaloonStyle['hodgkin-huxley-baloon']} ${!!variant ? hodgkinHuxleyBaloonStyle[variant] : null}`}>
             <div className='row'>
                 <div className='col-12'>
                     <Typography className={hodgkinHuxleyBaloonStyle['hodgkin-huxley-baloon-header-label']} variant='subtitle1'>

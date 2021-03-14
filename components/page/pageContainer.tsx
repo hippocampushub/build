@@ -1,13 +1,16 @@
 import * as React from 'react';
+import {connect} from 'react-redux';
 import Head from "next/head";
-import Header from "../header/header";
 
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import Header from "../header/header";
 import pageStyle from './page.module.scss'
 import {CarouselImage} from "../carousel/carousel";
 import Footer from "../footer/footer";
 import {getConfig, getHomePage, getMenuItems} from "../../helpers/dataHelper";
 import {forwardRef, PropsWithChildren, useEffect} from "react";
+import {TosOverlay} from "../tos-overlay/tosOverlay";
+import {tosAgree} from "../../actions/tos.actions";
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 interface IPageProps extends PropsWithChildren<any>{
     title?: string;
@@ -17,6 +20,9 @@ interface IPageProps extends PropsWithChildren<any>{
     fixedHeader?: boolean;
     transparentHeader?: boolean;
     variant?: 'light'|'dark';
+    agreeTos: () => void;
+    tosAgreed: boolean;
+    mainClassName: string|null;
 }
 
 function _PageContainer(props: IPageProps, ref) {
@@ -35,6 +41,12 @@ function _PageContainer(props: IPageProps, ref) {
         setup();
     }, []);
 
+    const _agreeTos = () => {
+        if (!!props?.tosAgree) {
+            props?.tosAgree();
+        }
+    }
+
     return (<div className={`${pageStyle.page} ${pageStyle[props?.variant ?? 'light'] ?? ''}`}>
         <Head>
             <title>{title}</title>
@@ -52,15 +64,26 @@ function _PageContainer(props: IPageProps, ref) {
                 fixedHeader={props.fixedHeader ?? false}
                 transparentHeader={props.transparentHeader ?? false}/>
             <div>
-                <main className={pageStyle['main-container']}>
+                <main className={`${pageStyle['main-container']} ${!!props?.mainClassName ? pageStyle[props?.mainClassName] : ''}`}>
                     {children}
                 </main>
             </div>
         </div>
+        {!props?.tosAgreed ?
+            <TosOverlay tos={config?.tos ?? null} agreeTos={props.agreeTos}/> : null
+        }
         <Footer footer={config.footer}/>
     </div>);
 }
 
+const mapStateToProps = (state, props) => ({
+   tosAgreed: state?.tos?.agree ?? false
+});
+
+const mapDispatchToProps = (dispatch) => ({
+   agreeTos: () => dispatch(tosAgree())
+});
+
 const PageContainer = forwardRef((props: IPageProps, ref) => _PageContainer(props, ref));
 
-export default PageContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(PageContainer);
