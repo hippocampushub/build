@@ -20,7 +20,7 @@
           "header": "Data",
           "columns": [
             {
-              "content": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+              "content": "The Data section of the Hippocampus Facility Hub Build portal provides data resources on hippocampal cells Connections, Morphologies and Electrophysiology. Individual sections collect data and metadata from external portals (i.e., neuromorpho.org and hippocampome.org) and give the user the possibility to download and visualize the files of interest or open the relevant source web pages."
             },
             {
               "image": "/assets/images/dataset.svg"
@@ -38,7 +38,7 @@
               "image": "/assets/images/neuron.jpg"
             },
             {
-              "content": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+              "content": "The Models section of the Hippocampus Facility Hub Build portal provides direct access to the hippocampal cell models hosted on the ModelDB repository. Users can visualize model metadata, download the model related NEURON .mod files or open the model page on the source website."
             }
           ]
         }
