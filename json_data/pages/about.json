@@ -4,50 +4,47 @@
   "sections": [
     {
       "id": "navigation",
-      "header": "Navigation",
+      "header": "A quick guide to navigating the portal",
       "variant": "dark",
       "carousel": null,
       "rows": [
         {
-          "header": "Data",
+          "header": "Navigating the Hippocampus Facility Hub Build section",
           "columns": [
             {
-              "content": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            },
-            {
-              "image": "/assets/images/dataset.svg"
+              "content": "On the Hippocampus Facility Hub (HFH) Build section page, the users select, via the relevant buttons or from the top menu bar in the home page, the resources they want to access. Currently two resource pages are available: Data and Models. These can be explored through user-friendly point-and-click interfaces."
             }
-          ],
-          "cta": {
-            "label": "Go To Section",
-            "url": "/data"
-          }
+          ]
         },
         {
-          "header": "Models",
+          "header": "Exploring the Data",
           "columns": [
             {
-              "image": "/assets/images/neuron.jpg"
-            },
+              "content": "The Data section is made up of three subsections: Connections, Morphologies, Electrophysiology.\nThe Connections page displays neural connectivity information relative to hippocampal areas. Currently, this information is gathered from hippocampome.org (other external resources will be integrated as further data are made available) and displayed on appropriately designed panels where, for both the pre and postsynaptic neurons of a given connection, relevant information are shown (e.g., cell name, hippocampal region and layer, original paper where the connection is referred to). The user can either display all the available connections listed on the entry page or a subset of them through a dedicated filter panel where Regions and Layers of interest can be selected, for both pre and postsynaptic neurons. For each connection, the link to the source web page is provided.\nThe Morphologies page shows hippocampal neuron reconstructed morphologies fetched from the neuromorpho.org portal. For each morphology, a dedicated panel is provided containing relevant information (e.g., morphology name, cell species, cell region, physical integrity of the morphology) and a set of interactive links. These allow to: 1) download the morphology file (in .asc format) or select it for batch download; 2) open the file source web page; 3) select the morphology for further processing (see below, section Integration with the Hodgkin-Huxley Neuron Builder); 4) zoom in and out a 2D image and 5) show an interactive 3D representation of the morphology.  The users can select the data of interest through the filter panel (filter keys are: Species, Region and Cell Type).\nSimilarly to the Connections page, the Electrophysiology page displays information and links relative to the hippocampal cell electrophysiology. Data can be filtered by Region and Layers and a link to the source page is provided. Currently, the unique external referenced resource is hippocampome.org. \n"
+            }
+          ]
+        },
+        {
+          "header": "Exploring the Models",
+          "columns": [
             {
-              "content": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+              "content": "The Models page provides a list of hippocampal neural computational models available on the ModelDB portal. Again, information on individual models (e.g., model name and type, NEURON .mod files, reference paper) are displayed on dedicated panels and interactive buttons allow to download (or batch download) the models or open the corresponding source page. In order to restrict the item displayed, the user can filter the data through the following keys: Channels, Receptors, Model Concepts, Implementers."
+            }
+          ]
+        },
+        {
+          "header": "Integration with the Hodgkin-Huxley Neuron Builder",
+          "columns": [
+            {
+              "content": "One of the final goals of the Build section of the Hippocampal Facility Hub is to guide the user through the construction of biophysically detailed hippocampal models, to be optimized against electrophysiological data and finally run. In order to achieve this goal, we have integrated the resources available on the HFH with the EBRAINS Hodgkin-Huxley Neuron Builder. On the HFH, the users can browse both the Morphologies and Models pages and select the .mod files of interest and a specific morphology file, through dedicated checkboxes and select buttons respectively. While the selection is being made, the Hodgkin-Huxley Neuron Builder panel is populated with the chosen item names, so as to allow the user to check the files being used for the model construction, at any time. Once the selection is completed, by clicking on the Send to HH Neuron Builder button, the users are redirected to the HH Neuron Builder workflow page through which they can complete the model building, launch the model optimization on an HPC system and finally fetch and run the optimized model."
             }
           ]
         }
       ]
     },
     {
-      "key": "services",
-      "header": "Services",
-      "variant": "dark",
-      "rows": [
-        {
-          "cta": {
-            "label": "Go To Section",
-            "url": "/services"
-          }
-        }
-      ]
+      "id": "terms_and_conditions",
+      "header": ""
     }
   ]
 }
