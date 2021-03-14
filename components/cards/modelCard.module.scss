@@ -1,7 +1,11 @@
 @import "variables";
 .model-card-content {
-  padding: 10px 15px;
+  padding: 0 15px;
   font-family: 'Montserrat', sans-serif;
+  &.dark {
+    color: #fff;
+    background-color: $color-section-blue;
+  }
 
   .model-card-image {
     width: 100%;
@@ -9,76 +13,88 @@
     object-fit: cover;
   }
 
-  .model-card-name-label, .model-card-types-label, .model-card-papers-label {
-    display: block;
-    float: left;
-    font-size: 14px;
-    font-weight: 600;
-    margin-right: 2.5px;
-  }
+  .model-card-left-content {
+    padding: 10px 15px;
 
-  .model-card-name-value, .model-card-types-value, .model-card-papers-value {
-    display: block;
-    font-size: 12px;
-    font-weight: 500;
-    margin-right: 10px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    max-width: 100%;
-    clear: both;
-  }
+    .model-card-name-label, .model-card-types-label, .model-card-papers-label {
+      display: block;
+      float: left;
+      font-size: 14px;
+      font-weight: 600;
+      margin-right: 2.5px;
+    }
 
-  .model-card-mod_files-label {
-    @media screen and (max-width: 1024px) {
-      width: 100%;
+    .model-card-name-value, .model-card-types-value, .model-card-papers-value {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      margin-right: 10px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-width: 100%;
       clear: both;
     }
-  }
 
-  .model-card-description {
-    max-height: 50px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+    .model-card-mod_files-label {
+      @media screen and (max-width: 1024px) {
+        width: 100%;
+        clear: both;
+      }
+    }
 
-  .model-card-source-label {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    background: $color-blue;
-    padding: 2px 5px;
-    border-radius: 2px;
-    color: #fff;
-    font-size: 11px;
-  }
+    .model-card-description {
+      max-height: 50px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
 
-  .model-card-expand-button {
-    display: inline;
-    cursor: pointer;
-    padding: 2.5px 15px;
-    .model-card-expand-all-label {
+    .model-card-source-label {
       font-family: 'Montserrat', sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      margin-right: 5px;
+      font-weight: 700;
+      background: $color-blue;
+      padding: 2px 5px;
+      border-radius: 2px;
       color: #fff;
-      text-decoration: none;
+      font-size: 11px;
     }
-    &:hover {
-      text-decoration: none;
-      color: #fff;
+
+    .model-card-expand-button {
+      display: inline;
+      cursor: pointer;
+      padding: 2.5px 15px;
+
+      .model-card-expand-all-label {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        margin-right: 5px;
+        color: #fff;
+        text-decoration: none;
+      }
+
+      &:hover {
+        text-decoration: none;
+        color: #fff;
+      }
+
+      &:active {
+        color: #fff;
+        text-decoration: none;
+      }
     }
-    &:active {
-      color: #fff;
-      text-decoration: none;
-    }
+
   }
 
   .model-card-actions-container {
     background: $color-background-light;
     padding-top: 10px;
     padding-bottom: 10px;
+
+    &.dark {
+      background: $color-yellow-accent-with-alpha;
+    }
 
     .model-card-action {
       text-align: center;

@@ -6,6 +6,10 @@
     padding-right: 10px;
     padding-bottom: 24px;
     border-top: 5px solid $color-background-dark;
+    &.dark {
+        color: #fff;
+        background-color: $color-section-blue;
+    }
     .hodgkin-huxley-baloon-header-label {
         font-family: Montserrat, 'sans-serif';
         font-size: 16px;
