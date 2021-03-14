@@ -86,6 +86,28 @@
           "content": "CNR-IBF’s use of Cookies\n•\tCNR-IBF portal and online services may use “cookies.” Cookies are small text files placed on the hard drive of your device.\n•\tThere are several types of cookies: Session cookies are temporary bits of information that are erased once you exit your web browser window or otherwise turn your computer off. Persistent cookies remain on your computer until you delete them or they expire.\n•\tWhen you access the HFH Portal Build Section, we can, according to your settings, install cookies on your devices, which will allow us to recognize your browser, during the validity time of the cookies. The cookies that CNR-IBF generates allow us: \no\tto prepare statistics including frequency of access, the use and performances of websites\no\tto adapt the presentation of the HFH Portal to the display preferences of your device (language, operating system etc.)\no\tto memorize preferences and parameters (authentification)\no\tto enable you to access reserved or personal spaces on CNR-IBF websites\no\tto improve our communication and services.\n•\tMost web browsers automatically accept cookies but provide controls that allow you to block or delete them. Please refer to your browser’s privacy or help documentation to find instructions for blocking or deleting cookies. For examples: Internet Explorer, Edge, Safari, Chrome, Firefox. If you choose to refuse cookies, you may not have access to certain functionality on the CNR-IBF websites, which CNR-IBF cannot be held responsible for.\n\n\n"
         }]
       }]
+    },
+    {
+      "id": "copyright_notice",
+      "header": "Copyright Notice",
+      "asContainer": true,
+      "variant": "dark",
+      "rows": [{
+        "columns": [{
+          "content": "Model downloads, text, image files, and video clips from the “Hippocampus Hub Portal” and other associated sites are the property of “CNR-IBF Hippocampus Hub Project”, and are protected by copyright restrictions.\nText, image file, and video clip downloads: Text, image files, and video clips provided in the “CNR-IBF Hippocampus Hub Portal”, are the property of “CNR-IBF Hippocampus Hub Project”, and are protected by copyright restrictions.\n“CNR-IBF Hippocampus Hub Project” permits the use of text, image files and video clips from the Hippocampus Hub Portal, according to the guidelines below:\n1.\ttext, image files and video clips may only be used to illustrate articles or other media reporting specifically about the CNR-IBF Hippocampus Hub Project;\n2.\tPermission is not granted for personal or commercial use or to illustrate non-commercial content not associated with the CNR-IBF Hippocampus Hub Project under any circumstances;\n3.\tAll text, images and video clips must cite CNR-IBF Hippocampus Hub Project, and the citation must include: “Copyright ©2021 CNR-IBF Hippocampus Hub Project”. \n4.\tNone of the content may be altered or modified without approval;\n5.\tNo high resolution images or source video files may be used in a manner which permits download by a third party.\n6.\tFor any commercial project or activity please contact info [ at ] hippocampushub.eu \n"
+        }]
+      }]
+    },
+    {
+      "id": "accessibility",
+      "header": "Accessibility",
+      "asContainer": true,
+      "variant": "light",
+      "rows": [{
+        "columns": [{
+          "content": "The colours used to illustrate the different web pages respect the different symptoms of colour blindness, and therefore offer adapted pages.\nWhen adding static or animated images, equivalent alternatives to visual content are provided when editing pages.\n"
+        }]
+      }]
     }
   ]
 }
