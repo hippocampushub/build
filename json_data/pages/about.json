@@ -6,7 +6,7 @@
       "id": "navigation",
       "header": "A quick guide to navigating the portal",
       "asContainer": true,
-      "variant": "dark",
+      "variant": "light",
       "carousel": null,
       "rows": [
         {
@@ -47,7 +47,7 @@
       "id": "terms_and_conditions",
       "header": "Website Usage Terms and Conditions",
       "asContainer": true,
-      "variant": "light",
+      "variant": "dark",
       "rows": [
         {
           "columns": [{
@@ -60,7 +60,7 @@
       "id": "disclaimer",
       "header": "Website Disclaimer",
       "asContainer": true,
-      "variant": "dark",
+      "variant": "light",
       "rows": [
         {
           "columns": [{
@@ -73,7 +73,7 @@
       "id": "privacy_and_cookie_policy",
       "header": "Privacy and Cookies Policy",
       "asContainer": true,
-      "variant": "light",
+      "variant": "dark",
       "rows": [{
         "header": "Privacy Policy",
         "columns": [{
@@ -91,7 +91,7 @@
       "id": "copyright_notice",
       "header": "Copyright Notice",
       "asContainer": true,
-      "variant": "dark",
+      "variant": "light",
       "rows": [{
         "columns": [{
           "content": "Model downloads, text, image files, and video clips from the “Hippocampus Hub Portal” and other associated sites are the property of “CNR-IBF Hippocampus Hub Project”, and are protected by copyright restrictions.\nText, image file, and video clip downloads: Text, image files, and video clips provided in the “CNR-IBF Hippocampus Hub Portal”, are the property of “CNR-IBF Hippocampus Hub Project”, and are protected by copyright restrictions.\n“CNR-IBF Hippocampus Hub Project” permits the use of text, image files and video clips from the Hippocampus Hub Portal, according to the guidelines below:\n1.\ttext, image files and video clips may only be used to illustrate articles or other media reporting specifically about the CNR-IBF Hippocampus Hub Project;\n2.\tPermission is not granted for personal or commercial use or to illustrate non-commercial content not associated with the CNR-IBF Hippocampus Hub Project under any circumstances;\n3.\tAll text, images and video clips must cite CNR-IBF Hippocampus Hub Project, and the citation must include: “Copyright ©2021 CNR-IBF Hippocampus Hub Project”. \n4.\tNone of the content may be altered or modified without approval;\n5.\tNo high resolution images or source video files may be used in a manner which permits download by a third party.\n6.\tFor any commercial project or activity please contact info [ at ] hippocampushub.eu \n"
@@ -102,7 +102,7 @@
       "id": "accessibility",
       "header": "Accessibility",
       "asContainer": true,
-      "variant": "light",
+      "variant": "dark",
       "rows": [{
         "columns": [{
           "content": "The colours used to illustrate the different web pages respect the different symptoms of colour blindness, and therefore offer adapted pages.\nWhen adding static or animated images, equivalent alternatives to visual content are provided when editing pages.\n"
