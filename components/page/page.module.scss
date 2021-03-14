@@ -1,0 +1,22 @@
+@import "variables";
+.page {
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 500;
+  &.dark {
+    background: $color-background-dark;
+    color: #fff;
+  }
+  &.light {
+
+  }
+  .main-page-container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 100px;
+    .main-container {
+      &.with-fixed-header {
+        margin-top: 60px;
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.block {
+  margin-bottom: 20px;
+  cursor: pointer;
+  .block-title {
+    font-size: 20px;
+    font-weight: 400;
+    font-family: 'Nunito', 'sans-serif';
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .block-arrow-container {
+
+  }
+}

@@ -1,0 +1,53 @@
+@import "variables";
+
+.custom-button {
+  display: block;
+  max-width: 300px;
+  height: 50px;
+  outline: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  line-height: 46px;
+  cursor: pointer;
+  overflow-y: hidden;
+  &.center {
+    margin: 0 auto;
+  }
+
+  .children-container {
+    float: left;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    &.cta-container {
+      width: calc(100% - 50px) !important;
+    }
+  }
+
+  .arrow-container {
+    float: left;
+    width: 50px;
+    background: $color-yellow-accent-with-alpha;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  &.active {
+    .arrow-container {
+      background: $color-yellow-accent;
+    }
+  }
+
+  &:hover, &:focus {
+    outline: none;
+  }
+}
+
+button.expand-button {
+  min-width: auto;
+  outline: none;
+
+  &:hover, &:focus {
+    outline: none;
+  }
+}

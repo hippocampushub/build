@@ -1,0 +1,46 @@
+[
+  {
+    "id": 3,
+    "title": "Home page",
+    "order": 1,
+    "type": "url",
+    "url": "/"
+  },
+  {
+    "id": 2,
+    "title": "Resources",
+    "type": "section",
+    "order": 2,
+    "url": "/#resources",
+    "menuitems": [
+      {
+        "id": 5,
+        "title": "Data",
+        "type": "url",
+        "url": "/data",
+        "order": 1
+      },
+      {
+        "id": 13,
+        "title": "Models",
+        "type": "url",
+        "order": 2,
+        "url": "/models"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "About",
+    "type": "url",
+    "order": 3,
+    "url": "/about"
+  },
+  {
+    "id": 4,
+    "title": "Contacts",
+    "type": "url",
+    "order": 4,
+    "url": "/contacts"
+  }
+]

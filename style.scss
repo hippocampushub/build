@@ -1,0 +1,22 @@
+body {
+  padding: 0 !important;
+  &.ReactModal__Body--open {
+    overflow-y: hidden;
+  }
+  .button-primary {
+    padding: 0 15px;
+    border-radius: 5px;
+    border: 2px solid #ffc90c;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    &:active {
+      background: #ffc90c;
+    }
+  }
+  .ril__inner {
+    img.ril__image {
+      top: 100px !important;
+    }
+  }
+}

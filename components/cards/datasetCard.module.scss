@@ -1,0 +1,101 @@
+@import "variables";
+
+.dataset-card-content {
+  max-height: 150px;
+  font-family: 'Montserrat', sans-serif;
+  @media screen and (max-width: 1024px) {
+    max-height: none;
+    .dataset-card-image {
+      max-height: none;
+    }
+  }
+
+  &.connection {
+    max-height: 200px;
+    @media screen and (max-width: 1024px) {
+      max-height: none;
+    }
+
+    .dataset-card-image {
+      max-height: 200px;
+      @media screen and (max-width: 1024px) {
+        max-height: none;
+      }
+    }
+  }
+
+  .dataset-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-height: 150px;
+
+    &.not-available {
+      &:hover {
+        cursor: initial;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .dataset-card-main-content {
+    @media screen and (max-width: 1024px) {
+      padding-left: 15px;
+      padding-right: 15px;
+      .dataset-card-main-content-inner {
+        margin: 0;
+      }
+    }
+
+    .dataset-card-name-label, .dataset-card-species-label, .dataset-card-region-label, .dataset-card-cell-type-label, .dataset-card-secondary-region-label, .dataset-card-physical-integrity-label, .dataset-card-papers-label {
+      display: block;
+      float: left;
+      font-size: 14px;
+      font-weight: 600;
+      margin-right: 2.5px;
+    }
+
+    .dataset-card-name-value, .dataset-card-species-value, .dataset-card-region-value, .dataset-card-cell-type-value, .dataset-card-secondary-region-value, .dataset-card-physical-integrity-value, .dataset-card-papers-url {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      margin-right: 10px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-width: 100%;
+      clear: both;
+    }
+
+    .dataset-card-description {
+      max-height: 50px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .dataset-card-source-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      background: $color-blue;
+      padding: 2px 5px;
+      border-radius: 2px;
+      color: #fff;
+      font-size: 9px;
+    }
+  }
+
+  .dataset-card-actions-container {
+    background: $color-background-light;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    .dataset-card-action {
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
+}
