@@ -254,7 +254,6 @@ const _ModelsPage = (props) => {
                                         <div className='col-12'>
                                             <ModelCard
                                                 model={item}
-                                                variant={page?.variant ?? null}
                                                 selectedForDownload={selectedForDownloads.includes(item['source_id'])}
                                                 toggleSelectedForDownload={_toggleSelectForDownload}
                                                 toggleModFileForBuilding={_toggleModFileForBuilding}

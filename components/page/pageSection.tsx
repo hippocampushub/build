@@ -1,12 +1,14 @@
 import * as React from 'react';
 import {useRouter} from "next/router";
 import {Button, Typography} from '@material-ui/core';
-import {checkIfNotEmpty} from "../../helpers/validatorHelper";
+import sanitizeHtml from 'sanitize-html';
 
+import {checkIfNotEmpty} from "../../helpers/validatorHelper";
 import {ThemeVariant} from "../../interfaces/ThemeVariant";
 import {CustomButton} from '../buttons/buttons';
 import pageSectionStyle from './page-section.module.scss';
 import {getImageUrl, getImageUrlByPath} from "../../helpers/imageHelper";
+import {SanitizedHtml} from "../SanitizedHtml";
 
 
 function PageSection({sectionData, variant = 'light', asContainer = false}: { sectionData: any, variant: ThemeVariant, asContainer?: boolean }) {
@@ -22,6 +24,13 @@ function PageSection({sectionData, variant = 'light', asContainer = false}: { se
                 </Typography>
                 <div className={pageSectionStyle['page-section-header-divider']}/>
             </div> : null
+        }
+        {checkIfNotEmpty(sectionData?.content) ?
+            <div className='row'>
+                <div className='col-12'>
+                    <SanitizedHtml content={sectionData.content ?? ''} style={{fontSize: 26}}/>
+                </div>
+            </div>: null
         }
         {(sectionData?.rows ?? []).map((row) => {
             const hasColumns = (row.columns ?? []).length > 0;
@@ -42,7 +51,7 @@ function PageSection({sectionData, variant = 'light', asContainer = false}: { se
                         {checkIfNotEmpty(col.content) ?
                             <div className='row'>
                                 <div className='col-12'>
-                                    {col.content}
+                                    <SanitizedHtml content={col?.content ?? ''}/>
                                 </div>
                             </div> : null
                         }

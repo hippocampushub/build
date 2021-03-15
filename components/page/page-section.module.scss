@@ -15,6 +15,7 @@
   &.dark {
     color: #fff;
     background: $color-background-dark;
+    border-top: 2px solid #dddddd33;
     box-shadow: none;
     .page-section-sub-header {
       text-transform: uppercase;

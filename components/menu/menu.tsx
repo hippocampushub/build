@@ -185,7 +185,7 @@ const Menu = ({logo, menuItems, isSubMenuItem = false, fixed = false, transparen
         <AppBar position="relative" className={appBarClasses}>
             <Toolbar>
                 <nav className={`navbar navbar-dark navbar-expand-lg ${menuStyle['menu-navbar']}`}>
-                    <div className='container'>
+                    <div className='container-fluid'>
                         {logo ?
                             <Link className={`navbar-brand ${menuStyle['custom-navbar-brand']}`} href='/'>
                                 <img src={getImageUrl(logo)}/>
