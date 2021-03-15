@@ -2,9 +2,10 @@
   "id": 2,
   "title": "Models",
   "description": null,
-  "content": "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "content": "",
   "published_at": "2020-12-17T19:54:40.843Z",
   "created_at": "2020-12-17T19:54:05.066Z",
   "updated_at": "2020-12-17T22:52:04.795Z",
+  "variant": "dark",
   "slug": "models"
 }

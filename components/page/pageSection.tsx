@@ -1,15 +1,17 @@
 import * as React from 'react';
 import {useRouter} from "next/router";
 import {Button, Typography} from '@material-ui/core';
-import {checkIfNotEmpty} from "../../helpers/validatorHelper";
+import sanitizeHtml from 'sanitize-html';
 
+import {checkIfNotEmpty} from "../../helpers/validatorHelper";
 import {ThemeVariant} from "../../interfaces/ThemeVariant";
 import {CustomButton} from '../buttons/buttons';
 import pageSectionStyle from './page-section.module.scss';
 import {getImageUrl, getImageUrlByPath} from "../../helpers/imageHelper";
+import {SanitizedHtml} from "../SanitizedHtml";
 
 
-function PageSection({sectionData, variant = 'light'}: { sectionData: any, variant: ThemeVariant }) {
+function PageSection({sectionData, variant = 'light', asContainer = false}: { sectionData: any, variant: ThemeVariant, asContainer?: boolean }) {
 
     const router = useRouter();
 
@@ -23,10 +25,17 @@ function PageSection({sectionData, variant = 'light'}: { sectionData: any, varia
                 <div className={pageSectionStyle['page-section-header-divider']}/>
             </div> : null
         }
+        {checkIfNotEmpty(sectionData?.content) ?
+            <div className='row'>
+                <div className='col-12'>
+                    <SanitizedHtml content={sectionData.content ?? ''} style={{fontSize: 26}}/>
+                </div>
+            </div>: null
+        }
         {(sectionData?.rows ?? []).map((row) => {
             const hasColumns = (row.columns ?? []).length > 0;
             const colClassName = hasColumns ? `col-${Math.ceil(12 / (row.columns ?? []).length)}` : 'col-12';
-            return (<div>
+            return (<div className={asContainer ? 'container' : null}>
                 <div className='row' style={{marginTop: 10}}>
                     <div className='col-12'>
                         {checkIfNotEmpty(row.header) ?
@@ -42,7 +51,7 @@ function PageSection({sectionData, variant = 'light'}: { sectionData: any, varia
                         {checkIfNotEmpty(col.content) ?
                             <div className='row'>
                                 <div className='col-12'>
-                                    {col.content}
+                                    <SanitizedHtml content={col?.content ?? ''}/>
                                 </div>
                             </div> : null
                         }

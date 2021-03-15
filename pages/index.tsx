@@ -8,7 +8,9 @@ const {useEffect, useState} = React;
 const Index = () => {
     const [homePage, setHomePage] = React.useState<any>({});
 
-    const buildPageSection = (section, index) => <PageSection sectionData={section} variant={!!section.variant ? section.variant : (index % 2 === 0 ? 'light' : 'dark')}/>
+    const buildPageSection = (section, index) => <PageSection sectionData={section}
+                                                              variant={!!section.variant ? section.variant : (index % 2 === 0 ? 'light' : 'dark')}
+                                                              asContainer={section?.asContainer ?? false}/>
 
     const setup = async () => {
         const _homePage = await getHomePage();
