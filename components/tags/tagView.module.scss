@@ -1,12 +1,13 @@
 @import "variables";
 
 .tag-view {
-  display: inline;
+  display: inline-block;
   background: $color-background-dark;
   height: 30px;
   border-radius: 30px;
   padding: 2.5px 5px;
   margin-right: 2.5px;
+  line-height: 1;
   .tag-view-label {
     color: #fff;
     font-family: 'Montserrat', sans-serif;

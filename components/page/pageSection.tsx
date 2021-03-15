@@ -8,7 +8,7 @@ import {ThemeVariant} from "../../interfaces/ThemeVariant";
 import {CustomButton} from '../buttons/buttons';
 import pageSectionStyle from './page-section.module.scss';
 import {getImageUrl, getImageUrlByPath} from "../../helpers/imageHelper";
-import {SanitizedHtml} from "../SanitizedHtml";
+import {SanitizedHtml} from "../sanitizedHtml";
 
 
 function PageSection({sectionData, variant = 'light', asContainer = false}: { sectionData: any, variant: ThemeVariant, asContainer?: boolean }) {

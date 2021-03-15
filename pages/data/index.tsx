@@ -32,7 +32,7 @@ function DataHomePage() {
         await router.push(`/data/${type}`);
     }
 
-    return (<PageContainer variant={page?.variant} mainClassName={'with-fixed-header'}>
+    return (<PageContainer variant={page?.variant} mainClassName={'with-fixed-header'} fixedHeader={true}>
         <div className={`container ${pageContentStyle['page-container']}`}>
             <div className="row">
                 <div className="col-12">

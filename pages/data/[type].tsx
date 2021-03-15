@@ -237,8 +237,10 @@ const _DataPage = (props) => {
 
     const downloadBlockClassName = !!hasDownloadableFiles && !!selectedForDownloads && selectedForDownloads.length > 0 ? 'col-md-6' : 'col-md-4';
 
+    const pageVariant = page?.variant ?? 'dark';
+
     return (
-        <PageContainer variant={page?.variant} mainClassName={'with-fixed-header'}>
+        <PageContainer variant={pageVariant} mainClassName={'with-fixed-header'} fixedHeader={true}>
             <div className={`container ${pageContentStyle['page-container']}`}>
                 <div className="row">
                     <div className="col-12">
@@ -290,6 +292,7 @@ const _DataPage = (props) => {
                     <div className='row' style={{marginTop: 20}}>
                         <div className='col-12'>
                             <HodgkinHuxleyBaloon
+                                variant={pageVariant}
                                 morphology={selectedMorphologyForBuilding}
                                 modFiles={selectedModFilesForBuilding}
                                 removeMorphology={() => setMorphologyForBuilding(null)}

@@ -183,7 +183,7 @@ const _ModelsPage = (props) => {
     const downloadBlockClassName = !!selectedForDownloads && !!selectedForDownloads && selectedForDownloads.length > 0 ? 'col-md-6' : 'col-md-4';
 
     return (
-        <PageContainer variant={page?.variant} mainClassName={'with-fixed-header'}>
+        <PageContainer variant={page?.variant} mainClassName={'with-fixed-header'} fixedHeader={true}>
             <div className={`container ${pageContentStyle['page-container']}`}>
                 <div className="row">
                     <div className="col-12">

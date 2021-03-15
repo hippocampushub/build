@@ -265,17 +265,18 @@ export function FilterBox({
 }
 
 export function FormFilter({
-                               query,
-                               filters,
-                               selectedFilters,
-                               selectedHitsPerPage,
-                               onQueryChange,
-                               onRequestSearch,
-                               onChangeHitsPerPage,
-                               onChangeFilters,
-                               applyFilters,
-                               resetFilters
-                           }: IFormFilterProps) {
+    variant,
+    query,
+    filters,
+    selectedFilters,
+    selectedHitsPerPage,
+    onQueryChange,
+    onRequestSearch,
+    onChangeHitsPerPage,
+    onChangeFilters,
+    applyFilters,
+    resetFilters
+}: IFormFilterProps) {
     const [openFilter, setOpenFilter] = React.useState(false);
 
     const iconButtonClasses = useIconStyles();
@@ -320,8 +321,11 @@ export function FormFilter({
                 <div className='row'>
                     <div className='col-8'>
                         <FormControl style={{minWidth: '100%'}}>
-                            <InputLabel>Hits per page</InputLabel>
+                            <InputLabel style={{color: '#fff'}}>Hits per page</InputLabel>
                             <Select
+                                style={{
+                                    color: variant === 'dark' ? '#fff' : '#000'
+                                }}
                                 value={selectedHitsPerPage}
                                 onChange={(event) => onChangeHitsPerPage(event.target.value as number)}>
                                 {hitsPerPageItems}

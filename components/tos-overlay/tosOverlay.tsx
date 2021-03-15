@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as tosStyle from './tos.module.scss';
 import {CustomButton} from "../buttons/buttons";
-import {SanitizedHtml} from "../SanitizedHtml";
+import {SanitizedHtml} from "../sanitizedHtml";
 
 export function TosOverlay({tos, agreeTos}) {
 

@@ -76,6 +76,7 @@ const useLinkStyles = makeStyles((theme) => ({
         color: '#fff',
         fontFamily: 'Montserrat, san-serif',
         fontWeight: 600,
+        fontSize: 17,
         '&:hover': {
             color: '#fff',
             textDecoration: 'none'
@@ -194,7 +195,7 @@ const Menu = ({logo, menuItems, isSubMenuItem = false, fixed = false, transparen
                         <button className={`navbar-toggler ${menuStyle['custom-navbar-toggler']}`} type="button"
                                 data-toggle="collapse" data-target="#navbarNav"
                                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon" onClick={() => toggleMenu()}></span>
+                            <span className="navbar-toggler-icon" onClick={() => toggleMenu()}/>
                         </button>
                         <div className={`collapse navbar-collapse ${menuExpanded ? 'show' : ''}`} id="navbarNav">
                             <List className="navbar-nav ml-auto" classes={listClasses}>
