@@ -12,9 +12,10 @@
   "sections": [
     {
       "id": "resources",
-      "header": "Resources",
+      "header": "",
       "variant": "dark",
       "carousel": null,
+      "content": "Lorem ipsum...",
       "rows": [
         {
           "header": "Data",
@@ -44,6 +45,21 @@
           "cta": {
             "label": "Go To Section",
             "url": "/models"
+          }
+        },
+        {
+          "header": "Services",
+          "columns": [
+            {
+              "content": "The Data section of the Hippocampus Facility Hub Build portal provides data resources on hippocampal cells Connections, Morphologies and Electrophysiology. Individual sections collect data and metadata from external portals (i.e., neuromorpho.org and hippocampome.org) and give the user the possibility to download and visualize the files of interest or open the relevant source web pages."
+            },
+            {
+              "image": "/assets/images/dataset.svg"
+            }
+          ],
+          "cta": {
+            "label": "Go To Section",
+            "url": "/data"
           }
         }
       ]
