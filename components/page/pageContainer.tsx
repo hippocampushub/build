@@ -11,10 +11,10 @@ import {forwardRef, PropsWithChildren, useEffect} from "react";
 import {TosOverlay} from "../tos-overlay/tosOverlay";
 import {tosAgree} from "../../actions/tos.actions";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import {FullScreenLoading} from "./fullScreenLoading";
 
 interface IPageProps extends PropsWithChildren<any> {
     title?: string;
+    loading?: boolean;
     config?: any;
     menuItems?: any[];
     headerCarousel?: CarouselImage[];
@@ -48,6 +48,8 @@ function _PageContainer(props: IPageProps, ref) {
         }
     }
 
+    const _loading = props?.loading ?? false;
+
     return (<div className={`${pageStyle.page} ${pageStyle[props?.variant ?? 'light'] ?? ''}`}>
         <Head>
             <title>{title}</title>
@@ -77,7 +79,7 @@ function _PageContainer(props: IPageProps, ref) {
                 </main>
             </div>
         </div>
-        {!props?.tosAgreed ?
+        {!props?.tosAgreed && !_loading ?
             <TosOverlay tos={config?.tos ?? null} agreeTos={props.agreeTos}/> : null
         }
         <Footer footer={config.footer}/>
