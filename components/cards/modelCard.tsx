@@ -129,8 +129,12 @@ function _ModelCard(props: IModelCardProps, ref) {
                                     </div>
                                     {isModFilesExpanded ?
                                         <div className='col-12 text-left'>
-                                            <span
-                                                className={modelCardStyle['model-card-mod_files-label']}>Mod File(s): </span>
+                                            <div className='row'>
+                                                <div className='col-12 text-left'>
+                                                    <span
+                                                        className={modelCardStyle['model-card-mod_files-label']}>Mod File(s): </span>
+                                                </div>
+                                            </div>
                                             <div className='row'>
                                                 {(model?.model_files ?? []).map((item) =>
                                                     <div className='col-md-4 col-sm-12'>
@@ -141,7 +145,7 @@ function _ModelCard(props: IModelCardProps, ref) {
                                                                 onChange={(event, checked) =>
                                                                     _onToggleModFile(item, checked)}/>}
                                                             label={''}/>
-                                                        <a href={item.url} target='_blank'>{item.label}</a>
+                                                        <a href={item.url} target='_blank' className={modelCardStyle['model-card-mod_files-value']}>{item.label}</a>
                                                     </div>
                                                 )}
                                             </div>

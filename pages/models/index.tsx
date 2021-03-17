@@ -183,7 +183,7 @@ const _ModelsPage = (props) => {
     const downloadBlockClassName = !!selectedForDownloads && !!selectedForDownloads && selectedForDownloads.length > 0 ? 'col-md-6' : 'col-md-4';
 
     return (
-        <PageContainer variant={page?.variant} mainClassName={'with-fixed-header'}>
+        <PageContainer variant={page?.variant} mainClassName={'with-fixed-header'} fixedHeader={true}>
             <div className={`container ${pageContentStyle['page-container']}`}>
                 <div className="row">
                     <div className="col-12">
@@ -254,7 +254,6 @@ const _ModelsPage = (props) => {
                                         <div className='col-12'>
                                             <ModelCard
                                                 model={item}
-                                                variant={page?.variant ?? null}
                                                 selectedForDownload={selectedForDownloads.includes(item['source_id'])}
                                                 toggleSelectedForDownload={_toggleSelectForDownload}
                                                 toggleModFileForBuilding={_toggleModFileForBuilding}
