@@ -1,12 +1,17 @@
 .tos-overlay-container {
   position: fixed;
   background: #000000dd;
-  min-height: 300px;
   box-shadow: -1px -1px 20px #888;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 100;
+  top: 0;
+  z-index: 10000;
   color: #fff;
   padding: 20px 40px;
+  .tos-overlay-main-container {
+    position: absolute;
+    bottom: 0;
+    min-height: 300px;
+  }
 }
