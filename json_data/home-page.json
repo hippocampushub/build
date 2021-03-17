@@ -59,7 +59,7 @@
           ],
           "cta": {
             "label": "Go To The HHNB",
-            "url": "/data"
+            "url": "https://hbp-bsp-hhnb.cineca.it:17895/hh-neuron-builder"
           }
         }
       ]
