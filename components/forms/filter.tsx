@@ -65,6 +65,7 @@ const useIconStyles = makeStyles((theme) => ({
 }));
 
 export interface IFormFilterProps extends DefaultComponentProps<any> {
+    variant?: string;
     query?: string;
     regions?: any[];
     cellTypes?: any[];
@@ -82,7 +83,16 @@ export function FilterBox({
     onChangeFilters,
     closeFilters,
     applyFilters,
-    resetFilters
+    resetFilters,
+    variant
+}: {
+    filters: any;
+    selectedFilters: any;
+    onChangeFilters: (key: string, value: any) => void;
+    closeFilters: () => void;
+    applyFilters: () => void;
+    resetFilters: (close: boolean) => void;
+    variant?: string;
 }) {
     const classes = useStyles();
 
@@ -226,7 +236,7 @@ export function FilterBox({
         .map((item) => item['root_key']);
 
     return (<Card classes={classes}>
-        <div className={filterStyle['filter-box']}>
+        <div className={`${filterStyle['filter-box']} ${!!variant ? filterStyle[variant] : ''}`}>
             <div className='row'>
                 <div className='col-9'>
                     <Typography variant='subtitle2' className={labelStyles?.headerLabel}>Filter</Typography>
@@ -235,7 +245,7 @@ export function FilterBox({
                     <IconButton
                         className={iconButtonClasses.root}
                         onClick={() => closeFilters()}>
-                        <IconClose/>
+                        <IconClose htmlColor={variant === 'dark' ? '#fff' : null}/>
                     </IconButton>
                 </div>
             </div>
@@ -254,7 +264,7 @@ export function FilterBox({
                     </Tooltip>
                     <Tooltip title='Apply Filters'>
                         <IconButton className={iconButtonClasses.root}
-                                    onClick={() => applyFilters(false)}>
+                                    onClick={() => applyFilters()}>
                             <IconCheck/>
                         </IconButton>
                     </Tooltip>
@@ -289,7 +299,7 @@ export function FormFilter({
         setOpenFilter(false);
     }
 
-    const _applyFilters = (close) => {
+    const _applyFilters = () => {
         applyFilters();
         setOpenFilter(false);
     }
@@ -337,7 +347,7 @@ export function FormFilter({
                             <IconButton
                                 className={iconButtonClasses.root}
                                 onClick={toggleFilter}>
-                                <IconFilter/>
+                                <IconFilter htmlColor={variant === 'dark' ? '#fff' : null}/>
                             </IconButton>
                         </Tooltip>
                     </div>
@@ -348,6 +358,7 @@ export function FormFilter({
             <div className='col-12'>
                 {openFilter ?
                     <FilterBox
+                        variant={variant}
                         filters={filters}
                         selectedFilters={selectedFilters}
                         onChangeFilters={onChangeFilters}

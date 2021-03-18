@@ -31,6 +31,11 @@ header {
         margin-top: 10px;
         border: none;
       }
+      .custom-dropdown-menu {
+        position: absolute;
+        top: 0;
+        left: -100%;
+      }
     }
 
     .custom-navbar-brand {

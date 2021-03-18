@@ -258,6 +258,7 @@ const _DataPage = (props) => {
                     <div className='row' style={{marginTop: 20}}>
                         <div className='col-12'>
                             <FormFilter
+                                variant={pageVariant}
                                 query={selectedQuery}
                                 filters={filters}
                                 selectedFilters={selectedFilters}
