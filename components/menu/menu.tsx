@@ -130,7 +130,7 @@ const MenuItem = ({item, isSubMenuItem=false}) => {
 
     const linkUrl = getPageUrl(item);
     const isActiveLink = router.pathname === linkUrl;
-    const isDropDown = item.type === MenuItemType.section && (item.menuitems?.length ?? 0) > 0;
+    const isDropDown = item.type === MenuItemType.section || (item.menuitems?.length ?? 0) > 0;
     return (<ListItem onMouseEnter={isDropDown ? () => showDropDown() : null}
                       onMouseLeave={isDropDown ? () => hideDropDown() : null}
                       className={`${isActiveLink ? 'active' : ''} ${isDropDown ? 'dropdown' : ''}`}

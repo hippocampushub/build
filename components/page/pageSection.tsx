@@ -37,7 +37,7 @@ function PageSection({sectionData, variant = 'light', asContainer = false}: { se
         {checkIfNotEmpty(sectionData?.content) ?
             <div className='row'>
                 <div className='col-12'>
-                    <SanitizedHtml content={sectionData.content ?? ''} style={{fontSize: 26}}/>
+                    <SanitizedHtml content={sectionData.content ?? ''} style={{fontSize: 26, textAlign: 'justify'}}/>
                 </div>
             </div>: null
         }
@@ -60,7 +60,7 @@ function PageSection({sectionData, variant = 'light', asContainer = false}: { se
                         {checkIfNotEmpty(col.content) ?
                             <div className='row'>
                                 <div className='col-12'>
-                                    <SanitizedHtml content={col?.content ?? ''}/>
+                                    <SanitizedHtml content={col?.content ?? ''} style={{textAlign: 'justify'}}/>
                                 </div>
                             </div> : null
                         }
