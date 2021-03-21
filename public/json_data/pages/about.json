@@ -105,7 +105,18 @@
       "variant": "dark",
       "rows": [{
         "columns": [{
-          "content": "The colours used to illustrate the different web pages respect the different symptoms of colour blindness, and therefore offer adapted pages.<br>When adding static or animated images, equivalent alternatives to visual content are provided when editing pages.\n"
+          "content": "The colours used to illustrate the different web pages respect the different symptoms of colour blindness.<br>When adding static or animated images, equivalent alternatives to visual content are provided."
+        }]
+      }]
+    },
+    {
+      "id": "contact",
+      "header": "Contact us",
+      "asContainer": true,
+      "variant": "light",
+      "rows": [{
+        "columns": [{
+          "content": "For more information, please contact us at info [ at ] hippocampushub.eu."
         }]
       }]
     }
