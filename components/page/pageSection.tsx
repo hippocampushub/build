@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {useRouter} from "next/router";
 import {Button, Typography} from '@material-ui/core';
-import sanitizeHtml from 'sanitize-html';
 
 import {checkIfNotEmpty} from "../../helpers/validatorHelper";
 import {ThemeVariant} from "../../interfaces/ThemeVariant";
@@ -14,6 +13,16 @@ import {SanitizedHtml} from "../sanitizedHtml";
 function PageSection({sectionData, variant = 'light', asContainer = false}: { sectionData: any, variant: ThemeVariant, asContainer?: boolean }) {
 
     const router = useRouter();
+
+    const _goToUrl = async (url) => {
+        if (!!url) {
+            if (url.startsWith('http')) {
+                window.open(url);
+            } else {
+                await router.push(url);
+            }
+        }
+    }
 
     return (<section id={sectionData.id} className={`${pageSectionStyle['page-section']} ${pageSectionStyle[variant]}`}>
         {checkIfNotEmpty(sectionData?.header) ?
@@ -28,7 +37,7 @@ function PageSection({sectionData, variant = 'light', asContainer = false}: { se
         {checkIfNotEmpty(sectionData?.content) ?
             <div className='row'>
                 <div className='col-12'>
-                    <SanitizedHtml content={sectionData.content ?? ''} style={{fontSize: 26}}/>
+                    <SanitizedHtml content={sectionData.content ?? ''} style={{fontSize: 26, textAlign: 'justify'}}/>
                 </div>
             </div>: null
         }
@@ -51,7 +60,7 @@ function PageSection({sectionData, variant = 'light', asContainer = false}: { se
                         {checkIfNotEmpty(col.content) ?
                             <div className='row'>
                                 <div className='col-12'>
-                                    <SanitizedHtml content={col?.content ?? ''}/>
+                                    <SanitizedHtml content={col?.content ?? ''} style={{textAlign: 'justify'}}/>
                                 </div>
                             </div> : null
                         }
@@ -65,7 +74,7 @@ function PageSection({sectionData, variant = 'light', asContainer = false}: { se
                     </div>)}
                     {!!row.cta ?
                         <div className='col-12 text-center' style={{marginTop: 20}}>
-                            <CustomButton onClick={() => router.push(row.cta.url)} variant='primary'
+                            <CustomButton onClick={() => _goToUrl(row?.cta?.url)} variant='primary'
                                           style={{margin: '0 auto'}}
                                           isCta={true}>
                                 {row.cta.label}

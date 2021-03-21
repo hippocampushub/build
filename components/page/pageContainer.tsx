@@ -11,7 +11,6 @@ import {forwardRef, PropsWithChildren, useEffect} from "react";
 import {TosOverlay} from "../tos-overlay/tosOverlay";
 import {tosAgree} from "../../actions/tos.actions";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import {FullScreenLoading} from "./fullScreenLoading";
 
 interface IPageProps extends PropsWithChildren<any> {
     title?: string;
@@ -30,12 +29,14 @@ function _PageContainer(props: IPageProps, ref) {
     const {children, title = 'Hippocampus Facility Hub', headerCarousel} = props;
     const [menuItems, setMenuItems] = React.useState<any[]>([]);
     const [config, setConfig] = React.useState<any>({});
+    const [loading, setLoading] = React.useState(true);
 
     const setup = async () => {
         const _menuItems = await getMenuItems();
         const _config = await getConfig();
         setMenuItems(_menuItems);
         setConfig(_config);
+        setLoading(false);
     }
 
     useEffect(() => {
@@ -77,10 +78,10 @@ function _PageContainer(props: IPageProps, ref) {
                 </main>
             </div>
         </div>
-        {!props?.tosAgreed ?
+        {!props?.tosAgreed && !loading ?
             <TosOverlay tos={config?.tos ?? null} agreeTos={props.agreeTos}/> : null
         }
-        <Footer footer={config.footer}/>
+        <Footer footer={config.footer} canLoadAnalytics={props.tosAgreed}/>
     </div>);
 }
 
