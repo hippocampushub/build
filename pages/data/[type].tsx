@@ -10,7 +10,7 @@ import {MorphologyCard} from "../../components/cards/morphologyCard";
 import {ElectrophysiologyCard} from "../../components/cards/electrophysiologyCard";
 import {ConnectionCard} from "../../components/cards/connectionCard";
 import {CustomButton} from "../../components/buttons/buttons";
-import {clear, removeModFile, setMorphology} from "../../actions/hodgkinHuxley.actions.";
+import {clear, removeModFile, setMorphology} from "../../actions/hodgkinHuxley.actions";
 
 import {getFilters, searchDatasets, downloadAllDatasets, downloadDatasets, getTypes} from "../../helpers/apiHelper";
 import {FormFilter} from "../../components/forms/filter";
