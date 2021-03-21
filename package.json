@@ -9,7 +9,7 @@
     "build": "next build && next export -o build",
     "start": "next start",
     "export": "next export",
-    "publish": "rm -rf build/ .next/ NODE_ENV=production && npm run build && rm -rf build/data/ build/contacts/ build/data.html build/models.html build/news.html  && node publish.js"
+    "publish": "rm -rf build/ .next/ NODE_ENV=production && npm run build && rm -rf build/about.html build/data/ build/contacts/ build/contacts.html build/data.html build/models.html build/news.html  && node publish.js"
   },
   "keywords": [],
   "author": "",

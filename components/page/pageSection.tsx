@@ -35,7 +35,7 @@ function PageSection({sectionData, variant = 'light', asContainer = false}: { se
             </div> : null
         }
         {checkIfNotEmpty(sectionData?.content) ?
-            <div className='row'>
+            <div className='row' style={{marginTop: 10}}>
                 <div className='col-12'>
                     <SanitizedHtml content={sectionData.content ?? ''} style={{fontSize: 26, textAlign: 'justify'}}/>
                 </div>
