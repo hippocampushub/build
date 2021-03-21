@@ -78,9 +78,6 @@ function _PageContainer(props: IPageProps, ref) {
                 </main>
             </div>
         </div>
-        {!props?.tosAgreed && !loading ?
-            <TosOverlay tos={config?.tos ?? null} agreeTos={props.agreeTos}/> : null
-        }
         <Footer footer={config.footer} canLoadAnalytics={props.tosAgreed}/>
     </div>);
 }

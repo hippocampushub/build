@@ -11,7 +11,7 @@ const publish = async () => {
     await writeFile('build/.nojekyll', '',);
     await writeFile('build/_next/.nojekyll', '',)
     ghpages.publish('build', {
-      repo: 'https://github.com/antonino-tocco/build.git',
+      repo: 'https://github.com/hippocampushub/build.git',
       dotfiles: true,
     }, (err) => {
       if (err) {

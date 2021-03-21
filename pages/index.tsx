@@ -21,6 +21,7 @@ const Index = () => {
         setup();
     }, []);
     return (<PageContainer
+            mainClassName={!!homePage.header_carousel ? '' : 'with-fixed-header'}
             headerCarousel={homePage.header_carousel}
             fixedHeader={true}
             transparentHeader={true}>

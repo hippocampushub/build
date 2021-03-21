@@ -5,58 +5,5 @@
     "order": 1,
     "type": "url",
     "url": "/"
-  },
-  {
-    "id": 2,
-    "title": "Resources",
-    "type": "section",
-    "order": 2,
-    "url": "/#resources",
-    "menuitems": [
-      {
-        "id": 5,
-        "title": "Data",
-        "type": "url",
-        "url": "/data",
-        "order": 1,
-        "menuitems": [
-          {
-            "id": 14,
-            "title": "Connections",
-            "type": "url",
-            "url": "/data/connection",
-            "order": 1
-          },
-          {
-            "id": 15,
-            "title": "Electrophysiologies",
-            "type": "url",
-            "url": "/data/electrophysiology",
-            "order": 2
-          },
-          {
-            "id": 16,
-            "title": "Morphologies",
-            "type": "url",
-            "url": "/data/morphology",
-            "order": 3
-          }
-        ]
-      },
-      {
-        "id": 13,
-        "title": "Models",
-        "type": "url",
-        "order": 2,
-        "url": "/models"
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "title": "About",
-    "type": "url",
-    "order": 3,
-    "url": "/about"
   }
 ]
