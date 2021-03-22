@@ -22,7 +22,7 @@ import {ISearchParams} from "../../interfaces";
 import {CloudDownload as IconDownload} from "@material-ui/icons";
 import {hashCode} from "../../helpers/hashHelper";
 import {HodgkinHuxleyBaloon} from "../../components/hodgkin-huxley-baloon";
-import {addModFile, removeModFile, setMorphology, clear} from "../../actions/hodgkinHuxley.actions.";
+import {addModFile, removeModFile, setMorphology, clear} from "../../actions/hodgkinHuxley.actions";
 
 const _ModelsPage = (props) => {
 

@@ -4,11 +4,15 @@ import {IFilterSearchParams, ISearchParams} from "../interfaces";
 const BACKEND_URL = process.env.BACKEND_URL ?? 'http://localhost:5000';
 
 const endpoints = {
+    auth: {
+      login: '/auth/login',
+      verifyToken: '/auth/verifyToken'
+    },
     search: {
         filters: (indexName: string) => `/filters/${indexName}`,
         types: (indexName: string) => `/types/${indexName}`,
         datasets: () => '/search/dataset',
-        models: () => '/search/model'
+        models: () => '/search/model',
     },
     download: {
         datasets: () => '/download/dataset',
@@ -116,6 +120,49 @@ const downloadModels = (ids=[]) => {
     return url;
 }
 
+const login = async (username: string, password: string) => {
+    const url = `${BACKEND_URL}${endpoints.auth.login}`;
+    try {
+        const response = await axios.post(url, {
+            username,
+            password
+        });
+        if (response.status === 200) {
+            return {
+                success: true
+            }
+        }
+        return {
+            error: 'Something was wrong'
+        }
+    } catch (error) {
+        return {
+            error
+        }
+    }
+}
+
+const verifyToken = async (token: string) => {
+    const url = `${BACKEND_URL}${endpoints.auth.verifyToken}`;
+    try {
+        const response = await axios.post(url, {
+            token
+        });
+        if (response.status === 200) {
+            return {
+                success: true
+            }
+        }
+        return {
+            error: 'Something was wrong'
+        }
+    } catch (error) {
+        return {
+            error
+        }
+    }
+}
+
 export {
     searchDatasets,
     searchModels,
@@ -124,5 +171,7 @@ export {
     downloadAllDatasets,
     downloadDatasets,
     downloadAllModels,
-    downloadModels
+    downloadModels,
+    login,
+    verifyToken
 }

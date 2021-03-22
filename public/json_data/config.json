@@ -1,10 +1,17 @@
 {
   "footer": {
-    "copyright": "All rights reserved",
-    "header": "Copyright ©2021 CNR-IBF Hippocampus Hub Project",
+    "copyright": "Copyright ©2021 CNR-IBF. All rights reserved",
+    "header": "CNR-IBF",
     "logo": {
       "url": "/assets/images/HFH_community_logo_02_orange.svg"
-    }
+    },
+    "rows": [{
+      "columns": [{
+        "content": "CNR-IBF<br/>Campus Biotech<br />Chemin des Mines 9<br />CH-1202 Geneva<br />Switzerland"
+      }, {
+        "content": "Terms of Use - CNR-IBF<br />Privacy Policy - CNR-IBF<br />Disclaimer - CNR-IBF<br />Cookies - CNR-IBF"
+      }]
+    }]
   },
   "header": {
     "logo": {
