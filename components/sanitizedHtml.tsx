@@ -5,7 +5,7 @@ interface SanitizedHtmlProps extends DefaultComponentProps<any> {
     content?: string;
 }
 
-export function SanitizedHtml({content, style}: SanitizedHtmlProps) {
-    return (<div style={style ?? {}} dangerouslySetInnerHTML={{__html: sanitizeHtml(content ?? '')}}>
+export function SanitizedHtml({content, style, className}: SanitizedHtmlProps) {
+    return (<div style={style ?? {}} className={className ?? ''} dangerouslySetInnerHTML={{__html: sanitizeHtml(content ?? '')}}>
     </div>);
 }

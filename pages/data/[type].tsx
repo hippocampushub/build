@@ -20,8 +20,9 @@ import {ItemsCountBaloon} from "../../components/baloons/itemsCountBaloon";
 import {MorphologyViewerDialog} from "../../components/dialogs/morphologyViewerDialog";
 import {ISearchParams} from "../../interfaces";
 import {HodgkinHuxleyBaloon} from "../../components/hodgkin-huxley-baloon";
+import {AgreeDownloadDialog} from "../../components/dialogs/agreeDownloadDialog";
+import {downloadFile} from "../../helpers/downloadHelper";
 import 'react-image-lightbox/style.css';
-import PageSection from "../../components/page/pageSection";
 
 const _typeCards = {
     'morphology': MorphologyCard,
@@ -53,7 +54,10 @@ const _DataPage = (props) => {
     const [hitsPerPage, setHitsPerPage] = React.useState<number>(constants.DEFAULT_HITS_PER_PAGE)
 
     const [openMorphologyViewer, setOpenMorphologyViewer] = React.useState(false);
+    const [openAgreeDownloadDialog, setOpenAgreeDownloadDialog] = React.useState(false);
+
     const [selectedMorphologyViewerModel, setSelectedMorphologyViewerModel] = React.useState(null);
+    const acceptDownloadCallback = React.useRef<any>(() => null);
 
     const [lightboxImg, setLightboxImg] = React.useState<string | null>(null);
 
@@ -175,11 +179,19 @@ const _DataPage = (props) => {
     }
 
     const _downloadAll = () => {
-        window.open(downloadAllDatasets(params?.type));
+        _askForDownload({
+            callback: () => {
+                window.open(downloadAllDatasets(params?.type))
+            }
+        });
     }
 
     const _downloadSelectedDatasets = () => {
-        window.open(downloadDatasets(selectedForDownloads));
+        _askForDownload({
+            callback: () => {
+                window.open(downloadDatasets(selectedForDownloads))
+            }
+        });
     }
 
     const _openMorphologyViewer = ({modelName, modelUrl}: {
@@ -223,6 +235,33 @@ const _DataPage = (props) => {
             name: item?.name,
             url: item?.download_link
         } : null);
+    }
+
+    const _askForDownload = ({url, callback}: {
+        url?: string;
+        callback?: () => void;
+    }) => {
+        if (!!url && url.trim().length > 0) {
+            acceptDownloadCallback.current = () => downloadFile(url);
+        } else if (!!callback) {
+            acceptDownloadCallback.current = callback;
+        }
+        setOpenAgreeDownloadDialog(true);
+    }
+
+    const _acceptDownloadCallback = () => {
+        setOpenAgreeDownloadDialog(false);
+        if (!!acceptDownloadCallback?.current) {
+            acceptDownloadCallback?.current();
+            acceptDownloadCallback.current = null;
+        }
+    }
+
+    const _cancelDownloadCallback = () => {
+        setOpenAgreeDownloadDialog(false);
+        if (!!acceptDownloadCallback?.current) {
+            acceptDownloadCallback.current = null;
+        }
     }
 
     const hasMoreItems = numPage < totalPages - 1;
@@ -279,12 +318,12 @@ const _DataPage = (props) => {
                         </div>
                         <div className={`${downloadBlockClassName} text-right`}>
                             {!!hasDownloadableFiles ?
-                                <CustomButton onClick={() => _downloadAll()} style={{float: 'right'}}>
+                                <CustomButton onClick={() => _downloadAll()} style={{float: 'right', fontSize: 16}}>
                                     <IconDownload/> <span style={{marginLeft: 5}}>Download All</span>
                                 </CustomButton> : null
                             }
                             {!!selectedForDownloads && selectedForDownloads.length > 0 ?
-                                <CustomButton onClick={() => _downloadSelectedDatasets()} style={{marginLeft: 10}}>
+                                <CustomButton onClick={() => _downloadSelectedDatasets()} style={{float: 'right', marginRight: 10, fontSize: 16}}>
                                     <IconDownload/> <span style={{marginLeft: 5}}>Download Selected</span>
                                 </CustomButton> : null
                             }
@@ -317,7 +356,8 @@ const _DataPage = (props) => {
                                                 openMorphologyViewer={_openMorphologyViewer}
                                                 openImageLightbox={(url) => setLightboxImg(url)}
                                                 closImageLightbox={() => setLightboxImg(null)}
-                                                selectForModelBuilder={_selectMorphologyForBuilding}/>
+                                                selectForModelBuilder={_selectMorphologyForBuilding}
+                                                askForDownload={_askForDownload}/>
                                         </div>
                                     </div>))}
                                 </div>
@@ -331,7 +371,7 @@ const _DataPage = (props) => {
                             <div className='col-12 text-center'>
                                 <CustomButton
                                     variant='primary'
-                                    style={{margin: '0 auto'}}
+                                    style={{margin: '0 auto', fontSize: 16}}
                                     onClick={() => _loadMore()}>
                                     Load More
                                 </CustomButton>
@@ -355,6 +395,10 @@ const _DataPage = (props) => {
 
                     onCloseRequest={_onCloseLightBox}/> : null
             }
+            <AgreeDownloadDialog open={openAgreeDownloadDialog}
+                                 pageUrl={'http://neuromorpho.org/useterm.jsp'}
+                                 acceptDownloadCallback={_acceptDownloadCallback}
+                                 cancelDownloadCallback={_cancelDownloadCallback}/>
         </PageContainer>
     );
 };

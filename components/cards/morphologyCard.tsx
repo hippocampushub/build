@@ -139,7 +139,9 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                                     label={'Download'}
                                                     icon={<IconDownload/>}
                                                     expanded={actionsExpanded}
-                                                    onClick={() => downloadFile(downloadLink)}
+                                                    onClick={() => !!props?.askForDownload ? props?.askForDownload({
+                                                        url: downloadLink
+                                                    }) : downloadFile(downloadLink) }
                                                 />
                                             </Tooltip>
                                         </span> : null

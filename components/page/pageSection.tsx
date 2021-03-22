@@ -45,7 +45,7 @@ function PageSection({sectionData, variant = 'light', asContainer = false}: { se
             const hasColumns = (row.columns ?? []).length > 0;
             const colClassName = hasColumns ? `col-${Math.ceil(12 / (row.columns ?? []).length)}` : 'col-12';
             return (<div className={asContainer ? 'container' : null}>
-                <div className='row' style={{marginTop: 10}}>
+                <div className='row' style={{marginTop: 20}}>
                     <div className='col-12'>
                         {checkIfNotEmpty(row.header) ?
                             <Typography variant='h6' gutterBottom
@@ -55,7 +55,7 @@ function PageSection({sectionData, variant = 'light', asContainer = false}: { se
                         }
                     </div>
                 </div>
-                <div className='row'>
+                <div className='row' style={{marginTop: 20}}>
                     {(row.columns ?? []).map((col) => <div className={colClassName}>
                         {checkIfNotEmpty(col.content) ?
                             <div className='row'>
@@ -73,9 +73,9 @@ function PageSection({sectionData, variant = 'light', asContainer = false}: { se
                         }
                     </div>)}
                     {!!row.cta ?
-                        <div className='col-12 text-center' style={{marginTop: 20}}>
+                        <div className='col-12 text-center' style={{marginTop: 40}}>
                             <CustomButton onClick={() => _goToUrl(row?.cta?.url)} variant='primary'
-                                          style={{margin: '0 auto'}}
+                                          style={{margin: '0 auto', fontSize: 16}}
                                           isCta={true}>
                                 {row.cta.label}
                             </CustomButton>

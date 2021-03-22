@@ -7,6 +7,7 @@ import parse from 'html-react-parser';
 
 import dialogContainerStyle from './dialog.module.scss';
 import {useIconButtonStyles} from "../../style/style";
+import {CustomButton} from "../buttons/buttons";
 
 interface IDialogContainerProps extends DialogProps {
     title?: string;
@@ -56,6 +57,10 @@ export function DialogContainer({open, title, subtitle, children, actions, heigh
         </DialogContent>
         {!!actions && actions.length > 0 ?
             <DialogActions>
+                {actions?.map((item) => <CustomButton onClick={() => item.onClick()}>
+                    {item.label}
+                </CustomButton>
+                )}
             </DialogActions> : null
         }
     </Dialog>

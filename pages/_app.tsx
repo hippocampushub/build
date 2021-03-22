@@ -34,9 +34,7 @@ export default class App extends NextApp {
             <StyledThemeProvider theme={theme}>
                 <MaterialThemeProvider theme={theme}>
                     <Provider store={store}>
-                        <PrivateRouteContainer>
-                            <Component {...pageProps} />
-                        </PrivateRouteContainer>
+                        <Component {...pageProps} />
                     </Provider>
                 </MaterialThemeProvider>
             </StyledThemeProvider>
