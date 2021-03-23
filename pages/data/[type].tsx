@@ -396,7 +396,7 @@ const _DataPage = (props) => {
                     onCloseRequest={_onCloseLightBox}/> : null
             }
             <AgreeDownloadDialog open={openAgreeDownloadDialog}
-                                 pageUrl={'http://neuromorpho.org/useterm.jsp'}
+                                 pageUrl={'https://facility-hub.cineca.it/neuro_morpho/useterm.jsp'}
                                  acceptDownloadCallback={_acceptDownloadCallback}
                                  cancelDownloadCallback={_cancelDownloadCallback}/>
         </PageContainer>
