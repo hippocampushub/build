@@ -29,5 +29,10 @@ export default {
     DEFAULT_HITS_PER_PAGE: 20,
     MORPHOLOGY_VIEWER_BASE_URL: 'https://morph-view.apps.hbp.eu/?model=',
     SUGGESTION_MIN_LENGTH: process.env.SUGGESTION_MIN_LENGTH ?? 1,
-    AUTH_COOKIE_KEY: 'hbp_auth_cookie'
+    AUTH_COOKIE_KEY: 'hbp_auth_cookie',
+    DATA_TYPE_LABELS: {
+        connection: 'connections',
+        electrophysiology: 'electrophysiology',
+        morphology: 'morphologies',
+    }
 }
