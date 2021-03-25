@@ -24,7 +24,7 @@
               "content": "The Data section of the Hippocampus Facility Hub Build portal provides data resources on hippocampal cells Connections, Morphologies and Electrophysiology from internal and external sources.<br><br>Data can be visualized and downloaded; links to data source web pages are provided."
             },
             {
-              "image": "/assets/images/spike_train.gif"
+              "image": "/assets/images/traces.gif"
             }
           ],
           "cta": {
@@ -36,7 +36,7 @@
           "header": "Models",
           "columns": [
             {
-              "image": "/assets/images/morphology_180.gif"
+              "image": "/assets/images/morph_activity.gif"
             },
             {
               "content": "The Models section of the Hippocampus Facility Hub Build portal provides direct access to hippocampal cell models from internal and external resources.<br><br>Users can visualize model metadata, download the model related NEURON .mod files or open the model page on the source website.<br><br>Model (i.e., <i>.mod</i>) files can also be selected and sent to the <a href='https://ebrains.eu/service/hodgkin-huxley-neuron-builder' target='_blank'>EBRAINS Hodgkin-Huxley Neuron Builder</a>, where a NEURON model can be optimized against electrophysiological data through the <a href='https://bluepyopt.readthedocs.io/en/latest/' target='_blank'>BluePyOpt</a>."
