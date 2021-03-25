@@ -9,14 +9,18 @@
       "columns": [{
         "content": "CNR-IBF<br />via Ugo La Malfa, 153<br />90146, Palermo<br />Italy"
       }, {
-        "content": "Terms of Use - CNR-IBF<br />Privacy Policy - CNR-IBF<br />Disclaimer - CNR-IBF<br />Cookies - CNR-IBF"
+        "content": "<a href='/build/about#terms_and_conditions'>Terms of Use - CNR-IBF</a><br /><a href='/build/about#privacy_and_cookie_policy'>Privacy Policy - CNR-IBF</a><br /><a href='/build/about#disclaimer'>Disclaimer - CNR-IBF</a><br /><a href='/build/about#privacy_and_cookie_policy'>Cookies - CNR-IBF</a>"
       }]
     }]
   },
   "header": {
     "logo": {
       "url": "/assets/images/HFH_community_logo_02_orange.svg"
-    }
+    },
+    "institutionLogo": {
+      "url": "/assets/images/cnr_logo_color.svg"
+    },
+    "institutionUrl": "https://www.ibf.cnr.it/"
   },
   "tos": {
     "content": "By downloading or using the resources linked in this section, you accept the Terms of Use of <a target='_blank' href='http://neuromorpho.org/useterm.jsp'>Neuromorpho</a>, <a target='_blank' href='http://hippocampome.org/php/Help_Terms_of_Use.php'>Hippocampome</a>, <a target='_blank' href='https://senselab.med.yale.edu/ModelDB/'>ModelDB</a> and <a target='_blank' href='https://kg.ebrains.eu/search-terms-of-use.html?v=2.2'>EBRAINS Knowledge Graph</a>.<br/>Our site saves cookies on your device for technical and statistical reasons and should not be disabled.<br />We do not use cookies for commercial or profiling purposes.<br />By browsing our website you grant us permission to store cookies on your device"

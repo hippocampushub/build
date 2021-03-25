@@ -29,16 +29,16 @@
           },
           {
             "id": 15,
-            "title": "Electrophysiologies",
+            "title": "Morphologies",
             "type": "url",
-            "url": "/data/electrophysiology",
+            "url": "/data/morphology",
             "order": 2
           },
           {
             "id": 16,
-            "title": "Morphologies",
+            "title": "Electrophysiology",
             "type": "url",
-            "url": "/data/morphology",
+            "url": "/data/electrophysiology",
             "order": 3
           }
         ]

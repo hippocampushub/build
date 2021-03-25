@@ -95,7 +95,7 @@ const useSubMenuLinkStyles = makeStyles((theme) => ({
     }
 }));
 
-const MenuItem = ({item, isSubMenuItem=false}) => {
+const MenuItem = ({item, isSubMenuItem = false}) => {
     const router = useRouter();
 
     const listItemClasses = useListItemStyles();
@@ -145,7 +145,23 @@ const MenuItem = ({item, isSubMenuItem=false}) => {
 }
 
 
-const Menu = ({logo, menuItems, isSubMenuItem = false, fixed = false, transparent = false}) => {
+const Menu = ({
+    logo,
+    institutionLogo,
+    institutionUrl,
+    menuItems,
+    isSubMenuItem = false,
+    fixed = false,
+    transparent = false
+}: {
+    logo?: any;
+    institutionLogo?: any;
+    institutionUrl?: string;
+    menuItems: any[];
+    isSubMenuItem?: boolean;
+    fixed?: boolean;
+    transparent?: boolean;
+}) => {
     const router = useRouter();
 
     const [scrolled, setScrolled] = useState(false);
@@ -181,6 +197,8 @@ const Menu = ({logo, menuItems, isSubMenuItem = false, fixed = false, transparen
     }, []);
 
     const appBarClasses = `${fixed ? menuStyle['fixed-header'] : menuStyle['default-header']} ${fixed && transparent && !scrolled ? menuStyle['transparent'] : ''}`;
+    const hasInstitutionLogo = !!institutionLogo;
+    const hasInstitutionUrl = !!institutionUrl;
 
     return (
         <AppBar position="relative" className={appBarClasses}>
@@ -188,9 +206,20 @@ const Menu = ({logo, menuItems, isSubMenuItem = false, fixed = false, transparen
                 <nav className={`navbar navbar-dark navbar-expand-lg ${menuStyle['menu-navbar']}`}>
                     <div className='container-fluid'>
                         {logo ?
-                            <Link className={`navbar-brand ${menuStyle['custom-navbar-brand']}`} href='/'>
+                            <Link className={`navbar-brand ${menuStyle['custom-navbar-brand']}`} href='/' style={{marginRight: 20}}>
                                 <img src={getImageUrl(logo)}/>
                             </Link> : null
+                        }
+                        {hasInstitutionLogo && hasInstitutionUrl ?
+                            <Link className={`navbar-brand ${menuStyle['custom-navbar-brand']}`} href={institutionUrl} target='_blank'>
+                                <img src={getImageUrl(institutionLogo)}/>
+                            </Link> :
+                            <div>
+                                {
+                                    hasInstitutionLogo ?
+                                        <img src={getImageUrl(institutionLogo)}/> : null
+                                }
+                            </div>
                         }
                         <button className={`navbar-toggler ${menuStyle['custom-navbar-toggler']}`} type="button"
                                 data-toggle="collapse" data-target="#navbarNav"

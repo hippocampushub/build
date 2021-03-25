@@ -14,7 +14,11 @@ export default function Header({config, menuItems=[], carouselImages, fixedHeade
     const hasCarouselImages = !!carouselImages && carouselImages.length > 0;
     return (
         <div>
-            <Menu logo={config?.logo ?? null} menuItems={menuItems} fixed={fixedHeader} transparent={transparentHeader}/>
+            <Menu logo={config?.logo ?? null}
+                  institutionLogo={config?.institutionLogo}
+                  institutionUrl={config?.institutionUrl}
+                  menuItems={menuItems} fixed={fixedHeader}
+                  transparent={transparentHeader}/>
             {hasCarouselImages ?
                 <ImagesCarousel images={carouselImages}/> : null
             }
