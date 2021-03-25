@@ -43,6 +43,9 @@ export default {
         rowContentTextStyle: {
             fontSize: 20,
             textAlign: 'justify'
+        },
+        rowContentImageStyle: {
+            maxWidth: 400
         }
     }
 }

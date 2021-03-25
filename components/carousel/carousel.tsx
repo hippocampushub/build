@@ -5,10 +5,11 @@ import carouselStyle from './carousel.module.scss';
 import {Typography} from "@material-ui/core";
 
 export interface CarouselImage {
-    id: number,
-    image: any,
-    title: string,
-    caption: any
+    id: number;
+    image: any;
+    title: string;
+    caption?: any;
+    imageCreditsLabel?: string;
 }
 
 interface IImagesCarouselProps {
@@ -29,6 +30,11 @@ export default function ImagesCarousel({images}: IImagesCarouselProps) {
                                 </Typography> : null
                             }
                         </div> : null
+                    }
+                    {carouselImage?.imageCreditsLabel ?
+                        <div className={carouselStyle['carousel-image-credits-label']}>
+                            <span>{carouselImage?.imageCreditsLabel}</span>
+                        </div>: null
                     }
                 </div>
             ))}

@@ -5,6 +5,17 @@
   object-fit: cover;
 }
 
+.carousel-image-credits-label {
+  position: absolute;
+  font-size: 13px;
+  font-family: "Titillium Web", san-serif;
+  font-weight: 400;
+  font-style: italic;
+  color: #ffffff88;
+  bottom: 20px;
+  padding: 10px 20px;
+}
+
 .custom-carousel-caption {
   top: 60%;
   left: 0 !important;

@@ -26,12 +26,8 @@ function PageSection({sectionData, variant = 'light', asContainer = false}: { se
     }
 
     const mainContentTextStyle: any = {
-        fontSize: sectionData?.mainContentFontSize ?? constants.SECTIONS.mainContentTextStyle.fontSize,
-        textAlign: sectionData?.mainContentTextAlign ?? constants.SECTIONS.mainContentTextStyle.textAlign
-    };
-    const rowContentTextStyle: any = {
-        fontSize: sectionData?.rowContentFontSize ?? constants.SECTIONS.rowContentTextStyle.fontSize,
-        textAlign: sectionData?.rowContentTextAlign ?? constants.SECTIONS.mainContentTextStyle.textAlign
+        fontSize: sectionData?.fontSize ?? constants.SECTIONS.mainContentTextStyle.fontSize,
+        textAlign: sectionData?.textAlign ?? constants.SECTIONS.mainContentTextStyle.textAlign
     };
 
     return (<section id={sectionData.id} className={`${pageSectionStyle['page-section']} ${pageSectionStyle[variant]}`}>
@@ -47,11 +43,15 @@ function PageSection({sectionData, variant = 'light', asContainer = false}: { se
         {checkIfNotEmpty(sectionData?.content) ?
             <div className='row' style={{marginTop: 10}}>
                 <div className='col-12'>
-                    <SanitizedHtml content={sectionData.content ?? ''} style={{mainContentTextStyle}}/>
+                    <SanitizedHtml content={sectionData.content ?? ''} style={mainContentTextStyle}/>
                 </div>
             </div>: null
         }
         {(sectionData?.rows ?? []).map((row) => {
+            const rowContentTextStyle: any = {
+                fontSize: row?.fontSize ?? constants.SECTIONS.rowContentTextStyle.fontSize,
+                textAlign: row?.textAlign ?? constants.SECTIONS.mainContentTextStyle.textAlign
+            };
             const hasColumns = (row.columns ?? []).length > 0;
             const colClassName = hasColumns ? `col-${Math.ceil(12 / (row.columns ?? []).length)}` : 'col-12';
             return (<div className={asContainer ? 'container' : null}>
@@ -70,14 +70,21 @@ function PageSection({sectionData, variant = 'light', asContainer = false}: { se
                         {checkIfNotEmpty(col.content) ?
                             <div className='row'>
                                 <div className='col-12'>
-                                    <SanitizedHtml content={col?.content ?? ''} style={{rowContentTextStyle}}/>
+                                    <SanitizedHtml content={col?.content ?? ''} style={rowContentTextStyle}/>
                                 </div>
                             </div> : null
                         }
-                        {checkIfNotEmpty(col.image) ?
+                        {!!col?.image ?
                             <div className='row'>
                                 <div className='col-12 text-center'>
-                                    <img src={getImageUrlByPath(col.image)} style={{maxWidth: '400px', width: '100%'}}/>
+                                    <div style={{position: 'relative', display: 'inline-block'}}>
+                                        <img src={getImageUrl(col?.image)} style={{maxWidth: col?.image?.maxWidth ?? constants.SECTIONS.rowContentImageStyle?.maxWidth, width: '100%'}}/>
+                                        {!!col?.image?.imageCreditsLabel ?
+                                            <div className={pageSectionStyle['page-section-col-image-credits-label']}>
+                                                <span>{col?.image?.imageCreditsLabel}</span>
+                                            </div>: null
+                                        }
+                                    </div>
                                 </div>
                             </div> : null
                         }
