@@ -16,7 +16,11 @@
   "header": {
     "logo": {
       "url": "/assets/images/HFH_community_logo_02_orange.svg"
-    }
+    },
+    "institutionLogo": {
+      "url": "/assets/images/cnr_logo_color.svg"
+    },
+    "institutionUrl": "https://www.ibf.cnr.it/"
   },
   "tos": {
     "content": "By downloading or using the resources linked in this section, you accept the Terms of Use of <a target='_blank' href='http://neuromorpho.org/useterm.jsp'>Neuromorpho</a>, <a target='_blank' href='http://hippocampome.org/php/Help_Terms_of_Use.php'>Hippocampome</a>, <a target='_blank' href='https://senselab.med.yale.edu/ModelDB/'>ModelDB</a> and <a target='_blank' href='https://kg.ebrains.eu/search-terms-of-use.html?v=2.2'>EBRAINS Knowledge Graph</a>.<br/>Our site saves cookies on your device for technical and statistical reasons and should not be disabled.<br />We do not use cookies for commercial or profiling purposes.<br />By browsing our website you grant us permission to store cookies on your device"
