@@ -110,10 +110,21 @@
       }]
     },
     {
+      "id": "contributors",
+      "header": "Contributors",
+      "asContainer": true,
+      "variant": "light",
+      "rows": [{
+        "columns": [{
+          "content": "Michele Migliore - <i>michele.migliore [ at ] cnr.it</i><br>Luca Leonardo Bologna - <i>lucaleonardo.bologna [ at ] cnr.it</i><br>Antonino Tocco - <i>antonino.tocco [ at ] ibf.cnr.it</i><br>Roberto Smiriglia - <i>roberto.smiriglia [ at ] ibf.cnr.it</i><br>Rosanna Migliore - <i>rosanna.migliore [ at ] cnr.it</i><br>Francesca Spataro - <i>francesca.spataro [ at ] ibf.cnr.it</i><br>"
+        }]
+      }]
+    },
+    {
       "id": "contact",
       "header": "Contact us",
       "asContainer": true,
-      "variant": "light",
+      "variant": "dark",
       "rows": [{
         "columns": [{
           "content": "For more information, please contact us at <i>info [ at ] hippocampushub.eu</i>."
