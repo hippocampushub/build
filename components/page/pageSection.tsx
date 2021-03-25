@@ -8,6 +8,7 @@ import {CustomButton} from '../buttons/buttons';
 import pageSectionStyle from './page-section.module.scss';
 import {getImageUrl, getImageUrlByPath} from "../../helpers/imageHelper";
 import {SanitizedHtml} from "../sanitizedHtml";
+import constants from "../../constants";
 
 
 function PageSection({sectionData, variant = 'light', asContainer = false}: { sectionData: any, variant: ThemeVariant, asContainer?: boolean }) {
@@ -24,6 +25,15 @@ function PageSection({sectionData, variant = 'light', asContainer = false}: { se
         }
     }
 
+    const mainContentTextStyle: any = {
+        fontSize: sectionData?.mainContentFontSize ?? constants.SECTIONS.mainContentTextStyle.fontSize,
+        textAlign: sectionData?.mainContentTextAlign ?? constants.SECTIONS.mainContentTextStyle.textAlign
+    };
+    const rowContentTextStyle: any = {
+        fontSize: sectionData?.rowContentFontSize ?? constants.SECTIONS.rowContentTextStyle.fontSize,
+        textAlign: sectionData?.rowContentTextAlign ?? constants.SECTIONS.mainContentTextStyle.textAlign
+    };
+
     return (<section id={sectionData.id} className={`${pageSectionStyle['page-section']} ${pageSectionStyle[variant]}`}>
         {checkIfNotEmpty(sectionData?.header) ?
             <div className={pageSectionStyle['page-section-header']}>
@@ -37,7 +47,7 @@ function PageSection({sectionData, variant = 'light', asContainer = false}: { se
         {checkIfNotEmpty(sectionData?.content) ?
             <div className='row' style={{marginTop: 10}}>
                 <div className='col-12'>
-                    <SanitizedHtml content={sectionData.content ?? ''} style={{fontSize: 26, textAlign: 'justify'}}/>
+                    <SanitizedHtml content={sectionData.content ?? ''} style={{mainContentTextStyle}}/>
                 </div>
             </div>: null
         }
@@ -60,14 +70,14 @@ function PageSection({sectionData, variant = 'light', asContainer = false}: { se
                         {checkIfNotEmpty(col.content) ?
                             <div className='row'>
                                 <div className='col-12'>
-                                    <SanitizedHtml content={col?.content ?? ''} style={{textAlign: 'justify'}}/>
+                                    <SanitizedHtml content={col?.content ?? ''} style={{rowContentTextStyle}}/>
                                 </div>
                             </div> : null
                         }
                         {checkIfNotEmpty(col.image) ?
                             <div className='row'>
                                 <div className='col-12 text-center'>
-                                    <img src={getImageUrlByPath(col.image)} style={{maxWidth: '200px'}}/>
+                                    <img src={getImageUrlByPath(col.image)} style={{maxWidth: '400px', width: '100%'}}/>
                                 </div>
                             </div> : null
                         }
