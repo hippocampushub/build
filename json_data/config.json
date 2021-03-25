@@ -9,7 +9,7 @@
       "columns": [{
         "content": "CNR-IBF<br />via Ugo La Malfa, 153<br />90146, Palermo<br />Italy"
       }, {
-        "content": "<a href='https://www.hippocampushub.eu/build/about#terms_and_conditions'>Terms of Use - CNR-IBF</a><br /><a href='https://www.hippocampushub.eu/build/about#privacy_and_cookie_policy'>Privacy Policy - CNR-IBF</a><br /><a href='https://www.hippocampushub.eu/build/about#disclaimer'>Disclaimer - CNR-IBF</a><br /><a href='https://www.hippocampushub.eu/build/about#privacy_and_cookie_policy'>Cookies - CNR-IBF</a>"
+        "content": "<a href='/build/about#terms_and_conditions'>Terms of Use - CNR-IBF</a><br /><a href='/build/about#privacy_and_cookie_policy'>Privacy Policy - CNR-IBF</a><br /><a href='/build/about#disclaimer'>Disclaimer - CNR-IBF</a><br /><a href='/build/about#privacy_and_cookie_policy'>Cookies - CNR-IBF</a>"
       }]
     }]
   },
