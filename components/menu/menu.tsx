@@ -206,14 +206,14 @@ const Menu = ({
                 <nav className={`navbar navbar-dark navbar-expand-lg ${menuStyle['menu-navbar']}`}>
                     <div className='container-fluid'>
                         {logo ?
-                            <Link className={`navbar-brand ${menuStyle['custom-navbar-brand']}`} href='/' style={{marginRight: 20}}>
+                            <Link className={`navbar-brand ${menuStyle['custom-navbar-brand']}`} href={getPageUrl('/')} style={{marginRight: 20}}>
                                 <img src={getImageUrl(logo)}/>
                             </Link> : null
                         }
                         {hasInstitutionLogo && hasInstitutionUrl ?
-                            <Link className={`navbar-brand ${menuStyle['custom-navbar-brand']}`} href={institutionUrl} target='_blank'>
+                            <a className={`navbar-brand ${menuStyle['custom-navbar-brand']}`} href={institutionUrl} target='_blank'>
                                 <img src={getImageUrl(institutionLogo)}/>
-                            </Link> :
+                            </a> :
                             <div>
                                 {
                                     hasInstitutionLogo ?
