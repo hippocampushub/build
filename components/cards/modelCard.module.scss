@@ -16,7 +16,7 @@
   .model-card-left-content {
     padding: 10px 15px;
 
-    .model-card-name-label, .model-card-types-label, .model-card-papers-label {
+    .model-card-name-label, .model-card-types-label, .model-card-papers-label, .model-card-mod_files-label {
       display: block;
       float: left;
       font-size: 14px;
@@ -24,7 +24,7 @@
       margin-right: 2.5px;
     }
 
-    .model-card-name-value, .model-card-types-value, .model-card-papers-value {
+    .model-card-name-value, .model-card-types-value, .model-card-papers-value, .model-card-mod_files-value {
       display: block;
       font-size: 12px;
       font-weight: 500;
@@ -35,6 +35,7 @@
       max-width: 100%;
       clear: both;
     }
+
 
     .model-card-mod_files-label {
       @media screen and (max-width: 1024px) {

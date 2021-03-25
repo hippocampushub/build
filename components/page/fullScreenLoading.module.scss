@@ -1,0 +1,15 @@
+@import "variables";
+
+.container {
+  width: 100%;
+  height: calc(100vh - 60px);
+  background: $color-background-dark;
+  .logo-container {
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

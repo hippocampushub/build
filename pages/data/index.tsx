@@ -8,6 +8,7 @@ import {Typography} from "@material-ui/core";
 import Spinner from "../../components/spinner/spinner";
 import {getPage} from "../../helpers/dataHelper";
 import DataTypeCtaButton from "../../components/cta/dataTypeCtaButton";
+import constants from "../../constants";
 
 function DataHomePage() {
     const router = useRouter();
@@ -32,7 +33,11 @@ function DataHomePage() {
         await router.push(`/data/${type}`);
     }
 
-    return (<PageContainer variant={page?.variant} mainClassName={'with-fixed-header'}>
+    const _getDataTypeLabel = (type: string) => {
+        return constants.DATA_TYPE_LABELS[type] ?? type;
+    }
+
+    return (<PageContainer variant={page?.variant} mainClassName={'with-fixed-header'} fixedHeader={true}>
         <div className={`container ${pageContentStyle['page-container']}`}>
             <div className="row">
                 <div className="col-12">
@@ -49,7 +54,7 @@ function DataHomePage() {
             <section style={{marginTop: 20}}>
                 {(dataTypes ?? []).map((item) => <div className='row' style={{marginTop: 20}}>
                     <div className='col-12'>
-                        <DataTypeCtaButton type={item} action={(type: string) => _ctaAction(type)}/>
+                        <DataTypeCtaButton type={_getDataTypeLabel(item)} action={(type: string) => _ctaAction(type)}/>
                     </div>
                 </div>)}
             </section>

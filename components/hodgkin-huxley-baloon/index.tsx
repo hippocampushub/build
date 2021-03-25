@@ -33,20 +33,21 @@ export function HodgkinHuxleyBaloon({
             const HFFComm: any = {};
             if (!!morphology) {
                 HFFComm.morphology = {
-                    name: morphology?.name,
-                    url: morphology?.url
+                    name: encodeURIComponent(morphology?.name),
+                    url: encodeURIComponent(morphology?.url)
                 }
             }
-            if (!!modFiles) {
+            if (!!modFiles && modFiles.length > 0) {
                 HFFComm.modFiles = modFiles?.map((item) => ({
-                    name: item?.label,
-                    url: item?.url
+                    name: encodeURIComponent(item?.label),
+                    url: encodeURIComponent(item?.url)
                 }));
             }
             if (!!window) {
-                const url = `${constants.HODGKIN_HUXLEY_BASE_URL}/hhf_dict=${JSON.stringify({
-                    [constants.HHF_COMM]: HFFComm
-                })}`;
+                let url = `${constants.HODGKIN_HUXLEY_BASE_URL}/`;
+                if (Object.keys(HFFComm).length > 0) {
+                    url += `hhf-comm?hhf_dict=${JSON.stringify({[constants.HHF_COMM]: HFFComm})}`;
+                }
                 window.open(url);
             }
 

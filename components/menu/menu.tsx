@@ -76,6 +76,7 @@ const useLinkStyles = makeStyles((theme) => ({
         color: '#fff',
         fontFamily: 'Montserrat, san-serif',
         fontWeight: 600,
+        fontSize: 17,
         '&:hover': {
             color: '#fff',
             textDecoration: 'none'
@@ -94,7 +95,7 @@ const useSubMenuLinkStyles = makeStyles((theme) => ({
     }
 }));
 
-const MenuItem = ({item, isSubMenuItem=false}) => {
+const MenuItem = ({item, isSubMenuItem = false}) => {
     const router = useRouter();
 
     const listItemClasses = useListItemStyles();
@@ -129,7 +130,7 @@ const MenuItem = ({item, isSubMenuItem=false}) => {
 
     const linkUrl = getPageUrl(item);
     const isActiveLink = router.pathname === linkUrl;
-    const isDropDown = item.type === MenuItemType.section && (item.menuitems?.length ?? 0) > 0;
+    const isDropDown = item.type === MenuItemType.section || (item.menuitems?.length ?? 0) > 0;
     return (<ListItem onMouseEnter={isDropDown ? () => showDropDown() : null}
                       onMouseLeave={isDropDown ? () => hideDropDown() : null}
                       className={`${isActiveLink ? 'active' : ''} ${isDropDown ? 'dropdown' : ''}`}
@@ -144,7 +145,23 @@ const MenuItem = ({item, isSubMenuItem=false}) => {
 }
 
 
-const Menu = ({logo, menuItems, isSubMenuItem = false, fixed = false, transparent = false}) => {
+const Menu = ({
+    logo,
+    institutionLogo,
+    institutionUrl,
+    menuItems,
+    isSubMenuItem = false,
+    fixed = false,
+    transparent = false
+}: {
+    logo?: any;
+    institutionLogo?: any;
+    institutionUrl?: string;
+    menuItems: any[];
+    isSubMenuItem?: boolean;
+    fixed?: boolean;
+    transparent?: boolean;
+}) => {
     const router = useRouter();
 
     const [scrolled, setScrolled] = useState(false);
@@ -180,6 +197,8 @@ const Menu = ({logo, menuItems, isSubMenuItem = false, fixed = false, transparen
     }, []);
 
     const appBarClasses = `${fixed ? menuStyle['fixed-header'] : menuStyle['default-header']} ${fixed && transparent && !scrolled ? menuStyle['transparent'] : ''}`;
+    const hasInstitutionLogo = !!institutionLogo;
+    const hasInstitutionUrl = !!institutionUrl;
 
     return (
         <AppBar position="relative" className={appBarClasses}>
@@ -187,14 +206,25 @@ const Menu = ({logo, menuItems, isSubMenuItem = false, fixed = false, transparen
                 <nav className={`navbar navbar-dark navbar-expand-lg ${menuStyle['menu-navbar']}`}>
                     <div className='container-fluid'>
                         {logo ?
-                            <Link className={`navbar-brand ${menuStyle['custom-navbar-brand']}`} href='/'>
+                            <Link className={`navbar-brand ${menuStyle['custom-navbar-brand']}`} href={getPageUrl('/')} style={{marginRight: 20}}>
                                 <img src={getImageUrl(logo)}/>
                             </Link> : null
+                        }
+                        {hasInstitutionLogo && hasInstitutionUrl ?
+                            <a className={`navbar-brand ${menuStyle['custom-navbar-brand']}`} href={institutionUrl} target='_blank'>
+                                <img src={getImageUrl(institutionLogo)}/>
+                            </a> :
+                            <div>
+                                {
+                                    hasInstitutionLogo ?
+                                        <img src={getImageUrl(institutionLogo)}/> : null
+                                }
+                            </div>
                         }
                         <button className={`navbar-toggler ${menuStyle['custom-navbar-toggler']}`} type="button"
                                 data-toggle="collapse" data-target="#navbarNav"
                                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon" onClick={() => toggleMenu()}></span>
+                            <span className="navbar-toggler-icon" onClick={() => toggleMenu()}/>
                         </button>
                         <div className={`collapse navbar-collapse ${menuExpanded ? 'show' : ''}`} id="navbarNav">
                             <List className="navbar-nav ml-auto" classes={listClasses}>

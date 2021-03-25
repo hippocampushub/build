@@ -1,10 +1,11 @@
 import NextApp from 'next/app'
 import React, {useMemo} from 'react'
+import {connect, Provider} from 'react-redux';
 import {ThemeProvider as StyledThemeProvider} from 'styled-components'
 import {ThemeProvider as MaterialThemeProvider, createMuiTheme} from '@material-ui/core/styles';
-import {Provider} from "react-redux";
 import store from '../store';
 import '../style.scss';
+import PrivateRouteContainer from "./_privateRouteContainer";
 
 const theme = {
     primary: '#f2f2f2',
@@ -25,6 +26,8 @@ export default class App extends NextApp {
         }
     }
 
+
+
     render() {
         const {Component, pageProps} = this.props
         return (
@@ -38,3 +41,4 @@ export default class App extends NextApp {
         )
     }
 }
+

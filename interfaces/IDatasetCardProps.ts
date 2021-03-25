@@ -11,4 +11,5 @@ export interface IDataSetCardProps extends PropsWithChildren<any> {
         modelName: string;
         modelUrl: string;
     }) => void;
+    askForDownload?: ({url: string}) => void;
 }
