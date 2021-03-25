@@ -21,10 +21,10 @@
           "header": "Data",
           "columns": [
             {
-              "content": "The Data section of the Hippocampus Facility Hub Build portal provides data resources on hippocampal cells Connections, Morphologies and Electrophysiology. Individual sections collect data and metadata from external portals (i.e., neuromorpho.org and hippocampome.org) and give the user the possibility to download and visualize the files of interest or open the relevant source web pages."
+              "content": "The Data section of the Hippocampus Facility Hub Build portal provides data resources on hippocampal cells Connections, Morphologies and Electrophysiology from internal and external sources.<br><br>Data can be visualized and downloaded; links to data source web pages are provided."
             },
             {
-              "image": "/assets/images/dataset.svg"
+              "image": "/assets/images/traces.gif"
             }
           ],
           "cta": {
@@ -36,10 +36,10 @@
           "header": "Models",
           "columns": [
             {
-              "image": "/assets/images/neuron.jpg"
+              "image": "/assets/images/morph_activity.gif"
             },
             {
-              "content": "The Models section of the Hippocampus Facility Hub Build portal provides direct access to the hippocampal cell models hosted on the ModelDB repository. Users can visualize model metadata, download the model related NEURON .mod files or open the model page on the source website."
+              "content": "The Models section of the Hippocampus Facility Hub Build portal provides direct access to hippocampal cell models from internal and external resources.<br><br>Users can visualize model metadata, download the model related NEURON .mod files or open the model page on the source website.<br><br>Model (i.e., <i>.mod</i>) files can also be selected and sent to the <a href='https://ebrains.eu/service/hodgkin-huxley-neuron-builder' target='_blank'>EBRAINS Hodgkin-Huxley Neuron Builder</a>, where a NEURON model can be optimized against electrophysiological data through the <a href='https://bluepyopt.readthedocs.io/en/latest/' target='_blank'>BluePyOpt</a>."
             }
           ],
           "cta": {
