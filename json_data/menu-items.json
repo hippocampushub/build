@@ -6,7 +6,20 @@
     "type": "url",
     "url": "/",
     "menuitems": [
-      
+      {
+        "id": 13,
+        "title": "Explore Model",
+        "type": "url",
+        "order": 1,
+        "url": "/models"
+      },
+      {
+        "id": 13,
+        "title": "Build Models",
+        "type": "url",
+        "order": 2,
+        "url": "/models"
+      }
     ]
   },
   {
@@ -46,13 +59,7 @@
           }
         ]
       },
-      {
-        "id": 13,
-        "title": "Models",
-        "type": "url",
-        "order": 2,
-        "url": "/models"
-      }
+
     ]
   },
   {
