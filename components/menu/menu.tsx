@@ -1,4 +1,4 @@
-import {AppBar, Toolbar, Link, List, ListItem, makeStyles} from "@material-ui/core";
+import {AppBar, Toolbar, Link, List, ListItem, makeStyles, Typography} from "@material-ui/core";
 import {getPageUrl} from "../../helpers/postHelper";
 import {useRouter} from "next/router";
 
@@ -83,6 +83,8 @@ const MenuItem = ({item, isSubMenuItem = false}) => {
 
 const Menu = ({
     logo,
+    projectHeader,
+    institutionHeader,
     institutionLogo,
     institutionUrl,
     menuItems,
@@ -91,6 +93,8 @@ const Menu = ({
     transparent = false
 }: {
     logo?: any;
+    projectHeader?: string;
+    institutionHeader?: string;
     institutionLogo?: any;
     institutionUrl?: string;
     menuItems: any[];
@@ -131,7 +135,7 @@ const Menu = ({
     }, []);
 
     const appBarClasses = `${fixed ? menuStyle['fixed-header'] : menuStyle['default-header']} ${fixed && transparent && !scrolled ? menuStyle['transparent'] : ''}`;
-    const hasInstitutionLogo = !!institutionLogo;
+    const hasInstitutionHeader = !!institutionHeader;
     const hasInstitutionUrl = !!institutionUrl;
 
     return (
@@ -139,21 +143,27 @@ const Menu = ({
             <Toolbar>
                 <nav className={`navbar navbar-dark navbar-expand-lg ${menuStyle['menu-navbar']}`}>
                     <div className='container-fluid'>
-                        {logo ?
-                            <Link className={`navbar-brand ${menuStyle['custom-navbar-brand']}`} href={getPageUrl('/')} style={{marginRight: 20}}>
-                                <img src={getImageUrl(logo)}/>
-                            </Link> : null
-                        }
-                        {hasInstitutionLogo && hasInstitutionUrl ?
+                        {hasInstitutionHeader && hasInstitutionUrl ?
                             <a className={`navbar-brand ${menuStyle['custom-navbar-brand']}`} href={institutionUrl} target='_blank'>
-                                <img src={getImageUrl(institutionLogo)}/>
+                                <Typography variant='h2' className={menuStyle['header-institution-label']}>
+                                    {institutionHeader}
+                                </Typography>
                             </a> :
                             <div>
                                 {
-                                    hasInstitutionLogo ?
-                                        <img src={getImageUrl(institutionLogo)}/> : null
+                                    hasInstitutionHeader ?
+                                        <Typography variant='h2' className={menuStyle['header-institution-label']}>
+                                            {institutionHeader}
+                                        </Typography> : null
                                 }
                             </div>
+                        }
+                        {projectHeader ?
+                            <a className={`navbar-brand ${menuStyle['custom-navbar-brand']}`} href={getPageUrl('/')} style={{marginRight: 20}}>
+                                <Typography variant='h1' className={menuStyle['header-project-label']}>
+                                    | {projectHeader}
+                                </Typography>
+                            </a> : null
                         }
                         <button className={`navbar-toggler ${menuStyle['custom-navbar-toggler']}`} type="button"
                                 data-toggle="collapse" data-target="#navbarNav"

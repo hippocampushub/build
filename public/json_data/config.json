@@ -14,6 +14,8 @@
     }]
   },
   "header": {
+    "projectHeader": "The Hippocampus Hub Build",
+    "institutionHeader": "Consiglio Nazionale delle Ricerche",
     "logo": {
       "url": "/assets/images/HFH_community_logo_02_orange.svg"
     },

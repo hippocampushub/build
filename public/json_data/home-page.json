@@ -24,7 +24,7 @@
           "header": "Data",
           "columns": [
             {
-              "content": "The Data section of the Hippocampus Facility Hub Build portal provides data resources on hippocampal cells Connections, Morphologies and Electrophysiology from internal and external sources.<br><br>Data can be visualized and downloaded; links to data source web pages are provided."
+              "content": "The Data section of the Hippocampus Hub Build portal provides data resources on hippocampal cells Connections, Morphologies and Electrophysiology from internal and external sources.<br><br>Data can be visualized and downloaded; links to data source web pages are provided."
             },
             {
               "image": {
@@ -51,7 +51,7 @@
               }
             },
             {
-              "content": "The Models section of the Hippocampus Facility Hub Build portal provides direct access to hippocampal cell models from internal and external resources.<br><br>Users can visualize model metadata, download the model related NEURON .mod files or open the model page on the source website.<br><br>Model (i.e., <i>.mod</i>) files can also be selected and sent to the <a href='https://ebrains.eu/service/hodgkin-huxley-neuron-builder' target='_blank'>EBRAINS Hodgkin-Huxley Neuron Builder</a>, where a NEURON model can be optimized against electrophysiological data through the <a href='https://bluepyopt.readthedocs.io/en/latest/' target='_blank'>BluePyOpt</a>."
+              "content": "The Models section of the Hippocampus Hub Build portal provides direct access to hippocampal cell models from internal and external resources.<br><br>Users can visualize model metadata, download the model related NEURON .mod files or open the model page on the source website.<br><br>Model (i.e., <i>.mod</i>) files can also be selected and sent to the <a href='https://ebrains.eu/service/hodgkin-huxley-neuron-builder' target='_blank'>EBRAINS Hodgkin-Huxley Neuron Builder</a>, where a NEURON model can be optimized against electrophysiological data through the <a href='https://bluepyopt.readthedocs.io/en/latest/' target='_blank'>BluePyOpt</a>."
             }
           ],
           "cta": {
@@ -64,7 +64,7 @@
           "header": "Workflows",
           "columns": [
             {
-            "content": "While navigating the Hippocampus Facility Hub Build section, the user is able visualize a plethora of morphologies and NEURON <i>.mod</i> files gathered from the dedicated portals directly referenced in our website. In order to actively use these resources in a model building workflow, we integrated our pages with the EBRAINS Hodgking Huxley Neuron Builder (HHNB) tool, which allow to optimize a single cell NEURON model against electrophysiological data and run it on a dedicated simulation environment, the EBRAINS BlueNaas (NEURON As A Service). Start exploring the Hippocampus portal in order to take advantage of this functionality or direct access the HHNB webapp by clicking on the button below."
+            "content": "While navigating the Hippocampus Hub Build section, the user is able visualize a plethora of morphologies and NEURON <i>.mod</i> files gathered from the dedicated portals directly referenced in our website. In order to actively use these resources in a model building workflow, we integrated our pages with the EBRAINS Hodgking Huxley Neuron Builder (HHNB) tool, which allow to optimize a single cell NEURON model against electrophysiological data and run it on a dedicated simulation environment, the EBRAINS BlueNaas (NEURON As A Service). Start exploring the Hippocampus portal in order to take advantage of this functionality or direct access the HHNB webapp by clicking on the button below."
             },
             {
               "image": ""
