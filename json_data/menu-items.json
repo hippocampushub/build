@@ -4,7 +4,10 @@
     "title": "Home page",
     "order": 1,
     "type": "url",
-    "url": "/"
+    "url": "/",
+    "menuitems": [
+      
+    ]
   },
   {
     "id": 2,
