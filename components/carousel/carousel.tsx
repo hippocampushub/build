@@ -29,6 +29,9 @@ export default function ImagesCarousel({images}: IImagesCarouselProps) {
                                     {carouselImage?.caption?.header ?? ''}
                                 </Typography> : null
                             }
+                            {carouselImage?.caption?.content ?
+                                <span className={carouselStyle['carousel-caption-content']}>{carouselImage?.caption?.content}</span> : null
+                            }
                         </div> : null
                     }
                     {carouselImage?.imageCreditsLabel ?

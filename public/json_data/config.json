@@ -1,7 +1,7 @@
 {
   "footer": {
     "copyright": "Copyright ©2021 CNR-IBF. All rights reserved",
-    "header": "CNR-IBF",
+    "header": "Consiglio Nazionale delle Ricerche<br />Istituto di Biofisica",
     "logo": {
       "url": "/assets/images/HFH_community_logo_02_orange.svg"
     },
@@ -9,7 +9,7 @@
       "columns": [{
         "content": "CNR-IBF<br />via Ugo La Malfa, 153<br />90146, Palermo<br />Italy"
       }, {
-        "content": "<a href='/build/about#terms_and_conditions'>Terms of Use - CNR-IBF</a><br /><a href='/build/about#privacy_and_cookie_policy'>Privacy Policy - CNR-IBF</a><br /><a href='/build/about#disclaimer'>Disclaimer - CNR-IBF</a><br /><a href='/build/about#privacy_and_cookie_policy'>Cookies - CNR-IBF</a>"
+        "content": "<a href='/about#terms_and_conditions'>Terms of Use</a> - CNR-IBF<br /><a href='/about#privacy_and_cookie_policy'>Privacy Policy</a> - CNR-IBF<br /><a href='/about#disclaimer'>Disclaimer</a> - CNR-IBF <br /><a href='/about#privacy_and_cookie_policy'>Cookies</a> - CNR-IBF"
       }]
     }]
   },

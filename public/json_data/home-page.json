@@ -5,20 +5,22 @@
     {
       "url": "/assets/images/background_02.png",
       "caption": {
-        "header": "HIPPOCAMPUS FACILITY HUB"
+        "header": "BUILD",
+        "content": "Create your own hippocampal single cell models!"
       },
       "imageCreditsLabel": "*Image Credits"
     }
   ],
   "sections": [
     {
-      "id": "resources",
+      "id": "services",
       "header": "",
       "variant": "dark",
       "carousel": null,
-      "content": "The primary goal of the Hippocampus Facility Hub Build section is to provide computational neuroscienists with a wide overview of the resources available to the scientifc community for building detailed neural models of the hippocampus and, at the same time, offer services and tools for the creation, visualization and execution of those models in a collaborative fashion and following an open access approach.<br>In the portal sections you will find information on and direct access links to neural morphologies, connections, electrophysiology and models resources gathered from external dedicated platforms (i.e. <a target='_blank' href='neuromorpho.org'>NeuroMorpho</a>, <a target='_blank' href='hippocampome.org'>Hippocampome</a>, <a target='_blank' href='https://kg.ebrains.eu/'>EBRAINS Knowledge Graph</a>, <a target='_blank' href='https://senselab.med.yale.edu/ModelDB/'>ModelDB</a>). You will also be able to seamlesslly interact with EBRAINS tools for the creation and fruition of neural models through the available services.<br><br>",
+      "content": "",
       "rows": [
         {
+          "id": "data",
           "header": "Data",
           "columns": [
             {
@@ -38,6 +40,7 @@
           }
         },
         {
+          "id": "models",
           "header": "Models",
           "columns": [
             {
@@ -57,7 +60,8 @@
           }
         },
         {
-          "header": "Services",
+          "id": "workflows",
+          "header": "Workflows",
           "columns": [
             {
             "content": "While navigating the Hippocampus Facility Hub Build section, the user is able visualize a plethora of morphologies and NEURON <i>.mod</i> files gathered from the dedicated portals directly referenced in our website. In order to actively use these resources in a model building workflow, we integrated our pages with the EBRAINS Hodgking Huxley Neuron Builder (HHNB) tool, which allow to optimize a single cell NEURON model against electrophysiological data and run it on a dedicated simulation environment, the EBRAINS BlueNaas (NEURON As A Service). Start exploring the Hippocampus portal in order to take advantage of this functionality or direct access the HHNB webapp by clicking on the button below."

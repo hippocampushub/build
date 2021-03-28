@@ -54,7 +54,7 @@ function DataHomePage() {
             <section style={{marginTop: 20}}>
                 {(dataTypes ?? []).map((item) => <div className='row' style={{marginTop: 20}}>
                     <div className='col-12'>
-                        <DataTypeCtaButton type={_getDataTypeLabel(item)} action={(type: string) => _ctaAction(type)}/>
+                        <DataTypeCtaButton type={_getDataTypeLabel(item)} action={(type: string) => _ctaAction(item)}/>
                     </div>
                 </div>)}
             </section>

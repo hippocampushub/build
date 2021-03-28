@@ -13,7 +13,7 @@ export default function Footer({footer, canLoadAnalytics}: {
                 <div className='row'>
                     <div className='col-12'>
                         <Typography variant='h5' className={footerStyle['footer-header']}>
-                            {footer?.header ?? ''}
+                            <SanitizedHtml content={footer?.header ?? ''}/>
                         </Typography>
                     </div>
                 </div>

@@ -1,21 +1,37 @@
 [
   {
     "id": 3,
-    "title": "Home page",
+    "title": "Home",
     "order": 1,
     "type": "url",
-    "url": "/"
+    "url": "https://www.hippocampushub.eu",
+    "menuitems": [
+      {
+        "id": 17,
+        "title": "Explore Model",
+        "type": "url",
+        "order": 1,
+        "url": "https://www.hippocampushub.eu/model"
+      },
+      {
+        "id": 18,
+        "title": "Build Models",
+        "type": "url",
+        "order": 2,
+        "url": "/"
+      }
+    ]
   },
   {
     "id": 2,
-    "title": "Resources",
+    "title": "Services",
     "type": "section",
     "order": 2,
-    "url": "/#resources",
+    "url": "/#services",
     "menuitems": [
       {
         "id": 5,
-        "title": "Data",
+        "title": "DATA",
         "type": "url",
         "url": "/data",
         "order": 1,
@@ -32,7 +48,7 @@
             "title": "Electrophysiology",
             "type": "url",
             "url": "/data/electrophysiology",
-            "order": 3
+            "order": 2
           },
           {
             "id": 16,
@@ -45,10 +61,17 @@
       },
       {
         "id": 13,
-        "title": "Models",
+        "title": "MODELS",
         "type": "url",
         "order": 2,
         "url": "/models"
+      },
+      {
+        "id": 14,
+        "title": "WORKFLOWS",
+        "type": "url",
+        "order": 3,
+        "url": "/#workflows"
       }
     ]
   },
@@ -58,5 +81,12 @@
     "type": "url",
     "order": 3,
     "url": "/about"
+  },
+  {
+    "id": 4,
+    "title": "Contact us",
+    "type": "url",
+    "order": 4,
+    "url": "https://www.hippocampushub.eu/#contact-us"
   }
 ]
