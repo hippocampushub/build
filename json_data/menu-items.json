@@ -4,21 +4,21 @@
     "title": "Home page",
     "order": 1,
     "type": "url",
-    "url": "/",
+    "url": "https://hippocampushub.eu",
     "menuitems": [
       {
         "id": 13,
         "title": "Explore Model",
         "type": "url",
         "order": 1,
-        "url": "/models"
+        "url": "https://hippocampushub.eu"
       },
       {
         "id": 13,
         "title": "Build Models",
         "type": "url",
         "order": 2,
-        "url": "/models"
+        "url": "/build"
       }
     ]
   },
