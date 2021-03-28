@@ -24,14 +24,14 @@
   },
   {
     "id": 2,
-    "title": "Resources",
+    "title": "Services",
     "type": "section",
     "order": 2,
-    "url": "/#resources",
+    "url": "/#services",
     "menuitems": [
       {
         "id": 5,
-        "title": "Data",
+        "title": "DATA",
         "type": "url",
         "url": "/data",
         "order": 1,
@@ -59,7 +59,20 @@
           }
         ]
       },
-
+      {
+        "id": 13,
+        "title": "MODELS",
+        "type": "url",
+        "order": 2,
+        "url": "/models"
+      },
+      {
+        "id": 14,
+        "title": "WORKFLOWS",
+        "type": "url",
+        "order": 3,
+        "url": "/#data"
+      }
     ]
   },
   {
