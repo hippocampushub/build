@@ -3,7 +3,7 @@
     "copyright": "Copyright ©2021 CNR-IBF. All rights reserved",
     "header": "Consiglio Nazionale delle Ricerche<br />Istituto di Biofisica",
     "logo": {
-      "url": "/assets/images/HFH_community_logo_02_orange.svg"
+      "url": "/assets/images/cnr_logo_white.svg"
     },
     "rows": [{
       "columns": [{
@@ -14,13 +14,13 @@
     }]
   },
   "header": {
-    "projectHeader": "The Hippocampus Hub Build",
+    "projectHeader": "Hippocampus Build Portal",
     "institutionHeader": "Consiglio Nazionale delle Ricerche",
     "logo": {
       "url": "/assets/images/HFH_community_logo_02_orange.svg"
     },
     "institutionLogo": {
-      "url": "/assets/images/cnr_logo_color_short.svg"
+      "url": "/assets/images/cnr_logo_white.svg"
     },
     "institutionUrl": "https://www.ibf.cnr.it/"
   },
