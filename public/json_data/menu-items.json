@@ -8,7 +8,7 @@
     "menuitems": [
       {
         "id": 17,
-        "title": "Explore Model",
+        "title": "Explore Models",
         "type": "url",
         "order": 1,
         "url": "https://www.hippocampushub.eu/model"

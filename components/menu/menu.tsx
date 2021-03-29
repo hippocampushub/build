@@ -66,11 +66,11 @@ const MenuItem = ({item, isSubMenuItem = false}) => {
     }
 
     const linkUrl = getPageUrl(item);
-    const isActiveLink = router.pathname === linkUrl;
+    const isActiveLink = linkUrl === router?.asPath;
     const isDropDown = item.type === MenuItemType.section || (item.menuitems?.length ?? 0) > 0;
     return (<ListItem onMouseEnter={isDropDown ? () => showDropDown() : null}
                       onMouseLeave={isDropDown ? () => hideDropDown() : null}
-                      className={`${isSubMenuItem ? menuStyle['sub-list-item'] : menuStyle['list-item']} ${isActiveLink ? 'active' : ''} ${isDropDown ? 'dropdown' : ''}`}>
+                      className={`${isSubMenuItem ? menuStyle['sub-list-item'] : menuStyle['list-item']} ${isActiveLink ? menuStyle['active'] : ''} ${isDropDown ? 'dropdown' : ''}`}>
         <Link className={menuStyle['link']} href={linkUrl}>
             {item.title}
         </Link>
@@ -82,16 +82,16 @@ const MenuItem = ({item, isSubMenuItem = false}) => {
 
 
 const Menu = ({
-    logo,
-    projectHeader,
-    institutionHeader,
-    institutionLogo,
-    institutionUrl,
-    menuItems,
-    isSubMenuItem = false,
-    fixed = false,
-    transparent = false
-}: {
+                  logo,
+                  projectHeader,
+                  institutionHeader,
+                  institutionLogo,
+                  institutionUrl,
+                  menuItems,
+                  isSubMenuItem = false,
+                  fixed = false,
+                  transparent = false
+              }: {
     logo?: any;
     projectHeader?: string;
     institutionHeader?: string;
@@ -135,7 +135,7 @@ const Menu = ({
     }, []);
 
     const appBarClasses = `${fixed ? menuStyle['fixed-header'] : menuStyle['default-header']} ${fixed && transparent && !scrolled ? menuStyle['transparent'] : ''}`;
-    const hasInstitutionHeader = !!institutionHeader;
+    const hasInstitutionLogo = !!institutionLogo;
     const hasInstitutionUrl = !!institutionUrl;
 
     return (
@@ -143,25 +143,28 @@ const Menu = ({
             <Toolbar>
                 <nav className={`navbar navbar-dark navbar-expand-lg ${menuStyle['menu-navbar']}`}>
                     <div className='container-fluid'>
-                        {hasInstitutionHeader && hasInstitutionUrl ?
-                            <a className={`navbar-brand ${menuStyle['custom-navbar-brand']}`} href={institutionUrl} target='_blank'>
-                                <Typography variant='h2' className={menuStyle['header-institution-label']}>
-                                    {institutionHeader}
-                                </Typography>
+                        {hasInstitutionLogo && hasInstitutionUrl ?
+                            <a className={`navbar-brand ${menuStyle['custom-navbar-brand']}`} href={institutionUrl}
+                               target='_blank'>
+                                <div className={menuStyle['custom-navbar-logo-container']}>
+                                    <img src={getImageUrl(institutionLogo)}
+                                         className={menuStyle['custom-navbar-logo']}/>
+                                </div>
                             </a> :
                             <div>
                                 {
-                                    hasInstitutionHeader ?
-                                        <Typography variant='h2' className={menuStyle['header-institution-label']}>
-                                            {institutionHeader}
-                                        </Typography> : null
+                                    hasInstitutionLogo ?
+                                        <div className={menuStyle['custom-navbar-logo-container']}>
+                                            <img src={getImageUrl(institutionLogo)}/>
+                                        </div> : null
                                 }
                             </div>
                         }
                         {projectHeader ?
-                            <a className={`navbar-brand ${menuStyle['custom-navbar-brand']}`} href={getPageUrl('/')} style={{marginRight: 20}}>
+                            <a className={`navbar-brand ${menuStyle['custom-navbar-brand']}`} href={getPageUrl('/')}
+                               style={{marginRight: 20}}>
                                 <Typography variant='h1' className={menuStyle['header-project-label']}>
-                                    | {projectHeader}
+                                    {projectHeader}
                                 </Typography>
                             </a> : null
                         }

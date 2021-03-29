@@ -32,8 +32,10 @@ export function HodgkinHuxleyBaloon({
         const _sendToHodgkinHuxley = () => {
             const HFFComm: any = {};
             if (!!morphology) {
+                const fileUrlSplitted = (morphology?.url ?? '').split('.');
+                const fileExtension = fileUrlSplitted.length > 1 ? fileUrlSplitted[fileUrlSplitted.length - 1] : '';
                 HFFComm.morphology = {
-                    name: encodeURIComponent(morphology?.name),
+                    name: encodeURIComponent(`${morphology?.name}.${fileExtension}`),
                     url: encodeURIComponent(morphology?.url)
                 }
             }
@@ -51,7 +53,7 @@ export function HodgkinHuxleyBaloon({
                 window.open(url);
             }
 
-            _clear();
+            //_clear();
 
         }
 

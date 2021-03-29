@@ -8,19 +8,21 @@ interface IHeaderProps {
     carouselImages?: CarouselImage[];
     fixedHeader?: boolean;
     transparentHeader?: boolean;
+    openImageCreditsDialog?: (content: string) => void;
 }
 
-export default function Header({config, menuItems=[], carouselImages, fixedHeader = false, transparentHeader = false}: IHeaderProps) {
+export default function Header({config, menuItems=[], carouselImages, fixedHeader = false, transparentHeader = false, openImageCreditsDialog}: IHeaderProps) {
     const hasCarouselImages = !!carouselImages && carouselImages.length > 0;
     return (
         <div>
             <Menu projectHeader={config?.projectHeader ?? ''}
                   institutionHeader={config?.institutionHeader ?? ''}
+                  institutionLogo={config?.institutionLogo ?? ''}
                   institutionUrl={config?.institutionUrl}
                   menuItems={menuItems} fixed={fixedHeader}
                   transparent={transparentHeader}/>
             {hasCarouselImages ?
-                <ImagesCarousel images={carouselImages}/> : null
+                <ImagesCarousel images={carouselImages} showImageCredits={openImageCreditsDialog}/> : null
             }
         </div>
     );

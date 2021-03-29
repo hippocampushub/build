@@ -10,15 +10,17 @@ export interface CarouselImage {
     title: string;
     caption?: any;
     imageCreditsLabel?: string;
+    imageCreditsContent?: string;
 }
 
 interface IImagesCarouselProps {
-    images: CarouselImage[]
+    images: CarouselImage[];
+    showImageCredits?: (content: string) => void;
 }
 
-export default function ImagesCarousel({images}: IImagesCarouselProps) {
+export default function ImagesCarousel({images, showImageCredits}: IImagesCarouselProps) {
     return (<div>
-        <Carousel indicators={false}>
+        <Carousel indicators={false} navButtonsAlwaysInvisible={true}>
             {images.map((carouselImage, index) => (
                 <div key={`carousel-image-${index}`}>
                     <img className={carouselStyle['carousel-image']}  src={getImageUrl(carouselImage)}/>
@@ -35,7 +37,7 @@ export default function ImagesCarousel({images}: IImagesCarouselProps) {
                         </div> : null
                     }
                     {carouselImage?.imageCreditsLabel ?
-                        <div className={carouselStyle['carousel-image-credits-label']}>
+                        <div className={carouselStyle['carousel-image-credits-label']} onClick={() => showImageCredits(carouselImage?.imageCreditsContent)}>
                             <span>{carouselImage?.imageCreditsLabel}</span>
                         </div>: null
                     }

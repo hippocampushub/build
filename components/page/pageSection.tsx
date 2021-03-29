@@ -14,8 +14,9 @@ import constants from "../../constants";
 function PageSection({
                          sectionData,
                          variant = 'light',
-                         asContainer = false
-                     }: { sectionData: any, variant: ThemeVariant, asContainer?: boolean }) {
+                         asContainer = false,
+                         openImageCreditsDialog
+                     }: { sectionData: any, variant: ThemeVariant, asContainer?: boolean, openImageCreditsDialog?: (content: string) => void}) {
 
     const router = useRouter();
 
@@ -89,7 +90,7 @@ function PageSection({
                                             }}/>
                                             {!!col?.image?.imageCreditsLabel ?
                                                 <div
-                                                    className={pageSectionStyle['page-section-col-image-credits-label']}>
+                                                    className={pageSectionStyle['page-section-col-image-credits-label']} onClick={() => openImageCreditsDialog(col?.image?.imageCreditsContent)}>
                                                     <span>{col?.image?.imageCreditsLabel}</span>
                                                 </div> : null
                                             }

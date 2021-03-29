@@ -23,6 +23,7 @@ interface IPageProps extends PropsWithChildren<any> {
     agreeTos: () => void;
     tosAgreed: boolean;
     mainClassName: string | null;
+    openImageCreditsDialog: (content: string) => void;
 }
 
 function _PageContainer(props: IPageProps, ref) {
@@ -72,7 +73,8 @@ function _PageContainer(props: IPageProps, ref) {
                 carouselImages={headerCarousel}
                 menuItems={menuItems}
                 fixedHeader={props.fixedHeader ?? false}
-                transparentHeader={props.transparentHeader ?? false}/>
+                transparentHeader={props.transparentHeader ?? false}
+                openImageCreditsDialog={props?.openImageCreditsDialog}/>
             <div>
                 <main
                     className={`${pageStyle['main-container']} ${!!props?.mainClassName ? pageStyle[props?.mainClassName] : ''}`}>

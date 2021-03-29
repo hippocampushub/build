@@ -18,7 +18,7 @@
 }
 
 .custom-carousel-caption {
-  bottom: 80px !important;
+  bottom: 50px !important;
   padding: 10px !important;
   text-align: left !important;
   left: 50% !important;
@@ -26,11 +26,6 @@
   transform: translate(-50%, -50%);
 
   @media screen and (max-width: 768px) {
-    left: 5% !important;
-    right: 5% !important;
-    top: 50%;
-    transform: translate(0, -50%);
-    min-width: auto;
     padding: 5px !important;
     text-align: center !important;
   }
@@ -41,6 +36,7 @@
     color: #fff;
     text-align: center;
     font-weight: 600;
+    cursor: pointer;
   }
   .carousel-caption-content {
     font-family: 'Titillium Web', sans-serif;
