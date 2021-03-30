@@ -9,7 +9,7 @@ export default function Footer({footer, canLoadAnalytics}: {
     footer: any;
     canLoadAnalytics?: boolean;
 }) {
-    return (<footer className={footerStyle.footer}>
+    return (<footer className={footerStyle['footer']}>
             <div className='container'>
                 <div className='row'>
                     <div className='col-12'>
@@ -23,7 +23,7 @@ export default function Footer({footer, canLoadAnalytics}: {
                         </Typography>
                     </div>
                 </div>
-                {footer?.rows.map((row) => <div className={'row'} style={{marginTop: 20}}>
+                {footer?.rows?.map((row) => <div className={'row'} style={{marginTop: 20}}>
                     {row?.columns.map((column) =>
                         <SanitizedHtml content={column?.content ?? ''}
                                        className={`col ${footerStyle['footer-column']}`}/>
