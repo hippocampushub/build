@@ -160,7 +160,7 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                     }
                                     {hasDownloadLink ?
                                         <span className={dataSetCardStyle['dataset-card-action']}>
-                                            <Tooltip title='Send to model building'>
+                                            <Tooltip title='Send to HH Neuron Builder'>
                                                 <ExpandButton
                                                     label={'Send to model building'}
                                                     icon={<IconSend/>}
@@ -172,9 +172,9 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                     }
                                     {hasDownloadLink ?
                                         <span className={dataSetCardStyle['dataset-card-action']}>
-                                            <Tooltip title='Download'>
+                                            <Tooltip title='Open Morphology Viewer'>
                                                 <ExpandButton
-                                                    label={'Download'}
+                                                    label={'Open Morphology Viewer'}
                                                     icon={<img src={getImageUrlByPath('/assets/icons/3d.svg')}/>}
                                                     expanded={actionsExpanded}
                                                     onClick={() => _openMorphologyViewer()}

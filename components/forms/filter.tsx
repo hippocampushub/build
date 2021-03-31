@@ -259,13 +259,13 @@ export function FilterBox({
                     <Tooltip title='Reset Filters'>
                         <IconButton className={iconButtonClasses.root}
                                     onClick={() => resetFilters(false)}>
-                            <IconClear/>
+                            <IconClear htmlColor={variant === 'dark' ? '#fff': null}/>
                         </IconButton>
                     </Tooltip>
                     <Tooltip title='Apply Filters'>
                         <IconButton className={iconButtonClasses.root}
                                     onClick={() => applyFilters()}>
-                            <IconCheck/>
+                            <IconCheck htmlColor={variant === 'dark' ? '#fff': null}/>
                         </IconButton>
                     </Tooltip>
                 </div>
@@ -325,6 +325,7 @@ export function FormFilter({
                     value={query}
                     onChange={onQueryChange}
                     onRequestSearch={onRequestSearch}
+                    onCancelSearch={() => onQueryChange('')}
                 />
             </div>
             <div className='col-md-3 col-sm-12 text-right'>
