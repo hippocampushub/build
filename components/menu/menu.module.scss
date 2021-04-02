@@ -14,33 +14,144 @@ header {
       background-color: transparent;
     }
   }
+
+  .header-institution-label {
+    font-size: 16px;
+    font-weight: 600;
+    font-family: "Titillium Web", sans-serif;
+  }
+
+  .header-project-label {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: "Titillium Web", sans-serif;
+  }
+
   nav.menu-navbar {
-    padding: 0 1rem;
+    padding: 10px 1rem;
     width: 100%;
     @media all and (max-width: 768px) {
       padding: .5rem 1rem;
     }
 
+    .list-item {
+      width: auto;
+      height: 40px;
+      margin-right: 10px;
+      &:hover , &:focus, &:active, &:visited {
+        background: $color-white;
+        .link {
+          color: $color-black;
+          text-decoration: none;
+        }
+      }
+      &.active {
+        background: $color-white;
+        .link {
+          color: $color-black;
+          text-decoration: none;
+        }
+      }
+      @media all and (max-width: 768px) {
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+        height: auto;
+        display: block;
+      }
+      .link {
+        color: $color-white;
+        font-family: "Titillium Web", "sans-serif";
+        font-weight: 600;
+        font-size: 17px;
+        text-transform: uppercase;
+        &:hover, &:focus, &:active {
+          color: $color-black;
+          text-decoration: none;
+        }
+      }
+    }
+
     .custom-dropdown-menu {
-      min-width: 250px;
       border-radius: 2px;
       padding: 0;
-      background: $color-background-dark;
+      background: $color-white;
+      left: 50%;
+      transform: translate(-50%, -5px);
+      border: none;
       @media screen and (max-width: 768px) {
         min-width: auto;
         margin-top: 10px;
         border: none;
       }
+      .custom-dropdown-menu-list {
+        padding: 0;
+        flex-direction: row;
+        display: flex;
+      }
+      .sub-list-item {
+        padding: 10px;
+        width: 175px;
+        height: 40px;
+        @media all and (max-width: 768px) {
+          padding: 10px 0;
+        }
+        .link {
+          display: block;
+          color: $color-black;
+          font-family: "Titillium Web", "sans-serif";
+          font-size: 15px;
+          font-weight: 500;
+          text-transform: uppercase;
+          margin: 0 auto;
+          &:hover, &:focus, &:active {
+            color: $color-black;
+            text-decoration: none;
+          }
+        }
+      }
       .custom-dropdown-menu {
         position: absolute;
-        top: 0;
-        left: -100%;
+        left: 0;
+        transform: none;
+        top: 100%;
+        min-width: 200px;
+        .custom-dropdown-menu-list {
+          padding: 0;
+          flex-direction: column;
+          display: flex;
+          .sub-list-item {
+            .link {
+              float: left;
+              margin: 0;
+            }
+          }
+        }
       }
     }
 
     .custom-navbar-brand {
-      img {
-        height: 50px;
+      margin-right: 12px;
+    }
+
+    .custom-navbar-logo-container {
+      position: relative;
+      min-width: 42px;
+      height: 28px;
+      padding-right: 12px;
+      .custom-navbar-logo {
+        position: absolute;
+        height: 28px;
+      }
+      &::after {
+        content: " ";
+        height: 28px;
+        width: 2px;
+        display: block;
+        background: #f7f8fc;
+        position: absolute;
+        top: 0;
+        right: -2px;
       }
     }
 

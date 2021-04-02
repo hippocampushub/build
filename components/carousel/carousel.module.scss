@@ -5,30 +5,45 @@
   object-fit: cover;
 }
 
+.carousel-image-credits-label {
+  position: absolute;
+  font-size: 15px;
+  font-family: "Titillium Web", san-serif;
+  font-weight: 400;
+  font-style: italic;
+  color: #ffffff88;
+  bottom: 20px;
+  right: 0;
+  padding: 10px 20px;
+}
+
 .custom-carousel-caption {
-  top: 60%;
-  left: 0 !important;
-  right: auto !important;
-  min-width: 75%;
-  transform: translate(0, -50%);
-  bottom: auto !important;
-  background: $color-background-dark-with-alpha;
+  bottom: 50px !important;
   padding: 10px !important;
   text-align: left !important;
+  left: 50% !important;
+  min-width: 500px;
+  transform: translate(-50%, -50%);
 
   @media screen and (max-width: 768px) {
-    left: 5% !important;
-    right: 5% !important;
-    top: 50%;
-    transform: translate(0, -50%);
-    min-width: auto;
     padding: 5px !important;
     text-align: center !important;
   }
 
   .carousel-caption-header {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 48px;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 28px;
     color: #fff;
+    text-align: center;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .carousel-caption-content {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 20px;
+    color: $color-yellow-accent;
+    text-align: center;
+    font-weight: 400;
+    display: block;
   }
 }

@@ -1,4 +1,4 @@
-import {AppBar, Toolbar, Link, List, ListItem, makeStyles} from "@material-ui/core";
+import {AppBar, Toolbar, Link, List, ListItem, makeStyles, Typography} from "@material-ui/core";
 import {getPageUrl} from "../../helpers/postHelper";
 import {useRouter} from "next/router";
 
@@ -36,72 +36,9 @@ const useListStyles = makeStyles((theme) => ({
     }
 }));
 
-const useListItemStyles = makeStyles((theme) => ({
-    root: {
-        width: 'auto',
-        height: 64,
-        marginRight: 5,
-        '&:hover': {
-            borderBottom: '2px solid #ffc90c'
-        },
-        '&.active': {
-            borderBottom: '2px solid #ffc90c'
-        },
-        [theme.breakpoints.down('sm')]: {
-            marginRight: 0,
-            paddingLeft: 0,
-            paddingRight: 0,
-            height: 'auto',
-            display: 'block'
-        }
-    }
-}))
-
-const useSubMenuListItemStyles = makeStyles((theme) => ({
-    root: {
-        width: 'auto',
-        padding: '10px 10px',
-        borderBottom: '1px solid #ddd',
-        '&:last-child': {
-            borderBottom: 'none'
-        },
-        [theme.breakpoints.down('sm')]: {
-            padding: '10px 0'
-        }
-    }
-}))
-
-const useLinkStyles = makeStyles((theme) => ({
-    root: {
-        color: '#fff',
-        fontFamily: 'Montserrat, san-serif',
-        fontWeight: 600,
-        fontSize: 17,
-        '&:hover': {
-            color: '#fff',
-            textDecoration: 'none'
-        }
-    }
-}));
-
-const useSubMenuLinkStyles = makeStyles((theme) => ({
-    root: {
-        display: 'block',
-        color: '#fff',
-        '&:hover': {
-            color: '#fff',
-            textDecoration: 'underline'
-        }
-    }
-}));
-
 const MenuItem = ({item, isSubMenuItem = false}) => {
     const router = useRouter();
 
-    const listItemClasses = useListItemStyles();
-    const linkClasses = useLinkStyles();
-    const subMenuListItemClasses = useSubMenuListItemStyles();
-    const subMenuLinkClasses = useSubMenuLinkStyles();
 
     const [expanded, setExpanded] = useState(false);
 
@@ -109,7 +46,7 @@ const MenuItem = ({item, isSubMenuItem = false}) => {
     const buildSubMenu = (item, expanded) => (
         <div className={`dropdown-menu ${menuStyle['custom-dropdown-menu']} ${expanded ? 'show' : ''}`}
              aria-labelledby="navbarDropdownMenuLink" key={`sub-menu-dropdown-${item.id}`}>
-            <ul style={{padding: 0}}>
+            <ul className={menuStyle['custom-dropdown-menu-list']}>
                 {sortedArray(item.menuitems, 'title')?.map((subItem) => <MenuItem key={`sub-menu-item-${subItem.id}`}
                                                                                   item={subItem}
                                                                                   isSubMenuItem={true}/>)}
@@ -129,13 +66,12 @@ const MenuItem = ({item, isSubMenuItem = false}) => {
     }
 
     const linkUrl = getPageUrl(item);
-    const isActiveLink = router.pathname === linkUrl;
+    const isActiveLink = linkUrl === router?.asPath;
     const isDropDown = item.type === MenuItemType.section || (item.menuitems?.length ?? 0) > 0;
     return (<ListItem onMouseEnter={isDropDown ? () => showDropDown() : null}
                       onMouseLeave={isDropDown ? () => hideDropDown() : null}
-                      className={`${isActiveLink ? 'active' : ''} ${isDropDown ? 'dropdown' : ''}`}
-                      classes={isSubMenuItem ? subMenuListItemClasses : listItemClasses}>
-        <Link classes={isSubMenuItem ? subMenuLinkClasses : linkClasses} href={linkUrl}>
+                      className={`${isSubMenuItem ? menuStyle['sub-list-item'] : menuStyle['list-item']} ${isActiveLink ? menuStyle['active'] : ''} ${isDropDown ? 'dropdown' : ''}`}>
+        <Link className={menuStyle['link']} href={linkUrl}>
             {item.title}
         </Link>
         {isDropDown ?
@@ -146,15 +82,19 @@ const MenuItem = ({item, isSubMenuItem = false}) => {
 
 
 const Menu = ({
-    logo,
-    institutionLogo,
-    institutionUrl,
-    menuItems,
-    isSubMenuItem = false,
-    fixed = false,
-    transparent = false
-}: {
+                  logo,
+                  projectHeader,
+                  institutionHeader,
+                  institutionLogo,
+                  institutionUrl,
+                  menuItems,
+                  isSubMenuItem = false,
+                  fixed = false,
+                  transparent = false
+              }: {
     logo?: any;
+    projectHeader?: string;
+    institutionHeader?: string;
     institutionLogo?: any;
     institutionUrl?: string;
     menuItems: any[];
@@ -170,8 +110,6 @@ const Menu = ({
     const toolbarClasses = !fixed || scrolled ? useFixedToolbarStyles() : useToolbarStyles();
     const navClasses = useNavStyles();
     const listClasses = useListStyles();
-    const listItemClasses = useListItemStyles();
-    const linkClasses = useLinkStyles();
 
     const buildMenuItem = (item) => (<MenuItem item={item} key={`menu-item-${item.id}`}/>)
 
@@ -205,21 +143,30 @@ const Menu = ({
             <Toolbar>
                 <nav className={`navbar navbar-dark navbar-expand-lg ${menuStyle['menu-navbar']}`}>
                     <div className='container-fluid'>
-                        {logo ?
-                            <Link className={`navbar-brand ${menuStyle['custom-navbar-brand']}`} href={getPageUrl('/')} style={{marginRight: 20}}>
-                                <img src={getImageUrl(logo)}/>
-                            </Link> : null
-                        }
                         {hasInstitutionLogo && hasInstitutionUrl ?
-                            <a className={`navbar-brand ${menuStyle['custom-navbar-brand']}`} href={institutionUrl} target='_blank'>
-                                <img src={getImageUrl(institutionLogo)}/>
+                            <a className={`navbar-brand ${menuStyle['custom-navbar-brand']}`} href={institutionUrl}
+                               target='_blank'>
+                                <div className={menuStyle['custom-navbar-logo-container']}>
+                                    <img src={getImageUrl(institutionLogo)}
+                                         className={menuStyle['custom-navbar-logo']}/>
+                                </div>
                             </a> :
                             <div>
                                 {
                                     hasInstitutionLogo ?
-                                        <img src={getImageUrl(institutionLogo)}/> : null
+                                        <div className={menuStyle['custom-navbar-logo-container']}>
+                                            <img src={getImageUrl(institutionLogo)}/>
+                                        </div> : null
                                 }
                             </div>
+                        }
+                        {projectHeader ?
+                            <a className={`navbar-brand ${menuStyle['custom-navbar-brand']}`} href={getPageUrl('/')}
+                               style={{marginRight: 20}}>
+                                <Typography variant='h1' className={menuStyle['header-project-label']}>
+                                    {projectHeader}
+                                </Typography>
+                            </a> : null
                         }
                         <button className={`navbar-toggler ${menuStyle['custom-navbar-toggler']}`} type="button"
                                 data-toggle="collapse" data-target="#navbarNav"

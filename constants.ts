@@ -34,5 +34,18 @@ export default {
         connection: 'connections',
         electrophysiology: 'electrophysiology',
         morphology: 'morphologies',
+    },
+    SECTIONS: {
+        mainContentTextStyle: {
+            fontSize: 26,
+            textAlign: 'justify'
+        },
+        rowContentTextStyle: {
+            fontSize: 20,
+            textAlign: 'justify'
+        },
+        rowContentImageStyle: {
+            maxWidth: 400
+        }
     }
 }
