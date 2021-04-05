@@ -15,10 +15,10 @@
   "sections": [
     {
       "id": "services",
-      "header": "",
+      "header": "Services",
       "variant": "dark",
       "carousel": null,
-      "content": "",
+      "content": "<br>",
       "rows": [
         {
           "id": "data",
@@ -78,7 +78,7 @@
           ],
           "cta": {
             "label": "Go To The HHNB",
-            "url": "https://hbp-bsp-hhnb.cineca.it:17895/hh-neuron-builder",
+            "url": "https://hbp-bsp-hhnb.cineca.it/hh-neuron-builder",
             "target": "_blank"
           }
         }
