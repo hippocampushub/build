@@ -15,10 +15,10 @@
   "sections": [
     {
       "id": "services",
-      "header": "",
+      "header": "Services",
       "variant": "dark",
       "carousel": null,
-      "content": "",
+      "content": "<br>",
       "rows": [
         {
           "id": "data",
@@ -70,12 +70,15 @@
             "content": "While navigating the Hippocampus Hub Build section, the user is able visualize a plethora of morphologies and NEURON <i>.mod</i> files gathered from the dedicated portals directly referenced in our website. In order to actively use these resources in a model building workflow, we integrated our pages with the EBRAINS Hodgking Huxley Neuron Builder (HHNB) tool, which allows to optimize a single cell NEURON model against electrophysiological data and run it on a dedicated simulation environment, the EBRAINS BlueNaas (NEURON As A Service). Start exploring the Hippocampus portal in order to take advantage of this functionality or direct access the HHNB webapp by clicking on the button below."
             },
             {
-              "image": ""
+              "image": {
+                 "url":"/assets/images/hhnb.png",
+                 "maxWidth":450
+              }
             }
           ],
           "cta": {
             "label": "Go To The HHNB",
-            "url": "https://hbp-bsp-hhnb.cineca.it:17895/hh-neuron-builder",
+            "url": "https://hbp-bsp-hhnb.cineca.it/hh-neuron-builder",
             "target": "_blank"
           }
         }
