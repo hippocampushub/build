@@ -97,9 +97,9 @@ export function DataSetDialog({open, dataSet, onClose}) {
                         <TabPanel value={selectedTab} index={0}>
                             {checkIfArrayNotEmpty(dataSet?.files) ?
                                 <div className='col-12'>
-                                    <CustomButton onClick={() => _downloadAll(dataSet?.files)}>
+                                    {/*<CustomButton onClick={() => _downloadAll(dataSet?.files)}>
                                         <span><IconDownload/> Download All</span>
-                                    </CustomButton>
+                                    </CustomButton>*/}
                                     {(dataSet?.files ?? []).map((item) =>
                                         <div className='row' style={{marginTop: 10}}>
                                             <div className='col-12'>

@@ -317,11 +317,11 @@ const _DataPage = (props) => {
                                 count={totalItems}/>
                         </div>
                         <div className={`${downloadBlockClassName} text-right`}>
-                            {!!hasDownloadableFiles ?
+                            {/*{!!hasDownloadableFiles ?
                                 <CustomButton onClick={() => _downloadAll()} style={{float: 'right', fontSize: 16}}>
                                     <IconDownload/> <span style={{marginLeft: 5}}>Download All</span>
                                 </CustomButton> : null
-                            }
+                            }*/}
                             {!!selectedForDownloads && selectedForDownloads.length > 0 ?
                                 <CustomButton onClick={() => _downloadSelectedDatasets()} style={{float: 'right', marginRight: 10, fontSize: 16}}>
                                     <IconDownload/> <span style={{marginLeft: 5}}>Download Selected</span>

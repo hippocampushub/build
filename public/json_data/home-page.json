@@ -31,7 +31,7 @@
               "image": {
                 "url": "/assets/images/traces.gif",
                 "imageCreditsLabel": "Credits",
-                "imageCreditsContent": "<i>Image Credits:<br />Migliore et al. (2018). The physiological variability of channel density in hippocampal CA1 pyramidal cells and interneurons explored using a unified data-driven modeling workflow. PLoS Comput Biol; doi: <a target='_blank' href='https://doi.org/10.1371/journal.pcbi.1006423'>https://doi.org/10.1371/journal.pcbi.1006423</a></i>",
+                "imageCreditsContent": "Image Credits:<br />Migliore et al. (2018). The physiological variability of channel density in hippocampal CA1 pyramidal cells and interneurons explored using a unified data-driven modeling workflow. PLoS Comput Biol; doi: <a target='_blank' href='https://doi.org/10.1371/journal.pcbi.1006423'>https://doi.org/10.1371/journal.pcbi.1006423</a>",
                 "maxWidth": 340
               }
             }
@@ -49,7 +49,7 @@
               "image": {
                 "url": "/assets/images/morph_activity.gif",
                 "imageCreditsLabel": "Credits",
-                "imageCreditsContent": "<i>Culmone V, Migliore M (2012) Progressive effect of beta amyloid peptides accumulation on CA1 pyramidal neurons: a model study suggesting possible treatments. Front Comput Neurosci; doi: <a target='_blank' href='https://dx.doi.org/10.3389%2Ffncom.2012.00052'>https://dx.doi.org/10.3389%2Ffncom.2012.00052</a></i>",
+                "imageCreditsContent": "Culmone V, Migliore M (2012) Progressive effect of beta amyloid peptides accumulation on CA1 pyramidal neurons: a model study suggesting possible treatments. Front Comput Neurosci; doi: <a target='_blank' href='https://dx.doi.org/10.3389%2Ffncom.2012.00052'>https://dx.doi.org/10.3389%2Ffncom.2012.00052</a>",
                 "maxWidth": 280
               }
             },

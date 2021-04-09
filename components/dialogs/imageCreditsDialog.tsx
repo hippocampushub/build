@@ -17,7 +17,7 @@ export function ImageCreditsDialog({
                 title={'Credits'}
                 onClose={onClose}>
         {!!content ?
-            <SanitizedHtml content={content}/> : null
+            <SanitizedHtml content={content} style={{paddingBottom: 20}}/> : null
         }
     </DialogContainer>);
 }

@@ -4,14 +4,12 @@ import {
     CloudDownload as IconDownload,
     Link as IconLink,
 } from "@material-ui/icons";
-import {useIconButtonStyles} from "../../style/style";
-import {ExpandButton} from "../buttons/expandButton";
 import {CardContainer} from "./card";
 import {getImageUrlByPath} from "../../helpers/imageHelper";
+import ExpandButton from "../buttons/expandButton";
 
 import dataSetCardStyle from './datasetCard.module.scss';
 import {forwardRef, PropsWithChildren} from "react";
-import modelCardStyle from "./modelCard.module.scss";
 import {IDataSetCardProps} from "../../interfaces/IDatasetCardProps";
 
 function _DataSetCard(props: IDataSetCardProps, ref) {

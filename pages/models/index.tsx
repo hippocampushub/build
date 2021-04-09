@@ -226,9 +226,9 @@ const _ModelsPage = (props) => {
                                 count={totalItems}/>
                         </div>
                         <div className={`${downloadBlockClassName} text-right`}>
-                            <CustomButton onClick={() => _downloadAll()} style={{float: 'right'}}>
+                            {/*<CustomButton onClick={() => _downloadAll()} style={{float: 'right'}}>
                                 <IconDownload/> <span style={{marginLeft: 5}}>Download All</span>
-                            </CustomButton>
+                            </CustomButton>*/}
                             {!!selectedForDownloads && selectedForDownloads.length > 0 ?
                                 <CustomButton onClick={() => _downloadSelectedDatasets()} style={{marginLeft: 10}}>
                                     <IconDownload/> <span style={{marginLeft: 5}}>Download Selected</span>

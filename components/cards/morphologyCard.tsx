@@ -5,10 +5,9 @@ import {
     Link as IconLink,
     Send as IconSend,
 } from "@material-ui/icons";
-import {useIconButtonStyles} from "../../style/style";
-import {ExpandButton} from "../buttons/expandButton";
 import {CardContainer} from "./card";
 import {getImageUrlByPath} from "../../helpers/imageHelper";
+import ExpandButton from "../buttons/expandButton";
 
 import dataSetCardStyle from './datasetCard.module.scss';
 import {forwardRef, PropsWithChildren} from "react";

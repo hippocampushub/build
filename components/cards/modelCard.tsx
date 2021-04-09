@@ -6,8 +6,7 @@ import {
     Add as IconAdd,
     Link as IconLink, CheckBox,
 } from "@material-ui/icons";
-import {useIconButtonStyles} from "../../style/style";
-import {ExpandButton} from "../buttons/expandButton";
+import ExpandButton from "../buttons/expandButton";
 import {CardContainer} from "./card";
 
 import modelCardStyle from './modelCard.module.scss';

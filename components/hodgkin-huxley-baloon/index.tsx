@@ -86,7 +86,7 @@ export function HodgkinHuxleyBaloon({
                         Hodgkin-Huxley Neuron Builder
                     </Typography>
                 </div>
-                <div className='col-8'>
+                <div className='col-6'>
                     {hasMorphology ?
                         <div className='row'>
                             <div className='col-12'>
@@ -107,12 +107,19 @@ export function HodgkinHuxleyBaloon({
                         </div> : null
                     }
                 </div>
-                <div className='col-4 text-right'>
+                <div className='col-6 text-right'>
                     <CustomButton onClick={() => _sendToHodgkinHuxley()}
                                   style={{float: 'right', fontSize: 12}}
                                   isCta={true}>
                         SEND TO HH NEURON BUILDER
                     </CustomButton>
+                    {hasMorphology || hasModFiles ?
+                        <CustomButton onClick={() => _clear()}
+                                      style={{float: 'right', fontSize: 12, marginRight: 20}}
+                                      isCta={true}>
+                            CLEAR ALL
+                        </CustomButton> : null
+                    }
                 </div>
             </div>
         </div>

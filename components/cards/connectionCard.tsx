@@ -5,7 +5,7 @@ import {
     Link as IconLink,
 } from "@material-ui/icons";
 import {useIconButtonStyles} from "../../style/style";
-import {ExpandButton} from "../buttons/expandButton";
+import ExpandButton from "../buttons/expandButton";
 import {CardContainer} from "./card";
 import {getImageUrlByPath} from "../../helpers/imageHelper";
 
