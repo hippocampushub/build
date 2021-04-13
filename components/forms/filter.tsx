@@ -160,6 +160,9 @@ export function FilterBox({
                         key={`suggestion-${key}`}
                         value={suggestionValue[key]}
                         label={item?.label}
+                        InputLabelProps={{
+                            style: { color: variant ?? 'dark' ? '#fff' : '#333', textTransform: 'capitalize' },
+                        }}
                         onChange={(event) => _onChangeSuggestionValue(key, event.target.value)}
                     />
                 </div>
