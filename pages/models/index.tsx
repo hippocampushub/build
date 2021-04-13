@@ -124,6 +124,15 @@ const _ModelsPage = (props) => {
         });
     }
 
+    const _onChangeQuery = async (query: string) => {
+        setSelectedQuery(query);
+        if (query?.trim()?.length < constants.MIN_SEARCH_LENGTH) {
+            await _search({
+                query
+            });
+        }
+    }
+
     const _applyFilters = async () => {
         await _search();
     }
@@ -208,7 +217,7 @@ const _ModelsPage = (props) => {
                                 filters={filters}
                                 selectedFilters={selectedFilters}
                                 selectedHitsPerPage={hitsPerPage}
-                                onQueryChange={(value) => setSelectedQuery(value)}
+                                onQueryChange={(value) => _onChangeQuery(value)}
                                 onRequestSearch={() => _search()}
                                 onChangeHitsPerPage={(value) => _onHitsPerPageChange(value)}
                                 onChangeFilters={(key: string, value: any) => setSelectedFilters({

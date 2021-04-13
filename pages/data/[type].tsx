@@ -120,6 +120,15 @@ const _DataPage = (props) => {
         }
     }
 
+    const _onChangeQuery = async (query: string) => {
+        setSelectedQuery(query);
+        if (query?.trim()?.length < constants.MIN_SEARCH_LENGTH) {
+            await _search({
+                query
+            });
+        }
+    }
+
     const _search = async ({query, filters, hitsPerPage}: ISearchParams = {}) => {
         console.log('@@@@requestSearch');
         const page = 0
@@ -302,7 +311,7 @@ const _DataPage = (props) => {
                                 filters={filters}
                                 selectedFilters={selectedFilters}
                                 selectedHitsPerPage={hitsPerPage}
-                                onQueryChange={(value) => setSelectedQuery(value)}
+                                onQueryChange={(value) => _onChangeQuery(value)}
                                 onRequestSearch={() => _search()}
                                 onChangeHitsPerPage={(value) => _onHitsPerPageChange(value)}
                                 onChangeFilters={(key: string, value: any) => _onChangeFilters(key, value)}

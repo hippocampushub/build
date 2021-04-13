@@ -26,6 +26,8 @@ import {DefaultComponentProps} from "@material-ui/core/OverridableComponent";
 
 import filterStyle from './filter.module.scss';
 import constants from "../../constants";
+import {CustomButton} from "../buttons/buttons";
+import {CustomSearchBar} from "../customSearchBar";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -321,12 +323,11 @@ export function FormFilter({
     return (<div>
         <div className='row'>
             <div className='col-md-9 col-sm-12'>
-                <SearchBar
+                <CustomSearchBar
                     value={query}
                     onChange={onQueryChange}
                     onRequestSearch={onRequestSearch}
-                    onCancelSearch={() => onQueryChange('')}
-                />
+                    onCancelSearch={() => onQueryChange('')}/>
             </div>
             <div className='col-md-3 col-sm-12 text-right'>
                 <div className='row'>

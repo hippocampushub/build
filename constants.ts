@@ -47,5 +47,6 @@ export default {
         rowContentImageStyle: {
             maxWidth: 400
         }
-    }
+    },
+    MIN_SEARCH_LENGTH: 1
 }
