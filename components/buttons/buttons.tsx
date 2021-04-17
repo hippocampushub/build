@@ -12,8 +12,8 @@ export interface ICustomButtonProps extends ButtonBaseProps {
 
 }
 
-export function CustomButton({children, onClick, style, isCta}: ICustomButtonProps) {
-    return (<span className={`button-primary ${buttonStyle['custom-button']} text-center`}
+export function CustomButton({children, onClick, style, isCta, variant='primary'}: ICustomButtonProps) {
+    return (<span className={`button-${variant} ${buttonStyle['custom-button']} text-center`}
                   style={style}
                   onClick={onClick}>
         <div className='row'>

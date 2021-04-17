@@ -150,8 +150,8 @@ export function FilterBox({
         }
         const filterValues = !!values ? values : item.values ?? [];
         const hasSuggestionFilter = !!suggestionValue[key] && suggestionValue[key].trim().length >= constants.SUGGESTION_MIN_LENGTH;
-        const suggestionsItems = hasSuggestionFilter ? suggestionValue[key].split(';') : [];
-        const filteredItems = hasSuggestionFilter ? (filterValues.filter((item) => suggestionsItems.map((suggest) => item.toLowerCase().includes(suggest)).reduce((a, b) => a || b, false)) ?? []) : filterValues;
+        const suggestionsItems = hasSuggestionFilter ? suggestionValue[key].split('|') : [];
+        const filteredItems = hasSuggestionFilter ? (filterValues.filter((item) => suggestionsItems.map((suggest) => item.toLowerCase().includes(suggest?.toLowerCase())).reduce((a, b) => a || b, false)) ?? []) : filterValues;
         const hasItems = !!filteredItems && filteredItems.length > 0;
         return (<div className='row'>
                 <div className='col-12'>
@@ -260,18 +260,26 @@ export function FilterBox({
             })}
 
             <div className='row' style={{marginTop: 10}}>
-                <div className='col-12 text-center'>
+                <div className='col-6 text-right'>
                     <Tooltip title='Reset Filters'>
-                        <IconButton className={iconButtonClasses.root}
+                        <CustomButton
+                            style={{float: 'right', minWidth: 200, fontSize: 16}}
+                            variant='secondary' className={iconButtonClasses.root}
                                     onClick={() => resetFilters(false)}>
                             <IconClear htmlColor={variant === 'dark' ? '#fff': null}/>
-                        </IconButton>
+                            Clear
+                        </CustomButton>
                     </Tooltip>
+                </div>
+                <div className='col-6 text-left'>
                     <Tooltip title='Apply Filters'>
-                        <IconButton className={iconButtonClasses.root}
-                                    onClick={() => applyFilters()}>
+                        <CustomButton
+                                style={{float: 'left', minWidth: 200, fontSize: 16}}
+                                className={iconButtonClasses.root}
+                                onClick={() => applyFilters()}>
                             <IconCheck htmlColor={variant === 'dark' ? '#fff': null}/>
-                        </IconButton>
+                            Apply
+                        </CustomButton>
                     </Tooltip>
                 </div>
             </div>
