@@ -1,3 +1,5 @@
+@import "variables";
+
 body {
   padding: 0 !important;
   font-size: 20px !important;
@@ -7,14 +9,27 @@ body {
   .button-primary {
     padding: 0 15px;
     border-radius: 5px;
-    border: 2px solid #ffc90c;
+    border: 2px solid $color-yellow-accent;
     color: #fff;
     text-decoration: none;
     text-transform: uppercase;
     &:active {
-      background: #ffc90c;
+      background: $color-yellow-accent;
     }
   }
+
+  .button-secondary {
+    padding: 0 15px;
+    border-radius: 5px;
+    border: 2px solid $color-section-blue;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    &:active {
+      background: $color-section-blue;
+    }
+  }
+
   .ril__inner {
     img.ril__image {
       top: 100px !important;

@@ -299,6 +299,7 @@ const _DataPage = (props) => {
                         <Typography variant="h4" className={pageContentStyle['page-header-label']}>
                             {_getDataTypeLabel(params?.type)}
                         </Typography>
+                        <div className={pageContentStyle['page-header-divider']}/>
                     </div>
                 </div>
                 <div className="row">

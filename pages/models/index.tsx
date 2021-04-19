@@ -201,6 +201,7 @@ const _ModelsPage = (props) => {
                         <Typography variant="h4" className={pageContentStyle['page-header-label']}>
                             {page.title}
                         </Typography>
+                        <div className={pageContentStyle['page-header-divider']}/>
                     </div>
                 </div>
                 <div className="row">
