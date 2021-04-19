@@ -273,6 +273,10 @@ const _DataPage = (props) => {
         }
     }
 
+    const _getDataTypeLabel = (type: string) => {
+        return constants.DATA_TYPE_LABELS[type] ?? type;
+    }
+
     const hasMoreItems = numPage < totalPages - 1;
 
     const hasData = !!dataSets && dataSets.length > 0;
@@ -292,14 +296,14 @@ const _DataPage = (props) => {
             <div className={`container ${pageContentStyle['page-container']}`}>
                 <div className="row">
                     <div className="col-12">
-                        <Typography variant="h4">
-                            {page.title}
+                        <Typography variant="h4" className={pageContentStyle['page-header-label']}>
+                            {_getDataTypeLabel(params?.type)}
                         </Typography>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-12">
-                        {page.content}
+                        {page?.content}
                     </div>
                 </div>
                 <section>

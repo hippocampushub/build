@@ -159,9 +159,9 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                     }
                                     {hasDownloadLink ?
                                         <span className={dataSetCardStyle['dataset-card-action']}>
-                                            <Tooltip title='Send to HH Neuron Builder'>
+                                            <Tooltip title='Add to HH Neuron Builder - Cart'>
                                                 <ExpandButton
-                                                    label={'Send to model building'}
+                                                    label={'Add to HH Neuron Builder - Cart'}
                                                     icon={<IconSend/>}
                                                     expanded={actionsExpanded}
                                                     onClick={() => _selectForModelBuilder()}

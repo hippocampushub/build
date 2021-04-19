@@ -2,4 +2,12 @@
   padding-top: 40px;
   padding-bottom: 40px;
   min-height: calc(100vh - 160px);
+
+  .page-header-label {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: #fff;
+    text-transform: uppercase;
+  }
 }
