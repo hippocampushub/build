@@ -36,6 +36,16 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+const useTextFieldStyles = makeStyles({
+    underline: {
+        color: "#fff",
+        "&:after": {
+            borderBottomColor: "#fff",
+            borderWidth: "1px"
+        }
+    }
+});
+
 const useLabelStyles = makeStyles((theme) => ({
     headerLabel: {
         fontFamily: 'Titillium Web, sans-serif',
@@ -97,6 +107,7 @@ export function FilterBox({
     variant?: string;
 }) {
     const classes = useStyles();
+    const textFieldStyles = useTextFieldStyles();
 
     const iconButtonClasses = useIconStyles();
     const labelStyles = useLabelStyles();
@@ -160,6 +171,9 @@ export function FilterBox({
                         key={`suggestion-${key}`}
                         value={suggestionValue[key]}
                         label={item?.label}
+                        InputProps={{
+                            classes: textFieldStyles
+                        }}
                         InputLabelProps={{
                             style: { color: variant ?? 'dark' ? '#fff' : '#333', textTransform: 'capitalize' },
                         }}
@@ -172,6 +186,7 @@ export function FilterBox({
                         {(filteredItems ?? []).map((value) => (
                             <FormControlLabel
                                 control={<Checkbox key={value}
+                                                   style={{color: variant === 'dark' ? '#fff': '#333'}}
                                                    checked={!!itemValue ? itemValue.includes(value) ?? false : false}
                                                    onChange={(event, checked) => _onChangeMultipleFilter(key, value, checked)}/>}
                                 label={value}/>

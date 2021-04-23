@@ -21,10 +21,15 @@ body {
   .button-secondary {
     padding: 0 15px;
     border-radius: 5px;
-    border: 2px solid $color-section-blue;
-    color: #fff;
+    border: 2px solid $color-white;
+    color: #dddddd;
     text-decoration: none;
     text-transform: uppercase;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background-color: $color-secondary-button;
+    overflow: hidden;
     &:active {
       background: $color-section-blue;
     }
