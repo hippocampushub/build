@@ -119,17 +119,19 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                     <div className='row'>
                         <div className='col-12 text-left'>
                             <div className='row'>
-                                <div className='col-12 text-center'>
-                                    <FormControl>
-                                        <FormControlLabel
-                                            control={<Switch
-                                                defaultChecked={selectedForDownload}
-                                                checked={selectedForDownload}
-                                                onChange={(event, value) =>
-                                                    toggleSelectedForDownload(dataSet['source_id'], value)}/>}
-                                            label={'Select for download'}/>
-                                    </FormControl>
-                                </div>
+                                {hasDownloadLink ?
+                                    <div className='col-12 text-center'>
+                                        <FormControl>
+                                            <FormControlLabel
+                                                control={<Switch
+                                                    defaultChecked={selectedForDownload}
+                                                    checked={selectedForDownload}
+                                                    onChange={(event, value) =>
+                                                        toggleSelectedForDownload(dataSet['source_id'], value)}/>}
+                                                label={'Select for download'}/>
+                                        </FormControl>
+                                    </div> : null
+                                }
                                 <div className='col-12 text-center'>
                                     {hasDownloadLink ?
                                         <span className={dataSetCardStyle['dataset-card-action']}>
@@ -140,7 +142,7 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                                     expanded={actionsExpanded}
                                                     onClick={() => !!props?.askForDownload ? props?.askForDownload({
                                                         url: downloadLink
-                                                    }) : downloadFile(downloadLink) }
+                                                    }) : downloadFile(downloadLink)}
                                                 />
                                             </Tooltip>
                                         </span> : null
