@@ -86,6 +86,12 @@ const _DataPage = (props) => {
         setup();
     }, []);
 
+    useEffect(() => {
+        if (!openMorphologyViewer) {
+            setSelectedMorphologyViewerModel(null);
+        }
+    }, [openMorphologyViewer])
+
     const setup = async () => {
         try {
             //const _page = await getPage('data');
@@ -218,20 +224,20 @@ const _DataPage = (props) => {
         modelName: string;
         modelUrl: string;
     }) => {
-        if (await checkMorphologyForShow(modelUrl)) {
-            setOpenMorphologyViewer(true);
+        if (!await checkMorphologyForShow(modelUrl)) {
+            _openAlertDialog('There was an issue on open morphology viewer!');
+        } else {
             setSelectedMorphologyViewerModel({
                 modelName,
                 modelUrl
             });
-            return;
+            setOpenMorphologyViewer(true);
+
         }
-        _openAlertDialog('There was an issue on open morphology viewer');
     }
 
     const _closeMorphologyViewer = () => {
         setOpenMorphologyViewer(false);
-        setSelectedMorphologyViewerModel(null);
     }
 
     const _openAlertDialog = (message: string) => {

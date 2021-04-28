@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {IFilterSearchParams, ISearchParams} from "../interfaces";
+import constants from "../constants";
 
 const BACKEND_URL = process.env.BACKEND_URL ?? 'http://localhost:5000';
 
@@ -120,8 +121,9 @@ const downloadModels = (ids=[]) => {
     return url;
 }
 
-const checkMorphologyForShow = async (url: string) => {
+const checkMorphologyForShow = async (modelUrl: string) => {
     try {
+        const url = `${constants.MORPHOLOGY_VIEWER_BASE_URL}${modelUrl}`;
         const response = await axios.get(url);
         return !!response && !!response.status && response.status === 200;
     } catch (error) {
