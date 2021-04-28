@@ -225,7 +225,8 @@ const _DataPage = (props) => {
         modelUrl: string;
     }) => {
         if (!await checkMorphologyForShow(modelUrl)) {
-            _openAlertDialog('There was an issue on open morphology viewer!');
+            _openAlertDialog('The current morphology cannot be visualized in this viewer.\n' +
+                'Please visit the source web page of the morphology for further details.');
         } else {
             setSelectedMorphologyViewerModel({
                 modelName,

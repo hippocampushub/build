@@ -88,5 +88,21 @@
     "type": "url",
     "order": 4,
     "url": "https://www.hippocampushub.eu/#contact-us"
+  },
+  {
+    "id": 6,
+    "title": "Other Hubs",
+    "type": "section",
+    "order": 5,
+    "url": "#",
+    "menuitems": [
+      {
+        "id": 17,
+        "title": "CerebellumHub",
+        "type": "url",
+        "url": "http://90.147.109.105:3000/cb_web",
+        "order": 1
+      }
+    ]
   }
 ]
