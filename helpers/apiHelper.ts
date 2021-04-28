@@ -120,6 +120,17 @@ const downloadModels = (ids=[]) => {
     return url;
 }
 
+const checkMorphologyForShow = async (url: string) => {
+    try {
+        const response = await axios.get(url);
+        return !!response && !!response.status && response.status === 200;
+    } catch (error) {
+        console.error('@@@@@error retrieving data types');
+        console.error(error)
+    }
+    return false;
+}
+
 const login = async (username: string, password: string) => {
     const url = `${BACKEND_URL}${endpoints.auth.login}`;
     try {
@@ -173,5 +184,6 @@ export {
     downloadAllModels,
     downloadModels,
     login,
-    verifyToken
+    verifyToken,
+    checkMorphologyForShow
 }

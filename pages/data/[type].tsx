@@ -12,7 +12,14 @@ import {ConnectionCard} from "../../components/cards/connectionCard";
 import {CustomButton} from "../../components/buttons/buttons";
 import {clear, removeModFile, setMorphology} from "../../actions/hodgkinHuxley.actions";
 
-import {getFilters, searchDatasets, downloadAllDatasets, downloadDatasets, getTypes} from "../../helpers/apiHelper";
+import {
+    getFilters,
+    searchDatasets,
+    downloadAllDatasets,
+    downloadDatasets,
+    getTypes,
+    checkMorphologyForShow
+} from "../../helpers/apiHelper";
 import {FormFilter} from "../../components/forms/filter";
 import constants from "../../constants";
 import pageContentStyle from '../page.module.scss';
@@ -23,6 +30,7 @@ import {HodgkinHuxleyBaloon} from "../../components/hodgkin-huxley-baloon";
 import {AgreeDownloadDialog} from "../../components/dialogs/agreeDownloadDialog";
 import {downloadFile} from "../../helpers/downloadHelper";
 import 'react-image-lightbox/style.css';
+import {AlertDialog} from "../../components/dialogs/alertDialog";
 
 const _typeCards = {
     'morphology': MorphologyCard,
@@ -58,6 +66,9 @@ const _DataPage = (props) => {
 
     const [selectedMorphologyViewerModel, setSelectedMorphologyViewerModel] = React.useState(null);
     const acceptDownloadCallback = React.useRef<any>(() => null);
+
+    const [openAlertDialog, setOpenAlertDialog] = React.useState(false);
+    const [alertDialogMessage, setAlertDialogMessage] = React.useState(null);
 
     const [lightboxImg, setLightboxImg] = React.useState<string | null>(null);
 
@@ -203,21 +214,37 @@ const _DataPage = (props) => {
         });
     }
 
-    const _openMorphologyViewer = ({modelName, modelUrl}: {
+    const _openMorphologyViewer = async ({modelName, modelUrl}: {
         modelName: string;
         modelUrl: string;
     }) => {
-        setOpenMorphologyViewer(true);
-        setSelectedMorphologyViewerModel({
-            modelName,
-            modelUrl
-        });
+        if (await checkMorphologyForShow(modelUrl)) {
+            setOpenMorphologyViewer(true);
+            setSelectedMorphologyViewerModel({
+                modelName,
+                modelUrl
+            });
+            return;
+        }
+        _openAlertDialog('There was an issue on open morphology viewer');
     }
 
     const _closeMorphologyViewer = () => {
         setOpenMorphologyViewer(false);
         setSelectedMorphologyViewerModel(null);
     }
+
+    const _openAlertDialog = (message: string) => {
+        setOpenAlertDialog(true);
+        setAlertDialogMessage(message);
+        return;
+    }
+
+    const _closeAlertDialog = () => {
+        setOpenAlertDialog(false);
+        setAlertDialogMessage(null);
+    }
+
 
     const _onCloseLightBox = () => {
         setLightboxImg(null);
@@ -397,6 +424,10 @@ const _DataPage = (props) => {
                     <Spinner/> : null
                 }
             </div>
+            <AlertDialog
+                open={openAlertDialog}
+                onClose={_closeAlertDialog}
+                message={alertDialogMessage}/>
             <MorphologyViewerDialog
                 open={openMorphologyViewer}
                 onClose={_closeMorphologyViewer}
