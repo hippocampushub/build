@@ -7,9 +7,10 @@ export interface IDataSetCardProps extends PropsWithChildren<any> {
     closeImageLightbox: () => void;
     toggleSelectedForDownload: (id: string, value: boolean) => void;
     onClick: () => void;
-    openMorphologyViewer: ({modelName, modelUrl}: {
+    openMorphologyViewer: ({modelName, modelUrl, detailPage}: {
         modelName: string;
         modelUrl: string;
+        detailPage?: string;
     }) => void;
     askForDownload?: ({url: string}) => void;
 }

@@ -220,13 +220,13 @@ const _DataPage = (props) => {
         });
     }
 
-    const _openMorphologyViewer = async ({modelName, modelUrl}: {
+    const _openMorphologyViewer = async ({modelName, modelUrl, detailPage}: {
         modelName: string;
         modelUrl: string;
+        detailPage: string;
     }) => {
         if (!await checkMorphologyForShow(modelUrl)) {
-            _openAlertDialog('The current morphology cannot be visualized in this viewer.\n' +
-                'Please visit the source web page of the morphology for further details.');
+            _openAlertDialog(`The current morphology cannot be visualized in this viewer.<br/>Please visit the source <a href="${detailPage}" target="_blank">web page</a> of the morphology for further details.`);
         } else {
             setSelectedMorphologyViewerModel({
                 modelName,

@@ -25,7 +25,8 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
         if (!!props?.openMorphologyViewer) {
             props?.openMorphologyViewer({
                 modelName: dataSet?.name,
-                modelUrl: dataSet?.download_link
+                modelUrl: dataSet?.download_link,
+                detailPage: dataSet?.page_link
             });
         }
     }

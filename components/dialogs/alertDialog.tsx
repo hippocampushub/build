@@ -1,5 +1,6 @@
 import * as React from "react";
 import {DialogContainer} from "./dialogContainer";
+import {SanitizedHtml} from "../sanitizedHtml";
 
 export function AlertDialog({open, onClose, title='Warning', message}: {
     open: boolean;
@@ -17,7 +18,7 @@ export function AlertDialog({open, onClose, title='Warning', message}: {
         <div style={{paddingBottom: 20}}>
             <div className='row'>
                 <div className='col-12'>
-                    {message}
+                    <SanitizedHtml content={message}/>
                 </div>
             </div>
         </div>
