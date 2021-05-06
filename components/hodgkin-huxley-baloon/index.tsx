@@ -111,7 +111,7 @@ export function HodgkinHuxleyBaloon({
                     <CustomButton onClick={() => _sendToHodgkinHuxley()}
                                   style={{float: 'right', fontSize: 12}}
                                   isCta={true}>
-                        SEND TO HH NEURON BUILDER
+                        GO TO HH NEURON BUILDER
                     </CustomButton>
                     {hasMorphology || hasModFiles ?
                         <CustomButton onClick={() => _clear()}
