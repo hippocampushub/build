@@ -71,7 +71,7 @@
         "title": "WORKFLOWS",
         "type": "url",
         "order": 3,
-        "url": "/#workflows"
+        "url": "/workflows"
       }
     ]
   },

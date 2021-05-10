@@ -6,14 +6,14 @@ import {useEffect, useState} from "react";
 import PageSection from "../components/page/pageSection";
 import {makeStyles} from "@material-ui/core";
 import {CustomButton} from "../components/buttons/buttons";
+import {ContentCard} from "../components/cards/contentCard";
+import * as pageStyle from './page.module.scss';
 
 const useStyles = makeStyles((theme) => ({
     sectionsMenuContainer: {
         position: 'fixed'
     },
-    sectionsMenu: {
-
-    }
+    sectionsMenu: {}
 }));
 
 function Page({params}) {
@@ -31,7 +31,7 @@ function Page({params}) {
             <div className={classes.sectionsMenuContainer}>
                 <div className={classes.sectionsMenu}>
                     {sections?.map((item) => <CustomButton style={{fontSize: 11, marginTop: 10}}
-                            onClick={() => window.location.href = `#${item?.id}`}>
+                                                           onClick={() => window.location.href = `#${item?.id}`}>
                         {item?.header}
                     </CustomButton>)}
                 </div>
@@ -46,6 +46,7 @@ function Page({params}) {
 
     const _showSectionsMenu = page?.enableSectionsMenu && !!page?.sections;
     const _sectionsContainerClasses = _showSectionsMenu ? 'col-9' : 'col-12';
+    const _hasContentCards = (page?.content_cards ?? [])?.length > 0;
 
     useEffect(() => {
         setup();
@@ -54,7 +55,17 @@ function Page({params}) {
             headerCarousel={page.header_carousel ?? null}
             fixedHeader={true}
             transparentHeader={false}
+            variant={page?.variant ?? 'light'}
             mainClassName={'with-fixed-header'}>
+            {_hasContentCards ?
+                <div className={`container ${pageStyle['page-container']}`}>
+                    {(page?.content_cards ?? []).map((contentCard) => (
+                        <div className='row' style={{marginBottom: 40}}>
+                            <ContentCard title={contentCard?.title} content={contentCard?.content} actions={contentCard?.actions}/>
+                        </div>
+                    ))}
+                </div> : null
+            }
             <div className='row'>
                 {_showSectionsMenu ?
                     buildSectionsMenu(page?.sections ?? []) : null
@@ -77,7 +88,11 @@ const getStaticPaths = () => {
     return {
         paths: [{
             params: {
-                slug: 'about'
+                slug: 'about',
+            }
+        }, {
+            params: {
+                slug: 'workflows',
             }
         }],
         fallback: false
