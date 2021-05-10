@@ -7,8 +7,7 @@ import {CustomButton} from "../buttons/buttons";
 const useContentCardStyles = makeStyles((theme) => ({
     root: {
         borderRadius: 5,
-        boxShadow: '0px 0px 15px rgba(0, 0, 0, 0.15)',
-        cursor: 'pointer'
+        boxShadow: '0px 0px 15px rgba(0, 0, 0, 0.15)'
     },
     content: {
         display: 'flex',

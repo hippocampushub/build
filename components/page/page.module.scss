@@ -12,10 +12,11 @@
   .main-page-container {
     padding-left: 0 !important;
     padding-right: 0 !important;
-    min-height: calc(100vh - 310px);
+    min-height: calc(100vh - 250px);
     .main-container {
       &.with-fixed-header {
         margin-top: 60px;
+        min-height: calc(100vh - 310px);
       }
     }
   }
