@@ -7,7 +7,7 @@ import pageContentStyle from "../page.module.scss";
 import {Typography} from "@material-ui/core";
 import Spinner from "../../components/spinner/spinner";
 import {getPage} from "../../helpers/dataHelper";
-import DataTypeCtaButton from "../../components/cta/dataTypeCtaButton";
+import { DataTypeCtaButton } from "../../components/cta/dataTypeCtaButton";
 import constants from "../../constants";
 
 function DataHomePage() {

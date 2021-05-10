@@ -1,6 +1,5 @@
 import * as React from "react";
 import {Card, CardContent, makeStyles, Typography} from "@material-ui/core";
-import {ChevronRight as ArrowRight} from "@material-ui/icons";
 import * as contentCard from './contentCard.module.scss';
 import {SanitizedHtml} from "../sanitizedHtml";
 import {CustomButton} from "../buttons/buttons";
