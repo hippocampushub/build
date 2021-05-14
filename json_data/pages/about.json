@@ -1,6 +1,7 @@
 {
   "id": 1,
   "title": "About",
+  "showTitle": false,
   "enableSectionsMenu": true,
   "sections": [
     {
