@@ -10,14 +10,21 @@
       "content": "Morphologies and NEURON .mod files available on the Hippocampus Hub Build section can be used in a model building workflow, namely the EBRAINS Hodgking Huxley Neuron Builder (HHNB), which allows to optimize a single cell NEURON model against electrophysiological data and run it on a dedicated simulation environment, the EBRAINS BlueNaas (NEURON As A Service). Explore the Morphologies and Models section on this portal or visit the HHNB page.",
       "actions": [{
         "label": "Start from Morphologies",
-        "url": "/data/morphology"
+        "url": "/data/morphoplogies"
       }, {
         "label": "Start from Models",
-        "url": "/models"
+        "url": "/data/models"
       }, {
         "label": "Go To Hodgkin-Huxley Neuron Builder",
         "url": "https://hbp-bsp-hhnb.cineca.it/hh-neuron-builder",
         "target": "_blank"
+      }]
+    },
+    {
+      "title": "The EBRAINS Cellular Level Simulation (CLS) Interactive Workflows and Use Cases",
+      "content": "The EBRAINS Cellular Level Simulation (CLS) Interactive Workflows and Use Cases provides a plethora of\ntools to build, reconstruct, simulate and analyze data-driven brain models.\nClick on the button on the right to visit the CLS-Interactive portal.",
+      "actions": [{
+        "label": "Go to EBRAINS CLS Interactive Workflows and Use Cases"
       }]
     }
   ],
