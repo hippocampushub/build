@@ -49,6 +49,9 @@ function Page({params}) {
     const _sectionsContainerClasses = _showSectionsMenu ? 'col-9' : 'col-12';
     const _hasContentCards = (page?.content_cards ?? [])?.length > 0;
 
+    const _showTitle = page?.showTitle ?? false;
+    const _hasSections = !!page?.sections && page?.sections?.length > 0;
+
     useEffect(() => {
         setup();
     }, []);
@@ -59,14 +62,16 @@ function Page({params}) {
             variant={page?.variant ?? 'light'}
             mainClassName={'with-fixed-header'}>
             <div className={`container ${pageContentStyle['page-container']}`}>
-                <div className="row">
-                    <div className="col-12">
-                        <Typography variant="h4" className={`${pageContentStyle['page-header-label']} text-center`}>
-                            {page.title}
-                        </Typography>
-                        <div className={pageContentStyle['page-header-divider']}/>
-                    </div>
-                </div>
+                {_showTitle ?
+                    <div className="row">
+                        <div className="col-12">
+                            <Typography variant="h4" className={`${pageContentStyle['page-header-label']} text-center`}>
+                                {page.title}
+                            </Typography>
+                            <div className={pageContentStyle['page-header-divider']}/>
+                        </div>
+                    </div> : null
+                }
                 {_hasContentCards ?
                     <div className={`container ${pageStyle['page-container']}`}>
                         {(page?.content_cards ?? []).map((contentCard) => (
@@ -81,7 +86,7 @@ function Page({params}) {
                     {_showSectionsMenu ?
                         buildSectionsMenu(page?.sections ?? []) : null
                     }
-                    {_showSectionsMenu ?
+                    {_hasSections ?
                         <div className={_sectionsContainerClasses}>
                             {(page?.sections ?? []).map((item, index) => buildPageSection(item, index))}
                         </div> : null
