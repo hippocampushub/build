@@ -83,6 +83,13 @@
     "url": "/about"
   },
   {
+    "id": 4,
+    "title": "Contact us",
+    "type": "url",
+    "order": 4,
+    "url": "https://www.hippocampushub.eu/#contact-us"
+  },
+  {
     "id": 6,
     "title": "Other Hubs",
     "type": "section",
