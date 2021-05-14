@@ -2,7 +2,7 @@
   "id": 1,
   "title": "About",
   "showTitle": false,
-  "enableSectionsMenu": true,
+  "enableSectionsMenu": false,
   "sections": [
     {
       "id": "navigation",
