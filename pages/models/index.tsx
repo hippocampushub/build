@@ -198,7 +198,7 @@ const _ModelsPage = (props) => {
             <div className={`container ${pageContentStyle['page-container']}`}>
                 <div className="row">
                     <div className="col-12">
-                        <Typography variant="h4" className={pageContentStyle['page-header-label']}>
+                        <Typography variant="h4" className={`${pageContentStyle['page-header-label']} text-center`}>
                             {page.title}
                         </Typography>
                         <div className={pageContentStyle['page-header-divider']}/>
