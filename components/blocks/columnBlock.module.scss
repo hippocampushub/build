@@ -1,0 +1,39 @@
+@import "variables";
+.column-block-container {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  .column-block-content-container {
+    height: 100%;
+    padding: 20px 40px;
+    &.color-1 {
+      background: $color-section-blue;
+      color: #fff;
+    }
+
+    &.color-2 {
+      background: $color-section-blue4;
+      color: #fff;
+    }
+
+    &.color-3 {
+      background: $color-section-blue4;
+      color: #fff;
+    }
+
+    &.color-3 {
+      background: $color-section-blue4;
+      color: #fff;
+    }
+
+    .column-block-title {
+      font-size: 20px;
+      font-weight: 400;
+      font-family: 'Nunito', 'sans-serif';
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
