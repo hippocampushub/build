@@ -5,15 +5,6 @@
   &.dark {
     background-color: $color-section-blue4;
   }
-  &.button-primary {
-    &:active {
-      outline: none;
-      background-color: $color-yellow-accent;
-      .arrow-container {
-        background: $color-yellow-accent;
-      }
-    }
-  }
   .children-container {
     float: left;
     width: 100%;

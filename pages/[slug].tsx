@@ -4,10 +4,11 @@ import PageContainer from "../components/page/pageContainer";
 import {useEffect, useState} from "react";
 
 import PageSection from "../components/page/pageSection";
-import {makeStyles} from "@material-ui/core";
+import {makeStyles, Typography} from "@material-ui/core";
 import {CustomButton} from "../components/buttons/buttons";
 import {ContentCard} from "../components/cards/contentCard";
 import * as pageStyle from './page.module.scss';
+import pageContentStyle from "./page.module.scss";
 
 const useStyles = makeStyles((theme) => ({
     sectionsMenuContainer: {
@@ -57,24 +58,34 @@ function Page({params}) {
             transparentHeader={false}
             variant={page?.variant ?? 'light'}
             mainClassName={'with-fixed-header'}>
-            {_hasContentCards ?
-                <div className={`container ${pageStyle['page-container']}`}>
-                    {(page?.content_cards ?? []).map((contentCard) => (
-                        <div className='row' style={{marginBottom: 40}}>
-                            <ContentCard title={contentCard?.title} content={contentCard?.content} actions={contentCard?.actions}/>
-                        </div>
-                    ))}
-                </div> : null
-            }
-            <div className='row'>
-                {_showSectionsMenu ?
-                    buildSectionsMenu(page?.sections ?? []) : null
-                }
-                {_showSectionsMenu ?
-                    <div className={_sectionsContainerClasses}>
-                        {(page?.sections ?? []).map((item, index) => buildPageSection(item, index))}
+            <div className={`container ${pageContentStyle['page-container']}`}>
+                <div className="row">
+                    <div className="col-12">
+                        <Typography variant="h4">
+                            {page.title}
+                        </Typography>
+                    </div>
+                </div>
+                {_hasContentCards ?
+                    <div className={`container ${pageStyle['page-container']}`}>
+                        {(page?.content_cards ?? []).map((contentCard) => (
+                            <div className='row' style={{marginBottom: 40}}>
+                                <ContentCard title={contentCard?.title} content={contentCard?.content}
+                                             actions={contentCard?.actions}/>
+                            </div>
+                        ))}
                     </div> : null
                 }
+                <div className='row'>
+                    {_showSectionsMenu ?
+                        buildSectionsMenu(page?.sections ?? []) : null
+                    }
+                    {_showSectionsMenu ?
+                        <div className={_sectionsContainerClasses}>
+                            {(page?.sections ?? []).map((item, index) => buildPageSection(item, index))}
+                        </div> : null
+                    }
+                </div>
             </div>
         </PageContainer>
     );
