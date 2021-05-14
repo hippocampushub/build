@@ -72,14 +72,13 @@
             {
               "image": {
                  "url":"/assets/images/hhnb.png",
-                 "maxWidth":450
+                 "maxWidth": 450
               }
             }
           ],
           "cta": {
             "label": "Go To The HHNB",
-            "url": "https://hbp-bsp-hhnb.cineca.it/hh-neuron-builder",
-            "target": "_blank"
+            "url": "/workflows"
           }
         }
       ]
