@@ -49,7 +49,7 @@ function Page({params}) {
     const _sectionsContainerClasses = _showSectionsMenu ? 'col-9' : 'col-12';
     const _hasContentCards = (page?.content_cards ?? [])?.length > 0;
 
-    const _showTitle = page?.showTitle ?? false;
+    const _showTitle = page?.showTitle ?? true;
     const _hasSections = !!page?.sections && page?.sections?.length > 0;
 
     useEffect(() => {
@@ -66,7 +66,7 @@ function Page({params}) {
                     <div className="row">
                         <div className="col-12">
                             <Typography variant="h4" className={`${pageContentStyle['page-header-label']} text-center`}>
-                                {page.title}
+                                {page?.title}
                             </Typography>
                             <div className={pageContentStyle['page-header-divider']}/>
                         </div>

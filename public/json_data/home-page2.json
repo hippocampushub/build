@@ -18,39 +18,77 @@
       "title": "Data",
       "columns": [
         {
-          "content": "The Data section of the Hippocampus Hub Build portal provides data resources on hippocampal cells Connections, Morphologies and Electrophysiology from internal and external sources.<br><br>Data can be visualized and downloaded; links to data source web pages are provided."
+          "content": "The Data section of the Hippocampus Hub Build portal provides data resources on hippocampal cells Connections, Morphologies and Electrophysiology from internal and external sources.<br><br>Data can be visualized and downloaded; links to data source web pages are provided.",
+          "image": {
+            "url": "/assets/images/traces.gif",
+            "maxWidth": 450
+          },
+          "actions": [{
+            "label": "Morphologies",
+            "url": "/data/morphology"
+          }, {
+            "label": "Connections",
+            "url": "/data/connection"
+          }, {
+            "label": "Electrophysiology",
+            "url": "/data/electrophysiology"
+          }]
         }
-      ],
-      "cta": {
-        "label": "Go To Section",
-        "url": "/data"
-      }
+      ]
     },
     {
       "id": "models",
       "title": "Models",
       "columns": [
         {
-          "content": "The Models section of the Hippocampus Hub Build portal provides direct access to hippocampal cell models from internal and external resources.<br><br>Users can visualize model metadata, download the model related NEURON .mod files or open the model page on the source website.<br><br>Model (i.e., <i>.mod</i>) files can also be selected and sent to the <a href='https://ebrains.eu/service/hodgkin-huxley-neuron-builder' target='_blank'>EBRAINS Hodgkin-Huxley Neuron Builder</a>, where a NEURON model can be optimized against electrophysiological data through the <a href='https://bluepyopt.readthedocs.io/en/latest/' target='_blank'>BluePyOpt</a>."
+          "content": "The Models section of the Hippocampus Hub Build portal provides direct access to hippocampal cell models from internal and external resources.<br><br>Users can visualize model metadata, download the model related NEURON .mod files or open the model page on the source website.<br><br>Model (i.e., <i>.mod</i>) files can also be selected and sent to the <a href='https://ebrains.eu/service/hodgkin-huxley-neuron-builder' target='_blank'>EBRAINS Hodgkin-Huxley Neuron Builder</a>, where a NEURON model can be optimized against electrophysiological data through the <a href='https://bluepyopt.readthedocs.io/en/latest/' target='_blank'>BluePyOpt</a>.",
+          "image": {
+            "url": "/assets/images/morph_activity.gif",
+            "maxWidth": 450
+          },
+          "actions": [{
+            "label": "Go To Section",
+            "url": "/models"
+          }]
         }
-      ],
-      "cta": {
-        "label": "Go To Section",
-        "url": "/models"
-      }
+      ]
     },
     {
       "id": "workflows",
       "title": "Workflows",
       "columns": [
         {
-          "content": "The HippocampusHub Build Models section provides the users with functionalities to go through a model building workflow that allows to optimize e NEURON based model leveraging the resources available on the HippocampusHub and the Hodgkin-Huxley Neuron Builder web application. The portal is continuously being enriched with further workflows on model building and analysis. Please visit the dedicated page by clicking the button on the right."
+          "content": "The HippocampusHub Build Models section provides the users with functionalities to go through a model building workflow that allows to optimize e NEURON based model leveraging the resources available on the HippocampusHub and the Hodgkin-Huxley Neuron Builder web application. The portal is continuously being enriched with further workflows on model building and analysis. Please visit the dedicated page by clicking the button on the right.",
+          "image": {
+            "url":"/assets/images/hhnb.png",
+            "maxWidth": 450
+          },
+          "actions": [{
+            "label": "Go To Section",
+            "url": "/workflows"
+          }]
         }
       ],
       "cta": {
         "label": "Go To Section",
         "url": "/workflows"
       }
+    },
+    {
+      "id": "resources",
+      "title": "Resources",
+      "columns": [
+        {
+          "content": "",
+          "actions": [{
+            "label": "A quick guide to navigating the build models section",
+            "url": "/about/#navigation"
+          }, {
+            "label": "Other Hubs > Cerebellum Hub",
+            "url": "http://90.147.109.105:3000/cb_web"
+          }]
+        }
+      ]
     }
   ]
 }
