@@ -21,6 +21,8 @@
           "content": "The Data section of the Hippocampus Hub Build portal provides data resources on hippocampal cells Connections, Morphologies and Electrophysiology from internal and external sources.<br><br>Data can be visualized and downloaded; links to data source web pages are provided.",
           "image": {
             "url": "/assets/images/traces.gif",
+            "imageCreditsLabel": "Credits",
+            "imageCreditsContent": "Image Credits:<br />Migliore et al. (2018). The physiological variability of channel density in hippocampal CA1 pyramidal cells and interneurons explored using a unified data-driven modeling workflow. PLoS Comput Biol; doi: <a target='_blank' href='https://doi.org/10.1371/journal.pcbi.1006423'>https://doi.org/10.1371/journal.pcbi.1006423</a>",
             "maxWidth": 450
           },
           "actions": [{
@@ -41,9 +43,11 @@
       "title": "Models",
       "columns": [
         {
-          "content": "The Models section of the Hippocampus Hub Build portal provides direct access to hippocampal cell models from internal and external resources.<br><br>Users can visualize model metadata, download the model related NEURON .mod files or open the model page on the source website.<br><br>Model (i.e., <i>.mod</i>) files can also be selected and sent to the <a href='https://ebrains.eu/service/hodgkin-huxley-neuron-builder' target='_blank'>EBRAINS Hodgkin-Huxley Neuron Builder</a>, where a NEURON model can be optimized against electrophysiological data through the <a href='https://bluepyopt.readthedocs.io/en/latest/' target='_blank'>BluePyOpt</a>.",
+          "content": "The Models section of the Hippocampus Hub Build portal provides direct access to hippocampal cell models from internal and external resources.<br><br>Model (i.e., <i>.mod</i>) files can also be selected and sent to the <a href='https://ebrains.eu/service/hodgkin-huxley-neuron-builder' target='_blank'>EBRAINS Hodgkin-Huxley Neuron Builder</a>, where a NEURON model can be optimized against electrophysiological data through the <a href='https://bluepyopt.readthedocs.io/en/latest/' target='_blank'>BluePyOpt</a>.",
           "image": {
             "url": "/assets/images/morph_activity.gif",
+            "imageCreditsLabel": "Credits",
+            "imageCreditsContent": "Culmone V, Migliore M (2012) Progressive effect of beta amyloid peptides accumulation on CA1 pyramidal neurons: a model study suggesting possible treatments. Front Comput Neurosci; doi: <a target='_blank' href='https://dx.doi.org/10.3389%2Ffncom.2012.00052'>https://dx.doi.org/10.3389%2Ffncom.2012.00052</a>",
             "maxWidth": 450
           },
           "actions": [{
@@ -80,6 +84,10 @@
       "columns": [
         {
           "content": "The Hippocampus Hub Build Models section offers a plethora of internal resources and provides useful links to external tools and platforms. Please explore by clicking the buttons below.",
+          "image": {
+            "url":"/assets/images/resources.png",
+            "maxWidth": 450
+          },
           "actions": [{
             "label": "A quick guide",
             "url": "/about/#navigation"
