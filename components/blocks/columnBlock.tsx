@@ -15,13 +15,15 @@ interface IColumnBlockProps {
     index: number;
     columnClass?: string;
     variant?: string;
+    openImageCreditsDialog: (content: string) => void;
 }
 
 export function ColumnBlock({
     block,
     index,
     columnClass = 'col',
-    variant = 'color1'
+    variant = 'color1',
+    openImageCreditsDialog
 }: IColumnBlockProps) {
     const padIndex = index + 1;
     const _goToUrl = (url) => {
@@ -53,27 +55,27 @@ export function ColumnBlock({
                 const columnClassName = _hasImage ? 'col-6' : 'col-12';
                 return (<div>
                     <div className='row' style={{marginTop: 20}}>
-                    <div className={columnClassName}>
-                        {checkIfNotEmpty(col?.content) ?
-                            <div className='row'>
-                                <div className='col-12'>
-                                    <SanitizedHtml content={col?.content ?? ''}
-                                                   className={columnBlockStyle['column-block-content']}/>
-                                </div>
-                            </div> : null
-                        }
-                    </div>
-                    <div className={`${columnClassName} text-center`}>
-                        <div className={columnBlockStyle['column-block-image-container']}>
-                            <img src={getImageUrl(col?.image)} className={columnBlockStyle['column-block-image']}/>
-                            {!!col?.image?.imageCreditsLabel ?
-                                <div
-                                    className={pageSectionStyle['page-section-col-image-credits-label']}>
-                                    <span>{col?.image?.imageCreditsLabel}</span>
+                        <div className={columnClassName}>
+                            {checkIfNotEmpty(col?.content) ?
+                                <div className='row'>
+                                    <div className='col-12'>
+                                        <SanitizedHtml content={col?.content ?? ''}
+                                                       className={columnBlockStyle['column-block-content']}/>
+                                    </div>
                                 </div> : null
                             }
                         </div>
-                    </div>
+                        <div className={`${columnClassName} text-center`}>
+                            <div className={columnBlockStyle['column-block-image-container']}>
+                                <img src={getImageUrl(col?.image)} className={columnBlockStyle['column-block-image']}/>
+                                {!!col?.image?.imageCreditsLabel ?
+                                    <div
+                                        className={columnBlockStyle['column-block-image-credits-label']} onClick={() => openImageCreditsDialog(col?.image?.imageCreditsContent)}>
+                                        <span>{col?.image?.imageCreditsLabel}</span>
+                                    </div> : null
+                                }
+                            </div>
+                        </div>
                     </div>
                     {_hasActions ?
                         <div className='row' style={{marginTop: 10}}>

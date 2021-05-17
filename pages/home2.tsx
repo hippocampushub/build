@@ -13,8 +13,8 @@ const Index2 = () => {
     const [openImageCreditsDialog, setOpenImageCreditsDialog] = React.useState(false);
     const [imageCreditsContent, setImageCreditsContent] = React.useState<any>('');
 
-    const buildColumnBlock = (block, columnClassName, index) => <ColumnBlock
-        block={block} columnClass={columnClassName} variant={`color-${index + 1}`} index={index}/>
+    const buildColumnBlock = (block, columnClassName, index, openImageCreditsDialog) => <ColumnBlock
+        block={block} columnClass={columnClassName} variant={`color-${index + 1}`} index={index} openImageCreditsDialog={openImageCreditsDialog}/>
 
     const setup = async () => {
         const _homePage = await getHomePage2();
@@ -46,7 +46,7 @@ const Index2 = () => {
                     <div className='container'>
                         <div className='row'>
                             {(homePage?.columnBlocks ?? [])
-                                .map((item, index) => buildColumnBlock(item, columnClassName, index))}
+                                .map((item, index) => buildColumnBlock(item, columnClassName, index, _openImageCreditsDialog))}
                         </div>
                     </div>
                 </div>
