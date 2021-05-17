@@ -79,9 +79,9 @@
       "title": "Resources",
       "columns": [
         {
-          "content": "",
+          "content": "The Hippocampus Hub Build Models section offers a plethora of internal resources and provides useful links to external tools and platforms. Please explore by clicking the buttons below.",
           "actions": [{
-            "label": "A quick guide to navigating the build models section",
+            "label": "A quick guide",
             "url": "/about/#navigation"
           }, {
             "label": "Other Hubs > Cerebellum Hub",
