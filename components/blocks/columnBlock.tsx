@@ -53,7 +53,7 @@ export function ColumnBlock({
                 const _hasImage = !!col?.image;
                 const _hasActions = !!col?.actions && (col?.actions ?? []).length > 0
                 const columnClassName = _hasImage ? 'col-6' : 'col-12';
-                return (<div>
+                return (<div style={{display: 'flex', height: 'calc(100% - 75px)', flexFlow: 'column'}}>
                     <div className='row' style={{marginTop: 20}}>
                         <div className={columnClassName}>
                             {checkIfNotEmpty(col?.content) ?
@@ -78,7 +78,7 @@ export function ColumnBlock({
                         </div>
                     </div>
                     {_hasActions ?
-                        <div className='row' style={{marginTop: 10}}>
+                        <div className='row' style={{marginTop: 10, flex: '1 1 auto', alignItems: 'center'}}>
                             {col?.actions?.map((item) => <div className='col-12' style={{marginTop: 10}}>
                                 <CustomButton
                                     isCta={true}
