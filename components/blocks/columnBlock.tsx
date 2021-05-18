@@ -9,6 +9,7 @@ import {getImageUrl} from "../../helpers/imageHelper";
 import constants from "../../constants";
 import pageSectionStyle from "../page/page-section.module.scss";
 import {CustomButton} from "../buttons/buttons";
+import {useRouter} from "next/router";
 
 interface IColumnBlockProps {
     block: any;
@@ -26,12 +27,13 @@ export function ColumnBlock({
     openImageCreditsDialog
 }: IColumnBlockProps) {
     const padIndex = index + 1;
-    const _goToUrl = (url) => {
+    const router = useRouter();
+    const _goToUrl = async (url) => {
         if (!!url && url?.trim()?.length > 0) {
             if (url?.startsWith('http')) {
                 window.open(url);
             } else {
-                window.location.href = url;
+                await router.push(url);
             }
         }
     }
