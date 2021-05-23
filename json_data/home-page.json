@@ -53,7 +53,7 @@
       "titleUrl": "/models",
       "columns": [
         {
-          "content": "The Models section of the Hippocampus Hub Build portal provides direct access to hippocampal cell models from internal and external resources.<br><br>Model (i.e., <i>.mod</i>) files can also be selected and sent to the <a href='https://ebrains.eu/service/hodgkin-huxley-neuron-builder' style='color: ' target='_blank'>EBRAINS Hodgkin-Huxley Neuron Builder</a>, where a NEURON model can be optimized against electrophysiological data through the <a href='https://bluepyopt.readthedocs.io/en/latest/' target='_blank'>BluePyOpt</a>.",
+          "content": "The Models section of the Hippocampus Hub Build portal provides direct access to hippocampal cell models from internal and external resources.<br><br>Model (i.e., <i>.mod</i>) files can also be selected and sent to the <a href='https://ebrains.eu/service/hodgkin-huxley-neuron-builder' target='_blank'>EBRAINS Hodgkin-Huxley Neuron Builder</a>, where a NEURON model can be optimized against electrophysiological data through the <a href='https://bluepyopt.readthedocs.io/en/latest/' target='_blank'>BluePyOpt</a>.",
           "image": {
             "url": "/assets/images/morph_activity.gif",
             "imageCreditsLabel": "Credits",
