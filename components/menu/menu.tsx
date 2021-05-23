@@ -7,6 +7,7 @@ import {useEffect, useState} from "react";
 import {MenuItemType} from "../../data";
 import {getImageUrl} from "../../helpers/imageHelper";
 import {sortedArray} from "../../helpers/arrayHelper";
+import constants from "../../constants";
 
 const getBackgroundColor = () => {
     return window?.pageYOffset > 60 ? '#393745' : 'transparent';
@@ -66,7 +67,7 @@ const MenuItem = ({item, isSubMenuItem = false}) => {
     }
 
     const linkUrl = getPageUrl(item);
-    const isActiveLink = linkUrl === router?.asPath;
+    const isActiveLink = linkUrl === `${constants.BASE_URL}${router?.asPath}`;
     const isDropDown = item.type === MenuItemType.section || (item.menuitems?.length ?? 0) > 0;
     return (<ListItem onMouseEnter={isDropDown ? () => showDropDown() : null}
                       onMouseLeave={isDropDown ? () => hideDropDown() : null}
