@@ -10,6 +10,7 @@ import constants from "../../constants";
 import pageSectionStyle from "../page/page-section.module.scss";
 import {CustomButton} from "../buttons/buttons";
 import {useRouter} from "next/router";
+import {getPageUrl} from "../../helpers/navigationHelper";
 
 interface IColumnBlockProps {
     block: any;
@@ -47,15 +48,17 @@ export function ColumnBlock({
             <div className='row'>
                 <div className='col-12'>
                     <div className={columnBlockStyle['column-block-title']}>
-                        {block?.title}
+                        {!!block?.titleUrl ?
+                            <a href={getPageUrl(block?.titleUrl)}>{block?.title}</a> : block.title
+                        }
                     </div>
                 </div>
             </div>
             {(block.columns ?? [])?.map((col) => {
                 const _hasImage = !!col?.image;
                 const _hasActions = !!col?.actions && (col?.actions ?? []).length > 0
-                const columnClassName = _hasImage ? 'col-6' : 'col-12';
-                return (<div style={{display: 'flex', height: 'calc(100% - 75px)', flexFlow: 'column'}}>
+                const columnClassName = _hasImage ? 'col-md-6' : 'col-sm-12';
+                return (<div style={{display: 'flex', height: '100%', flexFlow: 'column'}}>
                     <div className='row' style={{marginTop: 20}}>
                         <div className={columnClassName}>
                             {checkIfNotEmpty(col?.content) ?
@@ -80,8 +83,8 @@ export function ColumnBlock({
                         </div>
                     </div>
                     {_hasActions ?
-                        <div className='row' style={{marginTop: 10, flex: '1 1 auto', alignItems: 'center'}}>
-                            {col?.actions?.map((item) => <div className='col-12' style={{marginTop: 10}}>
+                        <div className={`row ${columnBlockStyle['column-block-actions-row']}`} style={{marginTop: 10, flex: '1 1 auto', alignItems: 'center'}}>
+                            {col?.actions?.map((item, index) => <div className={(index + 1) % 2 != 0 && col?.actions?.length == index  + 1 ? 'col-12': 'col-6'} style={{marginTop: 10}}>
                                 <CustomButton
                                     isCta={true}
                                     onClick={() => _goToUrl(item?.url)}

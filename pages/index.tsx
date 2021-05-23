@@ -31,7 +31,7 @@ const Index = () => {
         setOpenImageCreditsDialog(null);
     }
 
-    const columnClassName = `col-${Math.max(6, Math.round(12 / (homePage?.columnBlocks?.length ?? 1)))}`;
+    const columnClassName = `col-md-${Math.max(6, Math.round(12 / (homePage?.columnBlocks?.length ?? 1)))} col-sm-12`;
 
     useEffect(() => {
         setup();
