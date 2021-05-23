@@ -38,18 +38,27 @@ header {
       width: auto;
       height: 40px;
       margin-right: 10px;
-      &:hover , &:focus, &:active, &:visited {
-        background: $color-white;
+      &:hover, &:focus {
+        color: $color-white;
+        border-bottom: 2.5px solid $color-yellow-accent;
         .link {
-          color: $color-black;
-          text-decoration: none;
+          color: $color-white;
+          &:hover {
+            color: $color-white;
+          }
         }
       }
-      &.active {
+      &:active, &:visited, &.active {
         background: $color-white;
+        &:hover {
+          border-bottom: 2.5px inset solid $color-yellow-accent;
+        }
         .link {
           color: $color-black;
           text-decoration: none;
+          &:hover {
+            color: $color-black;
+          }
         }
       }
       @media all and (max-width: 768px) {
@@ -77,7 +86,7 @@ header {
       padding: 0;
       background: $color-white;
       left: 50%;
-      transform: translate(-50%, -5px);
+      transform: translate(-50%, 0px);
       border: none;
       @media screen and (max-width: 768px) {
         min-width: auto;

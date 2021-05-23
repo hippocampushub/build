@@ -4,14 +4,30 @@
     "title": "Home",
     "order": 1,
     "type": "url",
-    "url": "https://www.hippocampushub.eu"
+    "url": "https://www.hippocampushub.eu",
+    "menuitems": [
+      {
+        "id": 17,
+        "title": "Explore Models",
+        "type": "url",
+        "order": 1,
+        "url": "https://www.hippocampushub.eu/model"
+      },
+      {
+        "id": 18,
+        "title": "Build Models",
+        "type": "url",
+        "order": 2,
+        "url": "/"
+      }
+    ]
   },
   {
     "id": 2,
-    "title": "Build Models",
-    "type": "url",
+    "title": "Services",
+    "type": "section",
     "order": 2,
-    "url": "/",
+    "url": "/#services",
     "menuitems": [
       {
         "id": 5,
@@ -61,23 +77,32 @@
   },
   {
     "id": 3,
-    "title": "Explore Models",
+    "title": "About",
     "type": "url",
     "order": 3,
-    "url": "https://www.hippocampushub.eu/model"
+    "url": "/about"
   },
   {
     "id": 4,
-    "title": "Resources",
-    "type": "url",
-    "order": 5,
-    "url": "https://www.hippocampushub.eu/#resources"
-  },
-  {
-    "id": 5,
     "title": "Contact us",
     "type": "url",
-    "order": 5,
+    "order": 4,
     "url": "https://www.hippocampushub.eu/#contact-us"
+  },
+  {
+    "id": 6,
+    "title": "Other Hubs",
+    "type": "section",
+    "order": 5,
+    "url": "#",
+    "menuitems": [
+      {
+        "id": 17,
+        "title": "CerebellumHub",
+        "type": "url",
+        "url": "http://90.147.109.105:3000/cb_web",
+        "order": 1
+      }
+    ]
   }
 ]
