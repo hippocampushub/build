@@ -29,7 +29,9 @@ function Page({params}) {
         const hash: string = router?.asPath?.match(/#([a-z0-9]+)/gi )?.toString()
         if (!!hash) {
             console.log('@@@@@@scroll to hash', hash);
-            document.getElementById(hash.substr(1, hash.length - 1))?.scrollIntoView();
+            setTimeout(() => {
+                document.getElementById(hash.substr(1, hash.length - 1))?.scrollIntoView();
+            }, 1000);
         }
     }, []);
 
