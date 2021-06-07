@@ -44,7 +44,7 @@ const ContentCard = ({title, content, actions, variant = 'dark'}: {
         if (!!url && url?.trim()?.length > 0) {
             const target = action?.target ?? null;
             if (!!target && target?.trim()?.length > 0 && target === '_blank') {
-                window.open(url);
+                window.open(url, '_blank');
             } else {
                 router?.push(url);
             }

@@ -9,6 +9,7 @@ import {CustomButton} from "../components/buttons/buttons";
 import {ContentCard} from "../components/cards/contentCard";
 import * as pageStyle from './page.module.scss';
 import pageContentStyle from "./page.module.scss";
+import {useRouter} from "next/router";
 
 const useStyles = makeStyles((theme) => ({
     sectionsMenuContainer: {
@@ -21,6 +22,16 @@ function Page({params}) {
     const [page, setPage] = React.useState<any>({});
 
     const classes = useStyles();
+
+    const router = useRouter();
+
+    useEffect(() => {
+        const hash: string = router?.asPath?.match(/#([a-z0-9]+)/gi )?.toString()
+        if (!!hash) {
+            console.log('@@@@@@scroll to hash', hash);
+            document.getElementById(hash.substr(1, hash.length - 1))?.scrollIntoView();
+        }
+    }, []);
 
     const buildPageSection = (section, index) => <PageSection sectionData={section}
                                                               variant={!!section.variant ? section.variant : (index % 2 === 0 ? 'light' : 'dark')}
