@@ -6,9 +6,11 @@ import constants from "../constants";
 const _storedHHFComm = LocalStorageHelper.get(constants.HHF_COMM);
 const _defaultInitialState = !!_storedHHFComm ? {
     morphology: _storedHHFComm?.morphology ?? null,
+    electrophysiology: _storedHHFComm?.electrophysiology ?? null,
     modFiles: _storedHHFComm?.mod_files ?? []
 } : {
     morphology: null,
+    electrophysiology: null,
     modFiles: []
 };
 
@@ -17,6 +19,9 @@ const _storeHHFComm = (data: any) => {
         const newData: any = {};
         if (!!data?.morphology) {
             newData.morphology = data.morphology;
+        }
+        if (!!data?.electrophysiology) {
+            newData.electrophysiology = data.electrophysiology;
         }
         if (!!data.modFiles) {
             newData.mod_files = data.modFiles ?? [];
@@ -27,14 +32,24 @@ const _storeHHFComm = (data: any) => {
 
 export function hodgkinHuxley(initialState: any = _defaultInitialState, action) {
     switch (action.type) {
-        case hodgkinHuxleyConstants.SET_MORPHOLOGY:
+        case hodgkinHuxleyConstants.SET_MORPHOLOGY: {
             const newState = {
                 ...initialState ?? _defaultInitialState,
                 type: action?.type,
-                morphology: action.morphology
+                morphology: action?.morphology ?? null
             };
             _storeHHFComm(newState);
             return newState;
+        }
+        case hodgkinHuxleyConstants.SET_ELECTROPHYSIOLOGY: {
+            const newState = {
+                ...initialState ?? _defaultInitialState,
+                type: action?.type,
+                electrophysiology: action?.electrophysiology ?? null
+            };
+            _storeHHFComm(newState);
+            return newState;
+        }
         case hodgkinHuxleyConstants.ADD_MOD_FILE:
             const _modFile = action?.modFile ?? null;
             if (!!_modFile) {

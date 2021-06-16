@@ -14,18 +14,22 @@ const useStyles = makeStyles((theme) => ({
 
 export function HodgkinHuxleyBaloon({
     morphology,
+    electrophysiology,
     modFiles,
     removeMorphology,
+    removeElectrophysiology,
     removeModFile,
     clear,
     variant
 }: {
-    morphology: any,
-    modFiles: any[],
-    removeMorphology: () => void,
-    removeModFile: (item: any) => void,
-    clear: () => void,
-    variant?: string
+    morphology: any;
+    electrophysiology: any;
+    modFiles: any[];
+    removeMorphology: () => void;
+    removeElectrophysiology: () => void;
+    removeModFile: (item: any) => void;
+    clear: () => void;
+    variant?: string;
 }) {
         const classes = useStyles();
 
@@ -37,6 +41,12 @@ export function HodgkinHuxleyBaloon({
                 HFFComm.morphology = {
                     name: encodeURIComponent(`${morphology?.name}.${fileExtension}`),
                     url: encodeURIComponent(morphology?.url)
+                }
+            }
+            if (!!electrophysiology) {
+                HFFComm.electrophysiology = {
+                    name: encodeURIComponent(electrophysiology?.name),
+                    url: encodeURIComponent(electrophysiology?.url)
                 }
             }
             if (!!modFiles && modFiles.length > 0) {
@@ -54,7 +64,6 @@ export function HodgkinHuxleyBaloon({
             }
 
             //_clear();
-
         }
 
         const _onRemoveMorphology = () => {
@@ -62,6 +71,12 @@ export function HodgkinHuxleyBaloon({
                 removeMorphology();
             }
         }
+
+    const _onRemoveElectrophysiology = () => {
+        if (!!removeElectrophysiology) {
+            removeElectrophysiology();
+        }
+    }
 
         const _onRemoveModFile = (item: any) => {
             if (!!removeModFile) {
@@ -76,6 +91,7 @@ export function HodgkinHuxleyBaloon({
         }
 
         const hasMorphology = !!morphology;
+        const hasElectrophysiology = !!electrophysiology;
         const hasModFiles = !!modFiles && modFiles?.length > 0;
 
         return (<Card classes={classes}>
@@ -92,6 +108,14 @@ export function HodgkinHuxleyBaloon({
                             <div className='col-12'>
                                 <span className={hodgkinHuxleyBaloonStyle['hodgkin-huxley-baloon-label']}>Morphology:</span>
                                 <TagView label={morphology?.name} item={morphology} onRemoveClicked={_onRemoveMorphology}/>
+                            </div>
+                        </div> : null
+                    }
+                    {hasElectrophysiology ?
+                        <div className='row'>
+                            <div className='col-12'>
+                                <span className={hodgkinHuxleyBaloonStyle['hodgkin-huxley-baloon-label']}>Electrophysiology:</span>
+                                <TagView label={electrophysiology?.name} item={morphology} onRemoveClicked={_onRemoveElectrophysiology}/>
                             </div>
                         </div> : null
                     }

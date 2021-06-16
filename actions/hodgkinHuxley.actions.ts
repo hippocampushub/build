@@ -21,6 +21,13 @@ export function setMorphology(morphology) {
     }
 }
 
+export function setElectrophysiology(electrophysiology) {
+    return {
+        type: hodgkinHuxleyConstants.SET_ELECTROPHYSIOLOGY,
+        electrophysiology
+    }
+}
+
 export function clear() {
     return {
         type: hodgkinHuxleyConstants.CLEAR

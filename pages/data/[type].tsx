@@ -10,7 +10,7 @@ import {MorphologyCard} from "../../components/cards/morphologyCard";
 import {ElectrophysiologyCard} from "../../components/cards/electrophysiologyCard";
 import {ConnectionCard} from "../../components/cards/connectionCard";
 import {CustomButton} from "../../components/buttons/buttons";
-import {clear, removeModFile, setMorphology} from "../../actions/hodgkinHuxley.actions";
+import {clear, removeModFile, setMorphology, setElectrophysiology} from "../../actions/hodgkinHuxley.actions";
 
 import {
     getFilters,
@@ -75,8 +75,10 @@ const _DataPage = (props) => {
     const {
         params,
         selectedMorphologyForBuilding,
+        selectedElectrophysiologyForBuilding,
         selectedModFilesForBuilding,
         setMorphologyForBuilding,
+        setElectrophysiologyForBuilding,
         removeModFileForBuilding,
         clearHodgkinHuxley
     } = props;
@@ -273,11 +275,20 @@ const _DataPage = (props) => {
         }
     }
 
-    const _selectMorphologyForBuilding = (item) => {
-        setMorphologyForBuilding(!!item ? {
-            name: item?.name,
-            url: item?.download_link
-        } : null);
+    const _selectForModelBuilding = (item) => {
+        if (!!item) {
+            if (item?.type === 'morphology') {
+                setMorphologyForBuilding(!!item ? {
+                    name: item?.name,
+                    url: item?.download_link
+                } : null);
+            } else if (item?.type === 'electrophysiology') {
+                setElectrophysiologyForBuilding(!!item ? {
+                    name: item?.name,
+                    url: item?.download_link
+                } : null);
+            }
+        }
     }
 
     const _askForDownload = ({url, callback}: {
@@ -381,8 +392,10 @@ const _DataPage = (props) => {
                             <HodgkinHuxleyBaloon
                                 variant={pageVariant}
                                 morphology={selectedMorphologyForBuilding}
+                                electrophysiology={selectedElectrophysiologyForBuilding}
                                 modFiles={selectedModFilesForBuilding}
                                 removeMorphology={() => setMorphologyForBuilding(null)}
+                                removeElectrophysiology={() => setElectrophysiologyForBuilding(null)}
                                 removeModFile={(item) => removeModFileForBuilding(item)}
                                 clear={() => clearHodgkinHuxley()}
                             />
@@ -403,7 +416,7 @@ const _DataPage = (props) => {
                                                 openMorphologyViewer={_openMorphologyViewer}
                                                 openImageLightbox={(url) => setLightboxImg(url)}
                                                 closImageLightbox={() => setLightboxImg(null)}
-                                                selectForModelBuilder={_selectMorphologyForBuilding}
+                                                selectForModelBuilder={_selectForModelBuilding}
                                                 askForDownload={_askForDownload}/>
                                         </div>
                                     </div>))}
@@ -471,11 +484,13 @@ const getStaticPaths = async () => {
 
 const mapStateToProps = (state, props) => ({
     selectedMorphologyForBuilding: state?.hodgkinHuxley?.morphology ?? null,
+    selectedElectrophysiologyForBuilding: state?.hodgkinHuxley?.electrophysiology ?? null,
     selectedModFilesForBuilding: state?.hodgkinHuxley?.modFiles ?? []
 });
 
 const mapDispatchToProps = (dispatch) => ({
     setMorphologyForBuilding: (item) => dispatch(setMorphology(item)),
+    setElectrophysiologyForBuilding: (item) => dispatch(setElectrophysiology(item)),
     removeModFileForBuilding: (item) => dispatch(removeModFile(item)),
     clearHodgkinHuxley: () => dispatch(clear())
 });

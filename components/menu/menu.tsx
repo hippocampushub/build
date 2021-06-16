@@ -83,16 +83,16 @@ const MenuItem = ({item, isSubMenuItem = false}) => {
 
 
 const Menu = ({
-                  logo,
-                  projectHeader,
-                  institutionHeader,
-                  institutionLogo,
-                  institutionUrl,
-                  menuItems,
-                  isSubMenuItem = false,
-                  fixed = false,
-                  transparent = false
-              }: {
+    logo,
+    projectHeader,
+    institutionHeader,
+    institutionLogo,
+    institutionUrl,
+    menuItems,
+    isSubMenuItem = false,
+    fixed = false,
+    transparent = false
+}: {
     logo?: any;
     projectHeader?: string;
     institutionHeader?: string;

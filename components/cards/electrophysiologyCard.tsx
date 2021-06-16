@@ -3,6 +3,7 @@ import {FormControl, FormControlLabel, IconButton, InputLabel, Switch, Tooltip} 
 import {
     CloudDownload as IconDownload,
     Link as IconLink,
+    Send as IconSend
 } from "@material-ui/icons";
 import {CardContainer} from "./card";
 import {getImageUrlByPath} from "../../helpers/imageHelper";
@@ -27,6 +28,12 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
     const _openImageLightbox = (url: string) => {
         if (!!props?.openImageLightbox) {
             props.openImageLightbox(url);
+        }
+    }
+
+    const _selectForModelBuilder = () => {
+        if (!!props?.selectForModelBuilder) {
+            props?.selectForModelBuilder(dataSet);
         }
     }
 
@@ -113,7 +120,7 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                     <div className='row'>
                         <div className='col-12 text-left'>
                             <div className='row'>
-                                {hasDownloadLink ?
+                                {/*{hasDownloadLink ?
                                     <div className='col-12'>
                                         <FormControl>
                                             <FormControlLabel
@@ -125,9 +132,11 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                                 label={'Select for download'}/>
                                         </FormControl>
                                     </div> : null
-                                }
+                                }*/}
                                 {hasDownloadLink ?
-                                    <div className='col-12 text-center'>
+                                    <div className='col-12'>
+                                        <div className='row'>
+                                            <div className='col-12 text-center'>
                                         <span className={dataSetCardStyle['dataset-card-action']}>
                                             <Tooltip title='Download'>
                                                 <ExpandButton
@@ -138,6 +147,21 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                                 />
                                             </Tooltip>
                                         </span>
+                                            </div>
+                                            <div className='col-12 text-center'>
+
+                                                <span className={dataSetCardStyle['dataset-card-action']}>
+                                            <Tooltip title='Send to model building'>
+                                                <ExpandButton
+                                                    label={'Send to model building'}
+                                                    icon={<IconSend/>}
+                                                    expanded={actionsExpanded}
+                                                    onClick={() => _selectForModelBuilder()}
+                                                />
+                                            </Tooltip>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div> : null
                                 }
                                 {hasPageLink ?
