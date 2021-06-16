@@ -22,7 +22,13 @@ import {ISearchParams} from "../../interfaces";
 import {CloudDownload as IconDownload} from "@material-ui/icons";
 import {hashCode} from "../../helpers/hashHelper";
 import {HodgkinHuxleyBaloon} from "../../components/hodgkin-huxley-baloon";
-import {addModFile, removeModFile, setMorphology, clear} from "../../actions/hodgkinHuxley.actions";
+import {
+    addModFile,
+    removeModFile,
+    setMorphology,
+    clear,
+    setElectrophysiology
+} from "../../actions/hodgkinHuxley.actions";
 
 const _ModelsPage = (props) => {
 
@@ -45,8 +51,10 @@ const _ModelsPage = (props) => {
 
     const {
         selectedMorphologyForBuilding,
+        selectedElectrophysiologyForBuilding,
         selectedModFilesForBuilding,
         setMorphologyForBuilding,
+        setElectrophysiologyForBuilding,
         addModFileForBuilding,
         removeModFileForBuilding,
         clearHodgkinHuxley
@@ -251,7 +259,9 @@ const _ModelsPage = (props) => {
                             <HodgkinHuxleyBaloon
                                 variant={page?.variant ?? null}
                                 morphology={selectedMorphologyForBuilding}
+                                electrophysiology={selectedElectrophysiologyForBuilding}
                                 modFiles={selectedModFilesForBuilding}
+                                removeElectrophysiology={() => setElectrophysiologyForBuilding(null)}
                                 removeMorphology={() => setMorphologyForBuilding(null)}
                                 removeModFile={(item) => removeModFileForBuilding(item)}
                                 clear={() => clearHodgkinHuxley()}
@@ -301,11 +311,13 @@ const _ModelsPage = (props) => {
 
 const mapStateToProps = (state, props) => ({
     selectedMorphologyForBuilding: state?.hodgkinHuxley?.morphology ?? null,
+    selectedElectrophysiologyForBuilding: state?.hodgkinHuxley?.electrophysiology ?? null,
     selectedModFilesForBuilding: state?.hodgkinHuxley?.modFiles ?? []
 });
 
 const mapDispatchToProps = (dispatch) => ({
     setMorphologyForBuilding: (item) => dispatch(setMorphology(item)),
+    setElectrophysiologyForBuilding: (item) => dispatch(setElectrophysiology(item)),
     addModFileForBuilding: (item) => dispatch(addModFile(item)),
     removeModFileForBuilding: (item) => dispatch(removeModFile(item)),
     clearHodgkinHuxley: () => dispatch(clear())
