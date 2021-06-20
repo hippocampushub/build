@@ -24,10 +24,10 @@ import {hashCode} from "../../helpers/hashHelper";
 import {HodgkinHuxleyBaloon} from "../../components/hodgkin-huxley-baloon";
 import {
     addModFile,
+    removeElectrophysiology,
     removeModFile,
     setMorphology,
-    clear,
-    setElectrophysiology
+    clear
 } from "../../actions/hodgkinHuxley.actions";
 
 const _ModelsPage = (props) => {
@@ -51,10 +51,10 @@ const _ModelsPage = (props) => {
 
     const {
         selectedMorphologyForBuilding,
-        selectedElectrophysiologyForBuilding,
+        selectedElectrophysiologiesForBuilding,
         selectedModFilesForBuilding,
         setMorphologyForBuilding,
-        setElectrophysiologyForBuilding,
+        removeElectrophysiology,
         addModFileForBuilding,
         removeModFileForBuilding,
         clearHodgkinHuxley
@@ -88,10 +88,10 @@ const _ModelsPage = (props) => {
     }
 
     const _search = async ({
-                               query,
-                               filters,
-                               hitsPerPage
-                           }: ISearchParams = {}) => {
+        query,
+        filters,
+        hitsPerPage
+    }: ISearchParams = {}) => {
         console.log('@@@@requestSearch');
         const page = 0
         setNumPage(0);
@@ -259,9 +259,9 @@ const _ModelsPage = (props) => {
                             <HodgkinHuxleyBaloon
                                 variant={page?.variant ?? null}
                                 morphology={selectedMorphologyForBuilding}
-                                electrophysiology={selectedElectrophysiologyForBuilding}
+                                electrophysiologies={selectedElectrophysiologiesForBuilding}
                                 modFiles={selectedModFilesForBuilding}
-                                removeElectrophysiology={() => setElectrophysiologyForBuilding(null)}
+                                removeElectrophysiology={(item) => removeElectrophysiology(item)}
                                 removeMorphology={() => setMorphologyForBuilding(null)}
                                 removeModFile={(item) => removeModFileForBuilding(item)}
                                 clear={() => clearHodgkinHuxley()}
@@ -317,7 +317,7 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     setMorphologyForBuilding: (item) => dispatch(setMorphology(item)),
-    setElectrophysiologyForBuilding: (item) => dispatch(setElectrophysiology(item)),
+    removeElectrophysiologyForBuilding: ((item) => dispatch(removeElectrophysiology(item))),
     addModFileForBuilding: (item) => dispatch(addModFile(item)),
     removeModFileForBuilding: (item) => dispatch(removeModFile(item)),
     clearHodgkinHuxley: () => dispatch(clear())

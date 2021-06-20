@@ -1,5 +1,6 @@
 import * as React from "react";
 import {useEffect} from "react";
+import {useRouter} from "next/router";
 import { connect } from 'react-redux';
 import {Typography} from "@material-ui/core";
 import Lightbox from "react-image-lightbox";
@@ -10,7 +11,12 @@ import {MorphologyCard} from "../../components/cards/morphologyCard";
 import {ElectrophysiologyCard} from "../../components/cards/electrophysiologyCard";
 import {ConnectionCard} from "../../components/cards/connectionCard";
 import {CustomButton} from "../../components/buttons/buttons";
-import {clear, removeModFile, setMorphology, setElectrophysiology} from "../../actions/hodgkinHuxley.actions";
+import {
+    clear,
+    setMorphology,
+    removeModFile,
+    removeElectrophysiology, addElectrophysiology
+} from "../../actions/hodgkinHuxley.actions";
 
 import {
     getFilters,
@@ -31,6 +37,8 @@ import {AgreeDownloadDialog} from "../../components/dialogs/agreeDownloadDialog"
 import {downloadFile} from "../../helpers/downloadHelper";
 import 'react-image-lightbox/style.css';
 import {AlertDialog} from "../../components/dialogs/alertDialog";
+import {hashCode} from "../../helpers/hashHelper";
+import {dataTypes} from "../../constants/constants";
 
 const _typeCards = {
     'morphology': MorphologyCard,
@@ -75,14 +83,16 @@ const _DataPage = (props) => {
     const {
         params,
         selectedMorphologyForBuilding,
-        selectedElectrophysiologyForBuilding,
+        selectedElectrophysiologiesForBuilding,
         selectedModFilesForBuilding,
         setMorphologyForBuilding,
-        setElectrophysiologyForBuilding,
+        addElectrophysiologyForBuilding,
+        removeElectrophysiologyForBuilding,
         removeModFileForBuilding,
         clearHodgkinHuxley
     } = props;
 
+    const router = useRouter();
 
     useEffect(() => {
         setup();
@@ -97,20 +107,33 @@ const _DataPage = (props) => {
     const setup = async () => {
         try {
             //const _page = await getPage('data');
+            const url = new URL(window.location.href);
+            const query = url?.searchParams?.get('query');
+
             const _filters = await getFilters({
                 indexName: 'dataset',
                 type: params?.type
             });
-            const {total_page: _totalPages, total: _totalItems, items} = await searchDatasets({
-                data_type: params?.type ?? null,
-                query: selectedQuery,
-                filters: selectedFilters,
-                page: numPage,
-            });
+            if (!!query && query?.trim()?.length > 0) {
+                setSelectedQuery(query);
+                await _search({
+                    data_type: params?.type ?? null,
+                    query,
+                    filters: selectedFilters,
+                    page: numPage,
+                })
+            } else {
+                const {total_page: _totalPages, total: _totalItems, items} = await searchDatasets({
+                    data_type: params?.type ?? null,
+                    query: selectedQuery,
+                    filters: selectedFilters,
+                    page: numPage,
+                });
+                setTotalPages(_totalPages)
+                setTotalItems(_totalItems)
+                setDataSets(items);
+            }
             setFilters(_filters)
-            setTotalPages(_totalPages)
-            setTotalItems(_totalItems)
-            setDataSets(items);
             setLoading(false);
         } catch (error) {
 
@@ -275,18 +298,27 @@ const _DataPage = (props) => {
         }
     }
 
+    const _toggleElectrophysiologyForBuilding = (selectedItem) => {
+        const index = (selectedElectrophysiologiesForBuilding ?? []).findIndex((item) => hashCode(JSON.stringify(selectedItem)) === hashCode(JSON.stringify(item)));
+        if (index === - 1) {
+            addElectrophysiologyForBuilding(selectedItem);
+        } else {
+            removeElectrophysiologyForBuilding(selectedItem);
+        }
+    }
+
     const _selectForModelBuilding = (item) => {
         if (!!item) {
-            if (item?.type === 'morphology') {
+            if (item?.type === dataTypes.morphology) {
                 setMorphologyForBuilding(!!item ? {
                     name: item?.name,
                     url: item?.download_link
                 } : null);
-            } else if (item?.type === 'electrophysiology') {
-                setElectrophysiologyForBuilding(!!item ? {
+            } else if (item?.type === dataTypes.electrophysiology) {
+                _toggleElectrophysiologyForBuilding({
                     name: item?.name,
                     url: item?.download_link
-                } : null);
+                });
             }
         }
     }
@@ -392,10 +424,10 @@ const _DataPage = (props) => {
                             <HodgkinHuxleyBaloon
                                 variant={pageVariant}
                                 morphology={selectedMorphologyForBuilding}
-                                electrophysiology={selectedElectrophysiologyForBuilding}
+                                electrophysiologies={selectedElectrophysiologiesForBuilding}
                                 modFiles={selectedModFilesForBuilding}
                                 removeMorphology={() => setMorphologyForBuilding(null)}
-                                removeElectrophysiology={() => setElectrophysiologyForBuilding(null)}
+                                removeElectrophysiology={(item) => removeElectrophysiologyForBuilding(item)}
                                 removeModFile={(item) => removeModFileForBuilding(item)}
                                 clear={() => clearHodgkinHuxley()}
                             />
@@ -484,13 +516,14 @@ const getStaticPaths = async () => {
 
 const mapStateToProps = (state, props) => ({
     selectedMorphologyForBuilding: state?.hodgkinHuxley?.morphology ?? null,
-    selectedElectrophysiologyForBuilding: state?.hodgkinHuxley?.electrophysiology ?? null,
+    selectedElectrophysiologiesForBuilding: state?.hodgkinHuxley?.electrophysiologies ?? null,
     selectedModFilesForBuilding: state?.hodgkinHuxley?.modFiles ?? []
 });
 
 const mapDispatchToProps = (dispatch) => ({
     setMorphologyForBuilding: (item) => dispatch(setMorphology(item)),
-    setElectrophysiologyForBuilding: (item) => dispatch(setElectrophysiology(item)),
+    addElectrophysiologyForBuilding: (item) => dispatch(addElectrophysiology(item)),
+    removeElectrophysiologyForBuilding: (item) => dispatch(removeElectrophysiology(item)),
     removeModFileForBuilding: (item) => dispatch(removeModFile(item)),
     clearHodgkinHuxley: () => dispatch(clear())
 });

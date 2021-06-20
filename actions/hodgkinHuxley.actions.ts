@@ -14,17 +14,24 @@ export function removeModFile(modFile) {
     }
 }
 
+export function addElectrophysiology(electrophysiology) {
+    return {
+        type: hodgkinHuxleyConstants.ADD_ELECTROPHYSIOLOGY,
+        electrophysiology
+    }
+}
+
+export function removeElectrophysiology(electrophysiology) {
+    return {
+        type: hodgkinHuxleyConstants.REMOVE_ELECTROPHYSIOLOGY,
+        electrophysiology
+    }
+}
+
 export function setMorphology(morphology) {
     return {
         type: hodgkinHuxleyConstants.SET_MORPHOLOGY,
         morphology
-    }
-}
-
-export function setElectrophysiology(electrophysiology) {
-    return {
-        type: hodgkinHuxleyConstants.SET_ELECTROPHYSIOLOGY,
-        electrophysiology
     }
 }
 
