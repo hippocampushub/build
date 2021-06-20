@@ -111,7 +111,7 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                     <div className='col-12 text-left'>
                                     <span
                                         className={dataSetCardStyle['dataset-card-cell-type-label']}>E-Type: </span><span
-                                        className={dataSetCardStyle['dataset-card-cell-type-value']}>{(dataSet?.etype ?? []).join(',')}</span>
+                                        className={dataSetCardStyle['dataset-card-cell-type-value']}>{dataSet?.etype ?? ''}</span>
                                     </div>
                                 </div> : null
                             }
