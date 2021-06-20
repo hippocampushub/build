@@ -97,13 +97,24 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                 </div>
 
                             </div>
-                            <div className='row'>
-                                <div className='col-12 text-left'>
+                            {!!dataSet?.layers && dataSet?.layers?.length > 0 ?
+                                <div className='row'>
+                                    <div className='col-12 text-left'>
                                     <span
                                         className={dataSetCardStyle['dataset-card-secondary-region-label']}>Layers: </span><span
-                                    className={dataSetCardStyle['dataset-card-secondary-region-value']}>{(dataSet?.layers ?? []).join(',')}</span>
-                                </div>
-                            </div>
+                                        className={dataSetCardStyle['dataset-card-secondary-region-value']}>{(dataSet?.layers ?? []).join(',')}</span>
+                                    </div>
+                                </div> : null
+                            }
+                            {!!dataSet?.etype ?
+                                <div className='row'>
+                                    <div className='col-12 text-left'>
+                                    <span
+                                        className={dataSetCardStyle['dataset-card-cell-type-label']}>E-Type: </span><span
+                                        className={dataSetCardStyle['dataset-card-cell-type-value']}>{(dataSet?.etype ?? []).join(',')}</span>
+                                    </div>
+                                </div> : null
+                            }
                             <div className='row'>
                                 <div className='col-12 text-right'>
                                     {hasSource ?

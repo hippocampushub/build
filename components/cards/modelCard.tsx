@@ -123,8 +123,8 @@ function _ModelCard(props: IModelCardProps, ref) {
                             <div className='col-md-12 col-sm-12'>
                                 <div className='row' style={{marginTop: 5}}>
                                     <div className='col-12 text-center'>
-                                        <div className={`${modelCardStyle['model-card-expand-button']} button-primary`} onClick={() => setIsModFilesExpanded(!isModFilesExpanded)}>
-                                            <span className={modelCardStyle['model-card-expand-all-label']}>{isModFilesExpanded ? 'Show less' : 'Show all'}</span>
+                                        <div className={`${modelCardStyle['model-card-expanded-button']} button-primary`} onClick={() => setIsModFilesExpanded(!isModFilesExpanded)}>
+                                            <span className={modelCardStyle['model-card-expanded-all-label']}>{isModFilesExpanded ? 'Show less' : 'Show all'}</span>
                                             {isModFilesExpanded ?
                                                 <IconClose htmlColor={'#fff'}/> : <IconAdd htmlColor={'#fff'}/>
                                             }
