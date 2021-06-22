@@ -13,7 +13,8 @@ import {useRouter} from "next/router";
 
 const useStyles = makeStyles((theme) => ({
     sectionsMenuContainer: {
-        position: 'fixed'
+        position: 'fixed',
+        paddingBottom: 600
     },
     sectionsMenu: {}
 }));
@@ -26,7 +27,7 @@ function Page({params}) {
     const router = useRouter();
 
     useEffect(() => {
-        const hash: string = router?.asPath?.match(/#([a-z0-9]+)/gi )?.toString()
+        const hash: string = router?.asPath?.match(/#([a-z0-9]+)/gi)?.toString()
         if (!!hash) {
             console.log('@@@@@@scroll to hash', hash);
             setTimeout(() => {
@@ -41,13 +42,18 @@ function Page({params}) {
     />
 
     const buildSectionsMenu = (sections = []) => {
-        return (<div className='col-3 d-flex justify-content-center'>
+        return (<div className='col-lg-3 col-md-6 col-sm-6 d-flex justify-content-center'>
             <div className={classes.sectionsMenuContainer}>
                 <div className={classes.sectionsMenu}>
-                    {sections?.map((item) => <CustomButton style={{fontSize: 11, marginTop: 10}}
-                                                           onClick={() => window.location.href = `#${item?.id}`}>
-                        {item?.header}
-                    </CustomButton>)}
+                    <div className='row'>
+                        {sections?.map((item) => <div className='col-lg-12 col-md-6 col-sm-6 text-center'>
+                            <CustomButton
+                                style={{fontSize: 11, margin: '5px auto'}}
+                                onClick={() => window.location.href = `#${item?.id}`}>
+                                {item?.header}
+                            </CustomButton>
+                        </div>)}
+                    </div>
                 </div>
             </div>
         </div>);
@@ -59,7 +65,7 @@ function Page({params}) {
     }
 
     const _showSectionsMenu = page?.enableSectionsMenu && !!page?.sections;
-    const _sectionsContainerClasses = _showSectionsMenu ? 'col-9' : 'col-12';
+    const _sectionsContainerClasses = _showSectionsMenu ? 'col-lg-9  col-md-6 col-sm-6' : 'col-12';
     const _hasContentCards = (page?.content_cards ?? [])?.length > 0;
 
     const _showTitle = page?.showTitle ?? true;
