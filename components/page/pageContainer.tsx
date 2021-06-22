@@ -11,6 +11,7 @@ import {forwardRef, PropsWithChildren, useEffect} from "react";
 import {TosOverlay} from "../tos-overlay/tosOverlay";
 import {tosAgree} from "../../actions/tos.actions";
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import constants from "../../constants";
 
 interface IPageProps extends PropsWithChildren<any> {
     title?: string;
@@ -66,6 +67,13 @@ function _PageContainer(props: IPageProps, ref) {
                 rel="stylesheet"/>
             <link rel="preconnect" href="https://fonts.gstatic.com"/>
             <link rel="stylesheet" href="https://www.hippocampushub.eu/shared_css/main.min.css"/>
+            {props.tosAgreed ?
+                <script async src="https://www.googletagmanager.com/gtag/js?id=G-SGZ83Y6E8H"
+                        type='text/javascript'></script> : null
+            }
+            {props.tosAgreed ?
+                <script async src={`${constants.BASE_URL}/assets/js/analytics.js`} type='text/javascript'></script> : null
+            }
         </Head>
         <div className={`container-fluid ${pageStyle['main-page-container']}`}>
             <Header
@@ -85,7 +93,7 @@ function _PageContainer(props: IPageProps, ref) {
         {!props?.tosAgreed && !loading ?
             <TosOverlay tos={config?.tos ?? null} agreeTos={props.agreeTos}/> : null
         }
-        <Footer footer={config.footer} canLoadAnalytics={props.tosAgreed}/>
+        <Footer footer={config.footer}/>
     </div>);
 }
 

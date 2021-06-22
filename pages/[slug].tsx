@@ -10,19 +10,11 @@ import {ContentCard} from "../components/cards/contentCard";
 import * as pageStyle from './page.module.scss';
 import pageContentStyle from "./page.module.scss";
 import {useRouter} from "next/router";
+import {SectionMenu} from "../components/menu/sectionMenu";
 
-const useStyles = makeStyles((theme) => ({
-    sectionsMenuContainer: {
-        position: 'fixed',
-        paddingBottom: 600
-    },
-    sectionsMenu: {}
-}));
 
 function Page({params}) {
     const [page, setPage] = React.useState<any>({});
-
-    const classes = useStyles();
 
     const router = useRouter();
 
@@ -41,22 +33,10 @@ function Page({params}) {
                                                               asContainer={section?.asContainer ?? false}
     />
 
+
+
     const buildSectionsMenu = (sections = []) => {
-        return (<div className='col-lg-3 col-md-6 col-sm-6 d-flex justify-content-center'>
-            <div className={classes.sectionsMenuContainer}>
-                <div className={classes.sectionsMenu}>
-                    <div className='row'>
-                        {sections?.map((item) => <div className='col-lg-12 col-md-6 col-sm-6 text-center'>
-                            <CustomButton
-                                style={{fontSize: 11, margin: '5px auto'}}
-                                onClick={() => window.location.href = `#${item?.id}`}>
-                                {item?.header}
-                            </CustomButton>
-                        </div>)}
-                    </div>
-                </div>
-            </div>
-        </div>);
+        return <SectionMenu sections={sections}/>
     }
 
     const setup = async () => {

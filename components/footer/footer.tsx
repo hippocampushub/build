@@ -5,7 +5,7 @@ import constants from "../../constants";
 import {SanitizedHtml} from "../sanitizedHtml";
 import menuStyle from "../menu/menu.module.scss";
 
-export default function Footer({footer, canLoadAnalytics}: {
+export default function Footer({footer}: {
     footer: any;
     canLoadAnalytics?: boolean;
 }) {
@@ -37,12 +37,6 @@ export default function Footer({footer, canLoadAnalytics}: {
                     </div>
                 </div>
             </div>
-            {canLoadAnalytics ?
-                <div>
-                    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SGZ83Y6E8H"></script>
-                    <script async src={`${constants.BASE_URL}/assets/js/analytics.js`}></script>
-                </div> : null
-            }
         </footer>
     );
 }
