@@ -47,7 +47,8 @@ export function HodgkinHuxleyBaloon({
         if (!!electrophysiologies) {
             HFFComm.electrophysiologies = electrophysiologies?.map((item) => ({
                 name: encodeURIComponent(item?.name),
-                url: encodeURIComponent(item?.url)
+                url: encodeURIComponent(item?.url),
+                metadata: null
             }));
         }
         if (!!modFiles && modFiles?.length > 0) {
