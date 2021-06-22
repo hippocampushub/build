@@ -6,7 +6,7 @@ module.exports = {
   env: {
     BASE_URL: isProd ? '/build' : '',
     BACKEND_URL: isProd ? 'https://facility-hub.cineca.it' : 'https://facility-hub.cineca.it',
-    HODGKIN_HUXLEY_BASE_URL: 'https://hbp-bsp-hhnb.cineca.it:17895/hh-neuron-builder',
+    HODGKIN_HUXLEY_BASE_URL: 'https://hbp-bsp-hhnb.cineca.it /hh-neuron-builder',
     SUGGESTION_MIN_LENGTH: 1
   },
 }
