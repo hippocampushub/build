@@ -5,13 +5,15 @@ import Head from "next/head";
 import Header from "../header/header";
 import pageStyle from './page.module.scss'
 import {CarouselImage} from "../carousel/carousel";
+import Feedback from "../feedback/index"
 import Footer from "../footer/footer";
 import {getConfig, getHomePage, getMenuItems} from "../../helpers/dataHelper";
 import {forwardRef, PropsWithChildren, useEffect} from "react";
 import {TosOverlay} from "../tos-overlay/tosOverlay";
 import {tosAgree} from "../../actions/tos.actions";
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import constants from "../../constants";
+
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 interface IPageProps extends PropsWithChildren<any> {
     title?: string;
@@ -87,6 +89,7 @@ function _PageContainer(props: IPageProps, ref) {
                 <main
                     className={`${pageStyle['main-container']} ${!!props?.mainClassName ? pageStyle[props?.mainClassName] : ''}`}>
                     {children}
+                    <Feedback/>
                 </main>
             </div>
         </div>
