@@ -162,9 +162,9 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                             <div className='col-12 text-center'>
 
                                                 <span className={dataSetCardStyle['dataset-card-action']}>
-                                            <Tooltip title='Send to model building'>
+                                            <Tooltip title='Add to HH Neuron Builder Cart'>
                                                 <ExpandButton
-                                                    label={'Send to model building'}
+                                                    label={'Add to HH Neuron Builder Cart'}
                                                     icon={<IconSend/>}
                                                     expanded={actionsExpanded}
                                                     onClick={() => _selectForModelBuilder()}
