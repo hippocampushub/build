@@ -14,15 +14,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export function HodgkinHuxleyBaloon({
-                                        morphology,
-                                        electrophysiologies,
-                                        modFiles,
-                                        removeMorphology,
-                                        removeElectrophysiology,
-                                        removeModFile,
-                                        clear,
-                                        variant
-                                    }: {
+    morphology,
+    electrophysiologies,
+    modFiles,
+    removeMorphology,
+    removeElectrophysiology,
+    removeModFile,
+    clear,
+    variant
+}: {
     morphology: any;
     electrophysiologies: any[];
     modFiles: any[];
@@ -48,7 +48,7 @@ export function HodgkinHuxleyBaloon({
             HFFComm.electrophysiologies = electrophysiologies?.map((item) => ({
                 name: encodeURIComponent(item?.name),
                 url: encodeURIComponent(item?.url),
-                metadata: null
+                metadata: encodeURIComponent(item?.metadata?.url ?? null)
             }));
         }
         if (!!modFiles && modFiles?.length > 0) {

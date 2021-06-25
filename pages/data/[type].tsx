@@ -317,7 +317,8 @@ const _DataPage = (props) => {
             } else if (item?.type === dataTypes.electrophysiology) {
                 _toggleElectrophysiologyForBuilding({
                     name: item?.name,
-                    url: item?.download_link
+                    url: item?.download_link,
+                    metadata: item?.metadata ?? null
                 });
             }
         }
