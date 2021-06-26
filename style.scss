@@ -1,5 +1,21 @@
 @import "variables";
 
+@import 'node_modules/antd/lib/style/index.css';
+
+
+@import 'node_modules/antd/lib/button/style/index.css';
+@import 'node_modules/antd/lib/select/style/index.css';
+@import 'node_modules/antd/lib/radio/style/index.css';
+@import 'node_modules/antd/lib/checkbox/style/index.css';
+@import 'node_modules/antd/lib/table/style/index.css';
+@import 'node_modules/antd/lib/grid/style/index.css';
+@import 'node_modules/antd/lib/collapse/style/index.css';
+@import 'node_modules/antd/lib/popover/style/index.css';
+@import 'node_modules/antd/lib/tabs/style/index.css';
+@import 'node_modules/antd/lib/input/style/index.css';
+@import 'node_modules/antd/lib/form/style/index.css';
+@import 'node_modules/antd/lib/pagination/style/index.css';
+
 body {
   padding: 0 !important;
   font-size: 20px !important;
