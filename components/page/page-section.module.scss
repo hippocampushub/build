@@ -18,6 +18,11 @@
     background: $color-background-dark;
     border-top: 2px solid #dddddd33;
     box-shadow: none;
+    .page-section-header {
+      .page-section-header-label {
+        color: #fff;
+      }
+    }
     .page-section-sub-header {
       text-transform: uppercase;
       border-bottom: 1px solid #888;

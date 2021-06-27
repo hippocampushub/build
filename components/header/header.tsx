@@ -9,18 +9,31 @@ interface IHeaderProps {
     fixedHeader?: boolean;
     transparentHeader?: boolean;
     openImageCreditsDialog?: (content: string) => void;
+    showDrawerToggleButton?: boolean;
+    openDrawer?: (open: boolean) => void;
 }
 
-export default function Header({config, menuItems=[], carouselImages, fixedHeader = false, transparentHeader = false, openImageCreditsDialog}: IHeaderProps) {
+export default function Header({config,
+    menuItems=[],
+    carouselImages,
+    fixedHeader = false,
+    transparentHeader = false,
+    openImageCreditsDialog,
+    showDrawerToggleButton,
+    openDrawer
+}: IHeaderProps) {
     const hasCarouselImages = !!carouselImages && carouselImages.length > 0;
     return (
         <div>
-            <Menu projectHeader={config?.projectHeader ?? ''}
-                  institutionHeader={config?.institutionHeader ?? ''}
-                  institutionLogo={config?.institutionLogo ?? ''}
-                  institutionUrl={config?.institutionUrl}
-                  menuItems={menuItems} fixed={fixedHeader}
-                  transparent={transparentHeader}/>
+            <Menu
+                handleOpenDrawer={openDrawer}
+                showDrawerToggleButton={showDrawerToggleButton}
+                projectHeader={config?.projectHeader ?? ''}
+                institutionHeader={config?.institutionHeader ?? ''}
+                institutionLogo={config?.institutionLogo ?? ''}
+                institutionUrl={config?.institutionUrl}
+                menuItems={menuItems} fixed={fixedHeader}
+                transparent={transparentHeader}/>
             {hasCarouselImages ?
                 <ImagesCarousel images={carouselImages} showImageCredits={openImageCreditsDialog}/> : null
             }

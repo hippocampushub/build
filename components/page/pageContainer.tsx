@@ -19,6 +19,8 @@ interface IPageProps extends PropsWithChildren<any> {
     title?: string;
     config?: any;
     menuItems?: any[];
+    showDrawerToggleButton?: boolean;
+    openDrawer?: boolean;
     headerCarousel?: CarouselImage[];
     fixedHeader?: boolean;
     transparentHeader?: boolean;
@@ -30,7 +32,7 @@ interface IPageProps extends PropsWithChildren<any> {
 }
 
 function _PageContainer(props: IPageProps, ref) {
-    const {children, title = 'Hippocampus Facility Hub', headerCarousel} = props;
+    const {children, title = 'Hippocampus Facility Hub', headerCarousel, showDrawerToggleButton, openDrawer} = props;
     const [menuItems, setMenuItems] = React.useState<any[]>([]);
     const [config, setConfig] = React.useState<any>({});
     const [loading, setLoading] = React.useState(true);
@@ -82,6 +84,8 @@ function _PageContainer(props: IPageProps, ref) {
                 config={config.header}
                 carouselImages={headerCarousel}
                 menuItems={menuItems}
+                showDrawerToggleButton={showDrawerToggleButton}
+                openDrawer={openDrawer}
                 fixedHeader={props.fixedHeader ?? false}
                 transparentHeader={props.transparentHeader ?? false}
                 openImageCreditsDialog={props?.openImageCreditsDialog}/>

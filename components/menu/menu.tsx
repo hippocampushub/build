@@ -1,4 +1,5 @@
-import {AppBar, Toolbar, Link, List, ListItem, makeStyles, Typography} from "@material-ui/core";
+import {AppBar, Toolbar, Link, List, ListItem, makeStyles, Typography, IconButton} from "@material-ui/core";
+import {Menu as IconMenu} from '@material-ui/icons';
 import {getPageUrl} from "../../helpers/postHelper";
 import {useRouter} from "next/router";
 
@@ -91,7 +92,9 @@ const Menu = ({
     menuItems,
     isSubMenuItem = false,
     fixed = false,
-    transparent = false
+    transparent = false,
+    showDrawerToggleButton = false,
+    handleOpenDrawer = () => null
 }: {
     logo?: any;
     projectHeader?: string;
@@ -102,6 +105,8 @@ const Menu = ({
     isSubMenuItem?: boolean;
     fixed?: boolean;
     transparent?: boolean;
+    showDrawerToggleButton?: boolean,
+    handleOpenDrawer?: () => void;
 }) => {
     const router = useRouter();
 
@@ -144,6 +149,23 @@ const Menu = ({
             <Toolbar>
                 <nav className={`navbar navbar-dark navbar-expand-lg ${menuStyle['menu-navbar']}`}>
                     <div className='container-fluid'>
+                        {showDrawerToggleButton ?
+                            <IconButton
+                                style={{
+                                    marginRight: 10,
+                                    outline: 'none',
+                                    '&:hover': {
+                                        outline: 'none'
+                                    }
+                                }}
+                                color="inherit"
+                                aria-label="open drawer"
+                                onClick={handleOpenDrawer}
+                                edge="start"
+                            >
+                                <IconMenu />
+                            </IconButton> : null
+                        }
                         {hasInstitutionLogo && hasInstitutionUrl ?
                             <a className={`navbar-brand ${menuStyle['custom-navbar-brand']}`} href={institutionUrl}
                                target='_blank'>

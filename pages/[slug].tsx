@@ -4,8 +4,7 @@ import PageContainer from "../components/page/pageContainer";
 import {useEffect, useState} from "react";
 
 import PageSection from "../components/page/pageSection";
-import {makeStyles, Typography} from "@material-ui/core";
-import {CustomButton} from "../components/buttons/buttons";
+import {makeStyles, Typography, withWidth, isWidthDown} from "@material-ui/core";
 import {ContentCard} from "../components/cards/contentCard";
 import * as pageStyle from './page.module.scss';
 import pageContentStyle from "./page.module.scss";
@@ -13,10 +12,12 @@ import {useRouter} from "next/router";
 import {SectionMenu} from "../components/menu/sectionMenu";
 
 
-function Page({params}) {
+function _Page({params, width}) {
     const [page, setPage] = React.useState<any>({});
 
     const router = useRouter();
+
+    const [drawerOpen, setDrawerOpen] = React.useState<boolean>(false);
 
     useEffect(() => {
         const hash: string = router?.asPath?.match(/#([a-z0-9]+)/gi)?.toString()
@@ -36,7 +37,10 @@ function Page({params}) {
 
 
     const buildSectionsMenu = (sections = []) => {
-        return <SectionMenu sections={sections}/>
+        return <SectionMenu
+                drawerOpen={drawerOpen}
+                toggleDrawer={(open) => setDrawerOpen(open)}
+                sections={sections}/>
     }
 
     const setup = async () => {
@@ -45,7 +49,7 @@ function Page({params}) {
     }
 
     const _showSectionsMenu = page?.enableSectionsMenu && !!page?.sections;
-    const _sectionsContainerClasses = _showSectionsMenu ? 'col-lg-9  col-md-6 col-sm-6' : 'col-12';
+    const _sectionsContainerClasses = _showSectionsMenu ? 'col-lg-9  col-md-12 col-sm-12' : 'col-12';
     const _hasContentCards = (page?.content_cards ?? [])?.length > 0;
 
     const _showTitle = page?.showTitle ?? true;
@@ -58,6 +62,8 @@ function Page({params}) {
             headerCarousel={page.header_carousel ?? null}
             fixedHeader={true}
             transparentHeader={false}
+            showDrawerToggleButton={_showSectionsMenu && isWidthDown('lg', width)}
+            openDrawer={() => setDrawerOpen(true)}
             variant={page?.variant ?? 'light'}
             mainClassName={'with-fixed-header'}>
             <div className={`container ${pageContentStyle['page-container']}`}>
@@ -120,4 +126,4 @@ export {
     getStaticPaths
 };
 
-export default Page;
+export default withWidth()(_Page);
