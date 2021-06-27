@@ -9,6 +9,9 @@
     &.dark {
         color: #fff;
         background-color: $color-section-blue4;
+        .hodgkin-huxley-baloon-header-label {
+            color: #fff;
+        }
     }
     .hodgkin-huxley-baloon-header-label {
         font-family: Montserrat, 'sans-serif';
