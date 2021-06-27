@@ -94,7 +94,7 @@ const Menu = ({
     fixed = false,
     transparent = false,
     showDrawerToggleButton = false,
-    handleOpenDrawer = () => null
+    handleOpenDrawer = (open) => null
 }: {
     logo?: any;
     projectHeader?: string;
@@ -106,7 +106,7 @@ const Menu = ({
     fixed?: boolean;
     transparent?: boolean;
     showDrawerToggleButton?: boolean,
-    handleOpenDrawer?: () => void;
+    handleOpenDrawer?: (open: boolean) => void;
 }) => {
     const router = useRouter();
 
@@ -153,14 +153,11 @@ const Menu = ({
                             <IconButton
                                 style={{
                                     marginRight: 10,
-                                    outline: 'none',
-                                    '&:hover': {
-                                        outline: 'none'
-                                    }
+                                    outline: 'none'
                                 }}
                                 color="inherit"
                                 aria-label="open drawer"
-                                onClick={handleOpenDrawer}
+                                onClick={() => handleOpenDrawer(true)}
                                 edge="start"
                             >
                                 <IconMenu />

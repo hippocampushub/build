@@ -60,10 +60,7 @@ function _SectionMenu({drawerOpen, sections, width, toggleDrawer}: {
                     <div className={classes.toolbar}>
                         <IconButton
                             style={{
-                                outline: 'none',
-                                '&:hover': {
-                                    outline: 'none'
-                                }
+                                outline: 'none'
                             }}
                             onClick={() => toggleDrawer(false)}>
                             <ChevronLeft/>

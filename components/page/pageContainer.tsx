@@ -20,7 +20,7 @@ interface IPageProps extends PropsWithChildren<any> {
     config?: any;
     menuItems?: any[];
     showDrawerToggleButton?: boolean;
-    openDrawer?: boolean;
+    openDrawer?: (open: boolean) => void;
     headerCarousel?: CarouselImage[];
     fixedHeader?: boolean;
     transparentHeader?: boolean;
