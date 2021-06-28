@@ -29,7 +29,7 @@
           "actions": [
             {
               "label": "Go To Section",
-              "url": "/models"
+              "url": "/data"
             },
             {
               "label": "Morphologies",
