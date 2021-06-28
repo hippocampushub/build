@@ -84,7 +84,7 @@ export function ColumnBlock({
                     </div>
                     {_hasActions ?
                         <div className={`row ${columnBlockStyle['column-block-actions-row']}`} style={{marginTop: 10, flex: '1 1 auto', alignItems: 'center'}}>
-                            {col?.actions?.map((item, index) => <div className={(index + 1) % 2 != 0 && col?.actions?.length == index  + 1 ? 'col-12': 'col-6'} style={{marginTop: 10}}>
+                            {col?.actions?.map((item, index) => <div className={(index + 1) % 2 != 0 && col?.actions?.length == index  + 1 ? 'col-12': 'col-lg-6 col-md-6 col-sm-12'} style={{marginTop: 10}}>
                                 <CustomButton
                                     isCta={true}
                                     onClick={() => _goToUrl(item?.url)}

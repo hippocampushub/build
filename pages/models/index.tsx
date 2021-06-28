@@ -54,7 +54,7 @@ const _ModelsPage = (props) => {
         selectedElectrophysiologiesForBuilding,
         selectedModFilesForBuilding,
         setMorphologyForBuilding,
-        removeElectrophysiology,
+        removeElectrophysiologyForBuilding,
         addModFileForBuilding,
         removeModFileForBuilding,
         clearHodgkinHuxley
@@ -257,12 +257,12 @@ const _ModelsPage = (props) => {
                     <div className='row' style={{marginTop: 20}}>
                         <div className='col-12'>
                             <HodgkinHuxleyBaloon
-                                variant={page?.variant ?? null}
+                                variant={pageVariant}
                                 morphology={selectedMorphologyForBuilding}
                                 electrophysiologies={selectedElectrophysiologiesForBuilding}
                                 modFiles={selectedModFilesForBuilding}
-                                removeElectrophysiology={(item) => removeElectrophysiology(item)}
                                 removeMorphology={() => setMorphologyForBuilding(null)}
+                                removeElectrophysiology={(item) => removeElectrophysiologyForBuilding(item)}
                                 removeModFile={(item) => removeModFileForBuilding(item)}
                                 clear={() => clearHodgkinHuxley()}
                             />
@@ -311,13 +311,13 @@ const _ModelsPage = (props) => {
 
 const mapStateToProps = (state, props) => ({
     selectedMorphologyForBuilding: state?.hodgkinHuxley?.morphology ?? null,
-    selectedElectrophysiologyForBuilding: state?.hodgkinHuxley?.electrophysiology ?? null,
+    selectedElectrophysiologiesForBuilding: state?.hodgkinHuxley?.electrophysiologies ?? null,
     selectedModFilesForBuilding: state?.hodgkinHuxley?.modFiles ?? []
 });
 
 const mapDispatchToProps = (dispatch) => ({
     setMorphologyForBuilding: (item) => dispatch(setMorphology(item)),
-    removeElectrophysiologyForBuilding: ((item) => dispatch(removeElectrophysiology(item))),
+    removeElectrophysiologyForBuilding: (item) => dispatch(removeElectrophysiology(item)),
     addModFileForBuilding: (item) => dispatch(addModFile(item)),
     removeModFileForBuilding: (item) => dispatch(removeModFile(item)),
     clearHodgkinHuxley: () => dispatch(clear())

@@ -20,14 +20,17 @@
 }
 
 .custom-carousel-caption {
+  min-width: 500px;
   bottom: 50px !important;
   padding: 10px !important;
   text-align: left !important;
   left: 50% !important;
-  min-width: 500px;
   transform: translate(-50%, -50%);
+  @media screen and (max-width: 1024px) {
+    min-width: 80%;
+  }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1024px) {
     padding: 5px !important;
     text-align: center !important;
   }

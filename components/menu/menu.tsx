@@ -146,7 +146,7 @@ const Menu = ({
 
     return (
         <AppBar position="relative" className={appBarClasses}>
-            <Toolbar>
+            <Toolbar className={menuStyle['custom-menu-toolbar']}>
                 <nav className={`navbar navbar-dark navbar-expand-lg ${menuStyle['menu-navbar']}`}>
                     <div className='container-fluid'>
                         {showDrawerToggleButton ?
