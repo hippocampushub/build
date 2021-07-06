@@ -183,7 +183,7 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                             <Tooltip title={isInternal ? 'View on Site (internal)' : 'View on Site'}>
                                 <ExpandButton
                                     label={isInternal ? 'View on Site (internal)' : 'View on Site'}
-                                    icon={<IconLink/>}
+                                    icon={<IconLink htmlColor={isInternal ? '#0F4C81': '#000'}/>}
                                     expanded={actionsExpanded}
                                     onClick={() => window.open(pageLink)}
                                 />
