@@ -49,6 +49,8 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
 
     const imageUrl = getImageUrlByPath(dataSet?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png');
 
+    const isInternal = hasSource && dataSet?.source?.toLowerCase() === 'internal';
+
     return (<CardContainer key={`dataset-${dataSet?.id}`}>
         <div className={dataSetCardStyle['dataset-card-content']}>
             <div className='row'>
@@ -178,9 +180,9 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                 {hasPageLink ?
                                     <div className='col-12 text-center'>
                                         <span className={dataSetCardStyle['dataset-card-action']}>
-                                            <Tooltip title='View on Site'>
+                                            <Tooltip title={isInternal ? 'View on Site (internal)' : 'View on Site'}>
                                 <ExpandButton
-                                    label={'View on Site'}
+                                    label={isInternal ? 'View on Site (internal)' : 'View on Site'}
                                     icon={<IconLink/>}
                                     expanded={actionsExpanded}
                                     onClick={() => window.open(pageLink)}

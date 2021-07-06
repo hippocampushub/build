@@ -127,8 +127,8 @@ const checkMorphologyForShow = async (modelUrl: string) => {
         const response = await axios.get(url);
         return !!response && !!response.status && response.status === 200;
     } catch (error) {
-        console.error('@@@@@error retrieving data types');
-        console.error(error)
+        //console.error('@@@@@error retrieving data types');
+        //console.error(error)
     }
     return false;
 }

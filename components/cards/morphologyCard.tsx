@@ -10,9 +10,10 @@ import {getImageUrlByPath} from "../../helpers/imageHelper";
 import ExpandButton from "../buttons/expandButton";
 
 import dataSetCardStyle from './datasetCard.module.scss';
-import {forwardRef, PropsWithChildren} from "react";
+import {forwardRef, PropsWithChildren, useEffect} from "react";
 import {IDataSetCardProps} from "../../interfaces/IDatasetCardProps";
 import {downloadFile} from "../../helpers/downloadHelper";
+import {checkMorphologyForShow} from "../../helpers/apiHelper";
 
 
 function _DataSetCard(props: IDataSetCardProps, ref) {
@@ -20,6 +21,12 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
     const {dataSet, selectedForDownload, toggleSelectedForDownload, onClick} = props;
 
     const [actionsExpanded, setActionsExpanded] = React.useState(false);
+
+    const [canOpenMorphologyViewer, setCanOpenMorphologyViewer] = React.useState(false);
+
+    useEffect(() => {
+        _checkIfMorphologyIsVisible();
+    }, []);
 
     const _openMorphologyViewer = () => {
         if (!!props?.openMorphologyViewer) {
@@ -49,6 +56,12 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
         }
     }
 
+    const _checkIfMorphologyIsVisible = async () => {
+        if (!!hasDownloadLink) {
+            setCanOpenMorphologyViewer(await checkMorphologyForShow(downloadLink));
+        }
+    }
+
     const downloadLink = dataSet?.download_link ?? null;
     const hasDownloadLink = !!downloadLink;
 
@@ -59,6 +72,8 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
     const hasImage = !!dataSet?.icon;
 
     const imageUrl = getImageUrlByPath(dataSet?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png');
+
+    const isInternal = hasSource && dataSet?.source?.toLowerCase() === 'internal';
 
     return (<CardContainer key={`dataset-${dataSet?.id}`}>
         <div className={dataSetCardStyle['dataset-card-content']}>
@@ -150,9 +165,9 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                     }
                                     {hasPageLink ?
                                         <span className={dataSetCardStyle['dataset-card-action']}>
-                                            <Tooltip title='View on Site'>
+                                            <Tooltip title={isInternal ? 'View on Site (internal)' : 'View on Site'}>
                                                 <ExpandButton
-                                                    label={'View on Site'}
+                                                    label={isInternal ? 'View on Site (internal)' : 'View on Site'}
                                                     icon={<IconLink/>}
                                                     expanded={actionsExpanded}
                                                     onClick={() => window.open(pageLink)}
@@ -172,7 +187,7 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                             </Tooltip>
                                         </span> : null
                                     }
-                                    {hasDownloadLink ?
+                                    {hasDownloadLink && canOpenMorphologyViewer ?
                                         <span className={dataSetCardStyle['dataset-card-action']}>
                                             <Tooltip title='Open Morphology Viewer'>
                                                 <ExpandButton
