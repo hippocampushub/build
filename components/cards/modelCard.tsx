@@ -37,6 +37,8 @@ function _ModelCard(props: IModelCardProps, ref) {
     const hasSource = !!model?.source && model?.source?.trim().length > 0;
     const hasReadme = !!model?.readme_link && model?.readme_link?.trim().length > 0;
     const hasModFiles = !!model?.model_files && model?.model_files?.length > 0;
+    const isInternal = hasSource && model?.source?.toLowerCase() === 'internal';
+
 
     const _isModFileSelected = (item: any) => {
         if (!!props?.isModFileSelected) {
@@ -192,9 +194,9 @@ function _ModelCard(props: IModelCardProps, ref) {
                                     }
                                     {hasPageLink ?
                                         <span className={modelCardStyle['model-card-action']}>
-                                            <Tooltip title='View on Site'>
+                                            <Tooltip title={isInternal ? 'View on Site (internal)' : 'View on Site'}>
                                 <ExpandButton
-                                    label={'View on Site'}
+                                    label={isInternal ? 'View on Site (internal)' : 'View on Site'}
                                     icon={<IconLink/>}
                                     expanded={actionsExpanded}
                                     onClick={() => window.open(pageLink)}
