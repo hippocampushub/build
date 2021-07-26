@@ -52,6 +52,8 @@ const lightboxStyles = () => ({
     }
 })
 
+const neurmorphoSource = 'neuromorpho';
+
 const _DataPage = (props) => {
     const [loading, setLoading] = React.useState(true);
     const [page, setPage] = React.useState<any>({});
@@ -231,6 +233,7 @@ const _DataPage = (props) => {
 
     const _downloadAll = () => {
         _askForDownload({
+            all: true,
             callback: () => {
                 window.open(downloadAllDatasets(params?.type))
             }
@@ -239,6 +242,7 @@ const _DataPage = (props) => {
 
     const _downloadSelectedDatasets = () => {
         _askForDownload({
+            all: true,
             callback: () => {
                 window.open(downloadDatasets(selectedForDownloads))
             }
@@ -324,16 +328,26 @@ const _DataPage = (props) => {
         }
     }
 
-    const _askForDownload = ({url, callback}: {
+    const _askForDownload = ({url, callback, source, all=false}: {
         url?: string;
         callback?: () => void;
+        source?: string;
+        all?: boolean
     }) => {
-        if (!!url && url.trim().length > 0) {
-            acceptDownloadCallback.current = () => downloadFile(url);
-        } else if (!!callback) {
-            acceptDownloadCallback.current = callback;
+        if ((!!source && source?.toLowerCase() === neurmorphoSource) || all) {
+            if (!!url && url.trim().length > 0) {
+                acceptDownloadCallback.current = () => downloadFile(url);
+            } else if (!!callback) {
+                acceptDownloadCallback.current = callback;
+            }
+            setOpenAgreeDownloadDialog(true);
+        } else {
+            if (!!url && url.trim().length > 0) {
+                downloadFile(url);
+            } else if (!!callback) {
+                callback();
+            }
         }
-        setOpenAgreeDownloadDialog(true);
     }
 
     const _acceptDownloadCallback = () => {
