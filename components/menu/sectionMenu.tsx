@@ -32,8 +32,12 @@ function _SectionMenu({drawerOpen, sections, width, toggleDrawer}: {
 }) {
 
     const classes = useStyles();
-    const container = window !== undefined ? () => window.document.body : undefined;
-    return (isWidthUp('md', width) ?
+    const container: HTMLElement|null = window !== undefined ? () => window.document.body : null;
+    const containerHeight = container?.clientHeight ?? 0;
+    const isHeightUp = (minHeight) => {
+        return containerHeight > minHeight;
+    }
+    return (isWidthUp('md', width) || isHeightUp(790) ?
             <div className='col-lg-3 col-md-3 col-sm-6 d-flex justify-content-center'>
                 <div className={sectionMenuStyle['section-menu-container']}>
                     <div>
