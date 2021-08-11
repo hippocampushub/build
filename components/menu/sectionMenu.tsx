@@ -7,6 +7,7 @@ import {Breakpoint} from "@material-ui/core/styles/createBreakpoints";
 import {Divider, Drawer, IconButton, SwipeableDrawer, Theme} from "@material-ui/core";
 import {makeStyles} from "@material-ui/styles";
 import {ChevronLeft} from "@material-ui/icons";
+import {allowSectionsMenuMinHeight, isHeightUp} from "../../helpers/uiHelper";
 
 const drawerWidth = 300;
 
@@ -32,12 +33,9 @@ function _SectionMenu({drawerOpen, sections, width, toggleDrawer}: {
 }) {
 
     const classes = useStyles();
-    const container: HTMLElement|null = window !== undefined ? () => window.document.body : null;
+    const container: HTMLElement|null = window !== undefined ? window.document.body : null;
     const containerHeight = container?.clientHeight ?? 0;
-    const isHeightUp = (minHeight) => {
-        return containerHeight > minHeight;
-    }
-    return (isWidthUp('md', width) || isHeightUp(790) ?
+    return (isWidthUp('md', width) && isHeightUp(containerHeight, allowSectionsMenuMinHeight) ?
             <div className='col-lg-3 col-md-3 col-sm-6 d-flex justify-content-center'>
                 <div className={sectionMenuStyle['section-menu-container']}>
                     <div>

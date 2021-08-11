@@ -4,12 +4,13 @@ import PageContainer from "../components/page/pageContainer";
 import {useEffect, useState} from "react";
 
 import PageSection from "../components/page/pageSection";
-import {makeStyles, Typography, withWidth, isWidthDown} from "@material-ui/core";
+import {makeStyles, Typography, withWidth, isWidthDown, debounce} from "@material-ui/core";
 import {ContentCard} from "../components/cards/contentCard";
 import * as pageStyle from './page.module.scss';
 import pageContentStyle from "./page.module.scss";
 import {useRouter} from "next/router";
 import {SectionMenu} from "../components/menu/sectionMenu";
+import {allowSectionsMenuMinHeight, isHeightUp} from "../helpers/uiHelper";
 
 
 function _Page({params, width}) {
@@ -17,7 +18,9 @@ function _Page({params, width}) {
 
     const router = useRouter();
 
+    const container: HTMLElement|null = window !== undefined ? window.document.body : null;
     const [drawerOpen, setDrawerOpen] = React.useState<boolean>(false);
+    const [containerHeight, setContainerHeight] = React.useState(container?.clientHeight ?? 0);
 
     useEffect(() => {
         const hash: string = router?.asPath?.match(/#([a-z0-9]+)/gi)?.toString()
@@ -49,11 +52,17 @@ function _Page({params, width}) {
     }
 
     const _showSectionsMenu = page?.enableSectionsMenu && !!page?.sections;
-    const _sectionsContainerClasses = _showSectionsMenu ? 'col-lg-9  col-md-12 col-sm-12' : 'col-12';
+    const _sectionsContainerClasses = _showSectionsMenu &&  (isHeightUp(containerHeight, allowSectionsMenuMinHeight) ? 'col-lg-9  col-md-12 col-sm-12' : 'col-12');
     const _hasContentCards = (page?.content_cards ?? [])?.length > 0;
 
     const _showTitle = page?.showTitle ?? true;
     const _hasSections = !!page?.sections && page?.sections?.length > 0;
+
+    const onSizeChanged = debounce(() => {
+        setContainerHeight(container?.clientHeight ?? 0)
+    }, 500);
+
+    window.addEventListener('resize', onSizeChanged);
 
     useEffect(() => {
         setup();
