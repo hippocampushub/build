@@ -40,7 +40,7 @@ export function HodgkinHuxleyBaloon({
             const fileUrlSplitted = (morphology?.url ?? '').split('.');
             const fileExtension = fileUrlSplitted.length > 1 ? fileUrlSplitted[fileUrlSplitted.length - 1] : '';
             HFFComm.morphology = {
-                name: encodeURIComponent(`${morphology?.name}.${fileExtension}`),
+                name: encodeURIComponent(`${morphology?.name}`),
                 url: encodeURIComponent(morphology?.url)
             }
         }

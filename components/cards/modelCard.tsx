@@ -56,10 +56,12 @@ function _ModelCard(props: IModelCardProps, ref) {
     return (<CardContainer key={`model-${model?.id}`}>
         <div className={`${modelCardStyle['model-card-content']} ${!!props?.variant ? modelCardStyle[props?.variant] : null}`}>
             <div className='row'>
-                {/*<div className='col-md-2 col-sm-12'>
-                    <img src={getImageUrlByPath(model?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png')}
-                         className={modelCardStyle['model-card-image']}/>
-                </div>*/}
+                {
+                    /*<div className='col-md-2 col-sm-12'>
+                        <img src={getImageUrlByPath(model?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png')}
+                             className={modelCardStyle['model-card-image']}/>
+                    </div>*/
+                }
                 <div className={`col-md-10 col-sm-12 ${modelCardStyle['model-card-left-content']}`}>
                     <div className='row'>
                         <div className='col-md-9 col-sm-12'>
