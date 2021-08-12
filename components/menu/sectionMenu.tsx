@@ -32,6 +32,11 @@ function _SectionMenu({drawerOpen, sections, width, toggleDrawer}: {
     toggleDrawer: (open: boolean) => void;
 }) {
 
+    const _goToSection = (item: any) => {
+        window.location.href = `#${item?.id}`;
+        toggleDrawer(false);
+    }
+
     const classes = useStyles();
     const container: HTMLElement|null = window !== undefined ? window.document.body : null;
     const containerHeight = container?.clientHeight ?? 0;
@@ -73,7 +78,7 @@ function _SectionMenu({drawerOpen, sections, width, toggleDrawer}: {
                         {sections?.map((item) => <div className='col-12 text-center'>
                             <CustomButton
                                 style={{fontSize: 11, margin: '5px auto'}}
-                                onClick={() => window.location.href = `#${item?.id}`}>
+                                onClick={() => _goToSection(item)}>
                                 {item?.header}
                             </CustomButton>
                         </div>)}
