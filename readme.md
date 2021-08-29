@@ -23,8 +23,13 @@ The next.config.js file includes a few params for config the web application.
     - The env HODGKIN_HUXLEY_BASE_URL define the url for run Hodgkin-Huxley Neuron Builder
   
 ##STATE MANAGEMENT
-
 For the state management Redux is used. It help for keep the state of the app and have a unique source of truth for manage a few behaviours of the webapp.
+
+##ARCHITECTURE
+The architecture reflect the follow diagram.
+The website only call the Flask Backend API for retrieve data and send data to external services like HHNB.
+
+![architecture](architecture.jpg)
 
 ##PROJECT STRUCTURE
 The projects follow a simple structure based on React and Redux components separation.
