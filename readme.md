@@ -44,3 +44,20 @@ The projects follow a simple structure based on React and Redux components separ
 
 ###PUBLIC FOLDER
 The public folder is very important in the project because it contains json configuration files that define the main navigation and pages structure.
+The json_data folder inside it contains all configuration files and `static data` for show inside page.
+
+####CONFIG FILE
+The config.json file contains global configuration used on all the website.
+It contains options for populate the header and footer sections and for TOS (terms of service) overlay.
+
+####HOME PAGE FILE
+The home-page.json file contains configuration for home page contents.
+It contains a `headerCarousel`property that define the full width image to show on header.
+It also contains a `columnBlocks` property that define the content of the blocks showed on the home page.
+
+####MENU ITEMS FILE
+the menu-items.json file contains the configuration for the navigation menu.
+It allows to define menu item content and link.
+The link can be a path or a URL.
+It also allows to define sub menu items using nested menuitems attribute on menu item.
+

@@ -37,7 +37,7 @@ const Index = () => {
         setup();
     }, []);
     return (<PageContainer
-            headerCarousel={homePage.header_carousel}
+            headerCarousel={homePage.headerCarousel}
             fixedHeader={true}
             transparentHeader={true}
             openImageCreditsDialog={_openImageCreditsDialog}>
