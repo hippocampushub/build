@@ -1,1 +1,0 @@
-{"ast":null,"code":"export const dataTypes = {\n  morphology: 'morphology',\n  electrophysiology: 'electrophysiology',\n  modFile: 'modFile'\n};","map":null,"metadata":{},"sourceType":"module"}

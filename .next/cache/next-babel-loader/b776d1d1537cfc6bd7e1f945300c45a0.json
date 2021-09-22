@@ -1,1 +1,0 @@
-{"ast":null,"code":"const downloadFile = url => {\n  const link = document.createElement('a');\n  link.href = url;\n  link.target = '_blank';\n  link.download = '';\n  link.click();\n  link.remove();\n};\n\nexport { downloadFile };","map":null,"metadata":{},"sourceType":"module"}

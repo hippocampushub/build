@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { makeStyles } from \"@material-ui/core\";\nconst useIconButtonStyles = makeStyles(theme => ({\n  root: {\n    outline: 'none',\n    '&:hover, &:focus': {\n      outline: 'none'\n    }\n  }\n}));\nexport { useIconButtonStyles };","map":null,"metadata":{},"sourceType":"module"}

@@ -1,1 +1,0 @@
-{"ast":null,"code":"const allowSectionsMenuMinHeight = 790;\n\nconst isHeightUp = (elHeight, minHeight) => {\n  return elHeight > minHeight;\n};\n\nexport { allowSectionsMenuMinHeight, isHeightUp };","map":null,"metadata":{},"sourceType":"module"}

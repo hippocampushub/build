@@ -1,1 +1,0 @@
-{"ast":null,"code":"const sortedArray = (items, field) => {\n  return items.sort((item1, item2) => {\n    return item1[field] === item2[field] ? 0 : item1[field] > item2[field] ? 1 : -1;\n  });\n};\n\nexport { sortedArray };","map":null,"metadata":{},"sourceType":"module"}

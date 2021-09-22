@@ -1,1 +1,0 @@
-{"ast":null,"code":"var tosConstants = {\n  AGREE_TOS: 'AGREE_TOS'\n};\nexport default tosConstants;","map":null,"metadata":{},"sourceType":"module"}

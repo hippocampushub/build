@@ -1,1 +1,0 @@
-{"ast":null,"code":"import Cookies from 'js-cookie';\n\nconst getCookie = key => {\n  var _Cookies$get;\n\n  return (_Cookies$get = Cookies.get(key)) !== null && _Cookies$get !== void 0 ? _Cookies$get : null;\n};\n\nexport { getCookie };","map":null,"metadata":{},"sourceType":"module"}

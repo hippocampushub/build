@@ -1,1 +1,0 @@
-{"ast":null,"code":"var allowSectionsMenuMinHeight = 790;\n\nvar isHeightUp = function isHeightUp(elHeight, minHeight) {\n  return elHeight > minHeight;\n};\n\nexport { allowSectionsMenuMinHeight, isHeightUp };","map":null,"metadata":{},"sourceType":"module"}

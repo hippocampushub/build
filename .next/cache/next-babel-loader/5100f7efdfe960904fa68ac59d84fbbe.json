@@ -1,1 +1,0 @@
-{"ast":null,"code":"var hashCode = function hashCode(value) {\n  var hash = 0;\n\n  for (var i = 0; i < value.length; i++) {\n    var character = value.charCodeAt(i);\n    hash = (hash << 5) - hash + character;\n    hash = hash & hash;\n  }\n\n  return hash;\n};\n\nexport { hashCode };","map":null,"metadata":{},"sourceType":"module"}
