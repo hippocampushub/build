@@ -23,7 +23,7 @@ export default function Footer({footer}: {
                         </Typography>
                     </div>
                 </div>
-                {footer?.rows?.map((row) => <div className={'row'} style={{marginTop: 20}}>
+                {footer?.rows?.map((row) => <div className={'row'} style={{marginTop: 20, paddingTop: 10}}>
                     {row?.columns.map((column) =>
                         <SanitizedHtml content={column?.content ?? ''}
                                        className={`col ${footerStyle['footer-column']}`}/>
