@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { combineReducers } from \"redux\";\nimport { hodgkinHuxley } from \"./hodgkinHuxley\";\nimport { auth } from \"./auth\";\nimport { tos } from \"./tos\";\nvar rootReducer = combineReducers({\n  hodgkinHuxley: hodgkinHuxley,\n  tos: tos,\n  auth: auth\n});\nexport { rootReducer };","map":null,"metadata":{},"sourceType":"module"}

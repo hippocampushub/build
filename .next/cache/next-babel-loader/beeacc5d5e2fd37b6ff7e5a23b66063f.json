@@ -1,0 +1,1 @@
+{"ast":null,"code":"export var dataTypes = {\n  morphology: 'morphology',\n  electrophysiology: 'electrophysiology',\n  modFile: 'modFile'\n};","map":null,"metadata":{},"sourceType":"module"}

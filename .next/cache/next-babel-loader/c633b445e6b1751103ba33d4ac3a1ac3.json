@@ -1,0 +1,1 @@
+{"ast":null,"code":"export var MenuItemType = {\n  section: 'section',\n  url: 'url'\n};","map":null,"metadata":{},"sourceType":"module"}

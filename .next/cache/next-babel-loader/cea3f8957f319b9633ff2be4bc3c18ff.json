@@ -1,0 +1,1 @@
+{"ast":null,"code":"import tosConstants from '../constants/tos.constants';\n\nfunction tosAgree() {\n  return {\n    type: tosConstants.AGREE_TOS\n  };\n}\n\nexport { tosAgree };","map":null,"metadata":{},"sourceType":"module"}

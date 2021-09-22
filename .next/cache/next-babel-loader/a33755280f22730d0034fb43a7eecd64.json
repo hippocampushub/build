@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { getCookie } from \"./cookieHelper\";\nimport constants from \"../constants\";\n\nconst getAuthToken = () => {\n  return getCookie(constants.AUTH_COOKIE_KEY);\n};\n\nexport { getAuthToken };","map":null,"metadata":{},"sourceType":"module"}

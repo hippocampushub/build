@@ -1,0 +1,1 @@
+{"ast":null,"code":"var hodgkinHuxleyConstants = {\n  SET_MORPHOLOGY: 'SET_MORPHOLOGY',\n  ADD_MOD_FILE: 'ADD_MOD_FILE',\n  REMOVE_MOD_FILE: 'REMOVE_MOD_FILE',\n  ADD_ELECTROPHYSIOLOGY: 'ADD_ELECTROPHYSIOLOGY',\n  REMOVE_ELECTROPHYSIOLOGY: 'REMOVE_ELECTROPHYSIOLOGY',\n  CLEAR: 'CLEAR'\n};\nexport default hodgkinHuxleyConstants;","map":null,"metadata":{},"sourceType":"module"}

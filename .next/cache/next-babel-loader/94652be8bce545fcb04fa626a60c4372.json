@@ -1,0 +1,1 @@
+{"ast":null,"code":"const checkIfEmailValid = value => true;\n\nconst checkIfNotEmpty = value => !!value && value.trim().length > 0;\n\nconst checkIfArrayNotEmpty = value => !!value && value instanceof Array && value.length > 0;\n\nexport { checkIfEmailValid, checkIfNotEmpty, checkIfArrayNotEmpty };","map":null,"metadata":{},"sourceType":"module"}

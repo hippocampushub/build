@@ -1,0 +1,1 @@
+{"ast":null,"code":"var __jsx = React.createElement;\nimport * as React from 'react';\nimport baloonStyle from './baloon.module.scss';\nexport default function Baloon(_ref) {\n  var children = _ref.children;\n  return __jsx(\"div\", {\n    className: baloonStyle['baloon-container']\n  }, children);\n}","map":null,"metadata":{},"sourceType":"module"}
