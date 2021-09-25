@@ -9,6 +9,16 @@ A few steps are needed for start the projects in development mode:
 1. Run `npm install`
 2. Run `npm run start` : after this command a development web server is runned on `http://localhost:3000`
 
+
+##BUILD
+For building the project a few steps are required based on where you want to deploy the project.
+If you want to deploy on github:
+1. Run `npm run publish` from the root folder of the project, it will automatically run `next build` and then commit and push the content inside the gh-pages of your branch.
+
+If you want to deploy on a classic web server:
+1. Run `npm run build`, it will automatically run next build and next export. The output will be stored in the build folder under the root of the project.
+2. Upload the content of the build directory on you web server. 
+
 ##NEXT CONFIG
 
 The next.config.js file includes a few params for config the web application.
