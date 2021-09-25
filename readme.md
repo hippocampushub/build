@@ -56,8 +56,32 @@ It contains a `headerCarousel`property that define the full width image to show 
 It also contains a `columnBlocks` property that define the content of the blocks showed on the home page.
 
 ####MENU ITEMS FILE
-the menu-items.json file contains the configuration for the navigation menu.
+The menu-items.json file contains the configuration for the navigation menu.
 It allows to define menu item content and link.
 The link can be a path or a URL.
 It also allows to define sub menu items using nested menuitems attribute on menu item.
+
+###PAGES FILE
+The pages json files contains the configuration for show static content on website pages.
+The content is retrieved using the getPage helper method defined in helpers/dataHelper.ts file.
+The standard content json contains an object with this format:
+`{
+  "id": number,
+  "title": string,
+  "description": string,
+  "content": string, //main content on section
+  "variant": "dark"|"light",
+  "slug": string,
+  "sections": [
+    "id": string,
+    "header": string,
+    "variant": "dark"|"light",
+    "rows": [{
+       "header": string,
+       "columns": [{
+            "content": string
+       }]
+    }]
+  }]
+}`
 
