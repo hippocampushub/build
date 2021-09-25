@@ -10,7 +10,7 @@ A few steps are needed for start the projects in development mode:
 2. Run `npm run start` : after this command a development web server is runned on `http://localhost:3000`
 
 
-##BUILD
+##BUILD AND DEPLOY
 For building the project a few steps are required based on where you want to deploy the project.
 If you want to deploy on github:
 1. Run `npm run publish` from the root folder of the project, it will automatically run `next build` and then commit and push the content inside the gh-pages of your branch.
