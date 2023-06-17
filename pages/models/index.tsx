@@ -22,7 +22,13 @@ import {ISearchParams} from "../../interfaces";
 import {CloudDownload as IconDownload} from "@material-ui/icons";
 import {hashCode} from "../../helpers/hashHelper";
 import {HodgkinHuxleyBaloon} from "../../components/hodgkin-huxley-baloon";
-import {addModFile, removeModFile, setMorphology, clear} from "../../actions/hodgkinHuxley.actions";
+import {
+    addModFile,
+    removeElectrophysiology,
+    removeModFile,
+    setMorphology,
+    clear
+} from "../../actions/hodgkinHuxley.actions";
 
 const _ModelsPage = (props) => {
 
@@ -45,8 +51,10 @@ const _ModelsPage = (props) => {
 
     const {
         selectedMorphologyForBuilding,
+        selectedElectrophysiologiesForBuilding,
         selectedModFilesForBuilding,
         setMorphologyForBuilding,
+        removeElectrophysiologyForBuilding,
         addModFileForBuilding,
         removeModFileForBuilding,
         clearHodgkinHuxley
@@ -80,10 +88,10 @@ const _ModelsPage = (props) => {
     }
 
     const _search = async ({
-                               query,
-                               filters,
-                               hitsPerPage
-                           }: ISearchParams = {}) => {
+        query,
+        filters,
+        hitsPerPage
+    }: ISearchParams = {}) => {
         console.log('@@@@requestSearch');
         const page = 0
         setNumPage(0);
@@ -122,6 +130,15 @@ const _ModelsPage = (props) => {
         await _search({
             hitsPerPage: value
         });
+    }
+
+    const _onChangeQuery = async (query: string) => {
+        setSelectedQuery(query);
+        if (query?.trim()?.length < constants.MIN_SEARCH_LENGTH) {
+            await _search({
+                query
+            });
+        }
     }
 
     const _applyFilters = async () => {
@@ -189,9 +206,10 @@ const _ModelsPage = (props) => {
             <div className={`container ${pageContentStyle['page-container']}`}>
                 <div className="row">
                     <div className="col-12">
-                        <Typography variant="h4">
+                        <Typography variant="h4" className={`${pageContentStyle['page-header-label']} text-center`}>
                             {page.title}
                         </Typography>
+                        <div className={pageContentStyle['page-header-divider']}/>
                     </div>
                 </div>
                 <div className="row">
@@ -208,7 +226,7 @@ const _ModelsPage = (props) => {
                                 filters={filters}
                                 selectedFilters={selectedFilters}
                                 selectedHitsPerPage={hitsPerPage}
-                                onQueryChange={(value) => setSelectedQuery(value)}
+                                onQueryChange={(value) => _onChangeQuery(value)}
                                 onRequestSearch={() => _search()}
                                 onChangeHitsPerPage={(value) => _onHitsPerPageChange(value)}
                                 onChangeFilters={(key: string, value: any) => setSelectedFilters({
@@ -226,9 +244,9 @@ const _ModelsPage = (props) => {
                                 count={totalItems}/>
                         </div>
                         <div className={`${downloadBlockClassName} text-right`}>
-                            <CustomButton onClick={() => _downloadAll()} style={{float: 'right'}}>
+                            {/*<CustomButton onClick={() => _downloadAll()} style={{float: 'right'}}>
                                 <IconDownload/> <span style={{marginLeft: 5}}>Download All</span>
-                            </CustomButton>
+                            </CustomButton>*/}
                             {!!selectedForDownloads && selectedForDownloads.length > 0 ?
                                 <CustomButton onClick={() => _downloadSelectedDatasets()} style={{marginLeft: 10}}>
                                     <IconDownload/> <span style={{marginLeft: 5}}>Download Selected</span>
@@ -239,10 +257,12 @@ const _ModelsPage = (props) => {
                     <div className='row' style={{marginTop: 20}}>
                         <div className='col-12'>
                             <HodgkinHuxleyBaloon
-                                variant={page?.variant ?? null}
+                                variant={pageVariant}
                                 morphology={selectedMorphologyForBuilding}
+                                electrophysiologies={selectedElectrophysiologiesForBuilding}
                                 modFiles={selectedModFilesForBuilding}
                                 removeMorphology={() => setMorphologyForBuilding(null)}
+                                removeElectrophysiology={(item) => removeElectrophysiologyForBuilding(item)}
                                 removeModFile={(item) => removeModFileForBuilding(item)}
                                 clear={() => clearHodgkinHuxley()}
                             />
@@ -291,11 +311,13 @@ const _ModelsPage = (props) => {
 
 const mapStateToProps = (state, props) => ({
     selectedMorphologyForBuilding: state?.hodgkinHuxley?.morphology ?? null,
+    selectedElectrophysiologiesForBuilding: state?.hodgkinHuxley?.electrophysiologies ?? null,
     selectedModFilesForBuilding: state?.hodgkinHuxley?.modFiles ?? []
 });
 
 const mapDispatchToProps = (dispatch) => ({
     setMorphologyForBuilding: (item) => dispatch(setMorphology(item)),
+    removeElectrophysiologyForBuilding: (item) => dispatch(removeElectrophysiology(item)),
     addModFileForBuilding: (item) => dispatch(addModFile(item)),
     removeModFileForBuilding: (item) => dispatch(removeModFile(item)),
     clearHodgkinHuxley: () => dispatch(clear())

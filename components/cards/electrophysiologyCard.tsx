@@ -3,15 +3,14 @@ import {FormControl, FormControlLabel, IconButton, InputLabel, Switch, Tooltip} 
 import {
     CloudDownload as IconDownload,
     Link as IconLink,
+    Send as IconSend
 } from "@material-ui/icons";
-import {useIconButtonStyles} from "../../style/style";
-import {ExpandButton} from "../buttons/expandButton";
 import {CardContainer} from "./card";
 import {getImageUrlByPath} from "../../helpers/imageHelper";
+import ExpandButton from "../buttons/expandButton";
 
 import dataSetCardStyle from './datasetCard.module.scss';
 import {forwardRef, PropsWithChildren} from "react";
-import modelCardStyle from "./modelCard.module.scss";
 import {IDataSetCardProps} from "../../interfaces/IDatasetCardProps";
 
 function _DataSetCard(props: IDataSetCardProps, ref) {
@@ -32,6 +31,12 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
         }
     }
 
+    const _selectForModelBuilder = () => {
+        if (!!props?.selectForModelBuilder) {
+            props?.selectForModelBuilder(dataSet);
+        }
+    }
+
     const downloadLink = dataSet?.download_link ?? null;
     const hasDownloadLink = !!downloadLink;
 
@@ -43,6 +48,8 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
     const hasImage = !!dataSet?.icon;
 
     const imageUrl = getImageUrlByPath(dataSet?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png');
+
+    const isInternal = hasSource && dataSet?.source?.toLowerCase() === 'internal';
 
     return (<CardContainer key={`dataset-${dataSet?.id}`}>
         <div className={dataSetCardStyle['dataset-card-content']}>
@@ -92,13 +99,24 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                 </div>
 
                             </div>
-                            <div className='row'>
-                                <div className='col-12 text-left'>
+                            {!!dataSet?.layers && dataSet?.layers?.length > 0 ?
+                                <div className='row'>
+                                    <div className='col-12 text-left'>
                                     <span
                                         className={dataSetCardStyle['dataset-card-secondary-region-label']}>Layers: </span><span
-                                    className={dataSetCardStyle['dataset-card-secondary-region-value']}>{(dataSet?.layers ?? []).join(',')}</span>
-                                </div>
-                            </div>
+                                        className={dataSetCardStyle['dataset-card-secondary-region-value']}>{(dataSet?.layers ?? []).join(',')}</span>
+                                    </div>
+                                </div> : null
+                            }
+                            {!!dataSet?.etype ?
+                                <div className='row'>
+                                    <div className='col-12 text-left'>
+                                    <span
+                                        className={dataSetCardStyle['dataset-card-cell-type-label']}>E-Type: </span><span
+                                        className={dataSetCardStyle['dataset-card-cell-type-value']}>{dataSet?.etype ?? ''}</span>
+                                    </div>
+                                </div> : null
+                            }
                             <div className='row'>
                                 <div className='col-12 text-right'>
                                     {hasSource ?
@@ -115,7 +133,7 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                     <div className='row'>
                         <div className='col-12 text-left'>
                             <div className='row'>
-                                {hasDownloadLink ?
+                                {/*{hasDownloadLink ?
                                     <div className='col-12'>
                                         <FormControl>
                                             <FormControlLabel
@@ -127,9 +145,11 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                                 label={'Select for download'}/>
                                         </FormControl>
                                     </div> : null
-                                }
+                                }*/}
                                 {hasDownloadLink ?
-                                    <div className='col-12 text-center'>
+                                    <div className='col-12'>
+                                        <div className='row'>
+                                            <div className='col-12 text-center'>
                                         <span className={dataSetCardStyle['dataset-card-action']}>
                                             <Tooltip title='Download'>
                                                 <ExpandButton
@@ -140,15 +160,30 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                                 />
                                             </Tooltip>
                                         </span>
+                                            </div>
+                                            <div className='col-12 text-center'>
+
+                                                <span className={dataSetCardStyle['dataset-card-action']}>
+                                            <Tooltip title='Add to HH Neuron Builder Cart'>
+                                                <ExpandButton
+                                                    label={'Add to HH Neuron Builder Cart'}
+                                                    icon={<IconSend/>}
+                                                    expanded={actionsExpanded}
+                                                    onClick={() => _selectForModelBuilder()}
+                                                />
+                                            </Tooltip>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div> : null
                                 }
                                 {hasPageLink ?
                                     <div className='col-12 text-center'>
                                         <span className={dataSetCardStyle['dataset-card-action']}>
-                                            <Tooltip title='View on Site'>
+                                            <Tooltip title={isInternal ? 'View on Site (internal)' : 'View on Site'}>
                                 <ExpandButton
-                                    label={'View on Site'}
-                                    icon={<IconLink/>}
+                                    label={isInternal ? 'View on Site (internal)' : 'View on Site'}
+                                    icon={<IconLink htmlColor={isInternal ? '#0F4C81': '#000'}/>}
                                     expanded={actionsExpanded}
                                     onClick={() => window.open(pageLink)}
                                 />

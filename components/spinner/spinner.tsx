@@ -1,3 +1,4 @@
+import * as React from 'react';
 import {CircularProgress, makeStyles} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
         transform: 'translate(-50%, -50%)',
     },
     spinner: {
-        color: '#333',
+        color: '#fff',
     }
 }));
 

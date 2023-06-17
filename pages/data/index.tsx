@@ -7,7 +7,7 @@ import pageContentStyle from "../page.module.scss";
 import {Typography} from "@material-ui/core";
 import Spinner from "../../components/spinner/spinner";
 import {getPage} from "../../helpers/dataHelper";
-import DataTypeCtaButton from "../../components/cta/dataTypeCtaButton";
+import { DataTypeCtaButton } from "../../components/cta/dataTypeCtaButton";
 import constants from "../../constants";
 
 function DataHomePage() {
@@ -41,9 +41,10 @@ function DataHomePage() {
         <div className={`container ${pageContentStyle['page-container']}`}>
             <div className="row">
                 <div className="col-12">
-                    <Typography variant="h4">
+                    <Typography variant="h4" className={`${pageContentStyle['page-header-label']} text-center`}>
                         {page.title}
                     </Typography>
+                    <div className={pageContentStyle['page-header-divider']}/>
                 </div>
             </div>
             <div className="row">
@@ -54,7 +55,7 @@ function DataHomePage() {
             <section style={{marginTop: 20}}>
                 {(dataTypes ?? []).map((item) => <div className='row' style={{marginTop: 20}}>
                     <div className='col-12'>
-                        <DataTypeCtaButton type={_getDataTypeLabel(item)} action={(type: string) => _ctaAction(type)}/>
+                        <DataTypeCtaButton type={_getDataTypeLabel(item)} action={(type: string) => _ctaAction(item)}/>
                     </div>
                 </div>)}
             </section>

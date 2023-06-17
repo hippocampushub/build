@@ -1,5 +1,5 @@
 import {login, verifyToken} from "../helpers/apiHelper";
-import authConstants from "../constants/authConstants";
+import authConstants from "../constants/auth.constants";
 
 function _login(username: string, password: string) {
     function request() { return { type: authConstants.LOGIN_REQUEST } }

@@ -15,6 +15,7 @@ export default {
         config: 'config',
         menuItems: 'menu-items',
         homePage: 'home-page',
+        homePage2: 'home-page2',
         pages: 'pages',
         posts: 'posts',
         news: 'news',
@@ -47,5 +48,6 @@ export default {
         rowContentImageStyle: {
             maxWidth: 400
         }
-    }
+    },
+    MIN_SEARCH_LENGTH: 1
 }

@@ -1,3 +1,21 @@
+@import "variables";
+
+@import 'node_modules/antd/lib/style/index.css';
+
+
+@import 'node_modules/antd/lib/button/style/index.css';
+@import 'node_modules/antd/lib/select/style/index.css';
+@import 'node_modules/antd/lib/radio/style/index.css';
+@import 'node_modules/antd/lib/checkbox/style/index.css';
+@import 'node_modules/antd/lib/table/style/index.css';
+@import 'node_modules/antd/lib/grid/style/index.css';
+@import 'node_modules/antd/lib/collapse/style/index.css';
+@import 'node_modules/antd/lib/popover/style/index.css';
+@import 'node_modules/antd/lib/tabs/style/index.css';
+@import 'node_modules/antd/lib/input/style/index.css';
+@import 'node_modules/antd/lib/form/style/index.css';
+@import 'node_modules/antd/lib/pagination/style/index.css';
+
 body {
   padding: 0 !important;
   font-size: 20px !important;
@@ -7,14 +25,32 @@ body {
   .button-primary {
     padding: 0 15px;
     border-radius: 5px;
-    border: 2px solid #ffc90c;
+    border: 2px solid $color-yellow-accent;
     color: #fff;
     text-decoration: none;
     text-transform: uppercase;
     &:active {
-      background: #ffc90c;
+      background: $color-yellow-accent;
     }
   }
+
+  .button-secondary {
+    padding: 0 15px;
+    border-radius: 5px;
+    border: 2px solid $color-white;
+    color: #dddddd;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background-color: $color-secondary-button;
+    overflow: hidden;
+    &:active {
+      background: $color-section-blue;
+    }
+  }
+
   .ril__inner {
     img.ril__image {
       top: 100px !important;

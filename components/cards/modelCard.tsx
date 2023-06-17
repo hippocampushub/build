@@ -6,8 +6,7 @@ import {
     Add as IconAdd,
     Link as IconLink, CheckBox,
 } from "@material-ui/icons";
-import {useIconButtonStyles} from "../../style/style";
-import {ExpandButton} from "../buttons/expandButton";
+import ExpandButton from "../buttons/expandButton";
 import {CardContainer} from "./card";
 
 import modelCardStyle from './modelCard.module.scss';
@@ -38,6 +37,8 @@ function _ModelCard(props: IModelCardProps, ref) {
     const hasSource = !!model?.source && model?.source?.trim().length > 0;
     const hasReadme = !!model?.readme_link && model?.readme_link?.trim().length > 0;
     const hasModFiles = !!model?.model_files && model?.model_files?.length > 0;
+    const isInternal = hasSource && model?.source?.toLowerCase() === 'internal';
+
 
     const _isModFileSelected = (item: any) => {
         if (!!props?.isModFileSelected) {
@@ -55,10 +56,12 @@ function _ModelCard(props: IModelCardProps, ref) {
     return (<CardContainer key={`model-${model?.id}`}>
         <div className={`${modelCardStyle['model-card-content']} ${!!props?.variant ? modelCardStyle[props?.variant] : null}`}>
             <div className='row'>
-                {/*<div className='col-md-2 col-sm-12'>
-                    <img src={getImageUrlByPath(model?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png')}
-                         className={modelCardStyle['model-card-image']}/>
-                </div>*/}
+                {
+                    /*<div className='col-md-2 col-sm-12'>
+                        <img src={getImageUrlByPath(model?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png')}
+                             className={modelCardStyle['model-card-image']}/>
+                    </div>*/
+                }
                 <div className={`col-md-10 col-sm-12 ${modelCardStyle['model-card-left-content']}`}>
                     <div className='row'>
                         <div className='col-md-9 col-sm-12'>
@@ -70,6 +73,10 @@ function _ModelCard(props: IModelCardProps, ref) {
                                 <div className='col-12 text-left'>
                                     <span className={modelCardStyle['model-card-types-label']}>Type(s): </span><span
                                     className={modelCardStyle['model-card-types-value']}>{(model?.model_types ?? []).join(',') ?? ''}</span>
+                                </div>
+                                <div className='col-12 text-left'>
+                                    <span className={modelCardStyle['model-card-types-label']}>Cell Type(s): </span><span
+                                    className={modelCardStyle['model-card-types-value']}>{(model?.cell_types ?? []).join(',') ?? ''}</span>
                                 </div>
                                 <div className='col-12 text-left'>
                                     <span className={modelCardStyle['model-card-papers-label']}>Paper(s): </span>
@@ -120,8 +127,8 @@ function _ModelCard(props: IModelCardProps, ref) {
                             <div className='col-md-12 col-sm-12'>
                                 <div className='row' style={{marginTop: 5}}>
                                     <div className='col-12 text-center'>
-                                        <div className={`${modelCardStyle['model-card-expand-button']} button-primary`} onClick={() => setIsModFilesExpanded(!isModFilesExpanded)}>
-                                            <span className={modelCardStyle['model-card-expand-all-label']}>{isModFilesExpanded ? 'Show less' : 'Show all'}</span>
+                                        <div className={`${modelCardStyle['model-card-expanded-button']} button-primary`} onClick={() => setIsModFilesExpanded(!isModFilesExpanded)}>
+                                            <span className={modelCardStyle['model-card-expanded-all-label']}>{isModFilesExpanded ? 'Show less' : 'Show all'}</span>
                                             {isModFilesExpanded ?
                                                 <IconClose htmlColor={'#fff'}/> : <IconAdd htmlColor={'#fff'}/>
                                             }
@@ -189,10 +196,10 @@ function _ModelCard(props: IModelCardProps, ref) {
                                     }
                                     {hasPageLink ?
                                         <span className={modelCardStyle['model-card-action']}>
-                                            <Tooltip title='View on Site'>
+                                            <Tooltip title={isInternal ? 'View on Site (internal)' : 'View on Site'}>
                                 <ExpandButton
-                                    label={'View on Site'}
-                                    icon={<IconLink/>}
+                                    label={isInternal ? 'View on Site (internal)' : 'View on Site'}
+                                    icon={<IconLink htmlColor={isInternal ? '#0F4C81': '#000'}/>}
                                     expanded={actionsExpanded}
                                     onClick={() => window.open(pageLink)}
                                 />

@@ -1,10 +1,22 @@
 @import "variables";
 .footer {
   width: 100%;
-  height: 250px;
+  min-height: 250px;
   bottom: 0;
   padding: 20px 0;
-  background: $color-section-blue;
+  background: $color-section-blue4;
+  .footer-logo-container {
+    display: flex;
+    flex-direction: column;
+    float: left;
+    height: 50px;
+    padding-right: 12px;
+    justify-content: center;
+    .footer-logo {
+      display: block;
+      margin: 0 auto;
+    }
+  }
   .footer-image {
     height: 50px;
     float: left;

@@ -3,23 +3,30 @@ import {Typography} from "@material-ui/core";
 import {getImageUrl} from "../../helpers/imageHelper";
 import constants from "../../constants";
 import {SanitizedHtml} from "../sanitizedHtml";
+import menuStyle from "../menu/menu.module.scss";
 
-export default function Footer({footer, canLoadAnalytics}: {
+export default function Footer({footer}: {
     footer: any;
     canLoadAnalytics?: boolean;
 }) {
-    return (<footer className={footerStyle.footer}>
+    return (<footer className={footerStyle['footer']}>
             <div className='container'>
                 <div className='row'>
                     <div className='col-12'>
                         <Typography variant='h5' className={footerStyle['footer-header']}>
-                            {footer?.header ?? ''}
+                            {!!footer?.logo ?
+                                <div className={footerStyle['footer-logo-container']}>
+                                    <img src={getImageUrl(footer?.logo)}
+                                         className={footerStyle['footer-logo']}/>
+                                </div> : null
+                            } <SanitizedHtml content={footer?.header ?? ''}/>
                         </Typography>
                     </div>
                 </div>
-                {footer?.rows.map((row) => <div className={'row'} style={{marginTop: 20}}>
+                {footer?.rows?.map((row) => <div className={'row'} style={{marginTop: 20, paddingTop: 10}}>
                     {row?.columns.map((column) =>
-                        <SanitizedHtml content={column?.content ?? ''} className={`col ${footerStyle['footer-column']}`}/>
+                        <SanitizedHtml content={column?.content ?? ''}
+                                       className={`col ${footerStyle['footer-column']}`}/>
                     )}
                 </div>)}
                 <div className='row' style={{marginTop: 20}}>
@@ -30,12 +37,6 @@ export default function Footer({footer, canLoadAnalytics}: {
                     </div>
                 </div>
             </div>
-            {canLoadAnalytics ?
-                <div>
-                    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SGZ83Y6E8H"></script>
-                    <script async src={`${constants.BASE_URL}/assets/js/analytics.js`}></script>
-                </div> : null
-            }
         </footer>
     );
 }

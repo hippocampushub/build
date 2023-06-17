@@ -5,17 +5,22 @@ import Head from "next/head";
 import Header from "../header/header";
 import pageStyle from './page.module.scss'
 import {CarouselImage} from "../carousel/carousel";
+import Feedback from "../feedback/index"
 import Footer from "../footer/footer";
 import {getConfig, getHomePage, getMenuItems} from "../../helpers/dataHelper";
 import {forwardRef, PropsWithChildren, useEffect} from "react";
 import {TosOverlay} from "../tos-overlay/tosOverlay";
 import {tosAgree} from "../../actions/tos.actions";
+import constants from "../../constants";
+
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 interface IPageProps extends PropsWithChildren<any> {
     title?: string;
     config?: any;
     menuItems?: any[];
+    showDrawerToggleButton?: boolean;
+    openDrawer?: (open: boolean) => void;
     headerCarousel?: CarouselImage[];
     fixedHeader?: boolean;
     transparentHeader?: boolean;
@@ -23,10 +28,11 @@ interface IPageProps extends PropsWithChildren<any> {
     agreeTos: () => void;
     tosAgreed: boolean;
     mainClassName: string | null;
+    openImageCreditsDialog: (content: string) => void;
 }
 
 function _PageContainer(props: IPageProps, ref) {
-    const {children, title = 'Hippocampus Facility Hub', headerCarousel} = props;
+    const {children, title = 'Hippocampus Facility Hub', headerCarousel, showDrawerToggleButton, openDrawer} = props;
     const [menuItems, setMenuItems] = React.useState<any[]>([]);
     const [config, setConfig] = React.useState<any>({});
     const [loading, setLoading] = React.useState(true);
@@ -64,26 +70,37 @@ function _PageContainer(props: IPageProps, ref) {
                 href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
                 rel="stylesheet"/>
             <link rel="preconnect" href="https://fonts.gstatic.com"/>
-            <link href="https://www.hippocampushub.eu/shared_css/main.min.css" rel="stylesheet"/>
+            <link rel="stylesheet" href="https://www.hippocampushub.eu/shared_css/main.min.css"/>
+            {props.tosAgreed ?
+                <script async src="https://www.googletagmanager.com/gtag/js?id=G-SGZ83Y6E8H"
+                        type='text/javascript'></script> : null
+            }
+            {props.tosAgreed ?
+                <script async src={`${constants.BASE_URL}/assets/js/analytics.js`} type='text/javascript'></script> : null
+            }
         </Head>
         <div className={`container-fluid ${pageStyle['main-page-container']}`}>
             <Header
                 config={config.header}
                 carouselImages={headerCarousel}
                 menuItems={menuItems}
+                showDrawerToggleButton={showDrawerToggleButton}
+                openDrawer={openDrawer}
                 fixedHeader={props.fixedHeader ?? false}
-                transparentHeader={props.transparentHeader ?? false}/>
+                transparentHeader={props.transparentHeader ?? false}
+                openImageCreditsDialog={props?.openImageCreditsDialog}/>
             <div>
                 <main
                     className={`${pageStyle['main-container']} ${!!props?.mainClassName ? pageStyle[props?.mainClassName] : ''}`}>
                     {children}
+                    <Feedback/>
                 </main>
             </div>
         </div>
         {!props?.tosAgreed && !loading ?
             <TosOverlay tos={config?.tos ?? null} agreeTos={props.agreeTos}/> : null
         }
-        <Footer footer={config.footer} canLoadAnalytics={props.tosAgreed}/>
+        <Footer footer={config.footer}/>
     </div>);
 }
 

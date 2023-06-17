@@ -54,6 +54,11 @@ const getHomePage = async () => {
     return getJSONData(url);
 }
 
+const getHomePage2 = async () => {
+    const url = `${constants.BASE_DATA_URL}/${constants.ENDPOINTS.homePage2}.json`;
+    return getJSONData(url);
+}
+
 const getPage = async (slug: string) => {
     const url = `${constants.BASE_DATA_URL}/${constants.ENDPOINTS.pages}/${slug}.json`;
     return getJSONData(url);
@@ -78,6 +83,7 @@ export {
     getConfig,
     getMenuItems,
     getHomePage,
+    getHomePage2,
     getPage,
     getPost,
     getNewsList

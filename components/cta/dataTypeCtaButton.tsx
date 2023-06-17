@@ -52,4 +52,6 @@ const DataTypeCtaButton = ({type, action}: {type: string, action: (type: string)
     </Card>);
 }
 
-export default DataTypeCtaButton;
+export {
+    DataTypeCtaButton
+};

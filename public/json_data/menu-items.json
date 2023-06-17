@@ -1,21 +1,21 @@
 [
   {
-    "id": 3,
-    "title": "Home page",
+    "id": 1,
+    "title": "Home",
     "order": 1,
     "type": "url",
-    "url": "/"
+    "url": "https://www.hippocampushub.eu"
   },
   {
     "id": 2,
-    "title": "Resources",
-    "type": "section",
+    "title": "Build Models",
+    "type": "url",
     "order": 2,
-    "url": "/#resources",
+    "url": "/",
     "menuitems": [
       {
         "id": 5,
-        "title": "Data",
+        "title": "DATA",
         "type": "url",
         "url": "/data",
         "order": 1,
@@ -32,7 +32,7 @@
             "title": "Electrophysiology",
             "type": "url",
             "url": "/data/electrophysiology",
-            "order": 3
+            "order": 2
           },
           {
             "id": 16,
@@ -45,18 +45,39 @@
       },
       {
         "id": 13,
-        "title": "Models",
+        "title": "MODELS",
         "type": "url",
         "order": 2,
         "url": "/models"
+      },
+      {
+        "id": 14,
+        "title": "WORKFLOWS",
+        "type": "url",
+        "order": 3,
+        "url": "/workflows"
       }
     ]
   },
   {
     "id": 3,
-    "title": "About",
+    "title": "Explore Models",
     "type": "url",
     "order": 3,
-    "url": "/about"
+    "url": "https://www.hippocampushub.eu/model"
+  },
+  {
+    "id": 4,
+    "title": "Resources",
+    "type": "url",
+    "order": 5,
+    "url": "https://www.hippocampushub.eu/#resources"
+  },
+  {
+    "id": 5,
+    "title": "Contact us",
+    "type": "url",
+    "order": 5,
+    "url": "https://www.hippocampushub.eu/#contact-us"
   }
 ]

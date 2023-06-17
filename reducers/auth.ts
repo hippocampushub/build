@@ -1,4 +1,4 @@
-import authConstants from "../constants/authConstants";
+import authConstants from "../constants/auth.constants";
 
 export function auth(initialState: any = {}, action) {
     switch (action.type) {

@@ -1,29 +1,32 @@
 import * as React from 'react';
-import {Button, ButtonBaseProps} from '@material-ui/core';
+import {Button, ButtonBase, ButtonBaseProps, ButtonProps} from '@material-ui/core';
 import buttonsStyle from "./button.module.scss";
 import {SvgIconComponent} from "@material-ui/icons";
-import {forwardRef} from "react";
+import {ForwardedRef, forwardRef, PropsWithChildren} from "react";
 
-export interface IExpandButton extends ButtonBaseProps {
-    label: string,
-    icon: React.ReactNode,
-    variant?: string,
-    expanded: boolean,
-    onClick?: () => void
+export interface IExpandButton extends PropsWithChildren<any> {
+    label: string;
+    icon: React.ReactNode;
+    variant?: string;
+    expanded: boolean;
+    onClick?: () => void;
 }
 
-export function ExpandButton({label, icon, variant, expanded, onClick}: IExpandButton) {
-    return (
+const ExpandButton = React.forwardRef((props: IExpandButton, ref: ForwardedRef<any>) =>
+        // @ts-ignore
         <Button
-            onClick={onClick}
+            {...props}
+            ref={ref}
+            onClick={props?.onClick}
             className={`${buttonsStyle['expand-button']}`}>
-            {expanded ?
+            {props?.expanded ?
                 <div>
-                    {icon} {label}
+                    {props?.icon} {props?.label}
                 </div> :
                 <div>
-                    {icon}
+                    {props?.icon}
                 </div>
             }
         </Button>);
-}
+
+export default ExpandButton;

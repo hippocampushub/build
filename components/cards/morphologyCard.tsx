@@ -5,15 +5,15 @@ import {
     Link as IconLink,
     Send as IconSend,
 } from "@material-ui/icons";
-import {useIconButtonStyles} from "../../style/style";
-import {ExpandButton} from "../buttons/expandButton";
 import {CardContainer} from "./card";
 import {getImageUrlByPath} from "../../helpers/imageHelper";
+import ExpandButton from "../buttons/expandButton";
 
 import dataSetCardStyle from './datasetCard.module.scss';
-import {forwardRef, PropsWithChildren} from "react";
+import {forwardRef, PropsWithChildren, useEffect} from "react";
 import {IDataSetCardProps} from "../../interfaces/IDatasetCardProps";
 import {downloadFile} from "../../helpers/downloadHelper";
+import {checkMorphologyForShow} from "../../helpers/apiHelper";
 
 
 function _DataSetCard(props: IDataSetCardProps, ref) {
@@ -22,11 +22,18 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
 
     const [actionsExpanded, setActionsExpanded] = React.useState(false);
 
+    const [canOpenMorphologyViewer, setCanOpenMorphologyViewer] = React.useState(false);
+
+    useEffect(() => {
+        _checkIfMorphologyIsVisible();
+    }, []);
+
     const _openMorphologyViewer = () => {
         if (!!props?.openMorphologyViewer) {
             props?.openMorphologyViewer({
                 modelName: dataSet?.name,
-                modelUrl: dataSet?.download_link
+                modelUrl: dataSet?.download_link,
+                detailPage: dataSet?.page_link
             });
         }
     }
@@ -49,6 +56,12 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
         }
     }
 
+    const _checkIfMorphologyIsVisible = async () => {
+        if (!!hasDownloadLink) {
+            setCanOpenMorphologyViewer(await checkMorphologyForShow(downloadLink));
+        }
+    }
+
     const downloadLink = dataSet?.download_link ?? null;
     const hasDownloadLink = !!downloadLink;
 
@@ -59,6 +72,8 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
     const hasImage = !!dataSet?.icon;
 
     const imageUrl = getImageUrlByPath(dataSet?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png');
+
+    const isInternal = hasSource && dataSet?.source?.toLowerCase() === 'internal';
 
     return (<CardContainer key={`dataset-${dataSet?.id}`}>
         <div className={dataSetCardStyle['dataset-card-content']}>
@@ -120,17 +135,19 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                     <div className='row'>
                         <div className='col-12 text-left'>
                             <div className='row'>
-                                <div className='col-12 text-center'>
-                                    <FormControl>
-                                        <FormControlLabel
-                                            control={<Switch
-                                                defaultChecked={selectedForDownload}
-                                                checked={selectedForDownload}
-                                                onChange={(event, value) =>
-                                                    toggleSelectedForDownload(dataSet['source_id'], value)}/>}
-                                            label={'Select for download'}/>
-                                    </FormControl>
-                                </div>
+                                {hasDownloadLink ?
+                                    <div className='col-12 text-center'>
+                                        <FormControl>
+                                            <FormControlLabel
+                                                control={<Switch
+                                                    defaultChecked={selectedForDownload}
+                                                    checked={selectedForDownload}
+                                                    onChange={(event, value) =>
+                                                        toggleSelectedForDownload(dataSet['source_id'], value)}/>}
+                                                label={'Select for download'}/>
+                                        </FormControl>
+                                    </div> : null
+                                }
                                 <div className='col-12 text-center'>
                                     {hasDownloadLink ?
                                         <span className={dataSetCardStyle['dataset-card-action']}>
@@ -140,18 +157,19 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                                     icon={<IconDownload/>}
                                                     expanded={actionsExpanded}
                                                     onClick={() => !!props?.askForDownload ? props?.askForDownload({
-                                                        url: downloadLink
-                                                    }) : downloadFile(downloadLink) }
+                                                        url: downloadLink,
+                                                        source: dataSet?.source
+                                                    }) : downloadFile(downloadLink)}
                                                 />
                                             </Tooltip>
                                         </span> : null
                                     }
                                     {hasPageLink ?
                                         <span className={dataSetCardStyle['dataset-card-action']}>
-                                            <Tooltip title='View on Site'>
+                                            <Tooltip title={isInternal ? 'View on Site (internal)' : 'View on Site'}>
                                                 <ExpandButton
-                                                    label={'View on Site'}
-                                                    icon={<IconLink/>}
+                                                    label={isInternal ? 'View on Site (internal)' : 'View on Site'}
+                                                    icon={<IconLink htmlColor={isInternal ? '#0F4C81': '#000'}/>}
                                                     expanded={actionsExpanded}
                                                     onClick={() => window.open(pageLink)}
                                                 />
@@ -160,9 +178,9 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                     }
                                     {hasDownloadLink ?
                                         <span className={dataSetCardStyle['dataset-card-action']}>
-                                            <Tooltip title='Send to model building'>
+                                            <Tooltip title='Add to HH Neuron Builder - Cart'>
                                                 <ExpandButton
-                                                    label={'Send to model building'}
+                                                    label={'Add to HH Neuron Builder - Cart'}
                                                     icon={<IconSend/>}
                                                     expanded={actionsExpanded}
                                                     onClick={() => _selectForModelBuilder()}
@@ -170,11 +188,11 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
                                             </Tooltip>
                                         </span> : null
                                     }
-                                    {hasDownloadLink ?
+                                    {hasDownloadLink && canOpenMorphologyViewer ?
                                         <span className={dataSetCardStyle['dataset-card-action']}>
-                                            <Tooltip title='Download'>
+                                            <Tooltip title='Open Morphology Viewer'>
                                                 <ExpandButton
-                                                    label={'Download'}
+                                                    label={'Open Morphology Viewer'}
                                                     icon={<img src={getImageUrlByPath('/assets/icons/3d.svg')}/>}
                                                     expanded={actionsExpanded}
                                                     onClick={() => _openMorphologyViewer()}
