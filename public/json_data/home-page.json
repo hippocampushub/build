@@ -107,10 +107,6 @@
             {
               "label": "A quick guide",
               "url": "/about/#navigation"
-            },
-            {
-              "label": "Cerebellum Hub",
-              "url": "http://90.147.109.105:3000/cb_web"
             }
           ]
         }
