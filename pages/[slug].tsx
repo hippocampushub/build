@@ -125,6 +125,10 @@ const getStaticPaths = () => {
             params: {
                 slug: 'workflows',
             }
+        }, {
+            params: {
+                slug: 'tutorial'
+            }
         }],
         fallback: false
     }
