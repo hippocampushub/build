@@ -1,0 +1,84 @@
+{
+  "id": 1,
+  "title": "HH Build Tutorial",
+  "showTitle": false,
+  "enableSectionsMenu": true,
+  "sections": [
+    {
+      "id": "Tutorial",
+      "header": "How to use the HH Build section",
+      "asContainer": true,
+      "variant": "light",
+      "carousel": null,
+      "rows": [
+        {
+          "header": "Build your models",
+          "columns": [
+            {
+              "content": "The Build section of the Hippocampus Hub allows you to: 1) Select all the components needed to build a NEURON model of a single hippocampal cell and 2) select the electrophysiological traces whose features will be used to optimize the constructed model.<br><br>The optimization is performed thanks to the <a target='_blank' href='https://hhnb.ebrains-italy.eu/hh-neuron-builder/'>Hodgkin-Huxley Neuron Builder (HHNB)</a> web application and consists in finding the parameters that will allow the model to reproduce the same activity observed in the recording.<br><br>In the HH, users are provided with a large choice of model components (i.e., morphologies and NEURON <i>.mod</i> files) that can be downloaded, visualized or put in a 'shopping cart' whose content will be seamlessly transferred to the HHNB for the optimization process.<br>Currently two resource pages are available: Data and Models. These can be explored through user-friendly point-and-click interfaces.<br><br>In the sections below, we will guide you through the construction of a model. You can also download a <a target='_blank' href='HH_workflow.mp4'>video tutorial</a> where the entire workflow is shown."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "select_morphologies",
+      "header": "Select the neuron morphology",
+      "asContainer": true,
+      "variant": "dark",
+      "rows": [
+        {
+          "columns": [{
+            "content": "The model building process requires that one (and only one) morphology is selected. To choose the morphology or your interest:<br><ul><li>Access the Morphologies page by following this path from the main menu <br>BUILD MODELS -> DATA -> MORPHOLOGIES.</li><li>Click on the 'Send' icon to add the morphology to the cart</li></ul><br>Additionally, you can:<ul><li>Download the morphology to your local machine</li><li>Open it in the source repository page</li><li>Select the file for batch download</li></ul>Dedicated icons are provided for the actions described above (see image below).<br><br><img src='/assets/images/morphology.png'>"
+          }]
+        }
+      ]
+    },
+    {
+      "id": "select_mod_files",
+      "header": "Select NEURON .mod files (i.e., biophysical mechanisms)",
+      "asContainer": true,
+      "variant": "light",
+      "rows": [
+        {
+          "columns": [{
+            "content": "The biophysical mechanisms available for the model building process are fetched from models hosted in the <a target='_blank' href='https://modeldb.science/'>ModelDB</a> platform.<br>You can choose any number of <i>.mod</i> files from one or multiples items. To choose the mechanisms or your interest:<br><ul><li>Access the Models page by following this path from the main menu <br>BUILD MODELS -> MODELS.</li><li>Select individual <i>.mod</i></li></ul>The selected mechanisms are added to the 'HHNB cart' and listed in the dedicated panel.<br><br><img src='/assets/images/model.png'>"
+          }]
+        }
+      ]
+    },
+    {
+      "id": "select_recordings",
+      "header": "Select electrophysiological data",
+      "asContainer": true,
+      "variant": "dark",
+      "rows": [{
+        "columns": [{
+          "content": "In order to go through the data-driven model construction and optimization workflow, users need to select the electrophysiological recordings whose features are used to optimize the model parameters.<br>To choose any number of recordings:<br><ul><li>Access the Electrophysiology page by following this path from the main menu <br>BUILD MODELS -> DATA -> ELECTROPHYSIOLOGY.</li><li>Click on the 'Send' icon to select individual or multiple recordings</li></ul>The selected items are added to the 'HHNB cart' and listed in the dedicated panel.<br><br><img src='/assets/images/electrophys.png'>"
+        }]
+      }]
+    },
+    {
+      "id": "send_items_to_hhnb",
+      "header": "Send selected items to the HHNB",
+      "asContainer": true,
+      "variant": "light",
+      "rows": [{
+        "columns": [{
+          "content": "Once the items of interest have been selected, they are grouped in a dedicated panel on the top of the page (see image below). <br><ul><li>The 'LAUNCH HH NEURON BUILDER' button transparently sends the urls of individual items to the HHNB for further processing (e.g., feature extraction, optimization parameters configuration).</li><li>You can remove from the panel one or multiple items or clear the entire selection via the 'CLEAR ALL' button. </li></ul><img src='/assets/images/hhnb_panel.png'>"
+        }]
+      }]
+    },
+    {
+      "id": "hhnb",
+      "header": "Manage model files through the HHNB",
+      "asContainer": true,
+      "variant": "dark",
+      "rows": [{
+        "columns": [{
+          "content": "Once the items selected via the HH Build section are transparently transferred to the HHNB, you have to choose the type of cells you want to optimize (see image below). This depends on the scientific question behind your work and strictly influences the model components selection.<br><br><img src='/assets/images/choose_cell_type.png'><br><br>After you have selected the cell type, you are provided with an interactive window through which you can download, upload, remove or modifiy (depending on the type of files) the different parts composing your model. In particular, you have access to the directory structure automatically created in the HHNB, which is suited for the <a href='https://bluepyopt.readthedocs.io/en/latest/' target='_blank'>BluePyOpt</a> optimizer and consists of:<br><ul><li>A folder containing the morphology file in the original format</li><li>A folder containing the biophysical mechanisms (i.e., <i>.mod</i> files) composing the model</li><li>A folder containing the configuration files used for the optimization<ul><li>the parameters.json file, listing the channels distributions</li><li>the feature.json file, containing the feature extracted from the electrophysiological recordings (the feature extraction has to done in the HHNB before this file is available in this window)</li><li>the protocols.json file, containing the experimental protocol adopted for the recordings and taken into account in the optimization process</li><li>the morph.json file, containing the name of the morphology</li></ul><li>A folder containing the files needed for analyzing and visualizing the model behavior and scores compared to the data used in the optimization process</li><li>The optimization launcher file opt_neuron.py</li></ul>(see image below)<br><br><img src='/assets/images/manage_files.png'><br><br>For further details on the optimization algorithm and the use of the HHNB, please refer to the following pages:<ul><li>BluePyOpt</li><ul><li><a target='_blank' href='https://github.com/BlueBrain/BluePyOpt'>Source code</a></li><li><a  target='_blank' href='https://bluepyopt.readthedocs.io/en/latest/'>Documentation</a></li><li><a target='_blank' href='https://www.frontiersin.org/articles/10.3389/fninf.2016.00017/full'>Scientific article</a></li></ul></ul><ul><li>HHNB</li><ul><li><a target='_blank' href='https://gitlab.ebrains.eu/cls/hbp-bsp-hh-neuron-builder'>Source code</a></li><li><a  target='_blank' href='https://hhnb.ebrains-italy.eu/hh-neuron-builder/docs/'>Documentation</a></li><li><a target='_blank' href='https://www.frontiersin.org/articles/10.3389/fninf.2022.991609/full'>Scientific article</a></li></ul></ul></ul>"
+        }]
+      }]
+    }
+  ]
+}
