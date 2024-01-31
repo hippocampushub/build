@@ -17,7 +17,7 @@
   "dependencies": {
     "@apollo/client": "^3.3.6",
     "@material-ui/lab": "^4.0.0-alpha.57",
-    "@types/antd": "^1.0.0",
+    "@types/antd": "^1.0.0"                                                     ,
     "antd": "^4.16.5",
     "axios": "^0.21.0",
     "bootstrap": "^4.5.3",
