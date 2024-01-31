@@ -16,7 +16,7 @@
         "url": "/models"
       }, {
         "label": "Launch HH Neuron Builder",
-        "url": "https://hbp-bsp-hhnb.cineca.it/hh-neuron-builder",
+        "url": "https://hhnb.ebrains-italy.eu/hh-neuron-builder/",
         "target": "_blank"
       }]
     },
