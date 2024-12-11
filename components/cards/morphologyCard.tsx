@@ -14,6 +14,7 @@ import {forwardRef, PropsWithChildren, useEffect} from "react";
 import {IDataSetCardProps} from "../../interfaces/IDatasetCardProps";
 import {downloadFile} from "../../helpers/downloadHelper";
 import {checkMorphologyForShow} from "../../helpers/apiHelper";
+import { on } from 'events';
 
 
 function _DataSetCard(props: IDataSetCardProps, ref) {
@@ -71,15 +72,24 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
     const hasSource = !!dataSet?.source && dataSet?.source?.trim().length > 0;
     const hasImage = !!dataSet?.icon;
 
-    const imageUrl = getImageUrlByPath(dataSet?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png');
+    let imageUrl = getImageUrlByPath(dataSet?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png');
 
     const isInternal = hasSource && dataSet?.source?.toLowerCase() === 'internal';
+
+    const onImageError = () => {
+        console.error("Image loading error for morphology: ", dataSet?.name ?? '');
+        const image = document.querySelector(`img[src="${imageUrl}"]`);
+        if (image) {
+            image.onerror = null;
+            image.src = getImageUrlByPath('/assets/images/placeholder.png');
+        }
+    }
 
     return (<CardContainer key={`dataset-${dataSet?.id}`}>
         <div className={dataSetCardStyle['dataset-card-content']}>
             <div className='row'>
                 <div className='col-md-2 col-sm-12'>
-                    <img src={imageUrl} onClick={() => hasImage ? _openImageLightbox(imageUrl) : null}
+                    <img src={imageUrl} onError={onImageError} onClick={() => hasImage ? _openImageLightbox(imageUrl) : null}
                          className={`${dataSetCardStyle['dataset-card-image']} ${!hasImage ? dataSetCardStyle['not-available'] : ''}`}/>
                 </div>
                 <div className={`${dataSetCardStyle['dataset-card-main-content']} col-md-7 col-sm-12`}>
