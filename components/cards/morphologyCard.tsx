@@ -86,7 +86,7 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
 
 
     let imageUrl = morph?.image_url ?? null;
-    if (imageUrl === null && morph !== null) {
+    if (imageUrl === null) {
         imageUrl = getImageUrlByPath(dataSet?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png');
     }
 
