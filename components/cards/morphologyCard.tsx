@@ -15,6 +15,7 @@ import {IDataSetCardProps} from "../../interfaces/IDatasetCardProps";
 import {downloadFile} from "../../helpers/downloadHelper";
 import {checkMorphologyForShow} from "../../helpers/apiHelper";
 import { on } from 'events';
+import { getMorphsMap } from '../../data/morph';
 
 
 function _DataSetCard(props: IDataSetCardProps, ref) {
@@ -63,23 +64,38 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
         }
     }
 
-    const downloadLink = dataSet?.download_link ?? null;
+    const morph = getMorphsMap()[dataSet?.name] ?? null;
+    if (morph === null) {
+        console.warn("Morph " + dataSet?.name + "not found")
+    }
+
+    let downloadLink = morph?.download_url ?? null;
+    if (downloadLink === null) {
+        downloadLink = dataSet?.download_link ?? null;
+    }
     const hasDownloadLink = !!downloadLink;
 
-    const pageLink = dataSet?.page_link ?? null;
+    let pageLink = morph?.page_url ?? null;
+    if (pageLink === null) {
+        pageLink = dataSet?.page_link ?? null;
+    }
     const hasPageLink = !!pageLink;
 
     const hasSource = !!dataSet?.source && dataSet?.source?.trim().length > 0;
     const hasImage = !!dataSet?.icon;
 
-    let imageUrl = getImageUrlByPath(dataSet?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png');
+
+    let imageUrl = morph?.image_url ?? null;
+    if (imageUrl === null && morph !== null) {
+        imageUrl = getImageUrlByPath(dataSet?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png');
+    }
 
     const isInternal = hasSource && dataSet?.source?.toLowerCase() === 'internal';
 
     const onImageError = () => {
         console.error("Image loading error for morphology: ", dataSet?.name ?? '');
         const image = document.querySelector(`img[src="${imageUrl}"]`);
-        if (image) {
+        if (image instanceof HTMLImageElement) {
             image.onerror = null;
             image.src = getImageUrlByPath('/assets/images/placeholder.png');
         }

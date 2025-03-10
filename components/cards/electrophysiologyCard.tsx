@@ -13,6 +13,8 @@ import dataSetCardStyle from './datasetCard.module.scss';
 import {forwardRef, PropsWithChildren} from "react";
 import {IDataSetCardProps} from "../../interfaces/IDatasetCardProps";
 
+import { getEtracesMap } from '../../data/etraces';
+
 function _DataSetCard(props: IDataSetCardProps, ref) {
 
     const {dataSet, selectedForDownload, toggleSelectedForDownload, onClick} = props;
@@ -37,17 +39,32 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
         }
     }
 
-    const downloadLink = dataSet?.download_link ?? null;
+    const etrace = getEtracesMap()[dataSet?.name] ?? null;
+    if (etrace === null) {
+        console.warn('Etrace: ', dataSet?.name, ' not found');
+    }
+
+    let downloadLink = etrace?.download_url ?? null;
+    if (downloadLink === null) {
+        downloadLink = dataSet?.download_link ?? null;
+    }
     const hasDownloadLink = !!downloadLink;
 
-    const pageLink = dataSet?.page_link ?? null;
+    let pageLink = etrace?.page_url ?? null
+    if (pageLink === null) {
+        pageLink = dataSet?.page_link ?? null;
+    }
+
     const hasPageLink = !!pageLink;
 
     const hasSource = !!dataSet?.source && dataSet?.source?.trim().length > 0;
 
     const hasImage = !!dataSet?.icon;
 
-    const imageUrl = getImageUrlByPath(dataSet?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png');
+    let imageUrl =  etrace?.image_url ?? null;
+    if (imageUrl === null) {
+        imageUrl = getImageUrlByPath(dataSet?.icon) ?? getImageUrlByPath('/assets/images/placeholder.png');
+    }
 
     const isInternal = hasSource && dataSet?.source?.toLowerCase() === 'internal';
 
