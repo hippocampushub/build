@@ -41,6 +41,7 @@ function _DataSetCard(props: IDataSetCardProps, ref) {
 
     const etrace = getEtracesMap()[dataSet?.name] ?? null;
     if (etrace === null) {
+        console.log(dataSet);
         console.warn('Etrace: ', dataSet?.name, ' not found');
     }
 
