@@ -39,6 +39,7 @@ import 'react-image-lightbox/style.css';
 import {AlertDialog} from "../../components/dialogs/alertDialog";
 import {hashCode} from "../../helpers/hashHelper";
 import {dataTypes} from "../../constants/constants";
+import { getMorphsListToRemove } from "../../data/morph";
 
 const _typeCards = {
     'morphology': MorphologyCard,
@@ -383,6 +384,8 @@ const _DataPage = (props) => {
 
     const pageVariant = page?.variant ?? 'dark';
 
+    const morphsToRemove = getMorphsListToRemove();
+
     return (
         <PageContainer variant={pageVariant} mainClassName={'with-fixed-header'} fixedHeader={true}>
             <div className={`container ${pageContentStyle['page-container']}`}>
@@ -452,21 +455,27 @@ const _DataPage = (props) => {
                         <div className='col-12 text-center'>
                             {!hasData ?
                                 <p>{loading ? '' : 'There are not data for search criteria'}</p> :
-                                <div>{(dataSets ?? []).map((item) => (
-                                    <div className="row" key={`row-dataset-${item?.id}`}>
-                                        <div className='col-12'>
-                                            <CardType
-                                                onClick={() => null}
-                                                dataSet={item}
-                                                selectedForDownload={selectedForDownloads.includes(item['source_id'])}
-                                                toggleSelectedForDownload={_toggleSelectForDownload}
-                                                openMorphologyViewer={_openMorphologyViewer}
-                                                openImageLightbox={(url) => setLightboxImg(url)}
-                                                closImageLightbox={() => setLightboxImg(null)}
-                                                selectForModelBuilder={_selectForModelBuilding}
-                                                askForDownload={_askForDownload}/>
+                                <div>{(dataSets ?? []).map((item) => {
+                                    if (morphsToRemove.includes(item?.name) && item?.type === 'morphology') {
+                                        return (<></>);
+                                    }
+                                    return (
+                                        <div className="row" key={`row-dataset-${item?.id}`}>
+                                            <div className='col-12'>
+                                                <CardType
+                                                    onClick={() => null}
+                                                    dataSet={item}
+                                                    selectedForDownload={selectedForDownloads.includes(item['source_id'])}
+                                                    toggleSelectedForDownload={_toggleSelectForDownload}
+                                                    openMorphologyViewer={_openMorphologyViewer}
+                                                    openImageLightbox={(url) => setLightboxImg(url)}
+                                                    closImageLightbox={() => setLightboxImg(null)}
+                                                    selectForModelBuilder={_selectForModelBuilding}
+                                                    askForDownload={_askForDownload}/>
+                                            </div>
                                         </div>
-                                    </div>))}
+                                    )
+                                    })}
                                 </div>
 
                             }

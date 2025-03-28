@@ -1,6 +1,8 @@
 import axios from 'axios';
 import {IFilterSearchParams, ISearchParams} from "../interfaces";
 import constants from "../constants";
+import { getMorphsMap } from '../data/morph';
+import { getEtracesMap } from '../data/etraces';
 
 const BACKEND_URL = process.env.BACKEND_URL ?? 'http://localhost:5000';
 
@@ -24,12 +26,51 @@ const endpoints = {
 const _parseSuccessfullResponse = (response) => {
     try {
         if (!!response && response.status === 200) {
-            return response.data;
+            const data = response.data;
+            const itemsLength = data?.items?.length ?? null;
+            if (itemsLength !== null && itemsLength > 0) {
+                const type = data?.items?.[0].type ?? null;
+                if (type === 'morphology') {
+                    overrideMorphologies(data);
+                } else if (type === 'electrophysiology') {
+                    overrideEtraces(data);
+                }
+            }
+            return data;
         }
         return null;
     } catch (error) {
         throw error;
     }
+}
+
+const overrideMorphologies = (data: any): any => {
+    const morphs = getMorphsMap();
+    data.items.forEach(el => {
+        console.log(el);
+        const newEl = morphs[el.name];
+        if (newEl !== null && newEl !== undefined) {
+            el.download_link = newEl.download_url;
+            el.page_link = newEl.page_url;
+            el.icon = newEl.image_url;
+            el.source = newEl.source;
+        }
+    });
+    return data;
+}
+
+const overrideEtraces = (data: any): any => {
+    const etraces = getEtracesMap();
+    data.items.forEach(el => {
+        console.log(el);
+        const newEl = etraces[el.name];
+        if (newEl !== null && newEl !== undefined) {
+            el.download_link = newEl.download_url;
+            el.page_link = newEl.page_url;
+            el.icon = newEl.image_url;
+        }
+    });
+    return data;
 }
 
 const searchDatasets = async ({
