@@ -31,7 +31,11 @@ function _ModelCard(props: IModelCardProps, ref) {
     const downloadLink = model?.download_link ?? null;
     const hasDownloadLink = !!downloadLink;
 
-    const pageLink = model?.page_link ?? null;
+    let pageLink = model?.page_link ?? null;
+    if (pageLink.includes('<built-in function id>')) {
+        pageLink = hasDownloadLink ? downloadLink.replace('/download', '') : null; // Fallback to download link if page link is not available
+    };
+    console.log('ModelCard: pageLink', pageLink, model);
     const hasPageLink = !!pageLink;
 
     const hasSource = !!model?.source && model?.source?.trim().length > 0;
