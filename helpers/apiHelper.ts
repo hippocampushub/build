@@ -68,6 +68,7 @@ const overrideEtraces = (data: any): any => {
             el.download_link = newEl.download_url;
             el.page_link = newEl.page_url;
             el.icon = newEl.image_url;
+            el.source = newEl.source;
         }
     });
     return data;
