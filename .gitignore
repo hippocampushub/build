@@ -1,5 +1,11 @@
-.idea/
+# frontend
 node_modules/
-.next/
-build/
+frontend/dist/
+*.log
+# backend
+__pycache__/
+*.pyc
+backend/data/*/raw/
+backend/data/modeldb/files/
+backend/data/**/*.tmp
 .DS_Store
