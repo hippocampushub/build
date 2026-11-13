@@ -1,5 +1,84 @@
 [
   {
+    "source_id": "model_db-2796",
+    "id": "2796",
+    "name": "CA1 pyramidal neuron (Migliore et al 1999)",
+    "class_id": 19,
+    "description": "Hippocampal CA1 pyramidal neuron model from the paper \r\nM.Migliore, D.A Hoffman, J.C. Magee and D. Johnston (1999) Role of an A-type K+ conductance in the back-propagation of action potentials in the dendrites of hippocampal pyramidal neurons,\r\nJ. Comput. Neurosci. 7, 5-15. Instructions are provided in the below README file.Contact michele.migliore@pa.ibf.cnr.it if you have any questions about the implementation of the model.",
+    "channels": [
+      "I Na,t",
+      "I A",
+      "I K"
+    ],
+    "cell_types": [
+      "Hippocampus CA1 pyramidal GLU cell"
+    ],
+    "page_link": "https://modeldb.science/2796",
+    "download_link": "https://modeldb.science/download/2796",
+    "github_link": "https://github.com/ModelDBRepository/2796",
+    "model_types": [
+      "Neuron or other electrically excitable cell"
+    ],
+    "model_concepts": [
+      "Dendritic Action Potentials",
+      "Active Dendrites",
+      "Detailed Neuronal Models"
+    ],
+    "implementers": [
+      "Migliore, Michele [Michele.Migliore at Yale.edu]"
+    ],
+    "modeling_application": [
+      "NEURON"
+    ],
+    "receptors": [],
+    "regions": [],
+    "genes": [],
+    "transmitters": [],
+    "papers": [
+      {
+        "label": "Migliore M, Hoffman DA, Magee JC, Johnston D (1999)",
+        "title": "Role of an A-type K+ conductance in the back-propagation of action potentials in the dendrites of hippocampal pyramidal neurons.",
+        "journal": "Journal of computational neuroscience",
+        "year": "1999",
+        "doi": "10.1023/a:1008906225285",
+        "pubmed_id": "10481998",
+        "url": "https://doi.org/10.1023/a:1008906225285"
+      }
+    ],
+    "readme_link": "https://raw.githubusercontent.com/ModelDBRepository/2796/HEAD/README.txt",
+    "model_files": [
+      {
+        "label": "kadist.mod",
+        "path": "kadist.mod",
+        "url": "https://raw.githubusercontent.com/ModelDBRepository/2796/HEAD/kadist.mod"
+      },
+      {
+        "label": "kaprox.mod",
+        "path": "kaprox.mod",
+        "url": "https://raw.githubusercontent.com/ModelDBRepository/2796/HEAD/kaprox.mod"
+      },
+      {
+        "label": "kdrca1.mod",
+        "path": "kdrca1.mod",
+        "url": "https://raw.githubusercontent.com/ModelDBRepository/2796/HEAD/kdrca1.mod"
+      },
+      {
+        "label": "na3.mod",
+        "path": "na3.mod",
+        "url": "https://raw.githubusercontent.com/ModelDBRepository/2796/HEAD/na3.mod"
+      },
+      {
+        "label": "nax.mod",
+        "path": "nax.mod",
+        "url": "https://raw.githubusercontent.com/ModelDBRepository/2796/HEAD/nax.mod"
+      }
+    ],
+    "created": "2001-06-05T17:25:25",
+    "updated": "2015-01-02T22:00:55",
+    "type": "single",
+    "source": "ModelDB"
+  },
+  {
     "source_id": "model_db-2937",
     "id": "2937",
     "name": "CA1 Pyramidal Neuron: slow Na+ inactivation (Migliore 1996)",
@@ -182,6 +261,89 @@
     ],
     "created": "2001-09-20T14:50:19",
     "updated": "2015-01-02T22:07:07",
+    "type": "single",
+    "source": "ModelDB"
+  },
+  {
+    "source_id": "model_db-7386",
+    "id": "7386",
+    "name": "CA1 pyramidal neuron: conditional boosting of dendritic APs (Watanabe et al 2002)",
+    "class_id": 19,
+    "description": "Model files from the paper Watanabe S, Hoffman DA, Migliore M,\r\nJohnston D (2002). The experimental and modeling results support the\r\nhypothesis that\r\ndendritic K-A channels and the boosting of back-propagating action\r\npotentials\r\ncontribute to the induction of LTP in CA1 neurons.\r\n See the paper for details.\r\nQuestions about the model may be addressed to Michele Migliore:\r\n michele.migliore@pa.ibf.cnr.it",
+    "channels": [
+      "I Na,t",
+      "I A",
+      "I K"
+    ],
+    "cell_types": [
+      "Hippocampus CA1 pyramidal GLU cell"
+    ],
+    "page_link": "https://modeldb.science/7386",
+    "download_link": "https://modeldb.science/download/7386",
+    "github_link": "https://github.com/ModelDBRepository/7386",
+    "model_types": [
+      "Neuron or other electrically excitable cell"
+    ],
+    "model_concepts": [
+      "Dendritic Action Potentials",
+      "Coincidence Detection",
+      "Active Dendrites",
+      "Detailed Neuronal Models",
+      "Action Potentials"
+    ],
+    "implementers": [
+      "Migliore, Michele [Michele.Migliore at Yale.edu]"
+    ],
+    "modeling_application": [
+      "NEURON"
+    ],
+    "receptors": [
+      "AMPA"
+    ],
+    "regions": [],
+    "genes": [],
+    "transmitters": [],
+    "papers": [
+      {
+        "label": "Watanabe S, Hoffman DA, Migliore M, Johnston D (2002)",
+        "title": "Dendritic K+ channels contribute to spike-timing dependent long-term potentiation in hippocampal pyramidal neurons.",
+        "journal": "Proceedings of the National Academy of Sciences of the United States of America",
+        "year": "2002",
+        "doi": "10.1073/pnas.122210599",
+        "pubmed_id": "12048251",
+        "url": "https://doi.org/10.1073/pnas.122210599"
+      }
+    ],
+    "readme_link": "https://raw.githubusercontent.com/ModelDBRepository/7386/HEAD/readme.txt",
+    "model_files": [
+      {
+        "label": "kadist.mod",
+        "path": "kadist.mod",
+        "url": "https://raw.githubusercontent.com/ModelDBRepository/7386/HEAD/kadist.mod"
+      },
+      {
+        "label": "kaprox.mod",
+        "path": "kaprox.mod",
+        "url": "https://raw.githubusercontent.com/ModelDBRepository/7386/HEAD/kaprox.mod"
+      },
+      {
+        "label": "kdrca1.mod",
+        "path": "kdrca1.mod",
+        "url": "https://raw.githubusercontent.com/ModelDBRepository/7386/HEAD/kdrca1.mod"
+      },
+      {
+        "label": "na3.mod",
+        "path": "na3.mod",
+        "url": "https://raw.githubusercontent.com/ModelDBRepository/7386/HEAD/na3.mod"
+      },
+      {
+        "label": "nax.mod",
+        "path": "nax.mod",
+        "url": "https://raw.githubusercontent.com/ModelDBRepository/7386/HEAD/nax.mod"
+      }
+    ],
+    "created": "2002-04-15T13:01:22",
+    "updated": "2014-02-01T08:02:19",
     "type": "single",
     "source": "ModelDB"
   },

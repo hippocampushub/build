@@ -2,8 +2,8 @@
   "sources": {
     "neuromorpho": {
       "source": "Neuromorpho",
-      "fetched_at": "2026-11-12T05:09:18+00:00",
-      "duration_seconds": 10.1,
+      "fetched_at": "2026-11-13T04:25:52+00:00",
+      "duration_seconds": 10.8,
       "collections": {
         "morphologies": {
           "file": "neuromorpho/morphologies.json",
@@ -13,19 +13,19 @@
     },
     "modeldb": {
       "source": "ModelDB",
-      "fetched_at": "2026-11-12T05:25:02+00:00",
-      "duration_seconds": 944.4,
+      "fetched_at": "2026-11-13T04:28:24+00:00",
+      "duration_seconds": 152.2,
       "collections": {
         "models": {
           "file": "modeldb/models.json",
-          "count": 147
+          "count": 149
         }
       }
     },
     "ebrains": {
       "source": "EBRAINS",
-      "fetched_at": "2026-11-12T05:25:37+00:00",
-      "duration_seconds": 34.4,
+      "fetched_at": "2026-11-13T04:28:57+00:00",
+      "duration_seconds": 33.8,
       "collections": {
         "datasets": {
           "file": "ebrains/datasets.json",
@@ -39,8 +39,8 @@
     },
     "internal": {
       "source": "INTERNAL",
-      "fetched_at": "2026-11-12T05:09:08+00:00",
-      "duration_seconds": 1.9,
+      "fetched_at": "2026-11-13T04:25:41+00:00",
+      "duration_seconds": 1.7,
       "collections": {
         "morphologies": {
           "file": "internal/morphologies.json",
@@ -54,8 +54,8 @@
     },
     "hippocampome": {
       "source": "Hippocampome",
-      "fetched_at": "2026-11-12T05:25:38+00:00",
-      "duration_seconds": 0.7,
+      "fetched_at": "2026-11-13T04:28:59+00:00",
+      "duration_seconds": 1.0,
       "collections": {
         "neuron_types": {
           "file": "hippocampome/neuron_types.json",
@@ -68,5 +68,5 @@
       }
     }
   },
-  "updated_at": "2026-11-12T05:25:38+00:00"
+  "updated_at": "2026-11-13T04:28:59+00:00"
 }
